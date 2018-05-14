@@ -3,6 +3,7 @@
 export("%>%")
 export(renderSigmajs)
 export(sg_edges)
+export(sg_force)
 export(sg_nodes)
 export(sigmajs)
 export(sigmajsOutput)

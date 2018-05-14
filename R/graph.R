@@ -32,6 +32,7 @@
 sg_nodes <- function(sg, nodes, ...){
 
   nodes <- .build_data(nodes, ...)
+  nodes <- .check_ids(nodes)
   nodes <- .as_list(nodes)
 
   sg$x$data <- append(sg$x$data, list(nodes = nodes))
@@ -43,6 +44,7 @@ sg_nodes <- function(sg, nodes, ...){
 sg_edges <- function(sg, edges, ...){
 
   edges <- .build_data(edges, ...)
+  edges <- .check_ids(edges)
   edges <- .as_list(edges)
 
   sg$x$data <- append(sg$x$data, list(edges = edges))

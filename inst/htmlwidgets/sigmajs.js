@@ -10,13 +10,20 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        var sg = new sigma({
+        var s = new sigma({
           graph: x.data,
           container: el.id,
           settings: {
               defaultNodeColor: '#ec5148'
           }
         });
+        
+        if(x.hasOwnProperty('force')){
+          s.startForceAtlas2({
+            worker: x.force.worker, 
+            barnesHutOptimize: x.force.barnesHutOptimize
+          });
+        }
 
       },
 

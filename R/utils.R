@@ -3,9 +3,17 @@
   base <- lapply(dots, eval, data) # eval
   names(base) <- sapply(dots, deparse) # deparse for name
   base <- as.data.frame(base) # to data.frame
-  base
+  return(base)
 }
 
-.as_list(data){
-  apply(data, 1, as.list)
+.as_list <- function(data){
+  apply(data, 1, as.list) # json formatted list
+}
+
+.check_ids <- function(data){
+  if(!"id" %in% names(data))
+    stop("missing node ids", call. = FALSE)
+  else 
+    data$id <- as.character(data$id)
+  return(data)
 }

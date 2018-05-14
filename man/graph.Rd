@@ -18,18 +18,25 @@ sg_edges(sg, edges, ...)
 Add nodes.
 }
 \examples{
+ids <- as.character(1:10)
+
 nodes <- data.frame(
-  id = 1:10,
-  name = LETTERS[1:10]
+  id = ids,
+  label = LETTERS[1:10],
+  x = runif(10, 1, 20),
+  y = runif(10, 1, 20),
+  stringsAsFactors = FALSE
 )
 
 edges <- data.frame(
-  source = sample(1:10, 15, replace = TRUE),
-  target = sample(1:10, 15, replace = TRUE)
+  id = 1:15,
+  source = sample(ids, 15, replace = TRUE),
+  target = sample(ids, 15, replace = TRUE),
+  stringsAsFactors = FALSE
 )
 
 sigmajs() \%>\%
-  sg_nodes(nodes, "id", "name") \%>\%
-  sg_edges(edges, "source", "target")
+  sg_nodes(nodes, id, label, x, y) \%>\%
+  sg_edges(edges, id, source, target)
 
 }
