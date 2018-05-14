@@ -1,16 +1,18 @@
-#' Add force
+#' Settings
 #' 
-#' Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
+#' Graph settings.
 #' 
 #' @inheritParams sg_nodes
-#' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.
+#' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/wiki/Settings}{official documentation}.
 #' 
-#' @examples
+#' @examples 
 #' ids <- as.character(1:10)
 #'
 #' nodes <- data.frame(
 #'   id = ids,
 #'   label = LETTERS[1:10],
+#'   x = runif(10, 1, 20),
+#'   y = runif(10, 1, 20),
 #'   size = runif(10, 1, 5),
 #'   stringsAsFactors = FALSE
 #' )
@@ -23,12 +25,15 @@
 #' )
 #'
 #' sigmajs() %>%
-#'   sg_nodes(nodes, id, label, size) %>%
+#'   sg_nodes(nodes, id, label, size, x, y) %>%
 #'   sg_edges(edges, id, source, target) %>% 
-#'   sg_force()
+#'   sg_force() %>% 
+#'   sg_settings(
+#'     defaultNodeColor = "#0011ff"
+#'   )
 #' 
 #' @export
-sg_force <- function(sg, ...){
-    sg$x$force <- list(...)
-    sg
+sg_settings <- function(sg, ...){
+  sg$x$settings <- list(...)
+  sg
 }

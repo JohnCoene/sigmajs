@@ -1,14 +1,21 @@
-#' <Add Title>
+#' Initialise
 #'
-#' <Add Description>
+#' Initialise a graph.
+#' 
+#' @param width,height Dimensions of graph.
+#' @param elementId Id of elment.
 #'
 #' @import htmlwidgets
+#' @importFrom stats runif
 #'
 #' @export
 sigmajs <- function(width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
-  x = list(data = list())
+  x = list(
+    data = list(),
+    settings = list()
+  )
 
   # create widget
   htmlwidgets::createWidget(

@@ -3,19 +3,21 @@
 \name{sg_nodes}
 \alias{sg_nodes}
 \alias{sg_edges}
-\title{Add nodes}
+\title{Add nodes and edges}
 \usage{
 sg_nodes(sg, nodes, ...)
 
 sg_edges(sg, edges, ...)
 }
 \arguments{
-\item{nodes}{Data.frame of nodes.}
+\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+
+\item{nodes, edges}{Data.frame of nodes or edges.}
 
 \item{...}{any column.}
 }
 \description{
-Add nodes.
+Add nodes and edges.
 }
 \examples{
 ids <- as.character(1:10)
@@ -23,8 +25,6 @@ ids <- as.character(1:10)
 nodes <- data.frame(
   id = ids,
   label = LETTERS[1:10],
-  x = runif(10, 1, 20),
-  y = runif(10, 1, 20),
   stringsAsFactors = FALSE
 )
 
@@ -36,7 +36,7 @@ edges <- data.frame(
 )
 
 sigmajs() \%>\%
-  sg_nodes(nodes, id, label, x, y) \%>\%
+  sg_nodes(nodes, id, label) \%>\%
   sg_edges(edges, id, source, target)
 
 }

@@ -17,3 +17,12 @@
     data$id <- as.character(data$id)
   return(data)
 }
+
+.check_x_y <- function(data){
+  if(!"x" %in% names(data))
+    data$x <- runif(nrow(data), 1, 20)
+  
+  if(!"y" %in% names(data))
+    data$y <- runif(nrow(data), 1, 20)
+  return(data)
+}

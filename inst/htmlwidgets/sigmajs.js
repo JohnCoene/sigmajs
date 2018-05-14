@@ -13,16 +13,12 @@ HTMLWidgets.widget({
         var s = new sigma({
           graph: x.data,
           container: el.id,
-          settings: {
-              defaultNodeColor: '#ec5148'
-          }
+          settings: x.settings
         });
         
         if(x.hasOwnProperty('force')){
-          s.startForceAtlas2({
-            worker: x.force.worker, 
-            barnesHutOptimize: x.force.barnesHutOptimize
-          });
+          s.startForceAtlas2(x.force);
+          s.refresh();
         }
 
       },

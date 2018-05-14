@@ -2,10 +2,15 @@
 % Please edit documentation in R/sigmajs.R
 \name{sigmajs}
 \alias{sigmajs}
-\title{<Add Title>}
+\title{Initialise}
 \usage{
 sigmajs(width = NULL, height = NULL, elementId = NULL)
 }
+\arguments{
+\item{width, height}{Dimensions of graph.}
+
+\item{elementId}{Id of elment.}
+}
 \description{
-<Add Description>
+Initialise a graph.
 }
