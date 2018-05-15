@@ -2,7 +2,12 @@ library(shiny)
 library(sigmajs)
 
 ui <- fluidPage(
-	actionButton("add", "add edge"),
+	fluidRow(
+		column(3, actionButton("add", "add edge")),
+		column(3, actionButton("stop", "stop forceAtlas2")),
+		column(3, actionButton("start", "start forceAtlas2")),
+		column(3, actionButton("restart", "re-start forceAtlas2"))
+	),
 	sigmajsOutput("sg")
 )
 
@@ -27,7 +32,6 @@ server <- function(input, output) {
 		sigmajs() %>%
 			sg_nodes(nodes, id, label, size) %>%
 			sg_edges(edges, id, source, target) %>%
-			sg_force(worker = TRUE) %>%
 			sg_settings(
 				defaultNodeColor = "#0011ff"
 			)
@@ -46,7 +50,22 @@ server <- function(input, output) {
 		)
 
 		sigmajsProxy("sg") %>%
-			sg_add_edge_p(df, id, source, target)
+			sg_add_edge_p(df, id, source, target) 
+	})
+
+	observeEvent(input$start, {
+		sigmajsProxy("sg") %>%
+				sg_force_start_p(worker = TRUE)
+	})
+
+	observeEvent(input$stop, {
+		sigmajsProxy("sg") %>%
+				sg_force_stop_p()
+	})
+
+	observeEvent(input$restart, {
+		sigmajsProxy("sg") %>%
+					sg_force_restart_p(worker = TRUE)
 	})
 }
 

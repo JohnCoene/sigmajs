@@ -27,8 +27,6 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        // TODO: code to re-render the widget with a new size
-
 			},
 
 			getChart: function () {
@@ -80,13 +78,58 @@ Shiny.addCustomMessageHandler('sg_add_edge_p',
 );
 
 // restart forceAtlas2
-Shiny.addCustomMessageHandler('sg_force_p',
+Shiny.addCustomMessageHandler('sg_force_restart_p',
 	function (message) {
 		var s = get_sigma_graph(message.id);
 		if (typeof s != 'undefined') {
-			s.stopForceAtlas2();
-			s.startForceAtlas2(message.data);
-			s.refresh();
+			var running = s.isForceAtlas2Running();
+			if (running === true) {
+				s.stopForceAtlas2();
+			}
+			if (running === false) {
+				s.startForceAtlas2(message.data);
+				s.refresh();
+			}
+		}
+	}
+);
+
+// start forceAtlas2
+Shiny.addCustomMessageHandler('sg_force_start_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			var running = s.isForceAtlas2Running();
+			if (running === false) {
+				s.startForceAtlas2(message.data);
+				s.refresh();
+			}
+		}
+	}
+);
+
+// stop forceAtlas2
+Shiny.addCustomMessageHandler('sg_force_stop_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			var running = s.isForceAtlas2Running();
+			if (running === true) {
+				s.stopForceAtlas2();
+			}
+		}
+	}
+);
+
+// stop forceAtlas2
+Shiny.addCustomMessageHandler('sg_force_config_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			var running = s.isForceAtlas2Running();
+			if (running === true) {
+				s.configForceAtlas2(message.data);
+			}
 		}
 	}
 );

@@ -10,7 +10,10 @@
 #' @section Functions:
 #' \itemize{
 #'	\item{\code{sg_force} starts the forceAtlas2 layout}
-#'	\item{\code{sg_force_p} _re_starts the forceAtlas2 layout, the options you pass to this function are applied on restart.}
+#'	\item{\code{sg_force_restart_p} proxy to re-starts the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
+#'	\item{\code{sg_force_start_p proxy to start forceAtlas2.}
+#'	\item{\code{sg_force_stop_p proxy to stop forceAtlas2.}
+#'	\item{\code{sg_force_config_p proxy to set configurations of forceAtlas2.}
 #' }
 #' 
 #' @examples
@@ -44,14 +47,56 @@ sg_force <- function(sg, ...){
 
 #' @rdname force
 #' @export
-sg_force_p <- function(proxy, ...) {
+sg_force_restart_p <- function(proxy, ...) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
 	message <- list(id = proxy$id, data = list(...))
 
-	proxy$session$sendCustomMessage("sg_force_p", message)
+	proxy$session$sendCustomMessage("sg_force_restart_p", message)
+
+	return(proxy)
+}
+
+#' @rdname force
+#' @export
+sg_force_start_p <- function(proxy, ...) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	message <- list(id = proxy$id, data = list(...))
+
+	proxy$session$sendCustomMessage("sg_force_start_p", message)
+
+	return(proxy)
+}
+
+#' @rdname force
+#' @export
+sg_force_stop_p <- function(proxy) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	message <- list(id = proxy$id)
+
+	proxy$session$sendCustomMessage("sg_force_stop_p", message)
+
+	return(proxy)
+}
+
+#' @rdname force
+#' @export
+sg_force_config_p <- function(proxy, ...) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	message <- list(id = proxy$id, data = list(...))
+
+	proxy$session$sendCustomMessage("sg_force_config_p", message)
 
 	return(proxy)
 }

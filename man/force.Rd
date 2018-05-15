@@ -2,12 +2,21 @@
 % Please edit documentation in R/force.R
 \name{sg_force}
 \alias{sg_force}
-\alias{sg_force_p}
+\alias{sg_force_restart_p}
+\alias{sg_force_start_p}
+\alias{sg_force_stop_p}
+\alias{sg_force_config_p}
 \title{Add force}
 \usage{
 sg_force(sg, ...)
 
-sg_force_p(proxy, ...)
+sg_force_restart_p(proxy, ...)
+
+sg_force_start_p(proxy, ...)
+
+sg_force_stop_p(proxy)
+
+sg_force_config_p(proxy, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -19,14 +28,6 @@ sg_force_p(proxy, ...)
 \description{
 Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
 }
-\section{Functions}{
-
-\itemize{
-\item{\code{sg_force} starts the forceAtlas2 layout}
-\item{\code{sg_force_p} _re_starts the forceAtlas2 layout, the options you pass to this function are applied on restart.}
-}
-}
-
 \examples{
 ids <- as.character(1:10)
 
