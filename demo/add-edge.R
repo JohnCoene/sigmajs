@@ -2,7 +2,7 @@ library(shiny)
 library(sigmajs)
 
 ui <- fluidPage(
-	actionButton("add", "add nodes"),
+	actionButton("add", "add edge"),
 	sigmajsOutput("sg")
 )
 
@@ -27,25 +27,26 @@ server <- function(input, output) {
 		sigmajs() %>%
 			sg_nodes(nodes, id, label, size) %>%
 			sg_edges(edges, id, source, target) %>%
-			sg_force() %>%
+			sg_force(worker = TRUE) %>%
 			sg_settings(
 				defaultNodeColor = "#0011ff"
 			)
 	})
 
-	i <- 16
+	i <- nrow(edges)
 
 	observeEvent(input$add, {
-		i <<- i + 1
+
+	i <<- i+ 1
 
 		df <- data.frame(
 			id = i,
-			size = runif(1, 1, 5),
-			label = sample(LETTERS, 1)
+			source = sample(ids, 1),
+			target = sample(ids, 1)
 		)
 
 		sigmajsProxy("sg") %>%
-			sg_add_node_p(df, id, label, size)
+			sg_add_edge_p(df, id, source, target)
 	})
 }
 

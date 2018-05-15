@@ -2,10 +2,13 @@
 
 export("%>%")
 export(renderSigmajs)
+export(sg_add_edge_p)
 export(sg_add_node_p)
 export(sg_edges)
 export(sg_force)
+export(sg_force_p)
 export(sg_nodes)
+export(sg_refresh_p)
 export(sg_settings)
 export(sigmajs)
 export(sigmajsOutput)

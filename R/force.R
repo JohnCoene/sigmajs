@@ -3,7 +3,15 @@
 #' Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
 #' 
 #' @inheritParams sg_nodes
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.
+#' 
+#'
+#' @section Functions:
+#' \itemize{
+#'	\item{\code{sg_force} starts the forceAtlas2 layout}
+#'	\item{\code{sg_force_p} _re_starts the forceAtlas2 layout, the options you pass to this function are applied on restart.}
+#' }
 #' 
 #' @examples
 #' ids <- as.character(1:10)
@@ -27,8 +35,23 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_force()
 #' 
+#' @rdname force
 #' @export
 sg_force <- function(sg, ...){
     sg$x$force <- list(...)
     sg
+}
+
+#' @rdname force
+#' @export
+sg_force_p <- function(proxy, ...) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	message <- list(id = proxy$id, data = list(...))
+
+	proxy$session$sendCustomMessage("sg_force_p", message)
+
+	return(proxy)
 }

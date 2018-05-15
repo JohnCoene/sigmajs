@@ -2,53 +2,31 @@
 % Please edit documentation in R/add_proxies.R
 \name{sg_add_node_p}
 \alias{sg_add_node_p}
-\title{Add node}
+\alias{sg_add_edge_p}
+\title{Add node or edge}
 \usage{
-sg_add_node_p(proxy, nodes, ...)
+sg_add_node_p(proxy, node, ...)
+
+sg_add_edge_p(proxy, edge, ...)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
-\item{nodes}{A \code{data.frame} of nodes.}
+\item{node, edge}{A \code{data.frame} of _one_ node or edge.}
 
 \item{...}{any column.}
 }
 \description{
-Proxy to dynamically add a node.
+Proxy to dynamically add a node or an edge to already existing graph.
+}
+\note{
+Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
+make sure you also have it in your proxy.
 }
 \examples{
 \dontrun{
-library(shiny)
-
-ui <- fluidPage(
-	actionButton("add node"),
-	sigmajsOutput("sg")
-)
-
-server <- function(input, output) {
- nodes <- data.frame(
-   id = ids,
-   label = LETTERS[1:10],
-   x = runif(10, 1, 20),
-   y = runif(10, 1, 20),
-   size = runif(10, 1, 5),
-   stringsAsFactors = FALSE
- )
-
- edges <- data.frame(
-   id = 1:15,
-   source = sample(ids, 15, replace = TRUE),
-   target = sample(ids, 15, replace = TRUE),
-   stringsAsFactors = FALSE
- )
- output$sg <- renderSigmajs({
-   sigmajs() \%>\%
-     sg_nodes(nodes, id, label) \%>\%
-     sg_edges(edges, id, source, target)
- })
-}
-
-shinyApp(ui, server)
+demo("add-node", package = "sigmajs")
+demo("add-edge", package = "sigmajs")
 }
 
 }

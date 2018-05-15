@@ -39,28 +39,64 @@ HTMLWidgets.widget({
   }
 });
 
+// get chart
 function get_sigma_graph(id) {
 
-	var htmlWidgetsObj = HTMLWidgets.find("#" + id);
+	var htmlWidgetsObj = HTMLWidgets.find("#" + id); // find object
 
-	var s;
+	var s; // define
 
-	if (typeof htmlWidgetsObj != 'undefined') {
+	if (typeof htmlWidgetsObj != 'undefined') { // get chart if defined
 		s = htmlWidgetsObj.getChart();
 	}
 
 	return (s);
 }
 
+// add node
 Shiny.addCustomMessageHandler('sg_add_node_p',
 	function (message) {
 		var s = get_sigma_graph(message.id);
 		if (typeof s != 'undefined') {
-			console.log(message);
 			s.graph.addNode(
 				message.data[0]
 			);
 			s.refresh();
 		}
-	});
+	}
+);
 
+// add edge
+Shiny.addCustomMessageHandler('sg_add_edge_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.graph.addEdge(
+				message.data[0]
+			);
+			s.refresh();
+		}
+	}
+);
+
+// restart forceAtlas2
+Shiny.addCustomMessageHandler('sg_force_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.stopForceAtlas2();
+			s.startForceAtlas2(message.data);
+			s.refresh();
+		}
+	}
+);
+
+// refresh
+Shiny.addCustomMessageHandler('sg_refresh_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.refresh();
+		}
+	}
+);
