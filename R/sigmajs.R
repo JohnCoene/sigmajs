@@ -7,9 +7,11 @@
 #'
 #' @import htmlwidgets
 #' @importFrom stats runif
+#' 
+#' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
 #'
 #' @export
-sigmajs <- function(width = NULL, height = NULL, elementId = NULL) {
+sigmajs <- function(width = "100%", height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
@@ -33,7 +35,7 @@ sigmajs <- function(width = NULL, height = NULL, elementId = NULL) {
 #' Output and render functions for using sigmajs within Shiny
 #' applications and interactive Rmd documents.
 #'
-#' @param outputId output variable to read from
+#' @param outputId,id output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
@@ -41,6 +43,7 @@ sigmajs <- function(width = NULL, height = NULL, elementId = NULL) {
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
+#' @param session A valid shiny session.
 #'
 #' @name sigmajs-shiny
 #'
@@ -54,4 +57,14 @@ sigmajsOutput <- function(outputId, width = '100%', height = '400px'){
 renderSigmajs <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, sigmajsOutput, env, quoted = TRUE)
+}
+
+#' @rdname sigmajs-shiny
+#' @export
+sigmajsProxy <- function(id, session = shiny::getDefaultReactiveDomain()) {
+
+	proxy <- list(id = id, session = session)
+	class(proxy) <- "sigmajsProxy"
+
+	return(proxy)
 }

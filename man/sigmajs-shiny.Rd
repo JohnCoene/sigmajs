@@ -4,14 +4,17 @@
 \alias{sigmajs-shiny}
 \alias{sigmajsOutput}
 \alias{renderSigmajs}
+\alias{sigmajsProxy}
 \title{Shiny bindings for sigmajs}
 \usage{
 sigmajsOutput(outputId, width = "100\%", height = "400px")
 
 renderSigmajs(expr, env = parent.frame(), quoted = FALSE)
+
+sigmajsProxy(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{outputId}{output variable to read from}
+\item{outputId, id}{output variable to read from}
 
 \item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
 \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
@@ -23,6 +26,8 @@ string and have \code{'px'} appended.}
 
 \item{quoted}{Is \code{expr} a quoted expression (with \code{quote()})? This
 is useful if you want to save an expression in a variable.}
+
+\item{session}{A valid shiny session.}
 }
 \description{
 Output and render functions for using sigmajs within Shiny

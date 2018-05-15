@@ -4,7 +4,7 @@
 \alias{sigmajs}
 \title{Initialise}
 \usage{
-sigmajs(width = NULL, height = NULL, elementId = NULL)
+sigmajs(width = "100\%", height = NULL, elementId = NULL)
 }
 \arguments{
 \item{width, height}{Dimensions of graph.}
@@ -13,4 +13,7 @@ sigmajs(width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 Initialise a graph.
+}
+\note{
+Keep \code{width} at \code{100\%} for a responsive visualisation.
 }
