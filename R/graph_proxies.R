@@ -3,7 +3,7 @@
 #' Proxies to dynamically add a node or an edge to an already existing graph.
 #' 
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
-#' @param node,edge A \code{data.frame} of _one_ node or edge.
+#' @param data A \code{data.frame} of _one_ node or edge.
 #' @param ... any column.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' 
@@ -11,6 +11,7 @@
 #' \dontrun{
 #' demo("add-node", package = "sigmajs")
 #' demo("add-edge", package = "sigmajs")
+#' demo("add-node-edge", package = "sigmajs")
 #' }
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
@@ -18,13 +19,13 @@
 #' 
 #' @rdname add_p
 #' @export
-sg_add_node_p <- function(proxy, node, ..., refresh = TRUE) {
+sg_add_node_p <- function(proxy, data, ..., refresh = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
 	# build data
-	nodes <- .build_data(node, ...) %>%
+	nodes <- .build_data(data, ...) %>%
 		.check_ids() %>%
 		.check_x_y() %>%
 		.as_list()
@@ -38,20 +39,64 @@ sg_add_node_p <- function(proxy, node, ..., refresh = TRUE) {
 
 #' @rdname add_p
 #' @export
-sg_add_edge_p <- function(proxy, edge, ..., refresh = TRUE) {
+sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
 	# build data
-	edges <- .build_data(edge, ...) %>%
+	edges <- .build_data(data, ...) %>%
 		.check_ids() %>%
 		.check_x_y() %>%
 		.as_list()
 
 	message <- list(id = proxy$id, data = edges, refresh = refresh) # create message
 
-	proxy$session$sendCustomMessage("sg_add_edge_p", message)
+	proxy$session$sendCustomMessage("sg_add_edge_p", message) # send message
+
+	return(proxy)
+}
+
+#' Add nodes or edges
+#' 
+#' Proxies to dynamically add _multiple_ nodes or edges to an already existing graph.
+#' 
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param ... any column.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
+#' 
+#' @examples
+#' \dontrun{
+#' demo("add-nodes", package = "sigmajs")
+#' }
+#'
+#' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
+#' make sure you also have it in your proxy.
+#' 
+#' @rdname adds_p
+#' @export
+sg_add_nodes_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data))
+		stop("must pass data", call. = FALSE)
+
+	if (!rate %in% c("once", "iteration"))
+		stop("incorrect rate", call. = FALSE)
+
+	# build data
+	nodes <- .build_data(data, ...) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	message <- list(id = proxy$id, data = nodes, refresh = refresh, rate = rate) # create message
+
+	proxy$session$sendCustomMessage("sg_add_nodes_p", message)
 
 	return(proxy)
 }

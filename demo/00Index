@@ -3,3 +3,4 @@ add-edge				Dynamically add an edge.
 add-node-edge		Dynamically add an and a node.
 drop-node				Delete a node from an existing graph.
 clear-graph			Clear the graph.
+add-nodes				Add multiple nodes.
