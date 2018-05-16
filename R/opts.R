@@ -8,12 +8,13 @@
 #'
 #' @export
 sg_refresh_p <- function(proxy) {
+
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
 	message <- list(id = proxy$id)
 
-	proxy$session$sendCustomMessage("sg_add_edge_p", message)
+	proxy$session$sendCustomMessage("sg_refresh_p", message)
 
 	return(proxy)
 }

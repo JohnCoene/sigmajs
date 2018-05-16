@@ -14,13 +14,13 @@ HTMLWidgets.widget({
 
         s = new sigma({
           graph: x.data,
-          container: el.id,
+					container: el.id,
+					type: x.type,
           settings: x.settings
         });
         
         if(x.hasOwnProperty('force')){
           s.startForceAtlas2(x.force);
-          s.refresh();
         }
 
       },
@@ -59,7 +59,9 @@ Shiny.addCustomMessageHandler('sg_add_node_p',
 			s.graph.addNode(
 				message.data[0]
 			);
-			s.refresh();
+			if (message.refresh === true) {
+				s.refresh();
+			}
 		}
 	}
 );
@@ -72,7 +74,9 @@ Shiny.addCustomMessageHandler('sg_add_edge_p',
 			s.graph.addEdge(
 				message.data[0]
 			);
-			s.refresh();
+			if (message.refresh === true) {
+				s.refresh();
+			}
 		}
 	}
 );
@@ -88,7 +92,9 @@ Shiny.addCustomMessageHandler('sg_force_restart_p',
 			}
 			if (running === false) {
 				s.startForceAtlas2(message.data);
-				s.refresh();
+				if (message.refresh === true) {
+					s.refresh();
+				}
 			}
 		}
 	}
@@ -102,7 +108,9 @@ Shiny.addCustomMessageHandler('sg_force_start_p',
 			var running = s.isForceAtlas2Running();
 			if (running === false) {
 				s.startForceAtlas2(message.data);
-				s.refresh();
+				if (message.refresh === true) {
+					s.refresh();
+				}
 			}
 		}
 	}
@@ -134,12 +142,77 @@ Shiny.addCustomMessageHandler('sg_force_config_p',
 	}
 );
 
+// kill forceAtlas2
+Shiny.addCustomMessageHandler('sg_force_kill_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			var running = s.isForceAtlas2Running();
+			if (running === true) {
+				s.killForceAtlas2();
+			}
+		}
+	}
+);
+
 // refresh
 Shiny.addCustomMessageHandler('sg_refresh_p',
 	function (message) {
 		var s = get_sigma_graph(message.id);
 		if (typeof s != 'undefined') {
 			s.refresh();
+		}
+	}
+);
+
+// drop node
+Shiny.addCustomMessageHandler('sg_drop_node_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.graph.dropNode(message.data);
+			if (message.refresh === true) {
+				s.refresh();
+			}
+		}
+	}
+);
+
+// drop edge
+Shiny.addCustomMessageHandler('sg_drop_edge_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.graph.dropEdge(message.data);
+			if (message.refresh === true) {
+				s.refresh();
+			}
+		}
+	}
+);
+
+// clear graph
+Shiny.addCustomMessageHandler('sg_clear_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.graph.clear();
+			if (message.refresh === true) {
+				s.refresh();
+			}
+		}
+	}
+);
+
+// kill graph
+Shiny.addCustomMessageHandler('sg_kill_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			s.graph.kill();
+			if (message.refresh === true) {
+				s.refresh();
+			}
 		}
 	}
 );

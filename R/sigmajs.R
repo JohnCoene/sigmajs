@@ -4,6 +4,7 @@
 #' 
 #' @param width,height Dimensions of graph.
 #' @param elementId Id of elment.
+#' @param type Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.
 #'
 #' @import htmlwidgets
 #' @importFrom stats runif
@@ -11,12 +12,13 @@
 #' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
 #'
 #' @export
-sigmajs <- function(width = "100%", height = NULL, elementId = NULL) {
+sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
     data = list(),
-    settings = list()
+		settings = list(),
+		type = type
   )
 
   # create widget

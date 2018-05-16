@@ -5,16 +5,19 @@
 \alias{sg_force_restart_p}
 \alias{sg_force_start_p}
 \alias{sg_force_stop_p}
+\alias{sg_force_kill_p}
 \alias{sg_force_config_p}
 \title{Add force}
 \usage{
 sg_force(sg, ...)
 
-sg_force_restart_p(proxy, ...)
+sg_force_restart_p(proxy, ..., refresh = TRUE)
 
-sg_force_start_p(proxy, ...)
+sg_force_start_p(proxy, ..., refresh = TRUE)
 
 sg_force_stop_p(proxy)
+
+sg_force_kill_p(proxy)
 
 sg_force_config_p(proxy, ...)
 }
@@ -24,6 +27,8 @@ sg_force_config_p(proxy, ...)
 \item{...}{Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.}
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
+
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
 }
 \description{
 Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
@@ -35,6 +40,7 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 \item{\code{sg_force_restart_p} proxy to re-starts the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 \item{\code{sg_force_start_p} proxy to start forceAtlas2.}
 \item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
+\item{\code{sg_force_kill_p} proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.}
 \item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
 }
 }

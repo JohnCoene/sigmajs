@@ -5,6 +5,7 @@
 #' @inheritParams sg_nodes
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' 
 #'
 #' @section Functions:
@@ -13,6 +14,7 @@
 #'	\item{\code{sg_force_restart_p} proxy to re-starts the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 #'	\item{\code{sg_force_start_p} proxy to start forceAtlas2.}
 #'	\item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
+#'	\item{\code{sg_force_kill_p} proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.}
 #'	\item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
 #' }
 #' 
@@ -47,12 +49,12 @@ sg_force <- function(sg, ...){
 
 #' @rdname force
 #' @export
-sg_force_restart_p <- function(proxy, ...) {
+sg_force_restart_p <- function(proxy, ..., refresh = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id, data = list(...))
+	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_force_restart_p", message)
 
@@ -61,12 +63,12 @@ sg_force_restart_p <- function(proxy, ...) {
 
 #' @rdname force
 #' @export
-sg_force_start_p <- function(proxy, ...) {
+sg_force_start_p <- function(proxy, ..., refresh = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id, data = list(...))
+	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_force_start_p", message)
 
@@ -83,6 +85,20 @@ sg_force_stop_p <- function(proxy) {
 	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_force_stop_p", message)
+
+	return(proxy)
+}
+
+#' @rdname force
+#' @export
+sg_force_kill_p <- function(proxy) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	message <- list(id = proxy$id)
+
+	proxy$session$sendCustomMessage("sg_force_kill_p", message)
 
 	return(proxy)
 }
