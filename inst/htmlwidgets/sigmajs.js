@@ -223,8 +223,26 @@ Shiny.addCustomMessageHandler('sg_add_nodes_p',
 		var s = get_sigma_graph(message.id);
 		if (typeof s != 'undefined') {
 			message.data.forEach((element) => {
-				console.log(element);
 				s.graph.addNode(element);
+				if (message.refresh === true && message.rate === "iteration") {
+					s.refresh();
+				}
+			});
+
+			if (message.refresh === true && message.rate === "once") {
+				s.refresh();
+			}
+		}
+	}
+);
+
+// add nodes
+Shiny.addCustomMessageHandler('sg_add_edges_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			message.data.forEach((element) => {
+				s.graph.addEdge(element);
 				if (message.refresh === true && message.rate === "iteration") {
 					s.refresh();
 				}

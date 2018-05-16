@@ -3,6 +3,7 @@
 export("%>%")
 export(renderSigmajs)
 export(sg_add_edge_p)
+export(sg_add_edges_p)
 export(sg_add_node_p)
 export(sg_add_nodes_p)
 export(sg_clear_p)

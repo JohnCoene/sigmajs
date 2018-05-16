@@ -70,6 +70,7 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 #' @examples
 #' \dontrun{
 #' demo("add-nodes", package = "sigmajs")
+#' demo("add-edges", package = "sigmajs")
 #' }
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
@@ -97,6 +98,32 @@ sg_add_nodes_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 	message <- list(id = proxy$id, data = nodes, refresh = refresh, rate = rate) # create message
 
 	proxy$session$sendCustomMessage("sg_add_nodes_p", message)
+
+	return(proxy)
+}
+
+#' @rdname adds_p
+#' @export
+sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data))
+		stop("must pass data", call. = FALSE)
+
+	if (!rate %in% c("once", "iteration"))
+		stop("incorrect rate", call. = FALSE)
+
+	# build data
+	nodes <- .build_data(data, ...) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	message <- list(id = proxy$id, data = nodes, refresh = refresh, rate = rate) # create message
+
+	proxy$session$sendCustomMessage("sg_add_edges_p", message)
 
 	return(proxy)
 }

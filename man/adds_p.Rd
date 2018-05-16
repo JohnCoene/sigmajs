@@ -2,9 +2,12 @@
 % Please edit documentation in R/graph_proxies.R
 \name{sg_add_nodes_p}
 \alias{sg_add_nodes_p}
+\alias{sg_add_edges_p}
 \title{Add nodes or edges}
 \usage{
 sg_add_nodes_p(proxy, data, ..., refresh = TRUE, rate = "once")
+
+sg_add_edges_p(proxy, data, ..., refresh = TRUE, rate = "once")
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
@@ -27,6 +30,7 @@ make sure you also have it in your proxy.
 \examples{
 \dontrun{
 demo("add-nodes", package = "sigmajs")
+demo("add-edges", package = "sigmajs")
 }
 
 }
