@@ -45,9 +45,7 @@ edges <- data.frame(
 sigmajs() %>%
 	sg_nodes(nodes, id, label, size) %>%
 	sg_edges(edges, id, source, target) %>%
-	sg_settings(
-		defaultNodeColor = "#0011ff"
-	)
+	sg_settings(defaultNodeColor = "#0011ff")
 
 # proxies
 demo(package = "sigmajs")
