@@ -5,14 +5,14 @@
 \alias{sg_edges}
 \title{Add nodes and edges}
 \usage{
-sg_nodes(sg, nodes, ...)
+sg_nodes(sg, data, ...)
 
-sg_edges(sg, edges, ...)
+sg_edges(sg, data, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
-\item{nodes, edges}{Data.frame of nodes or edges.}
+\item{data}{Data.frame of nodes or edges.}
 
 \item{...}{any column.}
 }

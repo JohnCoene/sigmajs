@@ -3,7 +3,7 @@
 #' Add nodes and edges.
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
-#' @param nodes,edges Data.frame of nodes or edges.
+#' @param data Data.frame of nodes or edges.
 #' @param ... any column.
 #'
 #' @examples
@@ -28,9 +28,9 @@
 #'
 #' @rdname graph
 #' @export
-sg_nodes <- function(sg, nodes, ...){
+sg_nodes <- function(sg, data, ...){
 
-  nodes <- .build_data(nodes, ...) %>% 
+  nodes <- .build_data(data, ...) %>% 
     .check_ids() %>% 
     .check_x_y() %>% 
     .as_list()
@@ -41,9 +41,9 @@ sg_nodes <- function(sg, nodes, ...){
 
 #' @rdname graph
 #' @export
-sg_edges <- function(sg, edges, ...){
+sg_edges <- function(sg, data, ...){
 
-  edges <- .build_data(edges, ...) %>% 
+  edges <- .build_data(data, ...) %>% 
     .check_ids() %>% 
     .as_list()
 
