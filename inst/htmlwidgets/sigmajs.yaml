@@ -49,5 +49,7 @@ dependencies:
       - misc/sigma.misc.bindEvents.js
       - misc/sigma.misc.bindDOMEvents.js
       - misc/sigma.misc.drawHovers.js
+      - plugins/sigma.plugins.animate/sigma.plugins.animate.js
       - plugins/sigma.layout.forceAtlas2/worker.js
       - plugins/sigma.layout.forceAtlas2/supervisor.js
+      - plugins/sigma.layout.noverlap/sigma.layout.noverlap.js
