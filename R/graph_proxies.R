@@ -59,10 +59,10 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 
 #' Add nodes or edges
 #' 
-#' Proxies to dynamically add _multiple_ nodes or edges to an already existing graph.
+#' Proxies to dynamically add *multiple* nodes or edges to an already existing graph.
 #' 
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
-#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param data A \code{data.frame} of nodes or edges.
 #' @param ... any column.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
@@ -211,6 +211,82 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 	message <- list(id = proxy$id, refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_kill_p", message)
+
+	return(proxy)
+}
+
+#' Add nodes or edges with a delay
+#' 
+#' Proxies to dynamically add multiple nodes or edges to an already existing graph with a *delay* between each addition.
+#' 
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param ... any column.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param delay Column name containing delay in milliseconds to wait before adding the node or edge.
+#' 
+#' @examples
+#' \dontrun{
+#' demo("add-nodes-delay", package = "sigmajs")
+#' demo("add-edges-delay", package = "sigmajs")
+#' demo("add-all-delay", package = "sigmajs")
+#' }
+#'
+#' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
+#' make sure you also have it in your proxy.
+#' 
+#' @rdname adds_delay_p
+#' @export
+sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data) || missing(delay))
+		stop("must pass data and delay", call. = FALSE)
+
+	delay_col <- eval(substitute(delay), data) # subset delay
+	delay_col <- cumsum(delay_col) # cumul for setTimeout
+	delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
+
+	# build data
+	nodes <- .build_data(data, ...) %>%
+		dplyr::bind_cols(delay_table) %>% # bind delay
+		.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	message <- list(id = proxy$id, data = nodes, refresh = refresh) # create message
+
+	proxy$session$sendCustomMessage("sg_add_nodes_delay_p", message)
+
+	return(proxy)
+}
+
+#' @rdname adds_delay_p
+#' @export
+sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data) || missing(delay))
+		stop("must pass data and delay", call. = FALSE)
+
+	delay_col <- eval(substitute(delay), data) # subset delay
+	delay_col <- cumsum(delay_col) # cumul for setTimeout
+	delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
+
+	# build data
+	nodes <- .build_data(data, ...) %>%
+		dplyr::bind_cols(delay_table) %>% # bind delay
+	.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	message <- list(id = proxy$id, data = nodes, refresh = refresh) # create message
+
+	proxy$session$sendCustomMessage("sg_add_edges_delay_p", message)
 
 	return(proxy)
 }

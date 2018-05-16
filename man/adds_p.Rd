@@ -12,7 +12,7 @@ sg_add_edges_p(proxy, data, ..., refresh = TRUE, rate = "once")
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
-\item{data}{A \code{data.frame} of _one_ node or edge.}
+\item{data}{A \code{data.frame} of nodes or edges.}
 
 \item{...}{any column.}
 
@@ -21,7 +21,7 @@ sg_add_edges_p(proxy, data, ..., refresh = TRUE, rate = "once")
 \item{rate}{Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.}
 }
 \description{
-Proxies to dynamically add _multiple_ nodes or edges to an already existing graph.
+Proxies to dynamically add *multiple* nodes or edges to an already existing graph.
 }
 \note{
 Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,

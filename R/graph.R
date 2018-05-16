@@ -31,7 +31,7 @@
 #'
 #' @rdname graph
 #' @export
-sg_nodes <- function(sg, data, ...){
+sg_nodes <- function(sg, data, ...) {
 
   nodes <- .build_data(data, ...) %>% 
     .check_ids() %>% 
