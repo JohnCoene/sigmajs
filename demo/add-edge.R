@@ -4,7 +4,7 @@ library(sigmajs)
 ui <- fluidPage(
 	fluidRow(
 		column(3, actionButton("add", "add edge")),
-		column(3, actionButton("stop", "stop forceAtlas2")),
+		column(3, actionButton("stop", "kill forceAtlas2")),
 		column(3, actionButton("start", "start forceAtlas2")),
 		column(3, actionButton("restart", "re-start forceAtlas2"))
 	),
@@ -29,7 +29,7 @@ server <- function(input, output) {
 	)
 
 	output$sg <- renderSigmajs({
-		sigmajs() %>%
+		sigmajs(type = "webgl") %>%
 			sg_nodes(nodes, id, label, size) %>%
 			sg_edges(edges, id, source, target) %>%
 			sg_settings(
@@ -60,7 +60,7 @@ server <- function(input, output) {
 
 	observeEvent(input$stop, {
 		sigmajsProxy("sg") %>%
-				sg_force_stop_p()
+				sg_force_kill_p()
 	})
 
 	observeEvent(input$restart, {
