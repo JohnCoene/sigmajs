@@ -1,2 +1,3 @@
 add-node		Dynamically add a node.
 add-edge		Dynamically add an edge.
+add-node-edge		Dynamically add an and a node.

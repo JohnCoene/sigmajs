@@ -11,9 +11,9 @@
 #' \itemize{
 #'	\item{\code{sg_force} starts the forceAtlas2 layout}
 #'	\item{\code{sg_force_restart_p} proxy to re-starts the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
-#'	\item{\code{sg_force_start_p proxy to start forceAtlas2.}
-#'	\item{\code{sg_force_stop_p proxy to stop forceAtlas2.}
-#'	\item{\code{sg_force_config_p proxy to set configurations of forceAtlas2.}
+#'	\item{\code{sg_force_start_p} proxy to start forceAtlas2.}
+#'	\item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
+#'	\item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
 #' }
 #' 
 #' @examples

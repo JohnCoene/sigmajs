@@ -3,7 +3,7 @@ library(sigmajs)
 
 ui <- fluidPage(
 	fluidRow(
-		column(3, actionButton("add", "add node")),
+		column(3, actionButton("add", "add node & edge")),
 		column(3, actionButton("stop", "stop forceAtlas2")),
 		column(3, actionButton("start", "start forceAtlas2")),
 		column(3, actionButton("restart", "re-start forceAtlas2"))
@@ -37,19 +37,29 @@ server <- function(input, output) {
 			)
 	})
 
-	i <- nrow(nodes)
+	i <- nrow(edges)
+	j <- nrow(nodes)
 
 	observeEvent(input$add, {
-	i <<- i + 1
 
-		df <- data.frame(
+		i <<- i + 1
+		j <<- j + 1
+
+		edges <- data.frame(
+			id = i,
+			source = sample(1:j, 1),
+			target = sample(1:j, 1)
+		)
+
+		nodes <- data.frame(
 			id = i,
 			size = runif(1, 1, 5),
 			label = sample(LETTERS, 1)
 		)
 
 		sigmajsProxy("sg") %>%
-			sg_add_node_p(df, id, label, size)
+			sg_add_edge_p(edges, id, source, target) %>%
+			sg_add_node_p(nodes, id, label, size)
 	})
 
 	observeEvent(input$start, {

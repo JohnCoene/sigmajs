@@ -8,7 +8,7 @@ ui <- fluidPage(
 		column(3, actionButton("start", "start forceAtlas2")),
 		column(3, actionButton("restart", "re-start forceAtlas2"))
 	),
-	sigmajsOutput("sg")
+	sigmajsOutput("sg", height = "100vh")
 )
 
 server <- function(input, output) {
@@ -41,16 +41,16 @@ server <- function(input, output) {
 
 	observeEvent(input$add, {
 
-	i <<- i+ 1
+	i <<- i + 1
 
-		df <- data.frame(
+		edges <- data.frame(
 			id = i,
 			source = sample(ids, 1),
 			target = sample(ids, 1)
 		)
 
 		sigmajsProxy("sg") %>%
-			sg_add_edge_p(df, id, source, target) 
+			sg_add_edge_p(edges, id, source, target) 
 	})
 
 	observeEvent(input$start, {
