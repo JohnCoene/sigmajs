@@ -22,6 +22,7 @@
 #'   id = 1:15,
 #'   source = sample(ids, 15, replace = TRUE),
 #'   target = sample(ids, 15, replace = TRUE),
+#'   type = "curved",
 #'   stringsAsFactors = FALSE
 #' )
 #'
