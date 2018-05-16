@@ -3,11 +3,17 @@
 \name{sg_nodes}
 \alias{sg_nodes}
 \alias{sg_edges}
+\alias{sg_edges2}
+\alias{sg_nodes2}
 \title{Add nodes and edges}
 \usage{
 sg_nodes(sg, data, ...)
 
 sg_edges(sg, data, ...)
+
+sg_edges2(sg, data)
+
+sg_nodes2(sg, data)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -17,7 +23,7 @@ sg_edges(sg, data, ...)
 \item{...}{any column.}
 }
 \description{
-Add nodes and edges.
+Add nodes and edges to a \code{sigmajs} graph.
 }
 \details{
 Eaach node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
@@ -36,7 +42,7 @@ edges <- data.frame(
   id = 1:15,
   source = sample(ids, 15, replace = TRUE),
   target = sample(ids, 15, replace = TRUE),
-  type = "curved",
+  type = "curvedArrow",
   stringsAsFactors = FALSE
 )
 

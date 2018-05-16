@@ -10,7 +10,7 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
+			renderValue: function (x) {
 
         s = new sigma({
           graph: x.data,
@@ -28,6 +28,12 @@ HTMLWidgets.widget({
 					if (x.noverlapStart === true) {
 						s.startNoverlap();
 					}
+				}
+
+				// refresh if images
+				if (x.customShapes === true) {
+					CustomShapes.init(s);
+					s.refresh()
 				}
 
       },

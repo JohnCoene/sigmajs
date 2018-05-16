@@ -11,4 +11,5 @@ Imports:
     htmlwidgets,
     dplyr,
     magrittr,
-		shiny
+		shiny,
+		jsonlite

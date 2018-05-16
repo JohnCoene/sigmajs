@@ -26,3 +26,11 @@
     data$y <- runif(nrow(data), 1, 20)
   return(data)
 }
+
+# returns TRUE if image used in nodes
+.check_shapes <- function(nodes) {
+	if ("image" %in% names(nodes))
+		TRUE
+	else
+		FALSE
+}
