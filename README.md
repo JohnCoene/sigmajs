@@ -6,7 +6,7 @@ sigma js for R
 
 * Add `edges` & `nodes`
 * Pass `settings`
-* All graph API done
+* All graph API done + proxies
 * All of `forceAtlas2` plugin + its proxies
 * `refresh` proxy
 
