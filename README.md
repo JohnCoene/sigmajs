@@ -1,28 +1,31 @@
 # sigmajs
 
-sigma js for R
+[sigmajs](http://sigmajs.org/) for R.
 
-### Done
+## Rationale
 
-* Add `edges` & `nodes`
-* Pass `settings`
-* All graph API done + proxies
-* All of `forceAtlas2` plugin + its proxies
-* `refresh` proxy
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner.
+`sigmajs` is [Shiny](https://shiny.rstudio.com/)-centric in order to best leverage the [original library](http://sigmajs.org/)'s great many methods.
+
+All graphs must be initialised with the `sigmajs()` function, all proxies end in `_p`, functions are pipe-friendly (`%>%`).
 
 # Install
 
 ```r
+# install.packages("devtools")
 devtools::install_github("JohnCoene/sigmajs")
 ```
 
 # Examples
 
+Most functions have corresponding `demo()`.
+
 ```r
 library(sigmajs)
 
-ids <- as.character(1:10)
+ids <- as.character(1:10) # node ids
 
+# node data.frame
 nodes <- data.frame(
 	id = ids,
 	label = LETTERS[1:10],
@@ -30,6 +33,7 @@ nodes <- data.frame(
 	stringsAsFactors = FALSE
 )
 
+# edges data.frame
 edges <- data.frame(
 	id = 1:15,
 	source = sample(ids, 15, replace = TRUE),
@@ -37,6 +41,7 @@ edges <- data.frame(
 	stringsAsFactors = FALSE
 )
 
+# visualise
 sigmajs() %>%
 	sg_nodes(nodes, id, label, size) %>%
 	sg_edges(edges, id, source, target) %>%
