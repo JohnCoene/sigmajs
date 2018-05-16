@@ -2,7 +2,7 @@
 
 sigma js for R
 
-# Done
+### Done
 
 * Add `edges` & `nodes`
 * Pass `settings`
