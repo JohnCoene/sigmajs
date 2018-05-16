@@ -6,6 +6,9 @@
 #' @param data Data.frame of nodes or edges.
 #' @param ... any column.
 #'
+#' @details Eaach node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
+#' Each edge also must include a unique id.
+#'
 #' @examples
 #' ids <- as.character(1:10)
 #'

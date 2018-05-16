@@ -39,7 +39,7 @@ server <- function(input, output) {
 	})
 
 	output$sg <- renderSigmajs({
-		sigmajs() %>%
+		sigmajs(type = "webgl") %>%
 			sg_nodes(nodes, id, label, size) %>%
 			sg_settings(defaultNodeColor = "#0011ff")
 	})
