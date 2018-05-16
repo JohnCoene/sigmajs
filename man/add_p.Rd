@@ -5,14 +5,14 @@
 \alias{sg_add_edge_p}
 \title{Add node or edge}
 \usage{
-sg_add_node_p(proxy, node, ..., refresh = TRUE)
+sg_add_node_p(proxy, data, ..., refresh = TRUE)
 
-sg_add_edge_p(proxy, edge, ..., refresh = TRUE)
+sg_add_edge_p(proxy, data, ..., refresh = TRUE)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
-\item{node, edge}{A \code{data.frame} of _one_ node or edge.}
+\item{data}{A \code{data.frame} of _one_ node or edge.}
 
 \item{...}{any column.}
 
@@ -29,6 +29,7 @@ make sure you also have it in your proxy.
 \dontrun{
 demo("add-node", package = "sigmajs")
 demo("add-edge", package = "sigmajs")
+demo("add-node-edge", package = "sigmajs")
 }
 
 }
