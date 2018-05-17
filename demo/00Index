@@ -7,3 +7,4 @@ add-nodes					Add multiple nodes.
 add-edges					Add multiple edges.
 add-nodes-delay		Add nodes with a delay.
 add-edges-delay		Add edges with a delay.
+add-delay					Add nodes and edges with a delay.

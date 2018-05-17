@@ -5,23 +5,32 @@
 \alias{sg_add_edges_delay_p}
 \title{Add nodes or edges with a delay}
 \usage{
-sg_add_nodes_delay_p(proxy, data, delay, ..., refresh = TRUE)
+sg_add_nodes_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 
-sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE)
+sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
 \item{data}{A \code{data.frame} of _one_ node or edge.}
 
-\item{delay}{Column name containing delay in milliseconds to wait before adding the node or edge.}
+\item{delay}{Column name containing delay in milliseconds.}
 
 \item{...}{any column.}
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+
+\item{cumsum}{Whether to compute the cumulative sum on the delay.}
 }
 \description{
 Proxies to dynamically add multiple nodes or edges to an already existing graph with a *delay* between each addition.
+}
+\details{
+The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+edge is added to the visualisation; \code{delay} is used as passed to the function.
 }
 \note{
 Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
@@ -29,9 +38,9 @@ make sure you also have it in your proxy.
 }
 \examples{
 \dontrun{
-demo("add-nodes-delay", package = "sigmajs")
-demo("add-edges-delay", package = "sigmajs")
-demo("add-all-delay", package = "sigmajs")
+demo("add-nodes-delay", package = "sigmajs") # add nodes with a delay
+demo("add-edges-delay", package = "sigmajs") # add edges with a delay
+demo("add-delay", package = "sigmajs") # add nodes and edges with a delay
 }
 
 }

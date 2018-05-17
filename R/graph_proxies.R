@@ -223,13 +223,20 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 #' @param data A \code{data.frame} of _one_ node or edge.
 #' @param ... any column.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
-#' @param delay Column name containing delay in milliseconds to wait before adding the node or edge.
+#' @param delay Column name containing delay in milliseconds.
+#' @param cumsum Whether to compute the cumulative sum on the delay.
 #' 
+#' @details The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+#' How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+#' of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+#' before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+#' edge is added to the visualisation; \code{delay} is used as passed to the function.
+#'
 #' @examples
 #' \dontrun{
-#' demo("add-nodes-delay", package = "sigmajs")
-#' demo("add-edges-delay", package = "sigmajs")
-#' demo("add-all-delay", package = "sigmajs")
+#' demo("add-nodes-delay", package = "sigmajs") # add nodes with a delay
+#' demo("add-edges-delay", package = "sigmajs") # add edges with a delay
+#' demo("add-delay", package = "sigmajs") # add nodes and edges with a delay
 #' }
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
@@ -237,7 +244,7 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 #' 
 #' @rdname adds_delay_p
 #' @export
-sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
+sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
@@ -246,7 +253,8 @@ sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
 		stop("must pass data and delay", call. = FALSE)
 
 	delay_col <- eval(substitute(delay), data) # subset delay
-	delay_col <- cumsum(delay_col) # cumul for setTimeout
+	if (isTRUE(cumsum))
+		delay_col <- cumsum(delay_col) # cumul for setTimeout
 	delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
 
 	# build data
@@ -265,7 +273,7 @@ sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
 
 #' @rdname adds_delay_p
 #' @export
-sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
+sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
@@ -274,7 +282,8 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE) {
 		stop("must pass data and delay", call. = FALSE)
 
 	delay_col <- eval(substitute(delay), data) # subset delay
-	delay_col <- cumsum(delay_col) # cumul for setTimeout
+	if (isTRUE(cumsum))
+		delay_col <- cumsum(delay_col) # cumul for setTimeout
 	delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
 
 	# build data
