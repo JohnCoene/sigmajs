@@ -48,8 +48,8 @@ server <- function(input, output) {
 	# add nodes and edges with delay
 	observeEvent(input$add, {
 		sigmajsProxy("sg") %>%
-			sg_add_nodes_delay_p(nodes, appear_at, id, label, size, color, cumsum = FALSE, refresh = FALSE) %>%
-			sg_add_edges_delay_p(edges, created_at, id, source, target, cumsum = FALSE, refresh = FALSE)
+			sg_add_nodes_delay_p(nodes, appear_at, id, label, size, color, cumsum = FALSE, refresh = TRUE) %>%
+			sg_add_edges_delay_p(edges, created_at, id, source, target, cumsum = FALSE, refresh = TRUE)
 	})
 }
 

@@ -282,9 +282,7 @@ if (HTMLWidgets.shinyMode) {
 				message.data.forEach((element) => {
 					setTimeout(function () {
 						s.graph.addNode(element);
-						if (message.refresh === true) {
-							s.refresh();
-						}
+						s.refresh();
 					}, element.sigmajsdelay);
 				});
 			} else {
@@ -305,7 +303,7 @@ if (HTMLWidgets.shinyMode) {
 							s.killForceAtlas2();
 						}
 						s.graph.addEdge(element);
-						if (running === false) {
+						if (running === true) {
 							s.startForceAtlas2();
 						}
 						if (message.refresh === true) {
