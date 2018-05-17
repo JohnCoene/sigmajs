@@ -30,24 +30,12 @@ Eaach node must include a unique id, ideally the user passes \code{x} and \code{
 Each edge also must include a unique id.
 }
 \examples{
-ids <- as.character(1:10)
-
-nodes <- data.frame(
-  id = ids,
-  label = LETTERS[1:10],
-  stringsAsFactors = FALSE
-)
-
-edges <- data.frame(
-  id = 1:15,
-  source = sample(ids, 15, replace = TRUE),
-  target = sample(ids, 15, replace = TRUE),
-  type = "curvedArrow",
-  stringsAsFactors = FALSE
-)
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
 
 sigmajs() \%>\%
   sg_nodes(nodes, id, label) \%>\%
-  sg_edges(edges, id, source, target)
+  sg_edges(edges, id, source, target) \%>\%
+ sg_settings(defaultNodeColor = "#0011ff")
 
 }

@@ -23,27 +23,13 @@ Most functions have corresponding `demo()`.
 ```r
 library(sigmajs)
 
-ids <- as.character(1:10) # node ids
-
-# node data.frame
-nodes <- data.frame(
-	id = ids,
-	label = LETTERS[1:10],
-	size = runif(10, 1, 5),
-	stringsAsFactors = FALSE
-)
-
-# edges data.frame
-edges <- data.frame(
-	id = 1:15,
-	source = sample(ids, 15, replace = TRUE),
-	target = sample(ids, 15, replace = TRUE),
-	stringsAsFactors = FALSE
-)
+# generate data
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
 
 # visualise
 sigmajs() %>%
-	sg_nodes(nodes, id, label, size) %>%
+	sg_nodes(nodes, id, label, size, color) %>%
 	sg_edges(edges, id, source, target) %>%
 	sg_settings(defaultNodeColor = "#0011ff")
 
@@ -54,6 +40,6 @@ sigmajs() %>%
 	sg_from_igraph(lesmis_igraph) %>%
 	sg_settings(defaultNodeColor = "#000")
 
-# proxies
+# proxies demos
 demo(package = "sigmajs")
 ```

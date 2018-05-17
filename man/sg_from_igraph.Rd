@@ -20,8 +20,11 @@ Create a \code{sigmajs} from an \code{igraph} object.
 \dontrun{
 data("lesmis_igraph")
 
+layout <- igraph::layout_with_fr(lesmis_igraph)
+
 sigmajs() \%>\%
-	sg_from_igraph(lesmis_igraph)
+	sg_from_igraph(lesmis_igraph, layout) \%>\%
+	sg_settings(defaultNodeColor = "#000")
 }
 
 }
