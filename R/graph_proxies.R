@@ -299,3 +299,66 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 
 	return(proxy)
 }
+
+#' Drop nodes or edges
+#' 
+#' Proxies to dynamically drop *multiple* nodes or edges from an already existing graph.
+#' 
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param data A \code{data.frame} of nodes or edges.
+#' @param ids Column containing ids to drop from the graph.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
+#' 
+#' @examples
+#' \dontrun{
+#' demo("add-nodes", package = "sigmajs")
+#' demo("add-edges", package = "sigmajs")
+#' }
+#'
+#' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
+#' make sure you also have it in your proxy.
+#' 
+#' @rdname drops_p
+#' @export
+sg_drop_nodes_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data))
+		stop("must pass data", call. = FALSE)
+
+	if (!rate %in% c("once", "iteration"))
+		stop("incorrect rate", call. = FALSE)
+
+	ids <- eval(substitute(ids), data) # subset ids
+
+	message <- list(id = proxy$id, data = ids, refresh = refresh, rate = rate) # create message
+
+	proxy$session$sendCustomMessage("sg_drop_nodes_p", message)
+
+	return(proxy)
+}
+
+#' @rdname drops_p
+#' @export
+sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
+
+	if (!"sigmajsProxy" %in% class(proxy))
+		stop("must pass sigmajsProxy object", call. = FALSE)
+
+	if (missing(data))
+		stop("must pass data", call. = FALSE)
+
+	if (!rate %in% c("once", "iteration"))
+		stop("incorrect rate", call. = FALSE)
+
+	ids <- eval(substitute(ids), data) # subset ids
+
+	message <- list(id = proxy$id, data = ids, refresh = refresh, rate = rate) # create message
+
+	proxy$session$sendCustomMessage("sg_drop_edges_p", message)
+
+	return(proxy)
+}

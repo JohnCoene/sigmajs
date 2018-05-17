@@ -21,35 +21,36 @@ server <- function(input, output) {
 		stringsAsFactors = FALSE
 	)
 
-	# nodes appear at their first edge appearance
+	# get source and target
 	src <- dplyr::select(edges, id = source, created_at)
 	tgt <- dplyr::select(edges, id = target, created_at)
 
+	# nodes appear at their first edge appearance
 	nodes <- src %>%
-		dplyr::bind_rows(tgt) %>% # bind edges source/target
-		dplyr::group_by(id) %>% 
+		dplyr::bind_rows(tgt) %>% # bind edges source/target to have "nodes"
+		dplyr::group_by(id) %>% # find minimum by id - when node should appear
 		dplyr::summarise(
 			appear_at = min(created_at) - 1 # Minus one millisecond to ensure node appears BEFORE any edge connecting to it
 		) %>%
 		dplyr::ungroup() %>%
 		dplyr::mutate(
 			label = sample(LETTERS, n(), replace = TRUE), # add labels and size
-			size = runif(n(), 1, 5)
+			size = runif(n(), 1, 5),
+			color = colorRampPalette(c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"))(n())
 		)
 
+	# initialise "empty" visualisation
 	output$sg <- renderSigmajs({
 		sigmajs() %>%
-			sg_settings(
-				defaultNodeColor = "#0011ff",
-				nodesPowRatio = 1
-			) %>%
 			sg_force()
 	})
 
+	# add nodes and edges
+	# no need to refresh both nodes & edges at each iteration (rate = "once")
 	observeEvent(input$add, {
 		sigmajsProxy("sg") %>%
-			sg_add_nodes_delay_p(nodes, appear_at, id, label, size, cumsum = FALSE) %>%
-			sg_add_edges_delay_p(edges, created_at, id, source, target, cumsum = FALSE) 
+			sg_add_nodes_delay_p(nodes, appear_at, id, label, size, color, cumsum = FALSE, refresh = FALSE) %>%
+			sg_add_edges_delay_p(edges, created_at, id, source, target, cumsum = FALSE, refresh = FALSE)
 	})
 }
 
