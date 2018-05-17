@@ -47,6 +47,13 @@ sigmajs() %>%
 	sg_edges(edges, id, source, target) %>%
 	sg_settings(defaultNodeColor = "#0011ff")
 
+# from igraph 
+data("lesmis_igraph")
+ 
+sigmajs() %>%
+	sg_from_igraph(lesmis_igraph) %>%
+	sg_settings(defaultNodeColor = "#000")
+
 # proxies
 demo(package = "sigmajs")
 ```
