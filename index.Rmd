@@ -11,7 +11,7 @@ All graphs must be initialised with the `sigmajs()` function, all proxies end in
 
 # Install
 
-```r
+```{r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("JohnCoene/sigmajs")
 ```
@@ -20,7 +20,7 @@ devtools::install_github("JohnCoene/sigmajs")
 
 Most functions have corresponding `demo()`.
 
-```r
+```{r, eval = TRUE}
 library(sigmajs)
 
 # generate data
@@ -39,7 +39,8 @@ data("lesmis_igraph")
 sigmajs() %>%
 	sg_from_igraph(lesmis_igraph) %>%
 	sg_settings(defaultNodeColor = "#000")
+```
 
-# proxies demos
-demo(package = "sigmajs")
+```{r, eval = FALSE}
+demo(package = "sigmajs") # proxies demos
 ```
