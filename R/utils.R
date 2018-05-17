@@ -1,3 +1,5 @@
+globalVariables(c("from", "to"))
+
 .build_data <- function(data, ...){
   dots <- eval(substitute(alist(...))) # capture dots
   base <- lapply(dots, eval, data) # eval

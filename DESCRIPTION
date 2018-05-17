@@ -7,9 +7,11 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Depends: R (>= 2.10)
 Imports:
     htmlwidgets,
     dplyr,
     magrittr,
 		shiny,
-		jsonlite
+		jsonlite,
+		igraph

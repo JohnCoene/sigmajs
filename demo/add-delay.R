@@ -10,7 +10,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 	ids <- as.character(1:100) # create 100 nodes
-	n <- 200 # number of edges
+	n <- 150 # number of edges
 
 	# create edges with random delay FIRST
 	edges <- data.frame(
@@ -33,20 +33,19 @@ server <- function(input, output) {
 			appear_at = min(created_at) - 1 # Minus one millisecond to ensure node appears BEFORE any edge connecting to it
 		) %>%
 		dplyr::ungroup() %>%
-		dplyr::mutate(
-			label = sample(LETTERS, n(), replace = TRUE), # add labels and size
+		dplyr::mutate( # add labels, color and size
+			label = sample(LETTERS, n(), replace = TRUE), 
 			size = runif(n(), 1, 5),
 			color = colorRampPalette(c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"))(n())
 		)
 
 	# initialise "empty" visualisation
 	output$sg <- renderSigmajs({
-		sigmajs() %>%
+		sigmajs(type = "webgl") %>% # use webgl
 			sg_force()
 	})
 
-	# add nodes and edges
-	# no need to refresh both nodes & edges at each iteration (rate = "once")
+	# add nodes and edges with delay
 	observeEvent(input$add, {
 		sigmajsProxy("sg") %>%
 			sg_add_nodes_delay_p(nodes, appear_at, id, label, size, color, cumsum = FALSE, refresh = FALSE) %>%
