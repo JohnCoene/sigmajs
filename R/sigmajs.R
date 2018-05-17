@@ -17,7 +17,6 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
   # forward options using x
   x = list(
     data = list(),
-		settings = list(),
 		type = type
   )
 

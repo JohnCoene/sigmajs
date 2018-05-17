@@ -11,14 +11,16 @@ HTMLWidgets.widget({
     return {
 
 			renderValue: function (x) {
-
-        s = new sigma({
-          graph: x.data,
+				s = new sigma({
+					graph: x.data,
 					container: el.id,
-					type: x.type,
-          settings: x.settings
-        });
-        
+					type: x.type
+				});
+
+				if (x.hasOwnProperty('settings')) {
+					s.settings(x.settings);
+				}
+
 				if (x.hasOwnProperty('force')) {
 					s.startForceAtlas2(x.force);
 				}
@@ -30,12 +32,12 @@ HTMLWidgets.widget({
 					}
 				}
 
-				// refresh if images
+				// custom shapes
 				if (x.customShapes === true) {
 					CustomShapes.init(s);
-					s.refresh()
 				}
 
+				s.refresh() // refresh
       },
 
       resize: function(width, height) {
@@ -285,6 +287,8 @@ if (HTMLWidgets.shinyMode) {
 						}
 					}, element.sigmajsdelay);
 				});
+			} else {
+				console.log("error")
 			}
 		}
 	);
@@ -293,13 +297,15 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_add_edges_delay_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			var running = s.isForceAtlas2Running();
 			if (typeof s != 'undefined') {
+				var running = s.isForceAtlas2Running();
 				message.data.forEach((element, index) => {
 					setTimeout(function () {
-						s.killForceAtlas2();
+						if (message.refresh === true) {
+							s.killForceAtlas2();
+						}
 						s.graph.addEdge(element);
-						if (running === true) {
+						if (running === false) {
 							s.startForceAtlas2();
 						}
 						if (message.refresh === true) {
@@ -307,6 +313,8 @@ if (HTMLWidgets.shinyMode) {
 						}
 					}, element.sigmajsdelay);
 				});
+			} else {
+				console.log("error")
 			}
 		}
 	);

@@ -3,11 +3,17 @@
 #' Add nodes and edges to a \code{sigmajs} graph.
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
-#' @param data Data.frame of nodes or edges.
+#' @param data Data.frame (or list) of nodes or edges.
 #' @param ... any column.
 #'
 #' @details Eaach node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
 #' Each edge also must include a unique id.
+#'
+#' @section Functions:
+#' \itemize{
+#'		\item{Functions ending in \code{*2} take a list that resembles the original sigma.js JSON inputs}
+#'		\item{Other functions take the arguments described above.}
+#' }
 #'
 #' @examples
 #' nodes <- sg_make_nodes()
