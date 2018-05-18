@@ -25,7 +25,7 @@ server <- function(input, output) {
 			sg_nodes(nodes, id, label, size, color, type) %>%
 			sg_add_images(nodes, url, scale, clip) %>%
 			sg_edges(edges, id, source, target) %>%
-			sg_settings(defaultNodeColor = "#0011ff")
+			sg_settings(defaultNodeColor = "#0011ff", minNodeSize = 8, maxNodeSize = 16)
 	})
 }
 
