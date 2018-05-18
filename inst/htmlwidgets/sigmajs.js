@@ -44,6 +44,12 @@ HTMLWidgets.widget({
 					CustomShapes.init(s);
 				}
 
+				if (x.animateLoop === false) {
+					setTimeout(function () {
+						sigma.plugins.animate(s, x.animateMapping);
+					}, x.animateDelay);
+				}
+
 				s.refresh() // refresh
       },
 
