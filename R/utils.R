@@ -14,7 +14,7 @@ globalVariables(c("from", "to"))
 
 .check_ids <- function(data){
   if(!"id" %in% names(data))
-    stop("missing node ids", call. = FALSE)
+    stop("missing ids", call. = FALSE)
   else 
     data$id <- as.character(data$id)
   return(data)
@@ -30,9 +30,20 @@ globalVariables(c("from", "to"))
 }
 
 # returns TRUE if image used in nodes
-.check_shapes <- function(nodes) {
+.init_custom_shapes <- function(nodes) {
 	if ("image" %in% names(nodes))
 		TRUE
 	else
 		FALSE
+}
+
+.add_image <- function(sg, data) {
+	for (i in 1:nrow(data)) {
+		sg$x$data$nodes[[i]]$image <- list()
+		for (j in 1:ncol(data)) {
+			sg$x$data$nodes[[i]]$image[[names(data)[j]]] <- as.character(data[i, j])
+		}
+	}
+	#sg$x$data$nodes <- jsonlite::toJSON(sg$x$data$nodes, auto_unbox = TRUE)
+	sg
 }

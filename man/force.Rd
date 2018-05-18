@@ -37,7 +37,7 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 
 \itemize{
 \item{\code{sg_force} starts the forceAtlas2 layout}
-\item{\code{sg_force_restart_p} proxy to re-starts the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
+\item{\code{sg_force_restart_p} proxy to re-starts (\code{kill} then \code{start}) the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 \item{\code{sg_force_start_p} proxy to start forceAtlas2.}
 \item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
 \item{\code{sg_force_kill_p} proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.}

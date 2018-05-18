@@ -14,7 +14,7 @@ sg_drop_edge_p(proxy, id, refresh = TRUE)
 
 \item{id}{Id of edge or node to delete.}
 
-\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.}
 }
 \description{
 Proxies to dynamically remove a node or an edge to an already existing graph.

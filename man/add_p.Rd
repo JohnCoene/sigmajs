@@ -16,7 +16,7 @@ sg_add_edge_p(proxy, data, ..., refresh = TRUE)
 
 \item{...}{any column.}
 
-\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed.}
 }
 \description{
 Proxies to dynamically add a node or an edge to an already existing graph.

@@ -6,25 +6,32 @@ HTMLWidgets.widget({
 
 	factory: function (el, width, height) {
 
-		var s;
+		var s; // initialise
 
     return {
 
 			renderValue: function (x) {
+
+				// create
 				s = new sigma({
 					graph: x.data,
-					container: el.id,
-					type: x.type
+					renderer: {
+						container: el.id,
+						type: x.type
+					}
 				});
 
+				// pass settings
 				if (x.hasOwnProperty('settings')) {
 					s.settings(x.settings);
 				}
 
+				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
 					s.startForceAtlas2(x.force);
 				}
 
+				// start noverlap
 				if (x.hasOwnProperty('noverlap')) {
 					var noverlap = s.configNoverlap(x.noverlap);
 					if (x.noverlapStart === true) {
@@ -107,7 +114,7 @@ if (HTMLWidgets.shinyMode) {
 			if (typeof s != 'undefined') {
 				var running = s.isForceAtlas2Running();
 				if (running === true) {
-					s.stopForceAtlas2();
+					s.killForceAtlas2();
 				}
 				if (running === false) {
 					s.startForceAtlas2(message.data);
@@ -124,12 +131,9 @@ if (HTMLWidgets.shinyMode) {
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
-				var running = s.isForceAtlas2Running();
-				if (running === false) {
-					s.startForceAtlas2(message.data);
-					if (message.refresh === true) {
-						s.refresh();
-					}
+				s.startForceAtlas2(message.data);
+				if (message.refresh === true) {
+					s.refresh();
 				}
 			}
 		}
@@ -140,10 +144,7 @@ if (HTMLWidgets.shinyMode) {
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
-				var running = s.isForceAtlas2Running();
-				if (running === true) {
-					s.stopForceAtlas2();
-				}
+				s.stopForceAtlas2();
 			}
 		}
 	);
@@ -153,10 +154,7 @@ if (HTMLWidgets.shinyMode) {
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
-				var running = s.isForceAtlas2Running();
-				if (running === true) {
-					s.configForceAtlas2(message.data);
-				}
+				s.configForceAtlas2(message.data);
 			}
 		}
 	);
@@ -166,10 +164,7 @@ if (HTMLWidgets.shinyMode) {
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
-				var running = s.isForceAtlas2Running();
-				if (running === true) {
-					s.killForceAtlas2();
-				}
+				s.killForceAtlas2();
 			}
 		}
 	);
@@ -299,11 +294,11 @@ if (HTMLWidgets.shinyMode) {
 				var running = s.isForceAtlas2Running();
 				message.data.forEach((element, index) => {
 					setTimeout(function () {
-						if (message.refresh === true) {
+						if (message.refresh === true && running === true) {
 							s.killForceAtlas2();
 						}
 						s.graph.addEdge(element);
-						if (running === true) {
+						if (message.refresh === true && running === true) {
 							s.startForceAtlas2();
 						}
 						if (message.refresh === true) {

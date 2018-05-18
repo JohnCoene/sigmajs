@@ -28,6 +28,12 @@
 #' @export
 sg_nodes <- function(sg, data, ...) {
 
+	if (missing(sg) || missing(data))
+		stop("missing sg or data", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
   nodes <- .build_data(data, ...) %>% 
     .check_ids() %>% 
     .check_x_y() %>% 
@@ -39,7 +45,13 @@ sg_nodes <- function(sg, data, ...) {
 
 #' @rdname graph
 #' @export
-sg_edges <- function(sg, data, ...){
+sg_edges <- function(sg, data, ...) {
+
+	if (missing(sg) || missing(data))
+		stop("missing sg or data", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
 
   edges <- .build_data(data, ...) %>% 
     .check_ids() %>% 
@@ -52,6 +64,14 @@ sg_edges <- function(sg, data, ...){
 #' @rdname graph
 #' @export
 sg_edges2 <- function(sg, data) {
+
+	if (missing(sg) || missing(data))
+		stop("missing sg or data", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
+
 	sg$x$data <- append(sg$x$data, list(edges = data))
 	sg
 }
@@ -59,6 +79,13 @@ sg_edges2 <- function(sg, data) {
 #' @rdname graph
 #' @export
 sg_nodes2 <- function(sg, data) {
+
+	if (missing(sg) || missing(data))
+		stop("missing sg or data", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
 	sg$x$data <- append(sg$x$data, list(nodes = data))
 	sg
 }

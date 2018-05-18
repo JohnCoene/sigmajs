@@ -18,9 +18,9 @@ sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 
 \item{...}{any column.}
 
-\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.}
 
-\item{cumsum}{Whether to compute the cumulative sum on the delay.}
+\item{cumsum}{Whether to compute the cumulative sum of the delay.}
 }
 \description{
 Proxies to dynamically add multiple nodes or edges to an already existing graph with a *delay* between each addition.

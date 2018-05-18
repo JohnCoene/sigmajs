@@ -5,7 +5,7 @@
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param data A \code{data.frame} of _one_ node or edge.
 #' @param ... any column.
-#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed.
 #' 
 #' @examples
 #' \dontrun{
@@ -64,7 +64,7 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param data A \code{data.frame} of nodes or edges.
 #' @param ... any column.
-#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration..
 #' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
 #' 
 #' @examples
@@ -134,7 +134,7 @@ sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param id Id of edge or node to delete.
-#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.
 #'
 #' @examples
 #' \dontrun{
@@ -180,7 +180,7 @@ sg_drop_edge_p <- function(proxy, id, refresh = TRUE) {
 #' Clear all nodes and edges from the graph or kills the graph.
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
-#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.
 #'
 #' @examples
 #' \dontrun{
@@ -222,9 +222,9 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param data A \code{data.frame} of _one_ node or edge.
 #' @param ... any column.
-#' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.
 #' @param delay Column name containing delay in milliseconds.
-#' @param cumsum Whether to compute the cumulative sum on the delay.
+#' @param cumsum Whether to compute the cumulative sum of the delay.
 #' 
 #' @details The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
 #' How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum

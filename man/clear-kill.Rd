@@ -12,7 +12,7 @@ sg_kill_p(proxy, refresh = TRUE)
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
-\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.}
 }
 \description{
 Clear all nodes and edges from the graph or kills the graph.

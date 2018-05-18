@@ -16,7 +16,7 @@ sg_add_edges_p(proxy, data, ..., refresh = TRUE, rate = "once")
 
 \item{...}{any column.}
 
-\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+\item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration..}
 
 \item{rate}{Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.}
 }
