@@ -22,27 +22,12 @@ sg_noverlap_p(proxy)
 This plugin runs an algorithm which distributes nodes in the network, ensuring that they do not overlap and providing a margin where specified.
 }
 \examples{
-ids <- as.character(1:10)
-
-nodes <- data.frame(
-  id = ids,
-  label = LETTERS[1:10],
-  size = runif(10, 1, 5),
-  stringsAsFactors = FALSE
-)
-
-edges <- data.frame(
-  id = 1:15,
-  source = sample(ids, 15, replace = TRUE),
-  target = sample(ids, 15, replace = TRUE),
-  type = "curvedArrow",
-  stringsAsFactors = FALSE
-)
+nodes <- sg_make_nodes(50)
+edges <- sg_make_edges(nodes, 75)
 
 sigmajs() \%>\%
-  sg_nodes(nodes, id, label, size) \%>\%
+  sg_nodes(nodes, id, label, size, color) \%>\%
   sg_edges(edges, id, source, target) \%>\%
-  sg_settings(defaultNodeColor = "#0011ff") \%>\%
   sg_force() \%>\%
   sg_noverlap()
 

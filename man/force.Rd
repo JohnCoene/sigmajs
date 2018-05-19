@@ -46,21 +46,8 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 }
 
 \examples{
-ids <- as.character(1:10)
-
-nodes <- data.frame(
-  id = ids,
-  label = LETTERS[1:10],
-  size = runif(10, 1, 5),
-  stringsAsFactors = FALSE
-)
-
-edges <- data.frame(
-  id = 1:15,
-  source = sample(ids, 15, replace = TRUE),
-  target = sample(ids, 15, replace = TRUE),
-  stringsAsFactors = FALSE
-)
+nodes <- sg_make_nodes(50)
+edges <- sg_make_edges(nodes, 100)
 
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size) \%>\%
