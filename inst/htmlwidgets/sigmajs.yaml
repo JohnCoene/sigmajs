@@ -10,3 +10,4 @@ dependencies:
       - plugins/sigma.plugins.animate.min.js
       - plugins/sigma.renderers.customShapes.min.js
       - plugins/sigma.plugins.dragNodes.min.js
+      - plugins/sigma.renderers.customEdgeShapes.min.js
