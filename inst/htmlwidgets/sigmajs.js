@@ -54,6 +54,10 @@ HTMLWidgets.widget({
 					var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
 				}
 
+				if (x.hasOwnProperty('relativeSize')) {
+					sigma.plugins.relativeSize(s, x.relativeSize)
+				}
+
 				s.refresh() // refresh
       },
 

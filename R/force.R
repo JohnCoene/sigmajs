@@ -27,6 +27,8 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_force()
 #' 
+#' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}
+#'
 #' @rdname force
 #' @export
 sg_force <- function(sg, ...){
