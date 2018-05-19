@@ -50,6 +50,10 @@ HTMLWidgets.widget({
 					}, x.animateDelay);
 				}
 
+				if(x.hasOwnProperty('dragNodes')){
+					var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+				}
+
 				s.refresh() // refresh
       },
 
@@ -314,6 +318,26 @@ if (HTMLWidgets.shinyMode) {
 				});
 			} else {
 				console.log("error")
+			}
+		}
+	);
+
+	// start drag nodes
+	Shiny.addCustomMessageHandler('sg_drag_nodes_start_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+			}
+		}
+	);
+
+	// kill drag nodes
+	Shiny.addCustomMessageHandler('sg_drag_nodes_kill_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				sigma.plugins.killDragNodes(s);
 			}
 		}
 	);
