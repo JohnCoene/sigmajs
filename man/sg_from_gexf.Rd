@@ -18,7 +18,6 @@ Create a sigmajs graph from a GEXF file.
 gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
 
 sigmajs() \%>\% 
-  sg_from_gexf(gexf) \%>\% 
-  sg_settings(minNodeSize = 1)
+  sg_from_gexf(gexf) 
 
 }

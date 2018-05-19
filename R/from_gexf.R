@@ -9,8 +9,7 @@
 #' gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
 #' 
 #' sigmajs() %>% 
-#'   sg_from_gexf(gexf) %>% 
-#'   sg_settings(minNodeSize = 1)
+#'   sg_from_gexf(gexf) 
 #'
 #' @export
 sg_from_gexf <- function(sg, file) {

@@ -38,6 +38,12 @@ sigmajs() %>%
 	sg_from_igraph(lesmis_igraph) %>%
 	sg_settings(defaultNodeColor = "#000")
 
+# from GEXF
+gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
+
+sigmajs() %>% 
+	sg_from_gexf(gexf) 
+
 # proxies demos
 demo(package = "sigmajs")
 ```
