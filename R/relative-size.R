@@ -16,6 +16,13 @@
 #'
 #' @export
 sg_relative_size <- function(sg, initial = 1) {
+
+	if (missing(sg))
+		stop("missing sg", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
 	sg$x$relativeSize <- initial
 	sg
 }

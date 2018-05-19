@@ -20,6 +20,12 @@
 #' @export
 sg_from_igraph <- function(sg, igraph, layout = NULL) {
 
+	if (missing(sg))
+		stop("missing sg", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
 	if (missing(igraph))
 		stop("must pass igraph", call. = FALSE)
 

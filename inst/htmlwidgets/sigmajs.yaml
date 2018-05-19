@@ -12,3 +12,4 @@ dependencies:
       - plugins/sigma.plugins.dragNodes.min.js
       - plugins/sigma.renderers.customEdgeShapes.min.js
       - plugins/sigma.plugins.relativeSize.min.js
+      - plugins/sigma.renderers.edgeDots.min.js

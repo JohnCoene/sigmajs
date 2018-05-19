@@ -8,7 +8,10 @@
 sg_custom_shapes <- function(sg) {
 
 	if (missing(sg))
-		stop("missing sg or data", call. = FALSE)
+		stop("missing sg", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
 
 	sg$x$customShapes <- TRUE
 	sg

@@ -18,6 +18,12 @@ sg_camera <- function(sg, name, initialise = TRUE) {
 	if (missing(name))
 		stop("missing name", call. = FALSE)
 
+	if (missing(sg))
+		stop("missing sg", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
 	sg$x$initialiseCamera <- initialise
 	sg$x$cameraName <- name
 
