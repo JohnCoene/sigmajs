@@ -13,3 +13,5 @@ dependencies:
       - plugins/sigma.renderers.customEdgeShapes.min.js
       - plugins/sigma.plugins.relativeSize.min.js
       - plugins/sigma.renderers.edgeDots.min.js
+      - plugins/sigma.renderers.edgeLabels.min.js
+      - plugins/sigma.parsers.gexf.min.js

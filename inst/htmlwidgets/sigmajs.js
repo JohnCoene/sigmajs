@@ -12,14 +12,27 @@ HTMLWidgets.widget({
 
 			renderValue: function (x) {
 
-				// create
-				s = new sigma({
-					graph: x.data,
-					renderer: {
-						container: el.id,
-						type: x.type
-					}
-				});
+				// if gexf file
+				if (x.hasOwnProperty('gexf')) {
+
+					// create
+					s = new sigma(el.id);
+
+					// parse GEXF
+					var parser = new DOMParser();
+					var data = parser.parseFromString(x.data, "application/xml");
+
+					sigma.parsers.gexf(data, s)
+				} else {
+					// create
+					s = new sigma({
+						graph: x.data,
+						renderer: {
+							container: el.id,
+							type: x.type
+						}
+					});
+				}
 
 				// pass settings
 				if (x.hasOwnProperty('settings')) {
