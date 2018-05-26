@@ -4,6 +4,8 @@
 
 [sigmajs](http://sigmajs.org/) for R.
 
+![](../pkgdown/delay.gif)
+
 With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner.
 `sigmajs` is a [Shiny](https://shiny.rstudio.com/)-centric in order to best leverage the [original library](http://sigmajs.org/)'s great many methods.
 
@@ -31,6 +33,24 @@ edges <- sg_make_edges(nodes, 50) # 50 edges
 sigmajs() %>%
 	sg_nodes(nodes, id, label, size, color) %>%
 	sg_edges(edges, id, source, target)
+```
+
+`sigmajs` also lets you animate the graph.
+
+```{r, eval=TRUE}
+nodes <- sg_make_nodes(20)
+edges <- sg_make_edges(nodes, 30)
+ 
+# add transition
+n <- nrow(nodes)
+nodes$to_x <- runif(n, 5, 10)
+nodes$to_y <- runif(n, 5, 10)
+nodes$to_size <- runif(n, 5, 10)
+ 
+sigmajs() %>%
+	sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size) %>%
+	sg_edges(edges, id, source, target) %>% 
+	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
 ```
 
 ```{r, eval = FALSE}
