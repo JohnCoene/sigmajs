@@ -10,3 +10,4 @@ add-edges-delay		    Add edges with a delay.
 add-delay				Add nodes and edges with a delay.
 custom-shapes			Use custom shapes as nodes.
 drag-nodes              Drag nodes.
+custom-events			Capture events.
