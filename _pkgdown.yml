@@ -1,0 +1,10 @@
+template:
+  params:
+    bootswatch: flatly
+
+development:
+  mode: unreleased
+
+authors:
+  John Coene:
+    href: https://john-coene.com

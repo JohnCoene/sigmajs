@@ -4,3 +4,7 @@
 \.vs
 ^data-raw$
 index.Rmd
+docs
+pkgdown
+_pkgdown.yml
+^appveyor\.yml$
