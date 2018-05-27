@@ -177,3 +177,37 @@ It's fairly simple when you look at it.
 
 Another great thing the package lets you do is capture how the user interact with your app. Then again there is a demo for the latter: `custom-events`.
 
+All the [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) are integrated in the :package:
+
+Let's take the basic app we built at the begining of the proxies walkthrough and catch which node the user clicks on.
+
+```{r}
+library(shiny)
+library(sigmajs)
+
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+ui <- fluidPage(
+  sigmajsOutput("sg"),
+  p("Click on a node"),
+  verbatimTextOutput("clicked")
+) 
+
+server <- function(input, output){
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) %>%
+      sg_edges(edges, id, source, target)
+  })
+
+  # capture node clicked
+  output$clicked <- renderPrint({
+    input$sg_click_node
+  })
+}
+
+shinyApp(ui, server) # run
+```
+
+Easy! Just use your plot as an `input` that points to the graph id (`sg`) followed by `_` and the name of the event you want to catch; in our case, plot of id (`sg`) and capture node clicked = `input$sg_click_node`.

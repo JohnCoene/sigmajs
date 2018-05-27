@@ -63,6 +63,9 @@
     <li>
       <a href="../articles/animate.html">Animate</a>
     </li>
+    <li>
+      <a href="../articles/shiny.html">In shiny</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -242,6 +245,42 @@
 </ol>
 </div>
 </div>
+<div id="events" class="section level2">
+<h2 class="hasAnchor">
+<a href="#events" class="anchor"></a>Events</h2>
+<p>Another great thing the package lets you do is capture how the user interact with your app. Then again there is a demo for the latter: <code>custom-events</code>.</p>
+<p>All the <a href="https://github.com/jacomyal/sigma.js/wiki/Events-API">events</a> are integrated in the :package:</p>
+<p>Let’s take the basic app we built at the begining of the proxies walkthrough and catch which node the user clicks on.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  <span class="kw"><a href="../reference/sigmajs-shiny.html">sigmajsOutput</a></span>(<span class="st">"sg"</span>),</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="kw">p</span>(<span class="st">"Click on a node"</span>),</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  <span class="kw">verbatimTextOutput</span>(<span class="st">"clicked"</span>)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">) </a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output){</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">  output<span class="op">$</span>sg &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmajs-shiny.html">renderSigmajs</a></span>({</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">    <span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">      </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">      </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">  })</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">  <span class="co"># capture node clicked</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">  output<span class="op">$</span>clicked &lt;-<span class="st"> </span><span class="kw">renderPrint</span>({</a>
+<a class="sourceLine" id="cb5-22" data-line-number="22">    input<span class="op">$</span>sg_click_node</a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">  })</a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">}</a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="kw">shinyApp</span>(ui, server) <span class="co"># run</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt; PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.</span></a></code></pre></div>
+<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>
+<p>Easy! Just use your plot as an <code>input</code> that points to the graph id (<code>sg</code>) followed by <code>_</code> and the name of the event you want to catch; in our case, plot of id (<code>sg</code>) and capture node clicked = <code>input$sg_click_node</code>.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -251,6 +290,7 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#features">Features</a></li>
       <li><a href="#proxies">Proxies</a></li>
+      <li><a href="#events">Events</a></li>
       </ul>
 </div>
       </div>

@@ -63,7 +63,7 @@ HTMLWidgets.widget({
 
 				if (x.animateLoop === false) {
 					setTimeout(function () {
-						sigma.plugins.animate(s, x.animateMapping);
+						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
 					}, x.animateDelay);
 				}
 

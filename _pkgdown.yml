@@ -19,6 +19,8 @@ navbar:
           href: articles/formats.html
         - text: "Animate"
           href: articles/animate.html
+        - text: "In shiny"
+          href: articles/shiny.html
     - text: "Reference"
       href: "reference/"
   right:
