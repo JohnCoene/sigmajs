@@ -181,7 +181,7 @@ All the [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) are integ
 
 Let's take the basic app we built at the begining of the proxies walkthrough and catch which node the user clicks on.
 
-```{r}
+```{r, eval=FALSE}
 library(shiny)
 library(sigmajs)
 
