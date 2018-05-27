@@ -27,7 +27,8 @@ You can create a graph from an [igraph](http://igraph.org/r/) object.
 data("lesmis_igraph") # load dataset
 
 sigmajs() %>%
-  sg_from_igraph(lesmis_igraph)
+  sg_from_igraph(lesmis_igraph) %>%
+  sg_settings(drawLabels = FALSE, drawEdgeLabels = FALSE)
 ```
 
 You can also pass `layout`, if ommitted the function will use `layout_nicely` from the `igraph` :package:
@@ -37,7 +38,7 @@ layout <- igraph::layout_on_grid(lesmis_igraph) # create layout
 
 sigmajs() %>%
   sg_from_igraph(lesmis_igraph, layout) %>%
-  sg_settings(drawLabels = FALSE)
+  sg_settings(drawLabels = FALSE, drawEdgeLabels = FALSE)
 ```
 
 ## gexf
@@ -49,5 +50,5 @@ gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
 
 sigmajs() %>% 
   sg_from_gexf(gexf) %>%
-  sg_settings(drawLabels = FALSE)
+  sg_settings(drawLabels = FALSE, drawEdgeLabels = FALSE)
 ```
