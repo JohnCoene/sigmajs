@@ -9,6 +9,9 @@ edges <- sg_make_edges(nodes, 30)
 
 # reset size to 1
 nodes$size <- 1
+
+# change initial colors
+nodes$color <- colorRampPalette(c("#922b29", "#da7d7b"))(nrow(nodes))
  
 # add transition
 n <- nrow(nodes)
@@ -25,7 +28,7 @@ for(i in 1:nrow(nodes)){
 nodes$to_size <- runif(n, 2, 6) # size
 
 # colors
-COLORS <- c("#922b29", "#da7d7b")
+COLORS <- c("#1C5C70", "#B1E2A3")
 nodes$to_color <- colorRampPalette(COLORS)(n)
  
 # plot

@@ -2,7 +2,7 @@ library(sigmajs)
 library(igraph)
 library(hexSticker)
 
-COLORS <- c('#D8482D','#B30000','#BB100A','#FEF0D9','#B70805','#D44028','#CC301E','#ED7047','#DC5032','#F1784C','#F58051','#BF180F','#D03823','#C72819','#FCA072','#FC8F5C','#E5603D','#E05837')
+COLORS <- c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B")
 
 n <- 50
 ring <- sample_k_regular(n, 5)
@@ -24,8 +24,8 @@ sticker(
     s_y=1, 
     s_width= 0.6,
     s_height= 0.6,
-    h_color = "#c9423f",
-    p_color = "#c9423f",
+    h_color = "#B1E2A3",
+    p_color = "#1C5C70",
     h_fill = "#ffffff",
     url = "sigmajs.john-coene.com",
     u_size = 3,
