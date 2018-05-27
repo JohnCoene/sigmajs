@@ -44,6 +44,16 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)" />
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
+
   </head>
 
   <body>
@@ -67,17 +77,37 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    How-to
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/get_started.html">Get Started</a>
+    </li>
+    <li>
+      <a href="../articles/formats.html">Other formats</a>
+    </li>
+  </ul>
+</li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/JohnCoene/sigmajs">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -109,6 +139,7 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)</p>
     <p>An igraph object with 181 nodes and 1589 edges</p><dl class='dl-horizontal'>
   <dt><code>id</code></dt><dd><p>abbreviation of character name</p></dd>
   <dt><code>label</code></dt><dd><p>character name</p></dd>
+  <dt><code>color</code></dt><dd><p>random color</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
