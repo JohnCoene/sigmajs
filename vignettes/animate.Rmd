@@ -1,0 +1,41 @@
+---
+title: "Animate"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Animate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+The :package: lets you easily animate your graphs.
+
+```{r}
+# generate data
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes, 30)
+
+# add transitions
+n <- nrow(nodes)
+nodes$to_x <- runif(n, 5, 10)
+nodes$to_y <- runif(n, 5, 10)
+nodes$to_size <- runif(n, 5, 10)
+nodes$to_color <- sample(c( "#f7fff7", "#ffe66d", "#e85d75"), n, replace = TRUE)
+
+sigmajs() %>%
+  sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size, to_color) %>%
+  sg_edges(edges, id, source, target) %>% 
+  sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color")) %>%
+  sg_settings(animationsTime = 2000)
+```
+
+You can animate `x`, `y`, `size` and `color`, the function lets you specify the `delay`; time before the animation trigers. You can also specify the animation duration in `sg_settings` with `animationsTime`.

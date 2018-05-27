@@ -1,0 +1,83 @@
+---
+title: "Get Started"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+## Basics
+
+Beloware the basics of the :package:
+
+1. All graphs *must* be initialised with the `sigmajs()` function.
+2. All the functions of the :package: start with `sg_`.
+3. All proxies end in `_p`.
+4. Functions are pipe-friendly (`%>%`).
+
+## Variables
+
+The variable names must follow [sigma.js convention](https://github.com/jacomyal/sigma.js/wiki).
+
+Nodes must *ideally* include, at least:
+
+* `id` unique id of node, note that this does not have to be numerical
+* `size` size of node
+* `color` color of node
+
+These are passed to `sg_nodes`. Note that sigma.js requires passing `x` and `y`, if omitted the function will randomly assign x and y positions.
+
+Edges *must* include, at least:
+
+* `id` unique id of edge
+* `source` source of edge
+* `target` target of edge
+
+`source` and `target` refer to the nodes `id`
+
+Remember to always follow the naming convention.
+
+## Convenience functions
+
+The :package: comes with two convenience functions to generate data, mainly to be used for testing.
+
+* `sg_make_nodes` to generate nodes, you can specify the number of nodes you want.
+* `sg_make_edges` to generate edges based on the nodes, you can specify the number of edges you want.
+
+## Settings
+
+Above I state that you must *ideally* pass `size` and `color` to the nodes. I say "ideally" because, you actually can omit `color` *if* you then pass default color using `sg_settings`.
+
+There a lot of settings to pass, see the [official wiki](https://github.com/jacomyal/sigma.js/wiki/Settings) for a list of all settings.
+
+## Your first graphs
+
+```{r, eval = TRUE}
+# generate data using convenience functions
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>%
+  sg_nodes(nodes, id, size, color) %>%
+  sg_edges(edges, id, source, target)
+```
+
+Or as stated in the Settings section, you can omit `size` and `color` but you then must pass defaults using `sg_settings`.
+
+```{r}
+sigmajs() %>%
+  sg_nodes(nodes, id, size) %>%
+  sg_edges(edges, id, source, target) %>%
+  sg_settings(defaultNodeColor = "#B1E2A3") # pass default color
+``` 

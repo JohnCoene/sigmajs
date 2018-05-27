@@ -1,0 +1,51 @@
+---
+title: "igraph & gexf"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{igraph & gexf}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+You don't have to stick to nodes and edges `data.frames`, sigma.js accepts other formats.
+
+## igraph
+
+You can create a graph from an [igraph](http://igraph.org/r/) object.
+
+```{r}
+data("lesmis_igraph") # load dataset
+
+sigmajs() %>%
+  sg_from_igraph(lesmis_igraph)
+```
+
+You can also pass `layout`, if ommitted the function will use `layout_nicely` from the `igraph` :package:
+
+```{r}
+layout <- igraph::layout_on_grid(lesmis_igraph) # create layout
+
+sigmajs() %>%
+  sg_from_igraph(lesmis_igraph, layout)
+```
+
+## gexf
+
+You can also create graphs from gexf files.
+
+```{r}
+gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
+
+sigmajs() %>% 
+  sg_from_gexf(gexf) 
+```
