@@ -176,7 +176,7 @@
 <a class="sourceLine" id="cb2-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb2-24" data-line-number="24"><span class="kw">shinyApp</span>(ui, server) <span class="co"># run</span></a></code></pre></div>
 <p>So proxies work on a already existing graphs so you simply have to use the <code>sigmajsProxy</code> function to catch that graph using its <code>id</code>; output graph’s id is <code>sg</code> (<code><a href="../reference/sigmajs-shiny.html">sigmajsOutput("sg")</a></code>). Then you can pass your proxies <code>_p</code>.</p>
-<p>We could, for instance, now add another button to kill the layout because as it is now the layour is constantly running which is a bit draining for the browser and not very useful.</p>
+<p>We could, for instance, now add another button to kill the layout because as it is now the layout is constantly running which is a bit draining for the browser and not very useful.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>

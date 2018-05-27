@@ -79,5 +79,5 @@ Or as stated in the Settings section, you can omit `size` and `color` but you th
 sigmajs() %>%
   sg_nodes(nodes, id, size) %>%
   sg_edges(edges, id, source, target) %>%
-  sg_settings(defaultNodeColor = "#B1E2A3") # pass default color
+  sg_settings(defaultNodeColor = "#7f7f7f") # pass default color
 ``` 

@@ -92,7 +92,7 @@ shinyApp(ui, server) # run
 
 So proxies work on a already existing graphs so you simply have to use the `sigmajsProxy` function to catch that graph using its `id`; output graph's id is `sg` (`sigmajsOutput("sg")`). Then you can pass your proxies `_p`.
 
-We could, for instance, now add another button to kill the layout because as it is now the layour is constantly running which is a bit draining for the browser and not very useful.
+We could, for instance, now add another button to kill the layout because as it is now the layout is constantly running which is a bit draining for the browser and not very useful.
 
 ```{r, eval = FALSE}
 nodes <- sg_make_nodes()
