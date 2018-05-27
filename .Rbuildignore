@@ -8,3 +8,4 @@ docs
 pkgdown
 _pkgdown.yml
 ^appveyor\.yml$
+NEWS.md
