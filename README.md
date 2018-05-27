@@ -1,4 +1,4 @@
-# sigmajs
+# sigmajs <img align="right" src="/man/figures/logo.png" />
 
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs)
 
@@ -20,7 +20,7 @@ devtools::install_github("JohnCoene/sigmajs")
 
 # Examples
 
-Most functions have corresponding `demo()`.
+Most functions have corresponding `demo()`, see [documentation](http://sigmajs.john-coene.com/) and [shiny demo](http://shiny.john-coene.com/sigmajs/)
 
 ```r
 library(sigmajs)

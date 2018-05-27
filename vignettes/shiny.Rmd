@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(sigmajs)
 ```
 
-`sigmajs` goes hand in hand with Shiny. As [stated in the wiki](https://github.com/jacomyal/sigma.js/wiki), sigma.js is "interactivity oriented" and therefore plays ideally in apps.
+`sigmajs` goes hand in hand with Shiny. As [stated in the wiki](https://github.com/jacomyal/sigma.js/wiki), sigma.js is "interactivity oriented" and therefore plays ideally in apps. Some of these proxies are demonstrated [here](http://shiny.john-coene.com/sigmajs/).
 
 ## Features
 

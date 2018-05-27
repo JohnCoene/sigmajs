@@ -67,7 +67,7 @@ sigmajs() %>%
 	sg_edges(edges, id, source, target)
 ```
 
-Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action.
+Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).
 
 ```{r, eval = TRUE, echo = FALSE}
 demos <- readLines("./demo/00Index")
