@@ -1,4 +1,4 @@
-# sigmajs <img align="right" src="/man/figures/logo.png" />
+# sigmajs <img align="right" src="/man/figures/logo.png" style="max-height:150px;" />
 
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs)
 
