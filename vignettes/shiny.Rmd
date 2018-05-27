@@ -1,0 +1,179 @@
+---
+title: "Shiny"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Shiny}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+`sigmajs` goes hand in hand with Shiny. As [stated in the wiki](https://github.com/jacomyal/sigma.js/wiki), sigma.js is "interactivity oriented" and therefore plays ideally in apps.
+
+## Features
+
+* Proxies
+* Events
+
+`simgajs` lets you dynamically interact with the graph, that is, add/remove/customise without redrawing the whole graph: these functions all end in `_p`. The :package: also lets you catch how the user interacts with your graph.
+
+## Proxies
+
+* Add one or multiple nodes or edges.
+* Remove one or multiple nodes or edges.
+* Add nodes or edges with a given delay.
+* Enable nodes drag.
+* Start/kill/restart force layout.
+* Refresh the graph.
+
+### Walkthrough
+
+Here I mainly talk you through shiny proxies in general and the `add-nodes` demo.
+
+Let's start by building a simple Shiny app that includes a basic `sigmajs` graph.
+
+```{r, eval = FALSE}
+library(shiny)
+library(sigmajs)
+
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+ui <- fluidPage(sigmajsOutput("sg")) # bare bone UI
+
+server <- function(input, output){
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) %>%
+      sg_edges(edges, id, source, target)
+  })
+}
+
+shinyApp(ui, server) # run
+```
+
+Now that we have a simple app going we can look at playing with proxies. The layout looks a bit rubbish, we can add a proxy to let the user trigger the forceAtlas2 layout.
+
+```{r, eval = FALSE}
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+ui <- fluidPage(
+  actionButton("start", "Trigger layout"), # add the button
+  sigmajsOutput("sg")
+) 
+
+server <- function(input, output){
+
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) %>%
+      sg_edges(edges, id, source, target)
+  })
+
+  observeEvent(input$start, {
+    sigmajsProxy("sg") %>% # use sigmajsProxy!
+      sg_force_start_p() # app the proxy (_p)
+  })
+
+}
+
+shinyApp(ui, server) # run
+```
+
+So proxies work on a already existing graphs so you simply have to use the `sigmajsProxy` function to catch that graph using its `id`; output graph's id is `sg` (`sigmajsOutput("sg")`). Then you can pass your proxies `_p`.
+
+We could, for instance, now add another button to kill the layout because as it is now the layour is constantly running which is a bit draining for the browser and not very useful.
+
+```{r, eval = FALSE}
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+ui <- fluidPage(
+  actionButton("start", "Start layout"), # start button
+  actionButton("stop", "Stop layout"), # stop button
+  sigmajsOutput("sg")
+) 
+
+server <- function(input, output){
+
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) %>%
+      sg_edges(edges, id, source, target)
+  })
+
+  # start layout
+  observeEvent(input$start, {
+    sigmajsProxy("sg") %>% 
+      sg_force_start_p() 
+  })
+
+  # stop layout
+  observeEvent(input$stop, {
+    sigmajsProxy("sg") %>% 
+      sg_force_stop_p()
+  })
+
+}
+
+shinyApp(ui, server) # run
+```
+
+Now that you are familiar with proxies we can look at the more powerful ones; though you will see, you can use them just as easily! For that we'll scrap the previous buttons and go back to the basic shiny app we initially set up.
+
+Let's put a button that lets the user add nodes to the graph. For this example we'll only plot nodes, no edges.
+
+```{r, eval = FALSE}
+library(shiny)
+library(sigmajs)
+
+# initial nodes
+nodes <- sg_make_nodes()
+
+# nodes to add on click
+nodes2add <- sg_make_nodes()
+nodes2add$id <- 11:20 # ids must be unique
+
+ui <- fluidPage(
+  actionButton("add", "Add nodes"),
+  sigmajsOutput("sg")
+) 
+
+server <- function(input, output){
+
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) 
+  })
+
+  observeEvent(input$add, {
+    sigmajsProxy("sg") %>%
+      sg_add_nodes_p(nodes2add, id, size, color)
+  })
+}
+
+shinyApp(ui, server) # run
+```
+
+*This is a simplified version of the `demo("add-nodes", package = "sigmajs")`*
+
+It's fairly simple when you look at it.
+
+1. We generate additional nodes.
+2. We make sure that these additional nodes do not have the same `id` as the already existing nodes.
+3. We add them using `sg_add_nodes_p` which acutally works just like `sg_nodes`.
+
+## Events
+
+Another great thing the package lets you do is capture how the user interact with your app. Then again there is a demo for the latter: `custom-events`.
+
