@@ -7,6 +7,7 @@
 #' \describe{
 #'   \item{\code{id}}{ abbreviation of character name}
 #'   \item{\code{label}}{ character name}
+#'   \item{\code{color}}{ random color}
 #' }
 #' @source \url{https://github.com/MADStudioNU/lesmiserables-character-network}
 "lesmis_igraph"

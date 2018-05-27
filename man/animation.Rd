@@ -4,12 +4,14 @@
 \alias{sg_animate}
 \title{Animate}
 \usage{
-sg_animate(sg, mapping, delay = 5000)
+sg_animate(sg, mapping, options = list(easing = "cubicInOut"), delay = 5000)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
 \item{mapping}{Variables to map animation to.}
+
+\item{options}{Animations options.}
 
 \item{delay}{Delay in milliseconds before animation is triggered.}
 }
@@ -32,4 +34,7 @@ sigmajs() \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
 
+}
+\seealso{
+\href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.plugins.animate}{official documentation}
 }

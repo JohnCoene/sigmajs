@@ -4,6 +4,7 @@
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
 #' @param mapping Variables to map animation to.
+#' @param options Animations options.
 #' @param delay Delay in milliseconds before animation is triggered.
 #'
 #' @examples
@@ -22,9 +23,11 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
 #' 
+#' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.plugins.animate}{official documentation}
+#'
 #' @rdname animation
 #' @export
-sg_animate <- function(sg, mapping, delay = 5000) {
+sg_animate <- function(sg, mapping, options = list(easing = "cubicInOut"), delay = 5000) {
 
 	if (missing(sg) || missing(mapping))
 		stop("missing sg or mapping", call. = FALSE)
@@ -33,6 +36,7 @@ sg_animate <- function(sg, mapping, delay = 5000) {
 		stop("sg must be of class sigmajs", call. = FALSE)
 
 	sg$x$animateLoop <- FALSE
+	sg$x$animateOptions <- options
 	sg$x$animateMapping <- mapping
 	sg$x$animateDelay <- delay
 

@@ -27,7 +27,10 @@ HTMLWidgets.widget({
 					var parser = new DOMParser();
 					var data = parser.parseFromString(x.data, "application/xml");
 
-					sigma.parsers.gexf(data, s)
+					sigma.parsers.gexf(data, s,
+						function() {
+						  s.refresh();
+						})
 				} else {
 					// create
 					s = new sigma({
@@ -194,7 +197,8 @@ HTMLWidgets.widget({
 		},
 
 		resize: function(width, height) {
-
+			for(var name in s.renderers)
+				s.renderers[name].resize(width, height);
 		},
 
 		getChart: function () {

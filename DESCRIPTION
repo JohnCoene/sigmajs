@@ -17,3 +17,6 @@ Imports:
 		shiny,
 		jsonlite,
 		igraph
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

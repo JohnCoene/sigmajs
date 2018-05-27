@@ -3,3 +3,4 @@
 .RData
 sigmajs.Rproj
 *.vs
+inst/doc

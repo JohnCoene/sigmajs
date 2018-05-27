@@ -4,7 +4,23 @@
 
 [sigmajs](http://sigmajs.org/) for R.
 
-![](../pkgdown/delay.gif)
+```{r, eval=TRUE, echo = FALSE}
+library(sigmajs)
+nodes <- sg_make_nodes(20)
+edges <- sg_make_edges(nodes, 30)
+ 
+# add transition
+n <- nrow(nodes)
+nodes$to_x <- runif(n, 5, 10)
+nodes$to_y <- runif(n, 5, 10)
+nodes$to_size <- runif(n, 5, 10)
+ 
+sigmajs() %>%
+	sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size) %>%
+	sg_edges(edges, id, source, target) %>% 
+	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size")) %>%
+	sg_settings(animationsTime = 2000)
+```
 
 With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner.
 `sigmajs` is a [Shiny](https://shiny.rstudio.com/)-centric in order to best leverage the [original library](http://sigmajs.org/)'s great many methods.
@@ -35,24 +51,20 @@ sigmajs() %>%
 	sg_edges(edges, id, source, target)
 ```
 
-`sigmajs` also lets you animate the graph.
+Most functions have corresponding demos, execute the run command to see sigmajs in action.
 
-```{r, eval=TRUE}
-nodes <- sg_make_nodes(20)
-edges <- sg_make_edges(nodes, 30)
- 
-# add transition
-n <- nrow(nodes)
-nodes$to_x <- runif(n, 5, 10)
-nodes$to_y <- runif(n, 5, 10)
-nodes$to_size <- runif(n, 5, 10)
- 
-sigmajs() %>%
-	sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size) %>%
-	sg_edges(edges, id, source, target) %>% 
-	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
-```
+```{r, eval = TRUE, echo = FALSE}
+demos <- readLines("./demo/00Index")
+demos <- strsplit(demos, "\t+")
+df <- data.frame()
+for(i in 1:length(demos)){
+	row <- data.frame(
+		name = paste0("`", demos[[i]][1], "`"), 
+		description = demos[[i]][2],
+		run = paste0("`demo(", demos[[i]][1], ", package='sigmajs')`")
+	)
+	df <- rbind.data.frame(df, row)
+}
 
-```{r, eval = FALSE}
-demo(package = "sigmajs") # proxies and shiny demos
+knitr::kable(df, caption = "sigmajs demos", format = "html")
 ```

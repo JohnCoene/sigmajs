@@ -64,7 +64,15 @@ sg_from_igraph <- function(sg, igraph, layout = NULL) {
 	# add x and y (required by sigmajs)
 	layout <- as.data.frame(layout)
 	names(layout) <- c("x", "y")
+
+	# force layout character
+	layout$x <- as.character(layout$x)
+	layout$y <- as.character(layout$y)
+
 	nodes <- dplyr::bind_cols(nodes, layout)
+
+	if(!"size" %in% names(nodes))
+		nodes$size <- 1
 
 	sg$x$data <- append(sg$x$data, list(nodes = .as_list(nodes), edges = .as_list(edges)))
 
