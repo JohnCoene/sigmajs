@@ -4,8 +4,11 @@ library(sigmajs)
 nodes <- sg_make_nodes(20)
 edges <- sg_make_edges(nodes)
 
-images <- c('img1.png', 'img2.png', 'img3.png', 'img4.png')
-images <- paste0("img/", images)
+images <- c(
+	'https://avatars0.githubusercontent.com/u/163582?s=400&v=4',
+	'https://avatars1.githubusercontent.com/u/4196?s=400&v=4',
+	'https://avatars3.githubusercontent.com/u/129551?s=400&v=4'
+)
 
 ui <- fluidPage(
 	sigmajsOutput("sg", height = "100vh")
