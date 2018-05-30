@@ -11,3 +11,4 @@ add-delay				Add nodes and edges with a delay.
 custom-shapes			Use custom shapes as nodes.
 drag-nodes  			Drag nodes.
 custom-events   		Capture events.
+add-camera  			Link graphs.

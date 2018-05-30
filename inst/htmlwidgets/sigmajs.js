@@ -194,6 +194,13 @@ HTMLWidgets.widget({
 				}
 
 			s.refresh() // refresh
+
+			// stop force
+			if(x.hasOwnProperty('forceStopDelay')){
+				setTimeout(function () {
+					s.stopForceAtlas2();
+				}, x.forceStopDelay);
+			}
 		},
 
 		resize: function(width, height) {

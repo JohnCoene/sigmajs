@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Plugins"
+author: "John Coene"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -41,7 +41,7 @@ library(sigmajs)
 
 ```{r}
 nodes <- sg_make_nodes(100)
-edges <- sg_make_edges(nodes, 150)
+edges <- sg_make_edges(nodes, 75)
 
 # add type
 TYPES <- c("dashed", "dotted", "tapered", "parallel", "curve")
@@ -50,10 +50,11 @@ edges$type <- sample(TYPES, nrow(edges), replace = TRUE)
 sigmajs() %>%
   sg_nodes(nodes, id, color) %>%
   sg_edges(edges, id, source, target, type) %>%
-  sg_force() %>%
-  sg_relative_size() %>%
-  sg_noverlap() %>%
-  sg_drag_nodes()
+  sg_force() %>% # start forceAtlas2
+  sg_relative_size() %>% # size node relative to one another
+  sg_noverlap() %>% # no node overlap
+  sg_drag_nodes() %>% # enable drag nodes
+  sg_force_stop(10000) # stop layout algo after 10 seconds
 ```
 
 Use custom shapes and image as nodes.

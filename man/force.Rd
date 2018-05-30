@@ -2,6 +2,7 @@
 % Please edit documentation in R/force.R
 \name{sg_force}
 \alias{sg_force}
+\alias{sg_force_stop}
 \alias{sg_force_restart_p}
 \alias{sg_force_start_p}
 \alias{sg_force_stop_p}
@@ -10,6 +11,8 @@
 \title{Add force}
 \usage{
 sg_force(sg, ...)
+
+sg_force_stop(sg, delay = 5000)
 
 sg_force_restart_p(proxy, ..., refresh = TRUE)
 
@@ -26,6 +29,8 @@ sg_force_config_p(proxy, ...)
 
 \item{...}{Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.}
 
+\item{delay}{Milliseconds after which the layout algorithm should stop running.}
+
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
@@ -37,6 +42,7 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 
 \itemize{
 \item{\code{sg_force} starts the forceAtlas2 layout}
+\item{\code{sg_force_stop} stops the forceAtlas2 layout after a \code{delay} milliseconds}
 \item{\code{sg_force_restart_p} proxy to re-starts (\code{kill} then \code{start}) the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 \item{\code{sg_force_start_p} proxy to start forceAtlas2.}
 \item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
@@ -52,7 +58,8 @@ edges <- sg_make_edges(nodes, 100)
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size) \%>\%
   sg_edges(edges, id, source, target) \%>\% 
-  sg_force()
+  sg_force() \%>\% 
+	 sg_force_stop() # stop force after 5 seconds
 
 }
 \seealso{

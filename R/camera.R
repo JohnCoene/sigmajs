@@ -13,9 +13,9 @@
 #' demo("add-camera", package = "sigmajs")
 #' }
 #' 
-#' @noRd
-#' @keyword internal
-sg_camera <- function(sg, name, initialise = TRUE) {
+#' @rdname camera
+#' @export
+sg_camera <- function(sg, name, initialise = FALSE) {
 	if (missing(name))
 		stop("missing name", call. = FALSE)
 
@@ -25,8 +25,23 @@ sg_camera <- function(sg, name, initialise = TRUE) {
 	if (!inherits(sg, "sigmajs"))
 		stop("sg must be of class sigmajs", call. = FALSE)
 
-	sg$x$initialiseCamera <- initialise
-	sg$x$cameraName <- name
+	if(isTRUE(initialise))
+		sg$x$cameraInitialise <- TRUE
+	
+	sg$x$camera <- name
 
 	sg
+}
+
+#' @rdname camera
+#' @export
+sg_add_camera <- function(name){
+	if(missing(name))
+		stop("missing name", call. = FALSE)
+	
+	cam <- paste0("s.addCamera('", name, "');")
+
+	shiny::tags$head(
+		shiny::tags$script(cam)
+	)
 }

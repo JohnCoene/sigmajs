@@ -4,6 +4,7 @@
 #' 
 #' @inheritParams sg_nodes
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param delay Milliseconds after which the layout algorithm should stop running.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' 
@@ -11,6 +12,7 @@
 #' @section Functions:
 #' \itemize{
 #'	\item{\code{sg_force} starts the forceAtlas2 layout}
+#'	\item{\code{sg_force_stop} stops the forceAtlas2 layout after a \code{delay} milliseconds}
 #'	\item{\code{sg_force_restart_p} proxy to re-starts (\code{kill} then \code{start}) the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 #'	\item{\code{sg_force_start_p} proxy to start forceAtlas2.}
 #'	\item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
@@ -25,7 +27,8 @@
 #' sigmajs() %>%
 #'   sg_nodes(nodes, id, label, size) %>%
 #'   sg_edges(edges, id, source, target) %>% 
-#'   sg_force()
+#'   sg_force() %>% 
+#' 	 sg_force_stop() # stop force after 5 seconds
 #' 
 #' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}
 #'
@@ -41,6 +44,20 @@ sg_force <- function(sg, ...) {
 
   sg$x$force <- list(...)
   sg
+}
+
+#' @rdname force
+#' @export
+sg_force_stop <- function(sg, delay = 5000) {
+	
+	if (missing(sg))
+		stop("missing sg", call. = FALSE)
+
+	if (!inherits(sg, "sigmajs"))
+		stop("sg must be of class sigmajs", call. = FALSE)
+
+	sg$x$forceStopDelay <- delay
+  	sg
 }
 
 #' @rdname force
