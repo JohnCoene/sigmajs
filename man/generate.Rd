@@ -8,7 +8,7 @@
 sg_make_nodes(n = 10, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
   "#24C96B"))
 
-sg_make_edges(nodes, n = 15)
+sg_make_edges(nodes, n = nrow(nodes) * 1.5)
 }
 \arguments{
 \item{n}{Number of nodes.}
