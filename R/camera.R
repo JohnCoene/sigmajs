@@ -13,7 +13,8 @@
 #' demo("add-camera", package = "sigmajs")
 #' }
 #' 
-#' @export
+#' @noRd
+#' @keyword internal
 sg_camera <- function(sg, name, initialise = TRUE) {
 	if (missing(name))
 		stop("missing name", call. = FALSE)
