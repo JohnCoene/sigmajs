@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(sigmajs)
 ```
 
-The :package: lets you easily animate your graphs.
+`sigmajs` lets you easily animate your graphs.
 
 ```{r}
 # generate data
