@@ -28,6 +28,8 @@ navbar:
   right:
     - icon: fa-github fa-lg
       href: https://github.com/JohnCoene/sigmajs
+    - icon: fa-bitbucket fa-lg
+      href: https://bitbucket.org/JohnCoene/sigmajs
 
 authors:
   John Coene:
