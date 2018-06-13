@@ -62,13 +62,12 @@ All graphs must be initialised with the `sigmajs()` function, all the functions 
 devtools::install_github("JohnCoene/sigmajs") # github
 devtools::install_bitbucket("sigmajs", "JohnCoene") # bitbucket
 ```
-```
 
 ## Examples
 
 Most functions have corresponding `demo()`.
 
-```{r, eval = TRUE}
+```{r, eval=TRUE}
 library(sigmajs)
 
 # generate data
@@ -85,12 +84,11 @@ Most functions have corresponding demos, execute the command in the `run` column
 
 ```{r, eval = TRUE, echo = FALSE}
 demos <- readLines("./demo/00Index")
-demos <- strsplit(demos, "\t+")
+demos <- strsplit(demos, "\t+|([[:space:]]){3}")
 df <- data.frame()
 for(i in 1:length(demos)){
 	row <- data.frame(
 		name = paste0("`", trimws(demos[[i]][1]), "`"), 
-		description = demos[[i]][2],
 		run = paste0("`demo(", trimws(demos[[i]][1]), ", package='sigmajs')`")
 	)
 	df <- rbind.data.frame(df, row)
