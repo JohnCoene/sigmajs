@@ -1,6 +1,6 @@
 # sigmajs
 
-[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) ![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)
+[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs)
 
 ![sigmajs](/man/figures/logo.png)
 
@@ -16,7 +16,8 @@ All graphs must be initialised with the `sigmajs()` function, all the functions 
 
 ```r
 # install.packages("devtools")
-devtools::install_github("JohnCoene/sigmajs")
+devtools::install_github("JohnCoene/sigmajs") # github
+devtools::install_bitbucket("sigmajs", "JohnCoene") # bitbucket
 ```
 
 # Examples
