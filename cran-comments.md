@@ -5,14 +5,6 @@
 
 ## R CMD check results
 
-0 errors | 1 warnings | 1 note
+0 errors | 0 warnings | 1 note
 
 * This is a new release.
-* Conversion of 'README.md' failed:
-pandoc.exe: Could not fetch /man/figures/logo.png
-/man/figures/logo.png: openBinaryFile: does not exist (No such file or directory)
-
---------------
-
-Unsure about the reason behind `logo.png` *warning*, file exists at indicated path (`/man/figures/logo.png`).
-
