@@ -118,3 +118,5 @@ sigmajs() %>%
   sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
   sg_force_stop(last_edge)
 ```
+
+You can also drop nodes or edges with `sg_drop_edges` and `sg_drop_nodes`, same principles, I'll let you explore the examples.

@@ -369,7 +369,7 @@ sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 #' 
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param data A \code{data.frame} of _one_ node or edge.
-#' @param ... any column.
+#' @param ids Ids of elements to drop.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.
 #' @param delay Column name containing delay in milliseconds.
 #' @param cumsum Whether to compute the cumulative sum of the delay.
@@ -392,7 +392,7 @@ sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 #' 
 #' @rdname drop_delay_p
 #' @export
-sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, rate = "once") {
+sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
   if (!"sigmajsProxy" %in% class(proxy))
     stop("must pass sigmajsProxy object", call. = FALSE)
@@ -417,16 +417,16 @@ sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, rate 
   ) %>% # bind delay
     .as_list()
   
-  message <- list(id = proxy$id, data = to_drop, refresh = refresh, rate = rate) # create message
+  message <- list(id = proxy$id, data = to_drop, refresh = refresh) # create message
   
   proxy$session$sendCustomMessage("sg_drop_nodes_delay_p", message)
   
   return(proxy)
 }
 
-#' @rdname adds_delay_p
+#' @rdname drop_delay_p
 #' @export
-sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE) {
+sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
   if (!"sigmajsProxy" %in% class(proxy))
     stop("must pass sigmajsProxy object", call. = FALSE)

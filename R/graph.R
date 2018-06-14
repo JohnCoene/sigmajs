@@ -178,7 +178,7 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
     .check_x_y() %>%
     .as_list()
   
-  sg$x$addEdgesDelay <- append(sg$x$addNodesDelay, list(data = nodes, refresh = refresh))
+  sg$x$addEdgesDelay <- append(sg$x$addEdgesDelay, list(data = nodes, refresh = refresh))
   sg
 } 
 
@@ -188,15 +188,86 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
 #' Drop nodes or edges.
 #' 
 #' @inheritParams sg_nodes
+#' @param delay Column name containing delay in milliseconds.
+#' @param ids Ids of elements to drop.
+#' @param cumsum Whether to compute the cumulative sum of the delay.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.
+#' 
+#' @details The delay helps for build dynamic visualisations where nodes and edges do not disappear all at the same time.
+#' How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+#' of the delay to effectively drop each row one after the other: delay is thus applied at each row (number of seconds to wait
+#' before the row is dropped *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+#' edge is dropped to the visualisation; \code{delay} is used as passed to the function.
+#' 
+#' @examples 
+#' nodes <- sg_make_nodes(75)
+#' 
+#' # nodes to drop
+#' nodes2 <- nodes[sample(nrow(nodes), 50), ]
+#' nodes2$delay <- runif(nrow(nodes2), 1000, 3000)
+#' 
+#' sigmajs() %>% 
+#'   sg_nodes(nodes, id, size, color) %>% 
+#'   sg_drop_nodes(nodes2, id, delay, cumsum = FALSE)
 #' 
 #' @rdname drop_static 
 #' @export
-sg_drop_nodes <- function(){
+sg_drop_nodes <- function(sg, data, ids, delay, cumsum = TRUE) {
   
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+  
+  if (missing(data))
+    stop("must pass data", call. = FALSE)
+  
+  delay_col <- eval(substitute(delay), data) # subset delay
+  if (isTRUE(cumsum))
+    delay_col <- cumsum(delay_col) # cumul for setTimeout
+  
+  ids <- eval(substitute(ids), data) # subset ids
+  
+  to_drop <- dplyr::tibble(
+    id = ids,
+    sigmajsdelay = delay_col
+  )
+  
+  to_drop <- dplyr::tibble(
+    id = ids,
+    sigmajsdelay = delay_col
+  ) %>% # bind delay
+    .as_list()
+  
+  sg$x$dropNodesDelay <- append(sg$x$dropNodes, to_drop)
+  sg
 }
 
 #' @rdname drop_static 
 #' @export
-sg_drop_edges <- function(){
+sg_drop_edges <- function(sg, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+  
+  if (missing(data))
+    stop("must pass data", call. = FALSE)
+  
+  delay_col <- eval(substitute(delay), data) # subset delay
+  if (isTRUE(cumsum))
+    delay_col <- cumsum(delay_col) # cumul for setTimeout
+  
+  ids <- eval(substitute(ids), data) # subset ids
+  
+  to_drop <- dplyr::tibble(
+    id = ids,
+    sigmajsdelay = delay_col
+  )
+  
+  to_drop <- dplyr::tibble(
+    id = ids,
+    sigmajsdelay = delay_col
+  ) %>% # bind delay
+    .as_list()
+  
+  sg$x$dropEdgesDelay <- append(sg$x$dropEdges, list(data = to_drop, refresh = refresh))
+  sg
 }

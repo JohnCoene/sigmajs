@@ -2,21 +2,25 @@
 % Please edit documentation in R/graph_proxies.R
 \name{sg_drop_nodes_delay_p}
 \alias{sg_drop_nodes_delay_p}
+\alias{sg_drop_edges_delay_p}
 \title{Drop nodes or edges with a delay}
 \usage{
 sg_drop_nodes_delay_p(proxy, data, ids, delay, refresh = TRUE,
-  rate = "once")
+  cumsum = TRUE)
+
+sg_drop_edges_delay_p(proxy, data, ids, delay, refresh = TRUE,
+  cumsum = TRUE)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
 \item{data}{A \code{data.frame} of _one_ node or edge.}
 
+\item{ids}{Ids of elements to drop.}
+
 \item{delay}{Column name containing delay in milliseconds.}
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.}
-
-\item{...}{any column.}
 
 \item{cumsum}{Whether to compute the cumulative sum of the delay.}
 }

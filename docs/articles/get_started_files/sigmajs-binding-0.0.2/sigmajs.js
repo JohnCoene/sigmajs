@@ -102,6 +102,35 @@ HTMLWidgets.widget({
   					}, element.sigmajsdelay);
   				});
 				}
+				
+				if(x.hasOwnProperty("dropNodesDelay")){
+				  console.log(x.dropNodesDelay);
+  				x.dropNodesDelay.forEach((element) => {
+  					setTimeout(function () {
+  						s.graph.dropNode(element.id);
+  						s.refresh();
+  					}, element.sigmajsdelay);
+  				});
+				}
+				
+				if(x.hasOwnProperty("dropEdgesDelay")){
+  				var running = s.isForceAtlas2Running();
+  				x.dropEdgesDelay.data.forEach((element, index) => {
+  					setTimeout(function () {
+  						if (message.refresh === true && running === true) {
+  							s.killForceAtlas2();
+  						}
+  						s.graph.dropEdge(element);
+  						if (message.refresh === true && running === true) {
+  							s.startForceAtlas2();
+  						}
+  						if (message.refresh === true) {
+  							s.refresh();
+  						}
+  					}, element.sigmajsdelay);
+  				});
+				}
+
 
 				// events
 				if (HTMLWidgets.shinyMode) {
@@ -221,7 +250,7 @@ HTMLWidgets.widget({
 					});
 				}
 
-			s.refresh() // refresh
+			s.refresh(); // refresh
 
 			// stop force
 			if(x.hasOwnProperty('forceStopDelay')){
@@ -466,7 +495,49 @@ if (HTMLWidgets.shinyMode) {
 					}, element.sigmajsdelay);
 				});
 			} else {
-				console.log("error")
+				console.log("error");
+			}
+		}
+	);
+	
+	Shiny.addCustomMessageHandler('sg_drop_nodes_delay_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				message.data.forEach((element) => {
+					setTimeout(function () {
+						s.graph.dropNode(element.id);
+						s.refresh();
+					}, element.sigmajsdelay);
+				});
+			} else {
+				console.log("error");
+			}
+		}
+	);
+	
+	// add edges delay
+	Shiny.addCustomMessageHandler('sg_drop_edges_delay_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				var running = s.isForceAtlas2Running();
+				message.data.forEach((element, index) => {
+					setTimeout(function () {
+						if (message.refresh === true && running === true) {
+							s.killForceAtlas2();
+						}
+						s.graph.dropEdge(element.id);
+						if (message.refresh === true && running === true) {
+							s.startForceAtlas2();
+						}
+						if (message.refresh === true) {
+							s.refresh();
+						}
+					}, element.sigmajsdelay);
+				});
+			} else {
+				console.log("error");
 			}
 		}
 	);
@@ -492,7 +563,7 @@ if (HTMLWidgets.shinyMode) {
 					}, element.sigmajsdelay);
 				});
 			} else {
-				console.log("error")
+				console.log("error");
 			}
 		}
 	);

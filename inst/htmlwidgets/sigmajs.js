@@ -102,6 +102,35 @@ HTMLWidgets.widget({
   					}, element.sigmajsdelay);
   				});
 				}
+				
+				if(x.hasOwnProperty("dropNodesDelay")){
+				  console.log(x.dropNodesDelay);
+  				x.dropNodesDelay.forEach((element) => {
+  					setTimeout(function () {
+  						s.graph.dropNode(element.id);
+  						s.refresh();
+  					}, element.sigmajsdelay);
+  				});
+				}
+				
+				if(x.hasOwnProperty("dropEdgesDelay")){
+  				var running = s.isForceAtlas2Running();
+  				x.dropEdgesDelay.data.forEach((element, index) => {
+  					setTimeout(function () {
+  						if (message.refresh === true && running === true) {
+  							s.killForceAtlas2();
+  						}
+  						s.graph.dropEdge(element);
+  						if (message.refresh === true && running === true) {
+  							s.startForceAtlas2();
+  						}
+  						if (message.refresh === true) {
+  							s.refresh();
+  						}
+  					}, element.sigmajsdelay);
+  				});
+				}
+
 
 				// events
 				if (HTMLWidgets.shinyMode) {
