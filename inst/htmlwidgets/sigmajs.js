@@ -30,7 +30,8 @@ HTMLWidgets.widget({
 					sigma.parsers.gexf(data, s,
 						function() {
 						  s.refresh();
-						})
+						}
+					);
 				} else {
 					// create
 					s = new sigma({
@@ -72,7 +73,34 @@ HTMLWidgets.widget({
 				}
 
 				if (x.hasOwnProperty('relativeSize')) {
-					sigma.plugins.relativeSize(s, x.relativeSize)
+					sigma.plugins.relativeSize(s, x.relativeSize);
+				}
+				
+				if(x.hasOwnProperty('addNodesDelay')){
+  				x.addNodesDelay.forEach((element) => {
+  					setTimeout(function () {
+  						s.graph.addNode(element);
+  						s.refresh();
+  					}, element.sigmajsdelay);
+  				});
+				}
+				
+				if(x.hasOwnProperty('addEdgesDelay')){
+				  var running = s.isForceAtlas2Running();
+  				x.addEdgesDelay.data.forEach((element) => {
+  					setTimeout(function () {
+						if (x.addEdgesDelay.refresh === true && running === true) {
+							s.killForceAtlas2();
+						}
+						s.graph.addEdge(element);
+						if (x.addEdgesDelay.refresh === true && running === true) {
+							s.startForceAtlas2();
+						}
+						if (x.addEdgesDelay.refresh === true) {
+							s.refresh();
+						}
+  					}, element.sigmajsdelay);
+  				});
 				}
 
 				// events
