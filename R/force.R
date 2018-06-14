@@ -11,7 +11,7 @@
 #'
 #' @section Functions:
 #' \itemize{
-#'	\item{\code{sg_force} starts the forceAtlas2 layout}
+#'	\item{\code{sg_force}, \code{sg_force_start} starts the forceAtlas2 layout}
 #'	\item{\code{sg_force_stop} stops the forceAtlas2 layout after a \code{delay} milliseconds}
 #'	\item{\code{sg_force_restart_p} proxy to re-starts (\code{kill} then \code{start}) the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 #'	\item{\code{sg_force_start_p} proxy to start forceAtlas2.}
@@ -45,6 +45,10 @@ sg_force <- function(sg, ...) {
   sg$x$force <- list(...)
   sg
 }
+
+#' @rdname force
+#' @export
+sg_force_start <- sg_force
 
 #' @rdname force
 #' @export

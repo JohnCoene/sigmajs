@@ -2,6 +2,7 @@
 % Please edit documentation in R/force.R
 \name{sg_force}
 \alias{sg_force}
+\alias{sg_force_start}
 \alias{sg_force_stop}
 \alias{sg_force_restart_p}
 \alias{sg_force_start_p}
@@ -11,6 +12,8 @@
 \title{Add force}
 \usage{
 sg_force(sg, ...)
+
+sg_force_start(sg, ...)
 
 sg_force_stop(sg, delay = 5000)
 
@@ -41,7 +44,7 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 \section{Functions}{
 
 \itemize{
-\item{\code{sg_force} starts the forceAtlas2 layout}
+\item{\code{sg_force}, \code{sg_force_start} starts the forceAtlas2 layout}
 \item{\code{sg_force_stop} stops the forceAtlas2 layout after a \code{delay} milliseconds}
 \item{\code{sg_force_restart_p} proxy to re-starts (\code{kill} then \code{start}) the forceAtlas2 layout, the options you pass to this function are applied on restart. If forceAtlas2 has not started yet it is launched.}
 \item{\code{sg_force_start_p} proxy to start forceAtlas2.}
