@@ -79,5 +79,42 @@ Or as stated in the Settings section, you can omit `size` and `color` but you th
 sigmajs() %>%
   sg_nodes(nodes, id, size) %>%
   sg_edges(edges, id, source, target) %>%
-  sg_settings(defaultNodeColor = "#7f7f7f") # pass default color
+  sg_settings(defaultNodeColor = "#c9423f") # pass default color
 ``` 
+
+## Layout
+
+You can use the forceAtlas2 algorithm to layout your graphs, `sg_force_start`. The algorithm is relatively computationally expensive so it is good to stop it at some point `sg_force_stop`.
+
+```{r}
+# generate data using convenience functions
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>%
+  sg_force_start() %>% # start
+  sg_nodes(nodes, id, size, color) %>%
+  sg_edges(edges, id, source, target) %>%
+  sg_force_stop(5000) # stop after 5 seconds
+```
+
+## Dynamic
+
+You can now also add nodes and edges to static graphs. Below we graph the nodes then add (`sg_add_edges`) at random intervals (0.5 to 2 seconds *between* each edge added). We also stop the layout algorithm after all edges have been aded (+ 100 milliseconds to be on the safe side).
+
+*Note that by the time you reach the bottom of the page all edges will likely be plotted already, refresh and scroll back here to see it in effect*
+
+```{r}
+# generate data using convenience functions
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+edges$delay <- runif(15, 500, 2000) # between .5 and 2 seconds
+
+last_edge <- sum(edges$delay) + 100
+
+sigmajs() %>%
+  sg_force_start() %>%
+  sg_nodes(nodes, id, size, color) %>%
+  sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
+  sg_force_stop(last_edge)
+```
