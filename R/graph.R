@@ -181,3 +181,22 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
   sg$x$addEdgesDelay <- append(sg$x$addNodesDelay, list(data = nodes, refresh = refresh))
   sg
 } 
+
+
+#' Drop
+#' 
+#' Drop nodes or edges.
+#' 
+#' @inheritParams sg_nodes
+#' 
+#' @rdname drop_static 
+#' @export
+sg_drop_nodes <- function(){
+  
+}
+
+#' @rdname drop_static 
+#' @export
+sg_drop_edges <- function(){
+  
+}

@@ -15,3 +15,5 @@ custom-shapes			    Use custom shapes as nodes.
 drag-nodes  			    Drag nodes.
 custom-events   		  Capture events.
 add-camera  			    Link graphs.
+drop-nodes-delay      Dynamically drop multiple nodes with a delay.
+drop-edges-delay      Dynamically drop multiple edges with a delay.
