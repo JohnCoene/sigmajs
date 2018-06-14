@@ -23,8 +23,8 @@
 sg_make_nodes <- function(n = 10, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B")) {
 
 	dplyr::tibble(
-		id = as.character(seq(1, n)),
-		label = sample(LETTERS, n, replace = TRUE),
+		id = as.character(seq(0, (n - 1))),
+		label = sample(paste0(LETTERS, 1:100), n, replace = TRUE),
 		size = ceiling(runif(n, 1, 5)),
 		color = colorRampPalette(colors)(n)
 	)
@@ -34,10 +34,10 @@ sg_make_nodes <- function(n = 10, colors = c("#B1E2A3", "#98D3A5", "#328983", "#
 #' @rdname generate
 #' @export
 sg_make_edges <- function(nodes, n = nrow(nodes) * 1.5) {
+  
 	ids <- as.character(nodes$id)
-
 	dplyr::tibble(
-		id = seq(1, n),
+		id = as.character(seq(0, (n - 1))),
 		source = sample(ids, n, replace = TRUE),
 		target = sample(ids, n, replace = TRUE)
 	)
