@@ -90,3 +90,94 @@ sg_nodes2 <- function(sg, data) {
 	sg$x$data <- append(sg$x$data, list(nodes = data))
 	sg
 }
+
+#' Add
+#' 
+#' Add nodes or nodes.
+#' 
+#' @inheritParams sg_nodes
+#' @param delay Column name containing delay in milliseconds.
+#' @param cumsum Whether to compute the cumulative sum of the delay.
+#' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.
+#' 
+#' @details The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+#' How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+#' of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+#' before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+#' edge is added to the visualisation; \code{delay} is used as passed to the function.
+#' 
+#' @examples 
+#' # initial nodes
+#' nodes <- sg_make_nodes()
+#' 
+#' # additional nodes
+#' nodes2 <- sg_make_nodes()
+#' nodes2$id <- as.character(seq(11, 20))
+#' 
+#' # add delay
+#' nodes2$delay <- runif(nrow(nodes2), 500, 1000)
+#' 
+#' sigmajs() %>%
+#'   sg_nodes(nodes, id, label, size, color) %>%
+#'   sg_add_nodes(nodes2, delay, id, label, size, color)
+#'   
+#' edges <- sg_make_edges(nodes, 25)
+#' edges$delay <- runif(nrow(edges), 100, 2000)
+#' 
+#' sigmajs() %>%
+#'   sg_force_start() %>%
+#'   sg_nodes(nodes, id, label, size, color) %>% 
+#'   sg_add_edges(edges, delay, id, source, target, cumsum = FALSE) %>%
+#'   sg_force_stop(2300) # stop after all edges added
+#' 
+#' @rdname add_static
+#' @export
+sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
+  
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+  
+  if (missing(data) || missing(delay))
+    stop("must pass data and delay", call. = FALSE)
+  
+  delay_col <- eval(substitute(delay), data) # subset delay
+  if (isTRUE(cumsum))
+    delay_col <- cumsum(delay_col) # cumul for setTimeout
+  delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
+  
+  # build data
+  nodes <- .build_data(data, ...) %>%
+    dplyr::bind_cols(delay_table) %>% # bind delay
+    .check_ids() %>%
+    .check_x_y() %>%
+    .as_list()
+  
+  sg$x$addNodesDelay <- append(sg$x$addNodesDelay, nodes)
+  sg
+} 
+
+#' @rdname add_static
+#' @export
+sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
+  
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+  
+  if (missing(data) || missing(delay))
+    stop("must pass data and delay", call. = FALSE)
+  
+  delay_col <- eval(substitute(delay), data) # subset delay
+  if (isTRUE(cumsum))
+    delay_col <- cumsum(delay_col) # cumul for setTimeout
+  delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
+  
+  # build data
+  nodes <- .build_data(data, ...) %>%
+    dplyr::bind_cols(delay_table) %>% # bind delay
+    .check_ids() %>%
+    .check_x_y() %>%
+    .as_list()
+  
+  sg$x$addEdgesDelay <- append(sg$x$addNodesDelay, list(data = nodes, refresh = refresh))
+  sg
+} 
