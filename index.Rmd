@@ -45,6 +45,10 @@ sigmajs(width = "75%", height = 250) %>%
   <i class="fa fa-rocket"></i>
   Get Started
 </a>
+<a class="btn btn-primary" href="articles/shiny.html" target="_blank">
+  <i class="fa fa-graduation-cap"></i>
+  Shiny guide
+</a>
 <a class="btn btn-success" href="http://shiny.john-coene.com/sigmajs/" target="_blank">
   <i class="fa fa-desktop"></i>
   Shiny demo
