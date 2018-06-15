@@ -89,6 +89,7 @@ Most functions have corresponding demos, execute the command in the `run` column
 ```{r, eval = TRUE, echo = FALSE}
 demos <- readLines("./demo/00Index")
 demos <- strsplit(demos, "\t+|([[:space:]]){3}")
+demos <- demos[lapply(demos, length) > 1]
 df <- data.frame()
 for(i in 1:length(demos)){
 	row <- data.frame(
