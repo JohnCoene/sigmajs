@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a camera — sg_camera • sigmajs</title>
+<title>Drop — sg_drop_nodes • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,19 +21,22 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="Add a camera — sg_camera" />
+<meta property="og:title" content="Drop — sg_drop_nodes" />
 
-<meta property="og:description" content="Add a camera to your graph." />
+<meta property="og:description" content="Drop nodes or edges." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -70,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.0.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.2</span>
       </span>
     </div>
 
@@ -118,6 +121,12 @@
      
   </a>
 </li>
+<li>
+  <a href="https://bitbucket.org/JohnCoene/sigmajs">
+    <span class="fa fa-bitbucket fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -130,18 +139,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a camera</h1>
+    <h1>Drop</h1>
     
-    <div class="hidden name"><code>sg_camera.Rd</code></div>
+    <div class="hidden name"><code>drop_static.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add a camera to your graph.</p>
+    <p>Drop nodes or edges.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_camera</span>(<span class='no'>sg</span>, <span class='no'>name</span>, <span class='kw'>initialise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>sg_drop_nodes</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>ids</span>, <span class='no'>delay</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>sg_drop_edges</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>ids</span>, <span class='no'>delay</span>, <span class='kw'>refresh</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,32 +162,53 @@
       <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
     </tr>
     <tr>
-      <th>name</th>
-      <td><p>Name of camera.</p></td>
+      <th>data</th>
+      <td><p>Data.frame (or list) of nodes or edges.</p></td>
     </tr>
     <tr>
-      <th>initialise</th>
-      <td><p>Whether to initialise the camera.</p></td>
+      <th>ids</th>
+      <td><p>Ids of elements to drop.</p></td>
+    </tr>
+    <tr>
+      <th>delay</th>
+      <td><p>Column name containing delay in milliseconds.</p></td>
+    </tr>
+    <tr>
+      <th>cumsum</th>
+      <td><p>Whether to compute the cumulative sum of the delay.</p></td>
+    </tr>
+    <tr>
+      <th>refresh</th>
+      <td><p>Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Cameras should only be initialised once, hence the argument.</p>
+    <p>The delay helps for build dynamic visualisations where nodes and edges do not disappear all at the same time.
+How the delay works depends on the <code>cumsum</code> parameter. if <code>TRUE</code> the function computes the cumulative sum
+of the delay to effectively drop each row one after the other: delay is thus applied at each row (number of seconds to wait
+before the row is dropped *since the previous row*). If <code>FALSE</code> this is the number of milliseconds to wait before the node or
+edge is dropped to the visualisation; <code>delay</code> is used as passed to the function.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>demo</span>(<span class='st'>"add-camera"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"sigmajs"</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>nodes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>(<span class='fl'>75</span>)
+
+<span class='co'># nodes to drop</span>
+<span class='no'>nodes2</span> <span class='kw'>&lt;-</span> <span class='no'>nodes</span>[<span class='fu'>sample</span>(<span class='fu'>nrow</span>(<span class='no'>nodes</span>), <span class='fl'>50</span>), ]
+<span class='no'>nodes2</span>$<span class='no'>delay</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fu'>nrow</span>(<span class='no'>nodes2</span>), <span class='fl'>1000</span>, <span class='fl'>3000</span>)
+
+<span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_drop_nodes</span>(<span class='no'>nodes2</span>, <span class='no'>id</span>, <span class='no'>delay</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#note">Note</a></li>
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
