@@ -31,7 +31,7 @@ sigmajs() %>%
   sg_settings(drawLabels = FALSE, drawEdgeLabels = FALSE)
 ```
 
-You can also pass `layout`, if ommitted the function will use `layout_nicely` from the `igraph` :package:
+You can also pass `layout`, if ommitted the function will use `layout_nicely` from the `igraph` package.
 
 ```{r}
 layout <- igraph::layout_on_grid(lesmis_igraph) # create layout

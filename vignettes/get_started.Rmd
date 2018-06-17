@@ -19,10 +19,10 @@ library(sigmajs)
 
 ## Basics
 
-Beloware the basics of the :package:
+Below are the basics of the package.
 
 1. All graphs *must* be initialised with the `sigmajs()` function.
-2. All the functions of the :package: start with `sg_`.
+2. All the functions of the package start with `sg_`.
 3. All proxies end in `_p`.
 4. Functions are pipe-friendly (`%>%`).
 
@@ -50,7 +50,7 @@ Remember to always follow the naming convention.
 
 ## Convenience functions
 
-The :package: comes with two convenience functions to generate data, mainly to be used for testing.
+The package comes with two convenience functions to generate data, mainly to be used for testing.
 
 * `sg_make_nodes` to generate nodes, you can specify the number of nodes you want.
 * `sg_make_edges` to generate edges based on the nodes, you can specify the number of edges you want.

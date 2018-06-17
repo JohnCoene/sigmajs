@@ -24,7 +24,7 @@ library(sigmajs)
 * Proxies
 * Events
 
-`simgajs` lets you dynamically interact with the graph, that is, add/remove/customise without redrawing the whole graph: these functions all end in `_p`. The :package: also lets you catch how the user interacts with your graph.
+`simgajs` lets you dynamically interact with the graph, that is, add/remove/customise without redrawing the whole graph: these functions all end in `_p`. The package also lets you catch how the user interacts with your graph.
 
 ## Proxies
 
@@ -177,7 +177,7 @@ It's fairly simple when you look at it.
 
 Another great thing the package lets you do is capture how the user interact with your app. Then again there is a demo for the latter: `custom-events`.
 
-All the [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) are integrated in the :package:
+All the [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) are integrated in the package
 
 Let's take the basic app we built at the begining of the proxies walkthrough and catch which node the user clicks on.
 
@@ -210,4 +210,4 @@ server <- function(input, output){
 shinyApp(ui, server) # run
 ```
 
-Easy! Just use your plot as an `input` that points to the graph id (`sg`) followed by `_` and the name of the event you want to catch; in our case, plot of id (`sg`) and capture node clicked = `input$sg_click_node`.
+Easy! Just use your plot as an `input` that points to the graph id (`sg`) followed by `_` and the name of the event you want to catch; in our case, plot of id (`sg`) and capture node clicked = `input$sg_click_node`. There are many more events to pick up, see the [official](https://github.com/jacomyal/sigma.js/wiki/Events-API) documentation for the full list.

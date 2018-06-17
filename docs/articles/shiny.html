@@ -104,7 +104,7 @@
       <h1>Shiny</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-16</h4>
+            <h4 class="date">2018-06-17</h4>
       
       
       <div class="hidden name"><code>shiny.Rmd</code></div>
@@ -121,7 +121,7 @@
 <li>Proxies</li>
 <li>Events</li>
 </ul>
-<p><code>simgajs</code> lets you dynamically interact with the graph, that is, add/remove/customise without redrawing the whole graph: these functions all end in <code>_p</code>. The :package: also lets you catch how the user interacts with your graph.</p>
+<p><code>simgajs</code> lets you dynamically interact with the graph, that is, add/remove/customise without redrawing the whole graph: these functions all end in <code>_p</code>. The package also lets you catch how the user interacts with your graph.</p>
 </div>
 <div id="proxies" class="section level2">
 <h2 class="hasAnchor">
@@ -259,7 +259,7 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 <h2 class="hasAnchor">
 <a href="#events" class="anchor"></a>Events</h2>
 <p>Another great thing the package lets you do is capture how the user interact with your app. Then again there is a demo for the latter: <code>custom-events</code>.</p>
-<p>All the <a href="https://github.com/jacomyal/sigma.js/wiki/Events-API">events</a> are integrated in the :package:</p>
+<p>All the <a href="https://github.com/jacomyal/sigma.js/wiki/Events-API">events</a> are integrated in the package</p>
 <p>Let’s take the basic app we built at the begining of the proxies walkthrough and catch which node the user clicks on.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(shiny)
 <span class="kw">library</span>(sigmajs)
@@ -287,7 +287,7 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 }
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server) <span class="co"># run</span></code></pre></div>
-<p>Easy! Just use your plot as an <code>input</code> that points to the graph id (<code>sg</code>) followed by <code>_</code> and the name of the event you want to catch; in our case, plot of id (<code>sg</code>) and capture node clicked = <code>input$sg_click_node</code>.</p>
+<p>Easy! Just use your plot as an <code>input</code> that points to the graph id (<code>sg</code>) followed by <code>_</code> and the name of the event you want to catch; in our case, plot of id (<code>sg</code>) and capture node clicked = <code>input$sg_click_node</code>. There are many more events to pick up, see the <a href="https://github.com/jacomyal/sigma.js/wiki/Events-API">official</a> documentation for the full list.</p>
 </div>
   </div>
 
