@@ -45,7 +45,7 @@ sigmajs(width = "75%", height = 250) %>%
   <i class="fa fa-rocket"></i>
   Get Started
 </a>
-<a class="btn btn-default" href="articles/dynamic.html" target="_blank">
+<a class="btn btn-default" href="articles/dynamic.html">
   <i class="fa fa-spinner fa-pulse fa-fw"></i>
   Dynamic
 </a>

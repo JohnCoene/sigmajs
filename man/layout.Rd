@@ -18,6 +18,8 @@ sg_get_layout(nodes, edges, directed = TRUE, layout = igraph::layout_nicely,
 \item{layout}{An \code{igraph} layout function.}
 
 \item{...}{Any other parameter to pass to \code{layout} function.}
+
+\item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
 }
 \description{
 Layout your graph.

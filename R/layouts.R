@@ -3,6 +3,7 @@
 #' Layout your graph.
 #' 
 #' @inheritParams sg_nodes
+#' @param nodes,edges Nodes and edges as prepared for sigmajs.
 #' @param directed Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.
 #' @param layout An \code{igraph} layout function.
 #' @param ... Any other parameter to pass to \code{layout} function.
