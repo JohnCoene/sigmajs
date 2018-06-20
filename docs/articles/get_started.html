@@ -48,6 +48,12 @@
      
   </a>
 </li>
+<li>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     How-to
@@ -60,6 +66,15 @@
     </li>
     <li>
       <a href="../articles/formats.html">Use other formats</a>
+    </li>
+    <li>
+      <a href="../articles/layout.html">Layout</a>
+    </li>
+    <li>
+      <a href="../articles/cluster.html">Cluster</a>
+    </li>
+    <li>
+      <a href="../articles/dynamic.html">Dynamic</a>
     </li>
     <li>
       <a href="../articles/animate.html">Animate</a>
@@ -170,63 +185,21 @@
 <div id="your-first-graphs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#your-first-graphs" class="anchor"></a>Your first graphs</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># generate data using convenience functions</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</a></code></pre></div>
-<div id="htmlwidget-ce839453df9cd851f7e4" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ce839453df9cd851f7e4">{"x":{"data":{"nodes":[{"id":"0","size":"2","color":"#B1E2A3","x":" 8.367547","y":"17.421207"},{"id":"1","size":"5","color":"#A5DBA3","x":" 7.942798","y":" 9.501566"},{"id":"2","size":"3","color":"#9AD4A4","x":" 9.459843","y":"12.433485"},{"id":"3","size":"2","color":"#76BA99","x":"12.977239","y":"17.859587"},{"id":"4","size":"3","color":"#48998A","x":" 7.548958","y":"12.655097"},{"id":"5","size":"2","color":"#2D7E7E","x":" 6.593732","y":"17.603242"},{"id":"6","size":"3","color":"#236B76","x":"10.910467","y":" 1.127854"},{"id":"7","size":"4","color":"#1C686F","x":" 3.560929","y":" 4.557263"},{"id":"8","size":"3","color":"#20986D","x":" 1.814288","y":" 7.325077"},{"id":"9","size":"2","color":"#24C96B","x":" 9.455676","y":" 1.164856"}],"edges":[{"id":"0","source":"7","target":"2"},{"id":"1","source":"5","target":"2"},{"id":"2","source":"7","target":"4"},{"id":"3","source":"0","target":"0"},{"id":"4","source":"9","target":"6"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"9","target":"6"},{"id":"7","source":"3","target":"5"},{"id":"8","source":"8","target":"1"},{"id":"9","source":"1","target":"6"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"0","target":"5"},{"id":"12","source":"8","target":"1"},{"id":"13","source":"6","target":"2"},{"id":"14","source":"1","target":"0"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></a></code></pre></div>
-<div id="htmlwidget-594fc420f10b28fe91c6" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-594fc420f10b28fe91c6">{"x":{"data":{"nodes":[{"id":"0","size":"2","x":"16.315508","y":" 7.622627"},{"id":"1","size":"5","x":"10.783419","y":" 6.889567"},{"id":"2","size":"3","x":"11.999266","y":"15.614219"},{"id":"3","size":"2","x":" 7.175230","y":" 3.405896"},{"id":"4","size":"3","x":"17.558638","y":"18.959216"},{"id":"5","size":"2","x":"12.613108","y":" 1.886134"},{"id":"6","size":"3","x":"17.088546","y":" 4.018322"},{"id":"7","size":"4","x":" 7.057354","y":"19.917033"},{"id":"8","size":"3","x":"19.356536","y":"11.797823"},{"id":"9","size":"2","x":"17.924305","y":"15.710488"}],"edges":[{"id":"0","source":"7","target":"2"},{"id":"1","source":"5","target":"2"},{"id":"2","source":"7","target":"4"},{"id":"3","source":"0","target":"0"},{"id":"4","source":"9","target":"6"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"9","target":"6"},{"id":"7","source":"3","target":"5"},{"id":"8","source":"8","target":"1"},{"id":"9","source":"1","target":"6"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"0","target":"5"},{"id":"12","source":"8","target":"1"},{"id":"13","source":"6","target":"2"},{"id":"14","source":"1","target":"0"}]},"type":"canvas","settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="layout" class="section level2">
-<h2 class="hasAnchor">
-<a href="#layout" class="anchor"></a>Layout</h2>
-<p>Since <code>v0.0.3</code> you can use any of the <a href="http://igraph.org/r/doc/layout_.html">igraph layout</a> algorithms, simply use <code>sg_layout</code> and pass the actual igraph layout to the function.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/sg_layout.html">sg_layout</a></span>(<span class="ot">FALSE</span>, igraph<span class="op">::</span>layout_with_fr) <span class="co"># pass layout FUN</span></a></code></pre></div>
-<div id="htmlwidget-955ec809b4a6c0cc5959" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-955ec809b4a6c0cc5959">{"x":{"data":{"nodes":[{"id":"0","size":"2","x":" 1.57949431","y":"2.700252"},{"id":"1","size":"5","x":" 0.07839406","y":"2.408860"},{"id":"2","size":"3","x":" 1.66325853","y":"5.042162"},{"id":"3","size":"2","x":" 4.02862738","y":"3.671555"},{"id":"4","size":"3","x":" 2.48256570","y":"8.304258"},{"id":"5","size":"2","x":" 2.51023532","y":"3.996090"},{"id":"6","size":"3","x":"-0.02936261","y":"4.134833"},{"id":"7","size":"4","x":" 2.11995462","y":"6.874279"},{"id":"8","size":"3","x":"-0.50865794","y":"1.414643"},{"id":"9","size":"2","x":"-1.12066788","y":"4.503528"}],"edges":[{"id":"0","source":"7","target":"2"},{"id":"1","source":"5","target":"2"},{"id":"2","source":"7","target":"4"},{"id":"3","source":"0","target":"0"},{"id":"4","source":"9","target":"6"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"9","target":"6"},{"id":"7","source":"3","target":"5"},{"id":"8","source":"8","target":"1"},{"id":"9","source":"1","target":"6"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"0","target":"5"},{"id":"12","source":"8","target":"1"},{"id":"13","source":"6","target":"2"},{"id":"14","source":"1","target":"0"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script><p>You can also use the forceAtlas2 algorithm to layout your graphs, <code>sg_force_start</code>. The algorithm is relatively computationally expensive so it is good to stop it at some point <code>sg_force_stop</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># generate data using convenience functions</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># start</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_stop</a></span>(<span class="dv">5000</span>) <span class="co"># stop after 5 seconds</span></a></code></pre></div>
-<div id="htmlwidget-c8477145579de677c915" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c8477145579de677c915">{"x":{"data":{"nodes":[{"id":"0","size":"3","color":"#B1E2A3","x":"18.223041","y":"13.887225"},{"id":"1","size":"4","color":"#A5DBA3","x":" 7.064770","y":" 5.465311"},{"id":"2","size":"2","color":"#9AD4A4","x":" 4.988778","y":"15.822294"},{"id":"3","size":"5","color":"#76BA99","x":"19.669859","y":"13.757125"},{"id":"4","size":"2","color":"#48998A","x":"14.948727","y":"10.308795"},{"id":"5","size":"3","color":"#2D7E7E","x":" 6.629672","y":" 4.594359"},{"id":"6","size":"4","color":"#236B76","x":" 4.700663","y":" 1.330603"},{"id":"7","size":"2","color":"#1C686F","x":" 1.735415","y":"18.051347"},{"id":"8","size":"2","color":"#20986D","x":"10.610297","y":"13.202689"},{"id":"9","size":"5","color":"#24C96B","x":"12.264891","y":" 7.814336"}],"edges":[{"id":"0","source":"4","target":"1"},{"id":"1","source":"8","target":"6"},{"id":"2","source":"5","target":"2"},{"id":"3","source":"5","target":"3"},{"id":"4","source":"2","target":"1"},{"id":"5","source":"2","target":"2"},{"id":"6","source":"5","target":"6"},{"id":"7","source":"0","target":"9"},{"id":"8","source":"5","target":"4"},{"id":"9","source":"0","target":"4"},{"id":"10","source":"3","target":"5"},{"id":"11","source":"5","target":"9"},{"id":"12","source":"7","target":"6"},{"id":"13","source":"6","target":"0"},{"id":"14","source":"2","target":"2"}]},"type":"canvas","force":[],"forceStopDelay":5000},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="dynamic" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dynamic" class="anchor"></a>Dynamic</h2>
-<p>You can now also add nodes and edges to static graphs. Below we graph the nodes then add (<code>sg_add_edges</code>) at random intervals (0.5 to 2 seconds <em>between</em> each edge added). We also stop the layout algorithm after all edges have been aded (+ 100 milliseconds to be on the safe side).</p>
-<p><em>Note that by the time you reach the bottom of the page all edges will likely be plotted already, refresh and scroll back here to see it in effect</em></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># generate data using convenience functions</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">edges<span class="op">$</span>delay &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">15</span>, <span class="dv">500</span>, <span class="dv">2000</span>) <span class="co"># between .5 and 2 seconds</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">last_edge &lt;-<span class="st"> </span><span class="kw">sum</span>(edges<span class="op">$</span>delay) <span class="op">+</span><span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/add_static.html">sg_add_edges</a></span>(edges, delay, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># read delay documentation</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_stop</a></span>(last_edge)</a></code></pre></div>
-<div id="htmlwidget-6792782874416cae55c9" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6792782874416cae55c9">{"x":{"data":{"nodes":[{"id":"0","size":"3","color":"#B1E2A3","x":" 7.043767","y":" 2.756316"},{"id":"1","size":"3","color":"#A5DBA3","x":"15.057284","y":" 1.438867"},{"id":"2","size":"3","color":"#9AD4A4","x":"10.812004","y":" 6.097539"},{"id":"3","size":"5","color":"#76BA99","x":" 2.805582","y":"14.095378"},{"id":"4","size":"3","color":"#48998A","x":" 4.533695","y":" 4.000364"},{"id":"5","size":"4","color":"#2D7E7E","x":" 2.009142","y":" 4.567826"},{"id":"6","size":"3","color":"#236B76","x":"19.786583","y":"11.323072"},{"id":"7","size":"4","color":"#1C686F","x":" 3.943616","y":" 2.840714"},{"id":"8","size":"3","color":"#20986D","x":"17.261110","y":"15.080426"},{"id":"9","size":"3","color":"#24C96B","x":" 2.250131","y":" 2.242461"}]},"type":"canvas","force":[],"addEdgesDelay":{"data":[{"id":"0","source":"3","target":"8","sigmajsdelay":"  708.9315","x":"14.049934","y":" 1.180770"},{"id":"1","source":"5","target":"7","sigmajsdelay":" 2026.9845","x":" 4.175422","y":" 6.432269"},{"id":"2","source":"0","target":"7","sigmajsdelay":" 3537.9481","x":" 5.249065","y":"11.146905"},{"id":"3","source":"7","target":"1","sigmajsdelay":" 4877.2436","x":"11.986942","y":" 8.021312"},{"id":"4","source":"7","target":"3","sigmajsdelay":" 5564.3923","x":"19.920546","y":"11.159378"},{"id":"5","source":"1","target":"8","sigmajsdelay":" 7153.9511","x":" 6.855455","y":" 3.122999"},{"id":"6","source":"3","target":"9","sigmajsdelay":" 8913.2179","x":"18.208028","y":"17.423277"},{"id":"7","source":"7","target":"8","sigmajsdelay":" 9516.5002","x":" 5.883523","y":"14.777382"},{"id":"8","source":"0","target":"6","sigmajsdelay":"11382.7680","x":"19.059309","y":"10.676544"},{"id":"9","source":"0","target":"8","sigmajsdelay":"12211.0081","x":"19.831045","y":"12.186026"},{"id":"10","source":"8","target":"4","sigmajsdelay":"13047.2533","x":" 3.412798","y":"12.510955"},{"id":"11","source":"2","target":"6","sigmajsdelay":"13668.2283","x":"12.709546","y":"14.779675"},{"id":"12","source":"7","target":"3","sigmajsdelay":"14776.3246","x":"15.776097","y":"12.609754"},{"id":"13","source":"5","target":"0","sigmajsdelay":"15774.6831","x":" 1.270169","y":"19.571519"},{"id":"14","source":"2","target":"7","sigmajsdelay":"16783.2317","x":" 9.781063","y":"17.220691"}],"refresh":true},"forceStopDelay":16883.2316935528},"evals":[],"jsHooks":[]}</script><p>You can also drop nodes or edges with <code>sg_drop_edges</code> and <code>sg_drop_nodes</code>, same principles, I’ll let you explore the examples.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data using convenience functions</span>
+nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
+edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)
+
+<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</code></pre></div>
+<div id="htmlwidget-4ed2be3a10f4a3d250c1" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4ed2be3a10f4a3d250c1">{"x":{"data":{"nodes":[{"id":"0","size":"2","color":"#B1E2A3","x":" 7.869486","y":" 5.790258"},{"id":"1","size":"4","color":"#A5DBA3","x":"13.543935","y":" 5.332057"},{"id":"2","size":"4","color":"#9AD4A4","x":"19.543699","y":"13.550689"},{"id":"3","size":"2","color":"#76BA99","x":"10.448644","y":"10.199389"},{"id":"4","size":"2","color":"#48998A","x":"12.549979","y":"14.461044"},{"id":"5","size":"5","color":"#2D7E7E","x":"15.198854","y":"10.646043"},{"id":"6","size":"4","color":"#236B76","x":"17.829235","y":" 8.165349"},{"id":"7","size":"3","color":"#1C686F","x":"12.415563","y":" 4.705052"},{"id":"8","size":"3","color":"#20986D","x":"11.109099","y":"11.606661"},{"id":"9","size":"3","color":"#24C96B","x":" 5.770356","y":" 5.409292"}],"edges":[{"id":"0","source":"7","target":"5"},{"id":"1","source":"7","target":"6"},{"id":"2","source":"0","target":"0"},{"id":"3","source":"6","target":"2"},{"id":"4","source":"9","target":"1"},{"id":"5","source":"0","target":"8"},{"id":"6","source":"1","target":"4"},{"id":"7","source":"5","target":"3"},{"id":"8","source":"7","target":"3"},{"id":"9","source":"5","target":"0"},{"id":"10","source":"1","target":"0"},{"id":"11","source":"6","target":"6"},{"id":"12","source":"2","target":"6"},{"id":"13","source":"9","target":"0"},{"id":"14","source":"8","target":"8"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></code></pre></div>
+<div id="htmlwidget-55558cf1f1d977a959c4" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-55558cf1f1d977a959c4">{"x":{"data":{"nodes":[{"id":"0","size":"2","x":" 6.830136","y":" 7.363534"},{"id":"1","size":"4","x":"16.596676","y":" 7.382130"},{"id":"2","size":"4","x":"15.170884","y":"11.437146"},{"id":"3","size":"2","x":" 5.371237","y":"18.943552"},{"id":"4","size":"2","x":" 2.194717","y":"18.942131"},{"id":"5","size":"5","x":"19.155522","y":"17.161840"},{"id":"6","size":"4","x":"13.102886","y":" 9.885379"},{"id":"7","size":"3","x":"16.646222","y":"13.557362"},{"id":"8","size":"3","x":" 6.966495","y":" 7.639535"},{"id":"9","size":"3","x":"15.333709","y":"15.587763"}],"edges":[{"id":"0","source":"7","target":"5"},{"id":"1","source":"7","target":"6"},{"id":"2","source":"0","target":"0"},{"id":"3","source":"6","target":"2"},{"id":"4","source":"9","target":"1"},{"id":"5","source":"0","target":"8"},{"id":"6","source":"1","target":"4"},{"id":"7","source":"5","target":"3"},{"id":"8","source":"7","target":"3"},{"id":"9","source":"5","target":"0"},{"id":"10","source":"1","target":"0"},{"id":"11","source":"6","target":"6"},{"id":"12","source":"2","target":"6"},{"id":"13","source":"9","target":"0"},{"id":"14","source":"8","target":"8"}]},"type":"canvas","settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat layouts, animate them and more.</p>
 </div>
   </div>
 
@@ -240,8 +213,6 @@
       <li><a href="#convenience-functions">Convenience functions</a></li>
       <li><a href="#settings">Settings</a></li>
       <li><a href="#your-first-graphs">Your first graphs</a></li>
-      <li><a href="#layout">Layout</a></li>
-      <li><a href="#dynamic">Dynamic</a></li>
       </ul>
 </div>
       </div>
