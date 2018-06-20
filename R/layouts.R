@@ -4,7 +4,8 @@
 #' 
 #' @inheritParams sg_nodes
 #' @param directed Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.
-#' @param layout an \code{igraph} layout function.
+#' @param layout An \code{igraph} layout function.
+#' @param ... Any other parameter to pass to \code{layout} function.
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes(250) # 250 nodes
@@ -13,10 +14,10 @@
 #' sigmajs() %>% 
 #'   sg_nodes(nodes, id, size, color) %>% 
 #'   sg_edges(edges, id, source, target) %>% 
-#'   sg_layout(FALSE)
+#'   sg_layout()
 #' 
 #' @export
-sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely){
+sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
   
   nodes <- .data_2_df(sg$x$data$nodes)
   edges <- .data_2_df(sg$x$data$edges) 
@@ -27,7 +28,7 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely){
   
   g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
   
-  l <- layout(g)
+  l <- layout(g, ...)
   l <- as.data.frame(l) %>% 
     dplyr::select_("x" = "V1", "y" = "V2")
   

@@ -4,14 +4,16 @@
 \alias{sg_layout}
 \title{Layouts}
 \usage{
-sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely)
+sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
 \item{directed}{Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.}
 
-\item{layout}{an \code{igraph} layout function.}
+\item{layout}{An \code{igraph} layout function.}
+
+\item{...}{Any other parameter to pass to \code{layout} function.}
 }
 \description{
 Layout your graph.
@@ -23,6 +25,6 @@ edges <- sg_make_edges(nodes, n = 500)
 sigmajs() \%>\% 
   sg_nodes(nodes, id, size, color) \%>\% 
   sg_edges(edges, id, source, target) \%>\% 
-  sg_layout(FALSE)
+  sg_layout()
 
 }
