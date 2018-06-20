@@ -1,0 +1,39 @@
+---
+title: "Dynamic graphs"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Dynamic graphs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+You also add nodes and edges to static graphs. Below we graph the nodes then add (`sg_add_edges`) at random intervals (0.5 to 2 seconds *between* each edge added). We also stop the layout algorithm after all edges have been aded (+ 100 milliseconds to be on the safe side).
+
+*Note that by the time you reach the bottom of the page all edges will likely be plotted already, refresh and scroll back here to see it in effect*
+
+```{r}
+# generate data using convenience functions
+nodes <- sg_make_nodes(50)
+edges <- sg_make_edges(nodes)
+edges$delay <- runif(15, 500, 2000) # between .5 and 2 seconds
+
+last_edge <- sum(edges$delay) + 100
+
+sigmajs() %>%
+  sg_force_start() %>%
+  sg_nodes(nodes, id, size, color) %>%
+  sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
+  sg_force_stop(last_edge)
+```
+
+You can also drop nodes or edges with `sg_drop_edges` and `sg_drop_nodes`, same principles, I'll let you explore the examples.

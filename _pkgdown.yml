@@ -11,12 +11,20 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
+    - icon: fa-newspaper-o
+      href: "news/index.html"
     - text: "How-to"
       menu: 
         - text: "Get Started"
           href: articles/get_started.html
         - text: "Use other formats"
           href: articles/formats.html
+        - text: "Layout"
+          href: articles/layout.html
+        - text: "Cluster"
+          href: articles/cluster.html
+        - text: "Dynamic"
+          href: articles/dynamic.html
         - text: "Animate"
           href: articles/animate.html
         - text: "Use plugins"

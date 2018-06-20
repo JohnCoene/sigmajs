@@ -1,8 +1,9 @@
-# v0.0.3
+# sigmajs 0.0.3
 
 * `sg_layout` added - layout graph using `igraph` package.
+* `sg_cluster` added - color nodes by cluster.
 
-# v0.0.2
+# sigmajs 0.0.2
 
 [shiny demo](http://shiny.john-coene.com/sigmajs/) added.
 
@@ -14,6 +15,6 @@ Functions added:
 * `drop_nodes_delay_p`, `drop_edges_delay_p` Proxy to drop nodes or edges with a delay.
 * `drop_nodes_delay`, `drop_edges_delay` Drop nodes or edges with a delay.
 
-# v0.0.1
+# sigmajs 0.0.1
 
 Initial version including all plugins and Shiny proxies.

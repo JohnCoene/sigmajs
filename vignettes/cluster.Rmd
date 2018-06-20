@@ -1,0 +1,31 @@
+---
+title: "Cluster"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cluster}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+Since `v3.0.0` you can color the nodes by cluster. Simply use `sg_cluster` with your [igraph](http://igraph.org/r/) clustering algorithm of choice.
+
+```{r}
+nodes <- sg_make_nodes() 
+edges <- sg_make_edges(nodes, 17)
+
+sigmajs() %>% 
+  sg_nodes(nodes, id, size) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_layout() %>% 
+  sg_cluster()
+```

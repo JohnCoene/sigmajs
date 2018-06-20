@@ -1,0 +1,43 @@
+---
+title: "Layout"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Layout}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+Since `v0.0.3` you can use any of the [igraph layout](http://igraph.org/r/doc/layout_.html) algorithms, simply use `sg_layout` and pass the actual igraph layout to the function.
+
+```{r}
+# generate data using convenience functions
+nodes <- sg_make_nodes(50)
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>%
+  sg_nodes(nodes, id, size) %>%
+  sg_edges(edges, id, source, target) %>%
+  sg_layout(FALSE, igraph::layout_with_fr) # pass layout FUN
+```
+
+You can also use the forceAtlas2 algorithm to layout your graphs, `sg_force_start`. The algorithm is relatively computationally expensive so it is good to stop it at some point `sg_force_stop`.
+
+*Note that the layout algorithm might already have stopped running by the time you reach this section, refresh the page to see it in action.*
+
+```{r}
+sigmajs() %>%
+  sg_force_start() %>% # start
+  sg_nodes(nodes, id, size, color) %>%
+  sg_edges(edges, id, source, target) %>%
+  sg_force_stop(5000) # stop after 5 seconds
+```

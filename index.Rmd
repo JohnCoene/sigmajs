@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CircleCI](https://img.shields.io/circleci/project/github/JohnCoene/sigmajs.svg)](https://github.com/JohnCoene/sigmajs) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs) 
+[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs)  [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CircleCI](https://img.shields.io/circleci/project/github/JohnCoene/sigmajs.svg)](https://github.com/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs) 
 
 <img src="man/figures/logo.png" align="left" style="max-height:250px;margin:5%;"/>
 
@@ -45,9 +45,9 @@ sigmajs(width = "75%", height = 250) %>%
   <i class="fa fa-rocket"></i>
   Get Started
 </a>
-<a class="btn btn-primary" href="articles/shiny.html" target="_blank">
-  <i class="fa fa-graduation-cap"></i>
-  Shiny guide
+<a class="btn btn-default" href="articles/dynamic.html" target="_blank">
+  <i class="fa fa-spinner fa-pulse fa-fw"></i>
+  Dynamic
 </a>
 <a class="btn btn-success" href="http://shiny.john-coene.com/sigmajs/" target="_blank">
   <i class="fa fa-desktop"></i>
@@ -80,8 +80,8 @@ edges <- sg_make_edges(nodes, 50) # 50 edges
 
 # visualise
 sigmajs() %>%
-	sg_nodes(nodes, id, label, size, color) %>%
-	sg_edges(edges, id, source, target) %>% 
+  sg_nodes(nodes, id, label, size, color) %>%
+  sg_edges(edges, id, source, target) %>%
   sg_layout(FALSE)
 ```
 

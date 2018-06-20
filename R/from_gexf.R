@@ -20,7 +20,8 @@ sg_from_gexf <- function(sg, file) {
 	if (!inherits(sg, "sigmajs"))
 		stop("sg must be of class sigmajs", call. = FALSE)
 
-	data <- paste(readLines(file), collapse = "\n")
+  read <- suppressWarnings(readLines(file))
+	data <- paste(read, collapse = "\n")
 
 	sg$x$data <- data
 	sg$x$gexf <- TRUE # indicate coming from GEXF file
