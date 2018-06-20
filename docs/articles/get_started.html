@@ -56,7 +56,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    How-to
+    Guide
      
     <span class="caret"></span>
   </a>
@@ -65,10 +65,10 @@
       <a href="../articles/get_started.html">Get Started</a>
     </li>
     <li>
-      <a href="../articles/formats.html">Use other formats</a>
+      <a href="../articles/formats.html">Other formats</a>
     </li>
     <li>
-      <a href="../articles/layout.html">Layout</a>
+      <a href="../articles/layout.html">Layouts</a>
     </li>
     <li>
       <a href="../articles/cluster.html">Cluster</a>
@@ -80,10 +80,10 @@
       <a href="../articles/animate.html">Animate</a>
     </li>
     <li>
-      <a href="../articles/plugins.html">Use plugins</a>
+      <a href="../articles/plugins.html">Plugins</a>
     </li>
     <li>
-      <a href="../articles/shiny.html">Use in shiny</a>
+      <a href="../articles/shiny.html">Shiny</a>
     </li>
   </ul>
 </li>
@@ -192,14 +192,14 @@ edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gener
 <span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</code></pre></div>
-<div id="htmlwidget-4ed2be3a10f4a3d250c1" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ed2be3a10f4a3d250c1">{"x":{"data":{"nodes":[{"id":"0","size":"2","color":"#B1E2A3","x":" 7.869486","y":" 5.790258"},{"id":"1","size":"4","color":"#A5DBA3","x":"13.543935","y":" 5.332057"},{"id":"2","size":"4","color":"#9AD4A4","x":"19.543699","y":"13.550689"},{"id":"3","size":"2","color":"#76BA99","x":"10.448644","y":"10.199389"},{"id":"4","size":"2","color":"#48998A","x":"12.549979","y":"14.461044"},{"id":"5","size":"5","color":"#2D7E7E","x":"15.198854","y":"10.646043"},{"id":"6","size":"4","color":"#236B76","x":"17.829235","y":" 8.165349"},{"id":"7","size":"3","color":"#1C686F","x":"12.415563","y":" 4.705052"},{"id":"8","size":"3","color":"#20986D","x":"11.109099","y":"11.606661"},{"id":"9","size":"3","color":"#24C96B","x":" 5.770356","y":" 5.409292"}],"edges":[{"id":"0","source":"7","target":"5"},{"id":"1","source":"7","target":"6"},{"id":"2","source":"0","target":"0"},{"id":"3","source":"6","target":"2"},{"id":"4","source":"9","target":"1"},{"id":"5","source":"0","target":"8"},{"id":"6","source":"1","target":"4"},{"id":"7","source":"5","target":"3"},{"id":"8","source":"7","target":"3"},{"id":"9","source":"5","target":"0"},{"id":"10","source":"1","target":"0"},{"id":"11","source":"6","target":"6"},{"id":"12","source":"2","target":"6"},{"id":"13","source":"9","target":"0"},{"id":"14","source":"8","target":"8"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
+<div id="htmlwidget-cf443b85e216b5486285" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf443b85e216b5486285">{"x":{"data":{"nodes":[{"id":"0","size":"3","color":"#B1E2A3","x":"17.309332","y":"16.951214"},{"id":"1","size":"4","color":"#A5DBA3","x":"10.601082","y":"11.067821"},{"id":"2","size":"2","color":"#9AD4A4","x":" 3.727939","y":" 5.373043"},{"id":"3","size":"3","color":"#76BA99","x":"13.239206","y":"17.417044"},{"id":"4","size":"2","color":"#48998A","x":"15.543706","y":"15.165103"},{"id":"5","size":"4","color":"#2D7E7E","x":"10.266524","y":"16.358812"},{"id":"6","size":"4","color":"#236B76","x":"12.459420","y":" 8.426179"},{"id":"7","size":"5","color":"#1C686F","x":" 9.287077","y":" 3.524099"},{"id":"8","size":"5","color":"#20986D","x":"16.089979","y":" 4.743078"},{"id":"9","size":"4","color":"#24C96B","x":"17.533960","y":"15.808942"}],"edges":[{"id":"0","source":"3","target":"7"},{"id":"1","source":"0","target":"9"},{"id":"2","source":"0","target":"7"},{"id":"3","source":"0","target":"8"},{"id":"4","source":"3","target":"9"},{"id":"5","source":"8","target":"9"},{"id":"6","source":"5","target":"2"},{"id":"7","source":"0","target":"4"},{"id":"8","source":"2","target":"9"},{"id":"9","source":"5","target":"7"},{"id":"10","source":"1","target":"2"},{"id":"11","source":"6","target":"4"},{"id":"12","source":"0","target":"3"},{"id":"13","source":"6","target":"2"},{"id":"14","source":"5","target":"2"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></code></pre></div>
-<div id="htmlwidget-55558cf1f1d977a959c4" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-55558cf1f1d977a959c4">{"x":{"data":{"nodes":[{"id":"0","size":"2","x":" 6.830136","y":" 7.363534"},{"id":"1","size":"4","x":"16.596676","y":" 7.382130"},{"id":"2","size":"4","x":"15.170884","y":"11.437146"},{"id":"3","size":"2","x":" 5.371237","y":"18.943552"},{"id":"4","size":"2","x":" 2.194717","y":"18.942131"},{"id":"5","size":"5","x":"19.155522","y":"17.161840"},{"id":"6","size":"4","x":"13.102886","y":" 9.885379"},{"id":"7","size":"3","x":"16.646222","y":"13.557362"},{"id":"8","size":"3","x":" 6.966495","y":" 7.639535"},{"id":"9","size":"3","x":"15.333709","y":"15.587763"}],"edges":[{"id":"0","source":"7","target":"5"},{"id":"1","source":"7","target":"6"},{"id":"2","source":"0","target":"0"},{"id":"3","source":"6","target":"2"},{"id":"4","source":"9","target":"1"},{"id":"5","source":"0","target":"8"},{"id":"6","source":"1","target":"4"},{"id":"7","source":"5","target":"3"},{"id":"8","source":"7","target":"3"},{"id":"9","source":"5","target":"0"},{"id":"10","source":"1","target":"0"},{"id":"11","source":"6","target":"6"},{"id":"12","source":"2","target":"6"},{"id":"13","source":"9","target":"0"},{"id":"14","source":"8","target":"8"}]},"type":"canvas","settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat layouts, animate them and more.</p>
+<div id="htmlwidget-990254f7630290bf2661" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-990254f7630290bf2661">{"x":{"data":{"nodes":[{"id":"0","size":"3","x":"16.393042","y":"12.375484"},{"id":"1","size":"4","x":" 6.104020","y":" 1.181124"},{"id":"2","size":"2","x":" 5.403419","y":" 7.276117"},{"id":"3","size":"3","x":"10.933179","y":"19.398910"},{"id":"4","size":"2","x":"17.814929","y":" 8.361962"},{"id":"5","size":"4","x":" 2.693478","y":" 1.159925"},{"id":"6","size":"4","x":"14.472954","y":"11.748280"},{"id":"7","size":"5","x":" 6.346087","y":"15.244445"},{"id":"8","size":"5","x":" 8.285410","y":" 3.835655"},{"id":"9","size":"4","x":"10.941523","y":" 8.203066"}],"edges":[{"id":"0","source":"3","target":"7"},{"id":"1","source":"0","target":"9"},{"id":"2","source":"0","target":"7"},{"id":"3","source":"0","target":"8"},{"id":"4","source":"3","target":"9"},{"id":"5","source":"8","target":"9"},{"id":"6","source":"5","target":"2"},{"id":"7","source":"0","target":"4"},{"id":"8","source":"2","target":"9"},{"id":"9","source":"5","target":"7"},{"id":"10","source":"1","target":"2"},{"id":"11","source":"6","target":"4"},{"id":"12","source":"0","target":"3"},{"id":"13","source":"6","target":"2"},{"id":"14","source":"5","target":"2"}]},"type":"canvas","settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat layouts, animate them and more.</p>
 </div>
   </div>
 

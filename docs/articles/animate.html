@@ -56,7 +56,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    How-to
+    Guide
      
     <span class="caret"></span>
   </a>
@@ -65,10 +65,10 @@
       <a href="../articles/get_started.html">Get Started</a>
     </li>
     <li>
-      <a href="../articles/formats.html">Use other formats</a>
+      <a href="../articles/formats.html">Other formats</a>
     </li>
     <li>
-      <a href="../articles/layout.html">Layout</a>
+      <a href="../articles/layout.html">Layouts</a>
     </li>
     <li>
       <a href="../articles/cluster.html">Cluster</a>
@@ -80,10 +80,10 @@
       <a href="../articles/animate.html">Animate</a>
     </li>
     <li>
-      <a href="../articles/plugins.html">Use plugins</a>
+      <a href="../articles/plugins.html">Plugins</a>
     </li>
     <li>
-      <a href="../articles/shiny.html">Use in shiny</a>
+      <a href="../articles/shiny.html">Shiny</a>
     </li>
   </ul>
 </li>
@@ -128,7 +128,8 @@
 
     
     
-<p><code>sigmajs</code> lets you easily animate your graphs.</p>
+<p><code>sigmajs</code> also lets you easily animate your graphs.</p>
+<p>Pass the <em>initial</em> variables to nodes and edges as well as those you want to <em>animate to</em>, you then reference those variables you want to animate to in the mapping of <code>sg_animate</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data</span>
 nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
 edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">30</span>)
@@ -138,15 +139,15 @@ n &lt;-<span class="st"> </span><span class="kw">nrow</span>(nodes)
 nodes<span class="op">$</span>to_x &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dv">5</span>, <span class="dv">10</span>)
 nodes<span class="op">$</span>to_y &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dv">5</span>, <span class="dv">10</span>)
 nodes<span class="op">$</span>to_size &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dv">5</span>, <span class="dv">10</span>)
-nodes<span class="op">$</span>to_color &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>( <span class="st">"#f7fff7"</span>, <span class="st">"#ffe66d"</span>, <span class="st">"#e85d75"</span>), n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+nodes<span class="op">$</span>to_color &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">"#ffe66d"</span>, <span class="st">"#e85d75"</span>), n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 
 <span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, label, size, color, to_x, to_y, to_size, to_color) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/animation.html">sg_animate</a></span>(<span class="dt">mapping =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="st">"to_x"</span>, <span class="dt">y =</span> <span class="st">"to_y"</span>, <span class="dt">size =</span> <span class="st">"to_size"</span>, <span class="dt">color =</span> <span class="st">"to_color"</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">animationsTime =</span> <span class="dv">2000</span>)</code></pre></div>
-<div id="htmlwidget-78149e4e0f9e29501453" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-78149e4e0f9e29501453">{"x":{"data":{"nodes":[{"id":"0","label":"S45","size":"5","color":"#B1E2A3","to_x":"7.458056","to_y":"9.477700","to_size":"6.715024","to_color":"#ffe66d","x":"13.463699","y":"13.710208"},{"id":"1","label":"X24","size":"5","color":"#A5DBA3","to_x":"9.305610","to_y":"9.849781","to_size":"8.154341","to_color":"#ffe66d","x":" 7.926645","y":" 6.335027"},{"id":"2","label":"Q95","size":"4","color":"#9AD4A4","to_x":"5.387297","to_y":"6.284125","to_size":"5.801406","to_color":"#ffe66d","x":"14.162928","y":"15.591139"},{"id":"3","label":"S97","size":"3","color":"#76BA99","to_x":"9.411193","to_y":"8.219102","to_size":"5.889171","to_color":"#ffe66d","x":"14.882204","y":" 4.364220"},{"id":"4","label":"T20","size":"4","color":"#48998A","to_x":"9.534226","to_y":"7.465569","to_size":"5.882445","to_color":"#f7fff7","x":" 9.552533","y":"14.184977"},{"id":"5","label":"U99","size":"4","color":"#2D7E7E","to_x":"8.907024","to_y":"6.573632","to_size":"7.784669","to_color":"#f7fff7","x":"19.143204","y":"13.995195"},{"id":"6","label":"B2","size":"4","color":"#236B76","to_x":"6.830440","to_y":"6.245767","to_size":"7.910111","to_color":"#f7fff7","x":" 3.416347","y":"14.938922"},{"id":"7","label":"A27","size":"3","color":"#1C686F","to_x":"8.516873","to_y":"8.228269","to_size":"9.527307","to_color":"#f7fff7","x":"17.039019","y":"13.519866"},{"id":"8","label":"K37","size":"5","color":"#20986D","to_x":"7.568262","to_y":"7.278415","to_size":"7.382767","to_color":"#f7fff7","x":" 7.848283","y":" 5.150175"},{"id":"9","label":"L90","size":"5","color":"#24C96B","to_x":"8.814326","to_y":"6.673667","to_size":"8.253274","to_color":"#ffe66d","x":" 1.465995","y":"17.576769"}],"edges":[{"id":"0","source":"3","target":"2"},{"id":"1","source":"6","target":"9"},{"id":"2","source":"0","target":"9"},{"id":"3","source":"6","target":"7"},{"id":"4","source":"0","target":"0"},{"id":"5","source":"6","target":"5"},{"id":"6","source":"7","target":"1"},{"id":"7","source":"1","target":"1"},{"id":"8","source":"9","target":"3"},{"id":"9","source":"1","target":"7"},{"id":"10","source":"2","target":"4"},{"id":"11","source":"4","target":"6"},{"id":"12","source":"9","target":"1"},{"id":"13","source":"8","target":"4"},{"id":"14","source":"8","target":"5"},{"id":"15","source":"7","target":"1"},{"id":"16","source":"9","target":"2"},{"id":"17","source":"6","target":"7"},{"id":"18","source":"5","target":"7"},{"id":"19","source":"9","target":"0"},{"id":"20","source":"5","target":"8"},{"id":"21","source":"3","target":"3"},{"id":"22","source":"7","target":"3"},{"id":"23","source":"6","target":"4"},{"id":"24","source":"7","target":"3"},{"id":"25","source":"5","target":"2"},{"id":"26","source":"6","target":"4"},{"id":"27","source":"0","target":"4"},{"id":"28","source":"8","target":"9"},{"id":"29","source":"1","target":"9"}]},"type":"canvas","animateLoop":false,"animateOptions":{"easing":"cubicInOut"},"animateMapping":{"x":"to_x","y":"to_y","size":"to_size","color":"to_color"},"animateDelay":5000,"settings":{"animationsTime":2000}},"evals":[],"jsHooks":[]}</script><p>You can animate <code>x</code>, <code>y</code>, <code>size</code> and <code>color</code>, the function lets you specify the <code>delay</code>; time before the animation trigers. You can also specify the animation duration in <code>sg_settings</code> with <code>animationsTime</code>.</p>
+<div id="htmlwidget-5fb93f83d0650407cd6d" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5fb93f83d0650407cd6d">{"x":{"data":{"nodes":[{"id":"0","label":"W75","size":"3","color":"#B1E2A3","to_x":"7.258704","to_y":"6.467302","to_size":"5.637296","to_color":"#ffe66d","x":"16.130509","y":"19.262199"},{"id":"1","label":"N92","size":"3","color":"#A5DBA3","to_x":"5.458071","to_y":"6.615953","to_size":"8.099993","to_color":"#e85d75","x":"11.671538","y":" 3.449415"},{"id":"2","label":"Q17","size":"4","color":"#9AD4A4","to_x":"5.071215","to_y":"6.249813","to_size":"6.857472","to_color":"#ffe66d","x":"16.063032","y":"15.800969"},{"id":"3","label":"I87","size":"4","color":"#76BA99","to_x":"5.576080","to_y":"5.705403","to_size":"8.849244","to_color":"#ffe66d","x":" 7.104208","y":"12.255203"},{"id":"4","label":"Y25","size":"4","color":"#48998A","to_x":"5.232458","to_y":"9.820141","to_size":"5.130246","to_color":"#e85d75","x":" 1.939084","y":" 3.429171"},{"id":"5","label":"F32","size":"4","color":"#2D7E7E","to_x":"5.997408","to_y":"8.987109","to_size":"5.383272","to_color":"#e85d75","x":" 8.598438","y":" 8.064782"},{"id":"6","label":"M65","size":"3","color":"#236B76","to_x":"7.475171","to_y":"5.169643","to_size":"9.877310","to_color":"#ffe66d","x":" 1.913357","y":" 8.019819"},{"id":"7","label":"H34","size":"3","color":"#1C686F","to_x":"6.454224","to_y":"5.542798","to_size":"8.959644","to_color":"#e85d75","x":" 7.388727","y":" 1.463950"},{"id":"8","label":"V74","size":"5","color":"#20986D","to_x":"8.277440","to_y":"6.814957","to_size":"6.576685","to_color":"#e85d75","x":" 6.629865","y":"16.099930"},{"id":"9","label":"N92","size":"4","color":"#24C96B","to_x":"7.834368","to_y":"9.143690","to_size":"5.489589","to_color":"#e85d75","x":" 8.315158","y":" 1.954865"}],"edges":[{"id":"0","source":"1","target":"6"},{"id":"1","source":"2","target":"4"},{"id":"2","source":"3","target":"6"},{"id":"3","source":"2","target":"7"},{"id":"4","source":"8","target":"1"},{"id":"5","source":"8","target":"5"},{"id":"6","source":"1","target":"7"},{"id":"7","source":"0","target":"9"},{"id":"8","source":"3","target":"5"},{"id":"9","source":"5","target":"5"},{"id":"10","source":"7","target":"3"},{"id":"11","source":"5","target":"5"},{"id":"12","source":"3","target":"4"},{"id":"13","source":"0","target":"9"},{"id":"14","source":"2","target":"1"},{"id":"15","source":"8","target":"9"},{"id":"16","source":"9","target":"4"},{"id":"17","source":"7","target":"4"},{"id":"18","source":"3","target":"2"},{"id":"19","source":"7","target":"0"},{"id":"20","source":"1","target":"2"},{"id":"21","source":"2","target":"2"},{"id":"22","source":"9","target":"6"},{"id":"23","source":"1","target":"1"},{"id":"24","source":"3","target":"4"},{"id":"25","source":"5","target":"6"},{"id":"26","source":"0","target":"7"},{"id":"27","source":"2","target":"9"},{"id":"28","source":"0","target":"3"},{"id":"29","source":"3","target":"9"}]},"type":"canvas","animateLoop":false,"animateOptions":{"easing":"cubicInOut"},"animateMapping":{"x":"to_x","y":"to_y","size":"to_size","color":"to_color"},"animateDelay":5000,"settings":{"animationsTime":2000}},"evals":[],"jsHooks":[]}</script><p>You can animate <code>x</code>, <code>y</code>, <code>size</code> and <code>color</code>, the function lets you specify the <code>delay</code>; time before the animation trigers. You can also specify the animation duration in <code>sg_settings</code> with <code>animationsTime</code>.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
