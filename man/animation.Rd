@@ -18,6 +18,9 @@ sg_animate(sg, mapping, options = list(easing = "cubicInOut"), delay = 5000)
 \description{
 Animate graph components.
 }
+\details{
+You can animate, \code{x}, \code{y}, \code{size} and \code{color}.
+}
 \examples{
 # generate graph
 nodes <- sg_make_nodes(20)

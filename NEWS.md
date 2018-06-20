@@ -1,6 +1,7 @@
 # sigmajs 0.0.3
 
 * `sg_layout` added - layout graph using `igraph` package.
+* `sg_get_layyout` added - helper to extract `x` and `y` coordinates, mainly for animations.
 * `sg_cluster` added - color nodes by cluster.
 
 # sigmajs 0.0.2

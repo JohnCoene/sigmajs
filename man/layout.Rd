@@ -2,9 +2,13 @@
 % Please edit documentation in R/layouts.R
 \name{sg_layout}
 \alias{sg_layout}
+\alias{sg_get_layout}
 \title{Layouts}
 \usage{
 sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely, ...)
+
+sg_get_layout(nodes, edges, directed = TRUE, layout = igraph::layout_nicely,
+  ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -18,6 +22,14 @@ sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely, ...)
 \description{
 Layout your graph.
 }
+\section{Functions}{
+
+\itemize{
+  \item{\code{sg_layout} layout your graph.}
+  \item{\code{sg_get_layout} helper to get graph's \code{x} and \code{y} positions.}
+}
+}
+
 \examples{
 nodes <- sg_make_nodes(250) # 250 nodes
 edges <- sg_make_edges(nodes, n = 500)
@@ -26,5 +38,7 @@ sigmajs() \%>\%
   sg_nodes(nodes, id, size, color) \%>\% 
   sg_edges(edges, id, source, target) \%>\% 
   sg_layout()
+
+coords <- sg_get_layout(nodes, edges)
 
 }

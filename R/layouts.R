@@ -7,6 +7,12 @@
 #' @param layout An \code{igraph} layout function.
 #' @param ... Any other parameter to pass to \code{layout} function.
 #' 
+#' @section Functions:
+#' \itemize{
+#'   \item{\code{sg_layout} layout your graph.}
+#'   \item{\code{sg_get_layout} helper to get graph's \code{x} and \code{y} positions.}
+#' }
+#' 
 #' @examples 
 #' nodes <- sg_make_nodes(250) # 250 nodes
 #' edges <- sg_make_edges(nodes, n = 500)
@@ -16,6 +22,9 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_layout()
 #' 
+#' coords <- sg_get_layout(nodes, edges)
+#' 
+#' @rdname layout
 #' @export
 sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
   
@@ -26,15 +35,27 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
   nodes <- .rm_x_y(nodes)
   edges <- .re_order(edges)
   
-  g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
-  
-  l <- layout(g, ...)
-  l <- as.data.frame(l) %>% 
-    dplyr::select_("x" = "V1", "y" = "V2")
+  l <- sg_get_layout(nodes, edges, directed, layout, ...)
   
   nodes <- cbind.data.frame(nodes, l)
   nodes <- apply(nodes, 1, as.list)
   
   sg$x$data$nodes <- nodes
   sg
+}
+
+#' @rdname layout
+#' @export
+sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout_nicely, ...){
+  
+  # clean
+  edges <- .re_order(edges)
+  
+  g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
+  
+  l <- layout(g, ...)
+  l <- as.data.frame(l) %>% 
+    dplyr::select_("x" = "V1", "y" = "V2")
+  
+  return(l)
 }
