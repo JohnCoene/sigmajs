@@ -49,7 +49,10 @@ globalVariables(c("from", "to"))
 }
 
 .data_2_df <- function(x){
-  do.call("rbind.data.frame", lapply(x, as.data.frame))
+  if(is.null(x))
+    stop("must have both edges and nodes to compute layout")
+  
+  do.call("rbind.data.frame", lapply(x, as.data.frame, stringsAsFactors = FALSE))
 }
 
 .re_order <- function(x){
