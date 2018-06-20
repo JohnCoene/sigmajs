@@ -47,3 +47,22 @@ globalVariables(c("from", "to"))
 	#sg$x$data$nodes <- jsonlite::toJSON(sg$x$data$nodes, auto_unbox = TRUE)
 	sg
 }
+
+.data_2_df <- function(x){
+  do.call("rbind.data.frame", lapply(x, as.data.frame))
+}
+
+.re_order <- function(x){
+  n <- names(x)
+  
+  first <- n[n %in% c("source", "target")]
+  last <- n[!n %in% c("source", "target")]
+  
+  x[, c(first, last)]
+}
+
+.rm_x_y <- function(x){
+  x$x <- NULL
+  x$y <- NULL
+  return(x)
+}

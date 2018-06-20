@@ -13,6 +13,8 @@ With the rise in popularity of networks, it is important for R users to have acc
 
 All graphs must be initialised with the `sigmajs()` function, all the functions of the :package: start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`). All [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) can be captured in Shiny.
 
+*Note that the graphs may not work in RStudio viewer, open them in your browser of choice*
+
 # Install
 
 ```r

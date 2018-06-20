@@ -1,3 +1,7 @@
+# v0.0.3
+
+* `sg_layout` added - layout graph using `igraph` package.
+
 # v0.0.2
 
 [shiny demo](http://shiny.john-coene.com/sigmajs/) added.
