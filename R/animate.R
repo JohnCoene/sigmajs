@@ -6,6 +6,8 @@
 #' @param mapping Variables to map animation to.
 #' @param options Animations options.
 #' @param delay Delay in milliseconds before animation is triggered.
+#' 
+#' @details You can animate, \code{x}, \code{y}, \code{size} and \code{color}.
 #'
 #' @examples
 #' # generate graph

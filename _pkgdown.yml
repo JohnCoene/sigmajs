@@ -13,13 +13,13 @@ navbar:
       href: index.html
     - icon: fa-newspaper-o
       href: "news/index.html"
-    - text: "How-to"
+    - text: "Guide"
       menu: 
         - text: "Get Started"
           href: articles/get_started.html
-        - text: "Use other formats"
+        - text: "Other formats"
           href: articles/formats.html
-        - text: "Layout"
+        - text: "Layouts"
           href: articles/layout.html
         - text: "Cluster"
           href: articles/cluster.html
@@ -27,9 +27,9 @@ navbar:
           href: articles/dynamic.html
         - text: "Animate"
           href: articles/animate.html
-        - text: "Use plugins"
+        - text: "Plugins"
           href: articles/plugins.html
-        - text: "Use in shiny"
+        - text: "Shiny"
           href: articles/shiny.html
     - text: "Reference"
       href: "reference/"
