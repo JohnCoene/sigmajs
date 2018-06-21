@@ -11,6 +11,16 @@ HTMLWidgets.widget({
     return {
 
 			renderValue: function (x) {
+			  
+			  var widget = document.getElementById(el.id);
+			  var button = widget.getElementsByTagName("button")[0];
+			  if(!x.hasOwnProperty('button')){
+			    x.button = "none";
+			    widget.removeChild(button);
+			  } else {
+			    button.className = x.button.className;
+			    button.innerHTML = x.button.label;
+			  }
 
 				// if gexf file
 				if (x.hasOwnProperty('gexf')) {
@@ -46,7 +56,13 @@ HTMLWidgets.widget({
 
 				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
-					s.startForceAtlas2(x.force);
+				  if(x.button.event === 'force' || x.button.event === 'force_start'){
+				    button.addEventListener("click", function(event) {
+				      s.startForceAtlas2(x.force);
+				    });
+				  } else {
+				    s.startForceAtlas2(x.force);
+				  }
 				}
 
 				// start noverlap
@@ -55,6 +71,12 @@ HTMLWidgets.widget({
 					if (x.noverlapStart === true) {
 						s.startNoverlap();
 					}
+					
+				  if(x.button.event === 'noverlap'){
+				    button.addEventListener("click", function(event) {
+				      s.startNoverlap();
+				    });
+				  } 
 				}
 
 				// custom shapes
@@ -63,72 +85,156 @@ HTMLWidgets.widget({
 				}
 
 				if (x.animateLoop === false) {
-					setTimeout(function () {
-						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
-					}, x.animateDelay);
+					
+				  if(x.button.event === 'animate'){
+				    button.addEventListener("click", function(event) {
+    					setTimeout(function () {
+    						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
+    					}, x.animateDelay);
+				    });
+				  } else {
+  					setTimeout(function () {
+  						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
+  					}, x.animateDelay);
+				  }
 				}
 
 				if(x.hasOwnProperty('dragNodes')){
-					var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+				  if(x.button.event === 'drag_nodes'){
+				    button.addEventListener("click", function(event) {
+				      var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+				    });
+				  } else {
+				    var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+				  }
 				}
 
 				if (x.hasOwnProperty('relativeSize')) {
-					sigma.plugins.relativeSize(s, x.relativeSize);
+				  if(x.button.event === 'relative_size'){
+				    button.addEventListener("click", function(event) {
+				      sigma.plugins.relativeSize(s, x.relativeSize);
+				    });
+				  } else {
+				    sigma.plugins.relativeSize(s, x.relativeSize);
+				  }
 				}
 				
 				if(x.hasOwnProperty('addNodesDelay')){
-  				x.addNodesDelay.forEach((element) => {
-  					setTimeout(function () {
-  						s.graph.addNode(element);
-  						s.refresh();
-  					}, element.sigmajsdelay);
-  				});
+  				
+				  if(x.button.event === 'add_nodes'){
+				    button.addEventListener("click", function(event) {
+      				x.addNodesDelay.forEach((element) => {
+        					setTimeout(function () {
+        						s.graph.addNode(element);
+        						s.refresh();
+        					}, element.sigmajsdelay);
+        			});
+				    });
+				  } else {
+    				x.addNodesDelay.forEach((element) => {
+    					setTimeout(function () {
+    						s.graph.addNode(element);
+    						s.refresh();
+    					}, element.sigmajsdelay);
+    				});
+				  }
 				}
 				
 				if(x.hasOwnProperty('addEdgesDelay')){
 				  var running = s.isForceAtlas2Running();
-  				x.addEdgesDelay.data.forEach((element) => {
-  					setTimeout(function () {
-						if (x.addEdgesDelay.refresh === true && running === true) {
-							s.killForceAtlas2();
-						}
-						s.graph.addEdge(element);
-						if (x.addEdgesDelay.refresh === true && running === true) {
-							s.startForceAtlas2();
-						}
-						if (x.addEdgesDelay.refresh === true) {
-							s.refresh();
-						}
-  					}, element.sigmajsdelay);
-  				});
+  				
+				  if(x.button.event === 'add_edges'){
+				    button.addEventListener("click", function(event) {
+        			x.addEdgesDelay.data.forEach((element) => {
+      					setTimeout(function () {
+    						if (x.addEdgesDelay.refresh === true && running === true) {
+    							s.killForceAtlas2();
+    						}
+    						s.graph.addEdge(element);
+    						if (x.addEdgesDelay.refresh === true && running === true) {
+    							s.startForceAtlas2();
+    						}
+    						if (x.addEdgesDelay.refresh === true) {
+    							s.refresh();
+    						}
+      					}, element.sigmajsdelay);
+      				});
+				    });
+				  } else {
+    				x.addEdgesDelay.data.forEach((element) => {
+    					setTimeout(function () {
+  						if (x.addEdgesDelay.refresh === true && running === true) {
+  							s.killForceAtlas2();
+  						}
+  						s.graph.addEdge(element);
+  						if (x.addEdgesDelay.refresh === true && running === true) {
+  							s.startForceAtlas2();
+  						}
+  						if (x.addEdgesDelay.refresh === true) {
+  							s.refresh();
+  						}
+    					}, element.sigmajsdelay);
+    				});
+				  }
 				}
 				
 				if(x.hasOwnProperty("dropNodesDelay")){
-				  console.log(x.dropNodesDelay);
-  				x.dropNodesDelay.forEach((element) => {
-  					setTimeout(function () {
-  						s.graph.dropNode(element.id);
-  						s.refresh();
-  					}, element.sigmajsdelay);
-  				});
+  				
+				  if(x.button.event === 'drop_nodes'){
+				    button.addEventListener("click", function(event) {
+      				x.dropNodesDelay.forEach((element) => {
+      					setTimeout(function () {
+      						s.graph.dropNode(element.id);
+      						s.refresh();
+      					}, element.sigmajsdelay);
+      				});
+				    });
+				  } else {
+    				x.dropNodesDelay.forEach((element) => {
+    					setTimeout(function () {
+    						s.graph.dropNode(element.id);
+    						s.refresh();
+    					}, element.sigmajsdelay);
+    				});
+				  }
 				}
 				
 				if(x.hasOwnProperty("dropEdgesDelay")){
   				var running = s.isForceAtlas2Running();
-  				x.dropEdgesDelay.data.forEach((element, index) => {
-  					setTimeout(function () {
-  						if (message.refresh === true && running === true) {
-  							s.killForceAtlas2();
-  						}
-  						s.graph.dropEdge(element);
-  						if (message.refresh === true && running === true) {
-  							s.startForceAtlas2();
-  						}
-  						if (message.refresh === true) {
-  							s.refresh();
-  						}
-  					}, element.sigmajsdelay);
-  				});
+  				
+				  if(x.button.event === 'drop_edges'){
+				    button.addEventListener("click", function(event) {
+      				x.dropEdgesDelay.data.forEach((element, index) => {
+      					setTimeout(function () {
+      						if (message.refresh === true && running === true) {
+      							s.killForceAtlas2();
+      						}
+      						s.graph.dropEdge(element);
+      						if (message.refresh === true && running === true) {
+      							s.startForceAtlas2();
+      						}
+      						if (message.refresh === true) {
+      							s.refresh();
+      						}
+      					}, element.sigmajsdelay);
+      				});
+				    });
+				  } else {
+    				x.dropEdgesDelay.data.forEach((element, index) => {
+    					setTimeout(function () {
+    						if (message.refresh === true && running === true) {
+    							s.killForceAtlas2();
+    						}
+    						s.graph.dropEdge(element);
+    						if (message.refresh === true && running === true) {
+    							s.startForceAtlas2();
+    						}
+    						if (message.refresh === true) {
+    							s.refresh();
+    						}
+    					}, element.sigmajsdelay);
+    				});
+				  }
 				}
 
 
@@ -254,9 +360,17 @@ HTMLWidgets.widget({
 
 			// stop force
 			if(x.hasOwnProperty('forceStopDelay')){
-				setTimeout(function () {
-					s.stopForceAtlas2();
-				}, x.forceStopDelay);
+			  if(x.button.event === 'force_stop'){
+			    button.addEventListener("click", function(event) {
+    				setTimeout(function () {
+    					s.stopForceAtlas2();
+    				}, x.forceStopDelay);
+			    });
+			  } else {
+    			setTimeout(function () {
+    				s.stopForceAtlas2();
+    			}, x.forceStopDelay);
+			  }
 			}
 		},
 

@@ -69,3 +69,10 @@ globalVariables(c("from", "to"))
   x$y <- NULL
   return(x)
 }
+
+.valid_events <- function(){
+  c("force_start", "force_stop", "noverlap", 
+    "drag_nodes", "relative_size", "add_nodes", 
+    "add_edges", "drop_nodes", "drop_edges", 
+    "animate")
+}

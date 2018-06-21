@@ -69,3 +69,12 @@ sigmajsProxy <- function(id, session = shiny::getDefaultReactiveDomain()) {
 
 	return(proxy)
 }
+
+sigmajs_html <- function(id, style, class, ...){
+  htmltools::tags$div(
+    id = id, class = class, style = style,
+    htmltools::tags$button(
+      type = "button"
+    )
+  )
+}

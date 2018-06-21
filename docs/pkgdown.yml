@@ -3,6 +3,7 @@ pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
   animate: animate.html
+  buttons: buttons.html
   cluster: cluster.html
   dynamic: dynamic.html
   formats: formats.html

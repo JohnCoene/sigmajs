@@ -19,6 +19,8 @@ navbar:
           href: articles/get_started.html
         - text: "Other formats"
           href: articles/formats.html
+        - text: "Buttons"
+          href: articles/buttons.html
         - text: "Layouts"
           href: articles/layout.html
         - text: "Cluster"

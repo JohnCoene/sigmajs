@@ -25,7 +25,7 @@ nodes <- sg_make_nodes(50)
 edges <- sg_make_edges(nodes)
 
 sigmajs() %>%
-  sg_nodes(nodes, id, size) %>%
+  sg_nodes(nodes, id, size, color) %>%
   sg_edges(edges, id, source, target) %>%
   sg_layout(FALSE, igraph::layout_with_fr) # pass layout FUN
 ```

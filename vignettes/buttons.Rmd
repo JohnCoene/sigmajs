@@ -1,0 +1,44 @@
+---
+title: "Buttons"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Buttons}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+`sigmajs` lets you add buttons to trigger events, *in static documents,* such as this one.
+
+```{r}
+nodes <- sg_make_nodes() 
+edges <- sg_make_edges(nodes, 17)
+
+sigmajs() %>% 
+  sg_nodes(nodes, id, size) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_force_start() %>% 
+  sg_button("start layout", "force_start", class = "btn btn-success")
+```
+
+Events that can be triggered via a button:
+
+* `force_start`
+* `force_stop`
+* `noverlap`
+* `drag_nodes`
+* `relative_size`
+* `add_nodes`
+* `add_edges`
+* `drop_nodes`
+* `drop_edges`
+* `animate`
