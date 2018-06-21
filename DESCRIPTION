@@ -16,7 +16,8 @@ Imports:
     magrittr,
     shiny,
     jsonlite,
-    igraph
+    igraph,
+    htmltools
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
