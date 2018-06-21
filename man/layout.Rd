@@ -21,6 +21,9 @@ sg_get_layout(nodes, edges, directed = TRUE, layout = igraph::layout_nicely,
 
 \item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
 }
+\value{
+\code{sg_get_layout} returns nodes with \code{x} and \code{y} coordinates.
+}
 \description{
 Layout your graph.
 }

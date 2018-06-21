@@ -3,10 +3,17 @@
 #' Color nodes by cluster.
 #' 
 #' @inheritParams sg_nodes
+#' @param nodes,edges Nodes and edges as prepared for sigmajs.
 #' @param colors Palette to color the nodes.
 #' @param directed Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.
 #' @param algo An \code{igraph} clustering function.
 #' @param quiet Set to \code{TRUE} to print the number of clusters to the console.
+#' 
+#' @section Functions:
+#' \itemize{
+#'   \item{\code{sg_cluster} Color nodes by cluster.}
+#'   \item{\code{sg_get_cluster} helper to get graph's nodes color by cluster.}
+#' }
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes() 
@@ -17,15 +24,43 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_layout() %>% 
 #'   sg_cluster() 
+#'   
+#' clsutered <- sg_get_cluster(nodes, edges)
 #' 
+#' @return \code{sg_get_cluster} returns nodes with \code{color} variable.
+#' 
+#' @rdname cluster
 #' @export
 sg_cluster <- function(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"),
                        directed = TRUE, algo = igraph::cluster_walktrap, quiet = !interactive(), 
                        ...){
   
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
+  
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+  
   # build graph
   nodes <- .data_2_df(sg$x$data$nodes)
   edges <- .data_2_df(sg$x$data$edges) 
+  nodes <- sg_get_cluster(nodes, edges, colors, directed, algo, quiet, ...)
+  
+  nodes <- apply(nodes, 1, as.list)
+  
+  sg$x$data$nodes <- nodes
+  sg
+}
+
+#' @rdname cluster
+#' @export
+sg_get_cluster <- function(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"),
+                       directed = TRUE, algo = igraph::cluster_walktrap, quiet = !interactive(), 
+                       ...){
+  
+  if (missing(nodes) || missing(edges))
+    stop("missing nodes or edges", call. = FALSE)
+  
   edges <- .re_order(edges)
   g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
   
@@ -52,8 +87,5 @@ sg_cluster <- function(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70"
   nodes$color <- NULL
   nodes <- dplyr::inner_join(colors, nodes, by = "grp")
   
-  nodes <- apply(nodes, 1, as.list)
-  
-  sg$x$data$nodes <- nodes
-  sg
+  return(nodes)
 }

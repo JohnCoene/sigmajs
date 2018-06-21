@@ -25,9 +25,17 @@
 #' 
 #' coords <- sg_get_layout(nodes, edges)
 #' 
+#' @return \code{sg_get_layout} returns nodes with \code{x} and \code{y} coordinates.
+#' 
 #' @rdname layout
 #' @export
 sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
+  
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
+  
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
   
   nodes <- .data_2_df(sg$x$data$nodes)
   edges <- .data_2_df(sg$x$data$edges) 
@@ -48,6 +56,9 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
 #' @rdname layout
 #' @export
 sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout_nicely, ...){
+  
+  if (missing(nodes) || missing(edges))
+    stop("missing nodes or edges", call. = FALSE)
   
   # clean
   edges <- .re_order(edges)

@@ -2,10 +2,15 @@
 % Please edit documentation in R/cluster.R
 \name{sg_cluster}
 \alias{sg_cluster}
+\alias{sg_get_cluster}
 \title{Cluster}
 \usage{
 sg_cluster(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
   "#24C96B"), directed = TRUE, algo = igraph::cluster_walktrap,
+  quiet = !interactive(), ...)
+
+sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
+  "#1C5C70", "#24C96B"), directed = TRUE, algo = igraph::cluster_walktrap,
   quiet = !interactive(), ...)
 }
 \arguments{
@@ -20,10 +25,23 @@ sg_cluster(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
 \item{quiet}{Set to \code{TRUE} to print the number of clusters to the console.}
 
 \item{...}{any column.}
+
+\item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
+}
+\value{
+\code{sg_get_cluster} returns nodes with \code{color} variable.
 }
 \description{
 Color nodes by cluster.
 }
+\section{Functions}{
+
+\itemize{
+  \item{\code{sg_cluster} Color nodes by cluster.}
+  \item{\code{sg_get_cluster} helper to get graph's nodes color by cluster.}
+}
+}
+
 \examples{
 nodes <- sg_make_nodes() 
 edges <- sg_make_edges(nodes, 17)
@@ -33,5 +51,7 @@ sigmajs() \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_layout() \%>\% 
   sg_cluster() 
+  
+clsutered <- sg_get_cluster(nodes, edges)
 
 }
