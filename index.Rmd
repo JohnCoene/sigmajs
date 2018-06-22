@@ -79,6 +79,12 @@ div(
             class = "btn btn-primary",
             tags$i(class = "fa fa-rocket"),
             "Get Started"
+          ),
+          a(
+            href = "reference/",
+            class = "btn btn-default",
+            tags$i(class = "fa fa-book"),
+            "Docs"
           )
         )
       )

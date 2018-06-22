@@ -65,7 +65,7 @@ sigmajs() %>%
   sg_edges(edges, id, source, target) %>% 
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
              delay = 0) %>%
-  sg_settings(animationsTime = 2000) %>% 
+  sg_settings(animationsTime = 3500) %>% 
   sg_button(
     "animate", # button label 
     "animate", # event name

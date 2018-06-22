@@ -1,3 +1,14 @@
+sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+    var k,
+        neighbors = {},
+        index = this.allNeighborsIndex[nodeId] || {};
+
+    for (k in index) {
+        neighbors[k] = this.nodesIndex[k];
+    }
+    return neighbors;
+});
+
 HTMLWidgets.widget({
 
   name: 'sigmajs',
@@ -45,7 +56,8 @@ HTMLWidgets.widget({
 				} else {
 					// create
   				s = new sigma({
-  					graph: x.data
+  					graph: x.data,
+  					settings: x.settings
   				});
   				// add camera
   				if(x.hasOwnProperty('camera')){
@@ -57,23 +69,57 @@ HTMLWidgets.widget({
             	cam = get_sigma_camera(x.camera.id);
   				  }
   				  
-  				  console.log(cam);
-  				  
   				  s.addRenderer({
   						container: el.id,
   						type: x.type,
-  				    camera: cam,
-  				    settings: x.settings
+  				    camera: cam
   				  });
     				
   				  s.refresh();
   				} else {
   				  s.addRenderer({
   						container: el.id,
-  						type: x.type,
-  						settings: x.settings
+  						type: x.type
   				  });
   				}
+				}
+				
+				if(x.hasOwnProperty('neighbours')){
+				  db = new sigma.plugins.neighborhoods();
+
+          s.graph.nodes().forEach(function(n) {
+            n.originalColor = n.color;
+          });
+          s.graph.edges().forEach(function(e) {
+            e.originalColor = e.color;
+          });
+          s.bind("clickNode", function(e) {
+            var nodeId = e.data.node.id,
+                toKeep = s.graph.neighbors(nodeId);
+            toKeep[nodeId] = e.data.node;
+            s.graph.nodes().forEach(function(n) {
+              if (toKeep[n.id])
+                n.color = n.originalColor;
+              else
+                n.color = '#eee';
+            });
+            s.graph.edges().forEach(function(e) {
+              if (toKeep[e.source] && toKeep[e.target])
+                e.color = e.originalColor;
+              else
+                e.color = '#eee';
+            });
+            s.refresh();
+          });
+          s.bind("clickStage", function(e) {
+            s.graph.nodes().forEach(function(n) {
+              n.color = n.originalColor;
+            });
+            s.graph.edges().forEach(function(e) {
+              e.color = e.originalColor;
+            });
+            s.refresh();
+          });
 				}
 
 				// start forceAtlas
@@ -92,7 +138,10 @@ HTMLWidgets.widget({
 				  var bar = document.createElement("div");
 				  bar.style.width = "100%";
 				  bar.style.textAlign  = x.progressBar.position;
+				  
+				  // widget
 				  var element = document.getElementById(el.id);
+				  
 				  element.appendChild(bar);
 				  button.addEventListener("click", function(event) {
     				x.progressBar.data.forEach((element) => {

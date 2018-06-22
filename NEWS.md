@@ -7,6 +7,7 @@
 * `sg_button` added - Add buttons to trigger events in static documents.
 * `sg_export` and `sg_export_p` added - To export the graph.
 * `sg_progress` added - show dynamic text.
+* `sg_neighbours` (& `sg_neighbors`) added - highlight neighbours on click.
 
 # sigmajs 0.0.2
 
