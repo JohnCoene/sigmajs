@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • sigmajs</title>
+<title>Text — sg_progress • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Text — sg_progress" />
+
+<meta property="og:description" content="Add text to your graph." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -59,7 +61,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -155,66 +157,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Text</h1>
+    
+    <div class="hidden name"><code>sg_progress.Rd</code></div>
     </div>
 
-    <div id="sigmajs-0-0-3" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-3" class="anchor"></a>sigmajs 0.0.3</h1>
-<ul>
-<li>
-<code>sg_layout</code> added - layout graph using <code>igraph</code> package.</li>
-<li>
-<code>sg_get_layout</code> added - helper to extract <code>x</code> and <code>y</code> coordinates, mainly for animations.</li>
-<li>
-<code>sg_cluster</code> added - color nodes by cluster.</li>
-<li>
-<code>sg_get_cluster</code> added - helper to get nodes color by cluster.</li>
-<li>
-<code>sg_button</code> added - Add buttons to trigger events in static documents.</li>
-<li>
-<code>sg_export</code> and <code>sg_export_p</code> added - To export the graph.</li>
-<li>
-<code>sg_progress</code> added - show dynamic text.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-2" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-2" class="anchor"></a>sigmajs 0.0.2</h1>
-<p><a href="http://shiny.john-coene.com/sigmajs/">shiny demo</a> added.</p>
-<p>Functions added:</p>
-<ul>
-<li>
-<code>sg_force_stop</code> - stops the forceAtlas2 layout after a given delay.</li>
-<li>
-<code>sg_force_start</code> added, same as <code>sg_force</code>.</li>
-<li>
-<code>sg_add_nodes</code>, <code>sg_add_edges</code> - Add nodes or edges to a static graph.</li>
-<li>
-<code>drop_nodes_delay_p</code>, <code>drop_edges_delay_p</code> Proxy to drop nodes or edges with a delay.</li>
-<li>
-<code>drop_nodes_delay</code>, <code>drop_edges_delay</code> Drop nodes or edges with a delay.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-1" class="anchor"></a>sigmajs 0.0.1</h1>
-<p>Initial version including all plugins and Shiny proxies.</p>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Add text to your graph.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>sg_progress</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>delay</span>, <span class='no'>text</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sg</th>
+      <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>Data.frame holding <code>delay</code> and <code>text</code>.</p></td>
+    </tr>
+    <tr>
+      <th>delay</th>
+      <td><p>Delay, in milliseconds at which text should appear.</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>Text to appear on graph.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>Text position on graph.</p></td>
+    </tr>
+    <tr>
+      <th>cumsum</th>
+      <td><p>Whether to compute the cumulative sum on the <code>delay</code>.</p></td>
+    </tr>
+    </table>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># initial nodes</span>
+<span class='no'>nodes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
+
+<span class='co'># additional nodes</span>
+<span class='no'>nodes2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
+<span class='no'>nodes2</span>$<span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'>as.character</span>(<span class='fu'>seq</span>(<span class='fl'>11</span>, <span class='fl'>20</span>))
+
+<span class='co'># add delay</span>
+<span class='no'>nodes2</span>$<span class='no'>delay</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fu'>nrow</span>(<span class='no'>nodes2</span>), <span class='fl'>500</span>, <span class='fl'>1000</span>)
+<span class='no'>nodes2</span>$<span class='no'>text</span> <span class='kw'>&lt;-</span> <span class='fu'>seq.Date</span>(<span class='fu'>Sys.Date</span>(), <span class='fu'>Sys.Date</span>() + <span class='fl'>9</span>, <span class='st'>"days"</span>)
+
+<span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_static.html'>sg_add_nodes</a></span>(<span class='no'>nodes2</span>, <span class='no'>delay</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"add"</span>, <span class='st'>"add_nodes"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_progress</span>(<span class='no'>nodes2</span>, <span class='no'>delay</span>, <span class='no'>text</span>)</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sigmajs-0-0-3">0.0.3</a></li>
-        <li><a href="#sigmajs-0-0-2">0.0.2</a></li>
-        <li><a href="#sigmajs-0-0-1">0.0.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>

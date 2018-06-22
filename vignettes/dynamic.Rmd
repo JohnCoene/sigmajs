@@ -39,4 +39,26 @@ sigmajs() %>%
   )
 ```
 
+You can also show helpful text as elements appear on the graph. Let's add somewhat random dates to our example to simulate edges being added over the course of 25 days.
+
+```{r}
+# adding random but ordered dates to edges
+dates <- seq.Date(from = Sys.Date(), Sys.Date() + 24, "days")
+dates <- sample(dates, nrow(edges), replace = TRUE)
+
+edges$dates <- dates[order(dates)]
+
+sigmajs() %>%
+  sg_force_start() %>%
+  sg_nodes(nodes, id, size, color) %>%
+  sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
+  sg_progress(edges, delay, dates) %>% # add text
+  sg_force_stop(last_edge) %>% 
+  sg_button(
+    "Add edges", # label
+    "add_edges", # event
+    class = "btn btn-primary"
+  )
+```
+
 You can also drop nodes or edges with `sg_drop_edges` and `sg_drop_nodes`, same principles, I'll let you explore the examples.

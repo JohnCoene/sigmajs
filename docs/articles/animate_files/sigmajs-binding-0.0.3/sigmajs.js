@@ -86,6 +86,22 @@ HTMLWidgets.widget({
 				    s.startForceAtlas2(x.force);
 				  }
 				}
+				
+				// progress
+				if(x.hasOwnProperty('progressBar')){
+				  var bar = document.createElement("div");
+				  bar.style.width = "100%";
+				  bar.style.textAlign  = x.progressBar.position;
+				  var element = document.getElementById(el.id);
+				  element.appendChild(bar);
+				  button.addEventListener("click", function(event) {
+    				x.progressBar.data.forEach((element) => {
+    					setTimeout(function () {
+    						bar.innerHTML = element.text;
+    					}, element.delay);
+    				});
+				  });
+				}
 
 				// start noverlap
 				if (x.hasOwnProperty('noverlap')) {
