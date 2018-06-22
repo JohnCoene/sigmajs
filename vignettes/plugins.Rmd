@@ -22,7 +22,6 @@ library(sigmajs)
 
 * Animate
 * foceAtlas2
-* No overlap
 * Gexf
 * Drag nodes
 * Relative size
@@ -52,7 +51,6 @@ sigmajs() %>%
   sg_edges(edges, id, source, target, type) %>%
   sg_force() %>% # start forceAtlas2
   sg_relative_size() %>% # size node relative to one another
-  sg_noverlap() %>% # no node overlap
   sg_drag_nodes() %>% # enable drag nodes
   sg_force_stop(10000) # stop layout algo after 10 seconds
 ```
@@ -74,7 +72,26 @@ nodes$clip <- 0.85
 
 sigmajs() %>%
   sg_nodes(nodes, id, color, size, type) %>%
-  sg_add_images(nodes, url, scale, clip) %>%
   sg_edges(edges, id, source, target) %>%
+  sg_layout() %>% 
+  sg_add_images(nodes, url, scale, clip) %>%
   sg_settings(defaultNodeColor = "#0011ff", minNodeSize = 8, maxNodeSize = 16) 
+```
+
+Allow users to download the graph to SVG.
+
+```{r}
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>% 
+  sg_nodes(nodes, id, size, color) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_export() %>% 
+  sg_layout() %>% 
+  sg_button(
+    "<i class='fa fa-download'></i>", 
+    "export", 
+    class = "btn btn-success"
+  )
 ```

@@ -19,6 +19,7 @@
 #'   \item{\code{drop_nodes}}
 #'   \item{\code{drop_edges}}
 #'   \item{\code{animate}}
+#'   \item{\code{export}}
 #' }
 #' 
 #' @examples 
