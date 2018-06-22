@@ -74,7 +74,8 @@ sigmajs_html <- function(id, style, class, ...){
   htmltools::tags$div(
     id = id, class = class, style = style,
     htmltools::tags$button(
-      type = "button"
+      type = "button",
+      style = "display:block;"
     )
   )
 }

@@ -122,7 +122,7 @@
       <h1>Cluster</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-21</h4>
+            <h4 class="date">2018-06-22</h4>
       
       
       <div class="hidden name"><code>cluster.Rmd</code></div>
@@ -132,18 +132,18 @@
     
     
 <p>Since <code>v3.0.0</code> you can color the nodes by cluster. Simply use <code>sg_cluster</code> with your <a href="http://igraph.org/r/">igraph</a> clustering algorithm of choice.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() 
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/cluster.html">sg_cluster</a></span>()</code></pre></div>
-<div id="htmlwidget-0b1e7dad0b4c728fb94e" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
-<button type="button"></button>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/cluster.html">sg_cluster</a></span>()</a></code></pre></div>
+<div id="htmlwidget-efd0014361030bc7b29e" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-0b1e7dad0b4c728fb94e">{"x":{"data":{"nodes":[{"grp":"3","color":"#B1E2A3","id":"0","size":"4","x":"4.128781","y":" 2.5850397"},{"grp":"3","color":"#B1E2A3","id":"3","size":"5","x":"4.697916","y":" 3.7212826"},{"grp":"2","color":"#76BA99","id":"1","size":"2","x":"6.334507","y":" 1.0629302"},{"grp":"2","color":"#76BA99","id":"5","size":"5","x":"4.996137","y":" 1.1350754"},{"grp":"2","color":"#76BA99","id":"9","size":"3","x":"5.791415","y":"-0.1991473"},{"grp":"1","color":"#236B76","id":"2","size":"4","x":"4.021863","y":"-1.5845539"},{"grp":"1","color":"#236B76","id":"7","size":"3","x":"4.001939","y":"-0.4559520"},{"grp":"1","color":"#236B76","id":"8","size":"4","x":"5.308374","y":"-1.7139134"},{"grp":"4","color":"#24C96B","id":"4","size":"4","x":"6.589338","y":" 2.4664277"},{"grp":"4","color":"#24C96B","id":"6","size":"2","x":"5.716712","y":" 2.7075684"}],"edges":[{"id":"0","source":"1","target":"9"},{"id":"1","source":"3","target":"6"},{"id":"2","source":"6","target":"4"},{"id":"3","source":"1","target":"4"},{"id":"4","source":"1","target":"5"},{"id":"5","source":"7","target":"7"},{"id":"6","source":"7","target":"2"},{"id":"7","source":"7","target":"2"},{"id":"8","source":"9","target":"8"},{"id":"9","source":"5","target":"7"},{"id":"10","source":"5","target":"9"},{"id":"11","source":"6","target":"4"},{"id":"12","source":"3","target":"0"},{"id":"13","source":"5","target":"6"},{"id":"14","source":"5","target":"0"},{"id":"15","source":"6","target":"4"},{"id":"16","source":"2","target":"8"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-efd0014361030bc7b29e">{"x":{"data":{"nodes":[{"grp":"3","color":"#B1E2A3","id":"0","size":"3","x":"22.44621","y":"11.058315"},{"grp":"1","color":"#328983","id":"1","size":"4","x":"19.41104","y":"10.507157"},{"grp":"1","color":"#328983","id":"3","size":"4","x":"20.10137","y":"10.068639"},{"grp":"1","color":"#328983","id":"6","size":"5","x":"19.80175","y":"11.175905"},{"grp":"1","color":"#328983","id":"7","size":"2","x":"21.16676","y":" 9.302987"},{"grp":"1","color":"#328983","id":"8","size":"2","x":"20.57144","y":"12.267356"},{"grp":"1","color":"#328983","id":"9","size":"4","x":"19.14082","y":"11.837496"},{"grp":"2","color":"#24C96B","id":"2","size":"5","x":"18.35026","y":"10.845325"},{"grp":"2","color":"#24C96B","id":"4","size":"5","x":"19.39471","y":" 8.971924"},{"grp":"2","color":"#24C96B","id":"5","size":"2","x":"18.52729","y":" 9.717095"}],"edges":[{"id":"0","source":"1","target":"3"},{"id":"1","source":"3","target":"7"},{"id":"2","source":"1","target":"5"},{"id":"3","source":"6","target":"3"},{"id":"4","source":"3","target":"1"},{"id":"5","source":"6","target":"9"},{"id":"6","source":"2","target":"6"},{"id":"7","source":"4","target":"3"},{"id":"8","source":"6","target":"1"},{"id":"9","source":"9","target":"9"},{"id":"10","source":"2","target":"5"},{"id":"11","source":"0","target":"0"},{"id":"12","source":"9","target":"1"},{"id":"13","source":"5","target":"4"},{"id":"14","source":"8","target":"6"},{"id":"15","source":"1","target":"3"},{"id":"16","source":"6","target":"3"}]},"type":"canvas"},"evals":[],"jsHooks":[]}</script>
 </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

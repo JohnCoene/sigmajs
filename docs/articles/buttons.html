@@ -122,7 +122,7 @@
       <h1>Buttons</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-21</h4>
+            <h4 class="date">2018-06-22</h4>
       
       
       <div class="hidden name"><code>buttons.Rmd</code></div>
@@ -132,18 +132,18 @@
     
     
 <p><code>sigmajs</code> lets you add buttons to trigger events, <em>in static documents,</em> such as this one.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() 
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(<span class="st">"start layout"</span>, <span class="st">"force_start"</span>, <span class="dt">class =</span> <span class="st">"btn btn-success"</span>)</code></pre></div>
-<div id="htmlwidget-dc56fd7e3847116814f6" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
-<button type="button"></button>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(<span class="st">"start layout"</span>, <span class="st">"force_start"</span>, <span class="dt">class =</span> <span class="st">"btn btn-success"</span>)</a></code></pre></div>
+<div id="htmlwidget-f03fdba5d28db88dd0b5" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-dc56fd7e3847116814f6">{"x":{"data":{"nodes":[{"id":"0","size":"5","x":"15.233288","y":"11.305964"},{"id":"1","size":"2","x":"16.050934","y":"15.424038"},{"id":"2","size":"5","x":"13.761568","y":"19.072161"},{"id":"3","size":"4","x":" 1.614241","y":"11.078931"},{"id":"4","size":"2","x":"19.327763","y":" 7.317650"},{"id":"5","size":"4","x":" 2.842838","y":" 2.021859"},{"id":"6","size":"2","x":"14.651253","y":"10.518157"},{"id":"7","size":"5","x":"10.929315","y":"18.627279"},{"id":"8","size":"4","x":" 2.861029","y":"19.453697"},{"id":"9","size":"4","x":"19.073703","y":"19.298899"}],"edges":[{"id":"0","source":"4","target":"3"},{"id":"1","source":"8","target":"2"},{"id":"2","source":"5","target":"8"},{"id":"3","source":"4","target":"1"},{"id":"4","source":"9","target":"3"},{"id":"5","source":"3","target":"4"},{"id":"6","source":"0","target":"2"},{"id":"7","source":"7","target":"1"},{"id":"8","source":"7","target":"7"},{"id":"9","source":"7","target":"9"},{"id":"10","source":"9","target":"3"},{"id":"11","source":"7","target":"4"},{"id":"12","source":"6","target":"2"},{"id":"13","source":"6","target":"5"},{"id":"14","source":"2","target":"6"},{"id":"15","source":"8","target":"6"},{"id":"16","source":"9","target":"7"}]},"type":"canvas","force":[],"button":{"label":"start layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button:</p>
+<script type="application/json" data-for="htmlwidget-f03fdba5d28db88dd0b5">{"x":{"data":{"nodes":[{"id":"0","size":"5","x":"14.445854","y":" 3.572876"},{"id":"1","size":"5","x":" 9.058157","y":"14.952509"},{"id":"2","size":"5","x":" 6.723614","y":"19.076452"},{"id":"3","size":"3","x":" 8.871002","y":" 1.866854"},{"id":"4","size":"4","x":"18.784919","y":" 8.660295"},{"id":"5","size":"2","x":"17.196320","y":" 6.735531"},{"id":"6","size":"3","x":" 5.597054","y":" 1.181126"},{"id":"7","size":"5","x":"14.274477","y":"19.544767"},{"id":"8","size":"5","x":" 1.810122","y":" 6.187911"},{"id":"9","size":"5","x":"17.425885","y":"18.422705"}],"edges":[{"id":"0","source":"0","target":"4"},{"id":"1","source":"9","target":"1"},{"id":"2","source":"4","target":"9"},{"id":"3","source":"0","target":"6"},{"id":"4","source":"9","target":"7"},{"id":"5","source":"6","target":"6"},{"id":"6","source":"2","target":"8"},{"id":"7","source":"0","target":"8"},{"id":"8","source":"9","target":"4"},{"id":"9","source":"5","target":"4"},{"id":"10","source":"9","target":"1"},{"id":"11","source":"9","target":"6"},{"id":"12","source":"2","target":"6"},{"id":"13","source":"7","target":"4"},{"id":"14","source":"9","target":"6"},{"id":"15","source":"9","target":"9"},{"id":"16","source":"3","target":"7"}]},"type":"canvas","force":[],"button":{"label":"start layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button:</p>
 <ul>
 <li><code>force_start</code></li>
 <li><code>force_stop</code></li>
