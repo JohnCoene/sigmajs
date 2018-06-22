@@ -8,12 +8,9 @@
 
 [sigmajs](http://sigmajs.org/) for R.
 
-With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner.
-`sigmajs` is [Shiny](https://shiny.rstudio.com/)-centric in order to best leverage the [original library](http://sigmajs.org/)'s great many methods.
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons, and more.
 
 All graphs must be initialised with the `sigmajs()` function, all the functions of the :package: start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`). All [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) can be captured in Shiny.
-
-*Note that the graphs may not work in RStudio viewer, open them in your browser of choice*
 
 # Install
 
@@ -25,7 +22,9 @@ devtools::install_bitbucket("sigmajs", "JohnCoene") # bitbucket
 
 # Examples
 
-Most functions have corresponding `demo()`, see [documentation](http://sigmajs.john-coene.com/) and [shiny demo](http://shiny.john-coene.com/sigmajs/)
+Most functions have corresponding `demo()`, see [documentation](http://sigmajs.john-coene.com/) and [shiny demo](http://shiny.john-coene.com/sigmajs/).
+
+*Note that the graphs may not work in RStudio viewer, open them in the browser of your choice.*
 
 ```r
 library(sigmajs)

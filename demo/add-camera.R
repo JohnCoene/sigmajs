@@ -20,14 +20,14 @@ server <- function(input, output) {
         sigmajs() %>%
             sg_nodes(nodes, id, size, color) %>%
             sg_edges(edges, id, source, target) %>%
-            sg_camera("cam", initialise = TRUE) # initialise each camera only ONCE
+            sg_camera(initialise = TRUE) 
     })
 
     output$sg2 <- renderSigmajs({
         sigmajs() %>%
             sg_nodes(nodes, id, size, color) %>%
             sg_edges(edges, id, source, target) %>%
-            sg_camera("cam")
+            sg_camera("sg1", initialise = FALSE)
     })
 }
 

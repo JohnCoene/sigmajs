@@ -1,4 +1,4 @@
-globalVariables(c("from", "to"))
+globalVariables(c("from", "to", "."))
 
 .build_data <- function(data, ...){
   dots <- eval(substitute(alist(...))) # capture dots
@@ -38,14 +38,34 @@ globalVariables(c("from", "to"))
 }
 
 .add_image <- function(sg, data) {
-	for (i in 1:nrow(data)) {
-		sg$x$data$nodes[[i]]$image <- list()
-		for (j in 1:ncol(data)) {
-			sg$x$data$nodes[[i]]$image[[names(data)[j]]] <- as.character(data[i, j])
-		}
-	}
-	#sg$x$data$nodes <- jsonlite::toJSON(sg$x$data$nodes, auto_unbox = TRUE)
+  .rename <- function(x){
+    x[x == ""] <- "image"
+    x
+  }
+  
+  imgs <- apply(data, 1, function(x) list(as.list(x))) %>% 
+    purrr::set_names(rep("image", length(.)))
+  
+  imgs <- purrr::map2(sg$x$data$nodes, imgs, append)
+  
+  n <- purrr::map(imgs, names) %>% 
+    purrr::map(.rename)
+  
+  imgs <- purrr::map2(imgs, n, purrr::set_names)
+  
+  sg$x$data$nodes <- imgs
 	sg
+}
+
+.add_image2 <- function(sg, data) {
+  for (i in 1:nrow(data)) {
+    sg$x$data$nodes[[i]]$image <- list()
+    for (j in 1:ncol(data)) {
+      sg$x$data$nodes[[i]]$image[[names(data)[j]]] <- as.character(data[i, j])
+    }
+  }
+  #sg$x$data$nodes <- jsonlite::toJSON(sg$x$data$nodes, auto_unbox = TRUE)
+  sg
 }
 
 .data_2_df <- function(x){
@@ -74,5 +94,5 @@ globalVariables(c("from", "to"))
   c("force_start", "force_stop", "noverlap", 
     "drag_nodes", "relative_size", "add_nodes", 
     "add_edges", "drop_nodes", "drop_edges", 
-    "animate")
+    "animate", "export")
 }

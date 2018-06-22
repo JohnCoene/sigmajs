@@ -4,6 +4,8 @@
 * `sg_get_layout` added - helper to extract `x` and `y` coordinates, mainly for animations.
 * `sg_cluster` added - color nodes by cluster.
 * `sg_get_cluster` added - helper to get nodes color by cluster.
+* `sg_button` added - Add buttons to trigger events in static documents.
+* `sg_export` and `sg_export_p` added - To export the graph.
 
 # sigmajs 0.0.2
 

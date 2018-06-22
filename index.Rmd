@@ -1,8 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs)  [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CircleCI](https://img.shields.io/circleci/project/github/JohnCoene/sigmajs.svg)](https://github.com/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs) 
 
-<img src="man/figures/logo.png" align="left" style="max-height:250px;margin:5%;"/>
-
 ```{r, eval=TRUE, echo = FALSE}
+library(htmltools)
 library(sigmajs)
 nodes <- sg_make_nodes(20)
 edges <- sg_make_edges(nodes, 30)
@@ -32,32 +31,112 @@ COLORS <- c("#1C5C70", "#B1E2A3")
 nodes$to_color <- colorRampPalette(COLORS)(n)
  
 # plot
-sigmajs(width = "75%", height = 250) %>%
+sigmajs(width = "100%", height = 150) %>%
 	sg_nodes(nodes, id, size, color, to_x, to_y, to_size, to_color) %>%
 	sg_edges(edges, id, source, target) %>% 
 	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color")) %>%
-	sg_settings(animationsTime = 2000)
+	sg_settings(animationsTime = 2000) -> net
+
+div(
+  class = "row",
+  br(),
+  br(),
+  div(
+    class = "col-md-6",
+    img(
+      src = "man/figures/logo.png",
+      class = "img-responsive",
+      style = "margin: 0 auto;"
+    )
+  ),
+  div(
+    class = "col-md-6",
+    net
+  )
+)
 ```
 
 [sigmajs](http://sigmajs.org/) for R.
 
-<a class="btn btn-primary" href="articles/get_started.html">
-  <i class="fa fa-rocket"></i>
-  Get Started
-</a>
-<a class="btn btn-default" href="articles/dynamic.html">
-  <i class="fa fa-spinner fa-pulse fa-fw"></i>
-  Dynamic
-</a>
-<a class="btn btn-success" href="http://shiny.john-coene.com/sigmajs/" target="_blank">
-  <i class="fa fa-desktop"></i>
-  Shiny demo
-</a>
-
-With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner.
-`sigmajs` is a [Shiny](https://shiny.rstudio.com/)-centric in order to best leverage the [original library](http://sigmajs.org/)'s great many methods.
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons, and more.
 
 All graphs must be initialised with the `sigmajs()` function, all the functions of the package start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`).
+
+```{r, echo=FALSE}
+div(
+  class = "row",
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Get Started"),
+        p("Get started with", code("sigmajs"), ", draw your first graphs and learn about settings."),
+        p(
+          a(
+            href = "articles/get_started.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-rocket"),
+            "Get Started"
+          )
+        )
+      )
+    )
+  ),
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Dynamism"),
+        p("Learn how to make a temporal graph in static R markdown documents."),
+        p(
+          a(
+            href = "articles/dynamic.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-spinner fa-pulse fa-fw"),
+            "Dynamic"
+          ),
+          a(
+            href = "articles/buttons.html",
+            class = "btn btn-success",
+            tags$i(class = "fa fa-gavel"),
+            "Buttons"
+          )
+        )
+      )
+    )
+  ),
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Shiny"),
+        p("Explore the package's proxies and learn how to capture user interactions."),
+        p(
+          a(
+            href = "articles/shiny.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-graduation-cap"),
+            "Guide"
+          ),
+          a(
+            href = "http://shiny.john-coene.com/sigmajs/",
+            target = "_blank",
+            class = "btn btn-success",
+            tags$i(class = "fa fa-desktop"),
+            "Demo"
+          )
+        )
+      )
+    )
+  )
+)
+```
 
 ## Install
 
@@ -71,6 +150,8 @@ devtools::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 
 Most functions have corresponding `demo()`.
 
+*Note that the graphs may not work in RStudio viewer, open them in the browser of your choice.*
+
 ```{r, eval=TRUE}
 library(sigmajs)
 
@@ -82,7 +163,7 @@ edges <- sg_make_edges(nodes, 50) # 50 edges
 sigmajs() %>%
   sg_nodes(nodes, id, label, size, color) %>%
   sg_edges(edges, id, source, target) %>%
-  sg_layout(FALSE)
+  sg_layout()
 ```
 
 Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).

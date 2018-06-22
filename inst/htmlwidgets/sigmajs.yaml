@@ -15,3 +15,4 @@ dependencies:
       - plugins/sigma.renderers.edgeDots.min.js
       - plugins/sigma.renderers.edgeLabels.min.js
       - plugins/sigma.parsers.gexf.min.js
+      - plugins/sigma.exporters.svg.js

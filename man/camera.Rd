@@ -2,17 +2,14 @@
 % Please edit documentation in R/camera.R
 \name{sg_camera}
 \alias{sg_camera}
-\alias{sg_add_camera}
 \title{Add a camera}
 \usage{
-sg_camera(sg, name, initialise = FALSE)
-
-sg_add_camera(name)
+sg_camera(sg, elementId = NULL, initialise = FALSE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
-\item{name}{Name of camera.}
+\item{elementId}{Id of graph that initialised the camera.}
 
 \item{initialise}{Whether to initialise the camera.}
 }
@@ -20,7 +17,7 @@ sg_add_camera(name)
 Add a camera to your graph.
 }
 \note{
-Cameras should only be initialised once, hence the argument.
+Cameras should only be initialised once.
 }
 \examples{
 \dontrun{

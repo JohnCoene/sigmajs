@@ -18,4 +18,4 @@ add-camera  			    Link graphs.
 drop-nodes-delay            Dynamically drop multiple nodes with a delay.
 drop-edges-delay            Dynamically drop multiple edges with a delay.
 drop-edges-nodes-delay      Dynamically drop multiple nodes and edges with a delay.
-
+export-graph          Export graph to SVG.
