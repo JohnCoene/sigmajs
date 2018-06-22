@@ -92,7 +92,10 @@ HTMLWidgets.widget({
 				  var bar = document.createElement("div");
 				  bar.style.width = "100%";
 				  bar.style.textAlign  = x.progressBar.position;
+				  
+				  // widget
 				  var element = document.getElementById(el.id);
+				  
 				  element.appendChild(bar);
 				  button.addEventListener("click", function(event) {
     				x.progressBar.data.forEach((element) => {

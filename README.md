@@ -17,7 +17,7 @@ All graphs must be initialised with the `sigmajs()` function, all the functions 
 ```r
 # install.packages("devtools")
 devtools::install_github("JohnCoene/sigmajs") # github
-devtools::install_bitbucket("sigmajs", "JohnCoene") # bitbucket
+devtools::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 ```
 
 # Examples
