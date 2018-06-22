@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • sigmajs</title>
+<title>Export — sg_export • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Export — sg_export" />
+
+<meta property="og:description" content="Export graph to SVG." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -59,7 +61,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -155,64 +157,82 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Export</h1>
+    
+    <div class="hidden name"><code>export.Rd</code></div>
     </div>
 
-    <div id="sigmajs-0-0-3" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-3" class="anchor"></a>sigmajs 0.0.3</h1>
-<ul>
-<li>
-<code>sg_layout</code> added - layout graph using <code>igraph</code> package.</li>
-<li>
-<code>sg_get_layout</code> added - helper to extract <code>x</code> and <code>y</code> coordinates, mainly for animations.</li>
-<li>
-<code>sg_cluster</code> added - color nodes by cluster.</li>
-<li>
-<code>sg_get_cluster</code> added - helper to get nodes color by cluster.</li>
-<li>
-<code>sg_button</code> added - Add buttons to trigger events in static documents.</li>
-<li>
-<code>sg_export</code> and <code>sg_export_p</code> added - To export the graph.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-2" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-2" class="anchor"></a>sigmajs 0.0.2</h1>
-<p><a href="http://shiny.john-coene.com/sigmajs/">shiny demo</a> added.</p>
-<p>Functions added:</p>
-<ul>
-<li>
-<code>sg_force_stop</code> - stops the forceAtlas2 layout after a given delay.</li>
-<li>
-<code>sg_force_start</code> added, same as <code>sg_force</code>.</li>
-<li>
-<code>sg_add_nodes</code>, <code>sg_add_edges</code> - Add nodes or edges to a static graph.</li>
-<li>
-<code>drop_nodes_delay_p</code>, <code>drop_edges_delay_p</code> Proxy to drop nodes or edges with a delay.</li>
-<li>
-<code>drop_nodes_delay</code>, <code>drop_edges_delay</code> Drop nodes or edges with a delay.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-1" class="anchor"></a>sigmajs 0.0.1</h1>
-<p>Initial version including all plugins and Shiny proxies.</p>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Export graph to SVG.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>sg_export</span>(<span class='no'>sg</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>sg_export_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sg</th>
+      <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>download</th>
+      <td><p>set to <code>TRUE</code> to download.</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>Name of file.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>Size of the SVG in pixels.</p></td>
+    </tr>
+    <tr>
+      <th>width, height</th>
+      <td><p>Width and height of the SVG in pixels.</p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
+      <td><p>Whether the labels should be included in the svg file.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>Whether additional data (node ids for instance) should be included in the svg file.</p></td>
+    </tr>
+    <tr>
+      <th>proxy</th>
+      <td><p>An object of class <code>sigmajsProxy</code> as returned by <code><a href='sigmajs-shiny.html'>sigmajsProxy</a></code>.</p></td>
+    </tr>
+    </table>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>nodes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
+<span class='no'>edges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_edges</a></span>(<span class='no'>nodes</span>, <span class='fl'>17</span>)
+
+<span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_export</span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"download"</span>, <span class='st'>"export"</span>)
+
+<span class='co'># demo("export-graph", package = "sigmajs")</span></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sigmajs-0-0-3">0.0.3</a></li>
-        <li><a href="#sigmajs-0-0-2">0.0.2</a></li>
-        <li><a href="#sigmajs-0-0-1">0.0.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>

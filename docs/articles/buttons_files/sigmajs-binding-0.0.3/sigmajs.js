@@ -6,7 +6,7 @@ HTMLWidgets.widget({
 
 	factory: function (el, width, height) {
 
-		var s; // initialise
+		var s, cam; // initialise s (graph) and cam (camera)
 
     return {
 
@@ -44,14 +44,36 @@ HTMLWidgets.widget({
 					);
 				} else {
 					// create
-					s = new sigma({
-						graph: x.data,
-						settings: x.settings,
-						renderer: {
-							container: el.id,
-							type: x.type
-						}
-					});
+  				s = new sigma({
+  					graph: x.data
+  				});
+  				// add camera
+  				if(x.hasOwnProperty('camera')){
+  				  
+  				  // get or initialise camera
+  				  if(x.camera.init === true){
+  				    cam = s.addCamera();
+  				  } else {
+            	cam = get_sigma_camera(x.camera.id);
+  				  }
+  				  
+  				  console.log(cam);
+  				  
+  				  s.addRenderer({
+  						container: el.id,
+  						type: x.type,
+  				    camera: cam,
+  				    settings: x.settings
+  				  });
+    				
+  				  s.refresh();
+  				} else {
+  				  s.addRenderer({
+  						container: el.id,
+  						type: x.type,
+  						settings: x.settings
+  				  });
+  				}
 				}
 
 				// start forceAtlas
@@ -200,17 +222,17 @@ HTMLWidgets.widget({
 				}
 				
 				if(x.hasOwnProperty("dropEdgesDelay")){
-  				var running = s.isForceAtlas2Running();
+  				var is_running = s.isForceAtlas2Running();
   				
 				  if(x.button.event === 'drop_edges'){
 				    button.addEventListener("click", function(event) {
       				x.dropEdgesDelay.data.forEach((element, index) => {
       					setTimeout(function () {
-      						if (message.refresh === true && running === true) {
+      						if (message.refresh === true && is_running === true) {
       							s.killForceAtlas2();
       						}
       						s.graph.dropEdge(element);
-      						if (message.refresh === true && running === true) {
+      						if (message.refresh === true && is_running === true) {
       							s.startForceAtlas2();
       						}
       						if (message.refresh === true) {
@@ -372,11 +394,23 @@ HTMLWidgets.widget({
     			}, x.forceStopDelay);
 			  }
 			}
+			
+			if(x.hasOwnProperty('export')){
+		    button.addEventListener("click", function(event) {
+  				var output = s.toSVG(x.export);
+		    });
+			  
+			}
+			
 		},
 
 		resize: function(width, height) {
 			for(var name in s.renderers)
 				s.renderers[name].resize(width, height);
+		},
+		
+		getCamera: function() {
+		  return cam;
 		},
 
 		getChart: function () {
@@ -400,6 +434,20 @@ function get_sigma_graph(id) {
 	}
 
 	return (s);
+}
+
+// get camera
+function get_sigma_camera(id) {
+
+	var htmlWidgetsObj = HTMLWidgets.find("#" + id); // find object
+
+	var c; // define
+
+	if (typeof htmlWidgetsObj != 'undefined') { // get chart if defined
+		c = htmlWidgetsObj.getCamera();
+	}
+
+	return (c);
 }
 
 // only in shiny
@@ -698,6 +746,16 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				sigma.plugins.killDragNodes(s);
+			}
+		}
+	);
+	
+	// export
+	Shiny.addCustomMessageHandler('sg_export_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				var output = s.toSVG(message.data);
 			}
 		}
 	);
