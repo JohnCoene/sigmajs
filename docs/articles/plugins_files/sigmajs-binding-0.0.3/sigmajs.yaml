@@ -17,3 +17,4 @@ dependencies:
       - plugins/sigma.parsers.gexf.min.js
       - plugins/sigma.exporters.svg.js
       - plugins/sigma.plugins.neighborhoods.js
+      - plugins/sigma.plugins.filter.js

@@ -96,3 +96,7 @@ globalVariables(c("from", "to", "."))
     "add_edges", "drop_nodes", "drop_edges", 
     "animate", "export")
 }
+
+.get_proc <- function(x){
+  ifelse(x == "nodes", "filter.processors.nodes", "filter.processors.edges")
+}

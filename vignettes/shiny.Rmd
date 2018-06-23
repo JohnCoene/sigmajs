@@ -216,3 +216,43 @@ shinyApp(ui, server) # run
 ```
 
 Easy! Just use your plot as an `input` that points to the graph id (`sg`) followed by `_` and the name of the event you want to catch; in our case, plot of id (`sg`) and capture node clicked = `input$sg_click_node`. There are many more events to pick up, see the [official](https://github.com/jacomyal/sigma.js/wiki/Events-API) documentation for the full list.
+
+Now that you are familiar with proxies, we can add a filter to filter nodes, edges or both.
+
+* `g_filter_gt_p` - filter greater than
+* `g_filter_lt_p` - filter less than
+
+Let's take our basic Shiny app and add our filter.
+
+```{r, eval = FALSE}
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+ui <- fluidPage(
+  sliderInput(
+    "filter", 
+    "Filter nodes", 
+    value = 0, 
+    min = 0, 
+    max = 5
+  ),
+  sigmajsOutput("sg")
+) 
+
+server <- function(input, output){
+
+  output$sg <- renderSigmajs({
+    sigmajs() %>%
+      sg_nodes(nodes, id, size, color) %>%
+      sg_edges(edges, id, source, target)
+  })
+
+  observeEvent(input$filter, {
+    sigmajsProxy("sg") %>% 
+      sg_filter_gt_p(input$filterNodes, "size")
+  })
+
+}
+
+shinyApp(ui, server) # run
+```

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • sigmajs</title>
+<title>FIlter — sg_filter_gt_p • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="FIlter — sg_filter_gt_p" />
+
+<meta property="og:description" content="Filter nodes and/or edges." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -59,7 +61,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -155,70 +157,67 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>FIlter</h1>
+    
+    <div class="hidden name"><code>filter.Rd</code></div>
     </div>
 
-    <div id="sigmajs-0-0-3" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-3" class="anchor"></a>sigmajs 0.0.3</h1>
-<ul>
-<li>
-<code>sg_layout</code> added - layout graph using <code>igraph</code> package.</li>
-<li>
-<code>sg_get_layout</code> added - helper to extract <code>x</code> and <code>y</code> coordinates, mainly for animations.</li>
-<li>
-<code>sg_cluster</code> added - color nodes by cluster.</li>
-<li>
-<code>sg_get_cluster</code> added - helper to get nodes color by cluster.</li>
-<li>
-<code>sg_button</code> added - Add buttons to trigger events in static documents.</li>
-<li>
-<code>sg_export</code> and <code>sg_export_p</code> added - To export the graph.</li>
-<li>
-<code>sg_progress</code> added - show dynamic text.</li>
-<li>
-<code>sg_neighbours</code> (&amp; <code>sg_neighbors</code>) added - highlight neighbours on click.</li>
-<li>
-<code>sg_filter_gt_p</code> and <code>sg_filter_lt_p</code> added - filter nodes, edges or both.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-2" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-2" class="anchor"></a>sigmajs 0.0.2</h1>
-<p><a href="http://shiny.john-coene.com/sigmajs/">shiny demo</a> added.</p>
-<p>Functions added:</p>
-<ul>
-<li>
-<code>sg_force_stop</code> - stops the forceAtlas2 layout after a given delay.</li>
-<li>
-<code>sg_force_start</code> added, same as <code>sg_force</code>.</li>
-<li>
-<code>sg_add_nodes</code>, <code>sg_add_edges</code> - Add nodes or edges to a static graph.</li>
-<li>
-<code>drop_nodes_delay_p</code>, <code>drop_edges_delay_p</code> Proxy to drop nodes or edges with a delay.</li>
-<li>
-<code>drop_nodes_delay</code>, <code>drop_edges_delay</code> Drop nodes or edges with a delay.</li>
-</ul>
-</div>
-    <div id="sigmajs-0-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#sigmajs-0-0-1" class="anchor"></a>sigmajs 0.0.1</h1>
-<p>Initial version including all plugins and Shiny proxies.</p>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Filter nodes and/or edges.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>sg_filter_gt_p</span>(<span class='no'>proxy</span>, <span class='no'>input</span>, <span class='no'>var</span>, <span class='kw'>target</span> <span class='kw'>=</span> <span class='st'>"nodes"</span>)
+
+<span class='fu'>sg_filter_lt_p</span>(<span class='no'>proxy</span>, <span class='no'>input</span>, <span class='no'>var</span>, <span class='kw'>target</span> <span class='kw'>=</span> <span class='st'>"nodes"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>proxy</th>
+      <td><p>An object of class <code>sigmajsProxy</code> as returned by <code><a href='sigmajs-shiny.html'>sigmajsProxy</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>input</th>
+      <td><p>A Shiny input.</p></td>
+    </tr>
+    <tr>
+      <th>var</th>
+      <td><p>Variable to filter.</p></td>
+    </tr>
+    <tr>
+      <th>target</th>
+      <td><p>Target of filter, <code>nodes</code>, <code>edges</code>, or <code>both</code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
+
+    
+    <ul>
+<li><p><code>sg_filter_gt_p</code> Filter greater than <code>var</code>.</p></li>
+<li><p><code>sg_filter_lt_p</code> Filter less than <code>var</code>.</p></li>
+</ul>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'># demo("filter-nodes", package = "sigmajs")
+
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sigmajs-0-0-3">0.0.3</a></li>
-        <li><a href="#sigmajs-0-0-2">0.0.2</a></li>
-        <li><a href="#sigmajs-0-0-1">0.0.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#functions">Functions</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>

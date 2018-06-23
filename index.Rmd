@@ -34,7 +34,8 @@ nodes$to_color <- colorRampPalette(COLORS)(n)
 sigmajs(width = "100%", height = 150) %>%
 	sg_nodes(nodes, id, size, color, to_x, to_y, to_size, to_color) %>%
 	sg_edges(edges, id, source, target) %>% 
-	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color")) %>%
+	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
+	           delay = 1000) %>%
 	sg_settings(animationsTime = 2000) -> net
 
 div(

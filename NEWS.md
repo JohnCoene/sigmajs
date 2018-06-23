@@ -8,6 +8,7 @@
 * `sg_export` and `sg_export_p` added - To export the graph.
 * `sg_progress` added - show dynamic text.
 * `sg_neighbours` (& `sg_neighbors`) added - highlight neighbours on click.
+* `sg_filter_gt_p` and `sg_filter_lt_p` added - filter nodes, edges or both.
 
 # sigmajs 0.0.2
 

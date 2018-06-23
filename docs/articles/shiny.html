@@ -122,7 +122,7 @@
       <h1>Shiny</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-22</h4>
+            <h4 class="date">2018-06-23</h4>
       
       
       <div class="hidden name"><code>shiny.Rmd</code></div>
@@ -307,6 +307,44 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server) <span class="co"># run</span></code></pre></div>
 <p>Easy! Just use your plot as an <code>input</code> that points to the graph id (<code>sg</code>) followed by <code>_</code> and the name of the event you want to catch; in our case, plot of id (<code>sg</code>) and capture node clicked = <code>input$sg_click_node</code>. There are many more events to pick up, see the <a href="https://github.com/jacomyal/sigma.js/wiki/Events-API">official</a> documentation for the full list.</p>
+<p>Now that you are familiar with proxies, we can add a filter to filter nodes, edges or both.</p>
+<ul>
+<li>
+<code>g_filter_gt_p</code> - filter greater than</li>
+<li>
+<code>g_filter_lt_p</code> - filter less than</li>
+</ul>
+<p>Let’s take our basic Shiny app and add our filter.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
+edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)
+
+ui &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(
+  <span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/sliderInput">sliderInput</a></span>(
+    <span class="st">"filter"</span>, 
+    <span class="st">"Filter nodes"</span>, 
+    <span class="dt">value =</span> <span class="dv">0</span>, 
+    <span class="dt">min =</span> <span class="dv">0</span>, 
+    <span class="dt">max =</span> <span class="dv">5</span>
+  ),
+  <span class="kw"><a href="../reference/sigmajs-shiny.html">sigmajsOutput</a></span>(<span class="st">"sg"</span>)
+) 
+
+server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output){
+
+  output<span class="op">$</span>sg &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmajs-shiny.html">renderSigmajs</a></span>({
+    <span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)
+  })
+
+  <span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>filter, {
+    <span class="kw"><a href="../reference/sigmajs-shiny.html">sigmajsProxy</a></span>(<span class="st">"sg"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="kw"><a href="../reference/filter.html">sg_filter_gt_p</a></span>(input<span class="op">$</span>filterNodes, <span class="st">"size"</span>)
+  })
+
+}
+
+<span class="kw"><a href="http://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server) <span class="co"># run</span></code></pre></div>
 </div>
   </div>
 
