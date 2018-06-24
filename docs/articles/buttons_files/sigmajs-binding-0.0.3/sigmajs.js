@@ -17,8 +17,35 @@ HTMLWidgets.widget({
 
 	factory: function (el, width, height) {
 
+    var firstRun = true;
 		var s, cam; // initialise s (graph) and cam (camera)
+		
+    var sel_handle = new crosstalk.SelectionHandle();
+    var filter_handle = new crosstalk.FilterHandle();
 
+    sel_handle.on("change", function(ev) {
+      
+      if (ev.sender !== sel_handle) {
+        s.graph.nodes().forEach(function(n) {
+          n.color = n.originalColor;
+        });
+        s.graph.edges().forEach(function(e) {
+          e.color = e.originalColor;
+        });
+        s.refresh();
+      }
+          
+    });
+    filter_handle.on("change", function(ev) {
+      sel_node = s.graph.nodes(ev.value[0]);
+      if (sel_node !== null) {
+        var selected = {
+          node: sel_node,
+        };
+        s.dispatchEvent('clickNode', selected);
+      }
+    });
+    
     return {
 
 			renderValue: function (x) {
@@ -84,6 +111,7 @@ HTMLWidgets.widget({
   				}
 				}
 				
+				// highlight neighbours
 				if(x.hasOwnProperty('neighbours')){
 				  db = new sigma.plugins.neighborhoods();
 
@@ -119,6 +147,8 @@ HTMLWidgets.widget({
               e.color = e.originalColor;
             });
             s.refresh();
+            filter_handle.clear();
+            sel_handle.clear();
           });
 				}
 
@@ -464,8 +494,15 @@ HTMLWidgets.widget({
 		    button.addEventListener("click", function(event) {
   				var output = s.toSVG(x.export);
 		    });
-			  
 			}
+			
+      sel_handle.setGroup(x.crosstalk.crosstalk_group);
+      filter_handle.setGroup(x.crosstalk.crosstalk_group);
+			
+      s.bind("clickNode", function(n) {
+        sel_handle.set(n.data.node.id);
+        //filter_handle.set(n.data.node.id);
+      });
 			
 		},
 
