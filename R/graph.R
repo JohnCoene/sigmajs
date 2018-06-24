@@ -34,6 +34,18 @@ sg_nodes <- function(sg, data, ...) {
 
 	if (!inherits(sg, "sigmajs"))
 		stop("sg must be of class sigmajs", call. = FALSE)
+  
+  # crosstalk
+  if (crosstalk::is.SharedData(data)) {
+    # Using Crosstalk
+    key <- data$key()
+    group <- data$groupName()
+    data <- data$origData()
+  } else {
+    # Not using Crosstalk
+    key <- NULL
+    group <- NULL
+  }
 
   nodes <- .build_data(data, ...) %>% 
     .check_ids() %>% 
@@ -41,6 +53,13 @@ sg_nodes <- function(sg, data, ...) {
     .as_list()
 
   sg$x$data <- append(sg$x$data, list(nodes = nodes))
+  
+  # crosstalk settings
+  sg$x$crosstalk = list(
+    crosstalk_key = key,
+    crosstalk_group = group
+  )
+  
   sg
 }
 
@@ -153,6 +172,7 @@ sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
     .as_list()
   
   sg$x$addNodesDelay <- append(sg$x$addNodesDelay, nodes)
+  
   sg
 } 
 

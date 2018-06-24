@@ -13,3 +13,4 @@ bitbucket-pipelines.yml
 ^cran-comments\.md$
 ^logo\.png$
 \.circleci
+ct.R

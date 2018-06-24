@@ -27,7 +27,8 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
     width = width,
     height = height,
     package = 'sigmajs',
-    elementId = elementId
+    elementId = elementId,
+    dependencies = crosstalk::crosstalkLibs()
   )
 }
 

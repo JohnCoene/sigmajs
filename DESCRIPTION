@@ -18,7 +18,9 @@ Imports:
     jsonlite,
     igraph,
     htmltools,
-    purrr
+    purrr,
+    crosstalk,
+    htmltools
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
