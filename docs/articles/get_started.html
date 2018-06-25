@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.0</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@
       <a href="../articles/plugins.html">Plugins</a>
     </li>
     <li>
+      <a href="../articles/crosstalk.html">Crosstalk</a>
+    </li>
+    <li>
       <a href="../articles/shiny.html">Shiny</a>
     </li>
   </ul>
@@ -123,7 +126,7 @@
       <h1>Get Started</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-24</h4>
+            <h4 class="date">2018-06-25</h4>
       
       
       <div class="hidden name"><code>get_started.Rmd</code></div>
@@ -189,25 +192,25 @@
 <div id="your-first-graphs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#your-first-graphs" class="anchor"></a>Your first graphs</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data using convenience functions</span>
-nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</code></pre></div>
-<div id="htmlwidget-ed6d8f6608315d9fc89e" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># generate data using convenience functions</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</a></code></pre></div>
+<div id="htmlwidget-a96a45eb89d7f4b01c9b" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-ed6d8f6608315d9fc89e">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":" 9.123505","y":" 5.684727"},{"id":"2","size":"5","color":"#A5DBA3","x":"17.057352","y":"14.116133"},{"id":"3","size":"3","color":"#9AD4A4","x":"15.112373","y":" 1.763179"},{"id":"4","size":"5","color":"#76BA99","x":" 2.548140","y":"18.549441"},{"id":"5","size":"4","color":"#48998A","x":"12.353644","y":" 6.426092"},{"id":"6","size":"4","color":"#2D7E7E","x":" 8.341248","y":" 4.535800"},{"id":"7","size":"4","color":"#236B76","x":" 7.899539","y":" 9.617668"},{"id":"8","size":"4","color":"#1C686F","x":" 3.771047","y":"18.485623"},{"id":"9","size":"2","color":"#20986D","x":" 1.527126","y":"18.368223"},{"id":"10","size":"5","color":"#24C96B","x":" 8.815529","y":"13.418330"}],"edges":[{"id":"1","source":"7","target":"10"},{"id":"2","source":"10","target":"2"},{"id":"3","source":"3","target":"8"},{"id":"4","source":"3","target":"7"},{"id":"5","source":"10","target":"2"},{"id":"6","source":"5","target":"9"},{"id":"7","source":"4","target":"10"},{"id":"8","source":"1","target":"7"},{"id":"9","source":"3","target":"3"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"10","target":"9"},{"id":"12","source":"5","target":"3"},{"id":"13","source":"4","target":"10"},{"id":"14","source":"9","target":"7"},{"id":"15","source":"1","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></code></pre></div>
-<div id="htmlwidget-a4fd26b66b065fe70596" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<script type="application/json" data-for="htmlwidget-a96a45eb89d7f4b01c9b">{"x":{"data":{"nodes":[{"id":"1","size":"5","color":"#B1E2A3","x":" 7.397813","y":" 1.789783"},{"id":"2","size":"4","color":"#A5DBA3","x":"15.343939","y":" 2.403681"},{"id":"3","size":"5","color":"#9AD4A4","x":" 5.334203","y":" 9.763177"},{"id":"4","size":"5","color":"#76BA99","x":"19.692905","y":" 2.364712"},{"id":"5","size":"4","color":"#48998A","x":"13.867409","y":"14.209049"},{"id":"6","size":"4","color":"#2D7E7E","x":"18.445226","y":"19.247238"},{"id":"7","size":"3","color":"#236B76","x":"12.919014","y":"12.746144"},{"id":"8","size":"2","color":"#1C686F","x":"12.076040","y":" 1.365357"},{"id":"9","size":"3","color":"#20986D","x":"12.302522","y":" 9.631572"},{"id":"10","size":"5","color":"#24C96B","x":" 5.668156","y":" 2.626245"}],"edges":[{"id":"1","source":"10","target":"10"},{"id":"2","source":"5","target":"7"},{"id":"3","source":"2","target":"2"},{"id":"4","source":"7","target":"9"},{"id":"5","source":"10","target":"3"},{"id":"6","source":"3","target":"1"},{"id":"7","source":"5","target":"1"},{"id":"8","source":"5","target":"10"},{"id":"9","source":"2","target":"8"},{"id":"10","source":"8","target":"6"},{"id":"11","source":"3","target":"4"},{"id":"12","source":"8","target":"6"},{"id":"13","source":"8","target":"5"},{"id":"14","source":"2","target":"3"},{"id":"15","source":"4","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></a></code></pre></div>
+<div id="htmlwidget-a4ff511739427e71e517" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-a4fd26b66b065fe70596">{"x":{"data":{"nodes":[{"id":"1","size":"2","x":"18.641784","y":"13.201712"},{"id":"2","size":"5","x":" 9.155122","y":"19.788951"},{"id":"3","size":"3","x":"11.652271","y":" 3.837279"},{"id":"4","size":"5","x":" 8.579189","y":"14.509190"},{"id":"5","size":"4","x":" 1.602458","y":" 9.009955"},{"id":"6","size":"4","x":" 4.701124","y":" 1.460202"},{"id":"7","size":"4","x":" 7.924634","y":" 8.076698"},{"id":"8","size":"4","x":"12.849445","y":"18.213633"},{"id":"9","size":"2","x":"15.915177","y":" 1.437971"},{"id":"10","size":"5","x":"12.729614","y":"12.188398"}],"edges":[{"id":"1","source":"7","target":"10"},{"id":"2","source":"10","target":"2"},{"id":"3","source":"3","target":"8"},{"id":"4","source":"3","target":"7"},{"id":"5","source":"10","target":"2"},{"id":"6","source":"5","target":"9"},{"id":"7","source":"4","target":"10"},{"id":"8","source":"1","target":"7"},{"id":"9","source":"3","target":"3"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"10","target":"9"},{"id":"12","source":"5","target":"3"},{"id":"13","source":"4","target":"10"},{"id":"14","source":"9","target":"7"},{"id":"15","source":"1","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat <a href="articles/layout.html">layouts</a><a>, </a><a href="articles/animate.html">animate</a> them and more.</p>
+<script type="application/json" data-for="htmlwidget-a4ff511739427e71e517">{"x":{"data":{"nodes":[{"id":"1","size":"5","x":"13.595407","y":"13.191660"},{"id":"2","size":"4","x":" 8.900979","y":"19.959616"},{"id":"3","size":"5","x":" 6.142380","y":" 7.045860"},{"id":"4","size":"5","x":"18.495231","y":" 2.724161"},{"id":"5","size":"4","x":"11.235789","y":" 5.303471"},{"id":"6","size":"4","x":"17.017415","y":" 5.966621"},{"id":"7","size":"3","x":"19.132695","y":"10.384404"},{"id":"8","size":"2","x":"14.084841","y":" 9.413501"},{"id":"9","size":"3","x":" 3.103408","y":"18.024355"},{"id":"10","size":"5","x":"12.525792","y":" 2.718162"}],"edges":[{"id":"1","source":"10","target":"10"},{"id":"2","source":"5","target":"7"},{"id":"3","source":"2","target":"2"},{"id":"4","source":"7","target":"9"},{"id":"5","source":"10","target":"3"},{"id":"6","source":"3","target":"1"},{"id":"7","source":"5","target":"1"},{"id":"8","source":"5","target":"10"},{"id":"9","source":"2","target":"8"},{"id":"10","source":"8","target":"6"},{"id":"11","source":"3","target":"4"},{"id":"12","source":"8","target":"6"},{"id":"13","source":"8","target":"5"},{"id":"14","source":"2","target":"3"},{"id":"15","source":"4","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat <a href="articles/layout.html">layouts</a><a>, </a><a href="articles/animate.html">animate</a> them and more.</p>
 </div>
   </div>
 

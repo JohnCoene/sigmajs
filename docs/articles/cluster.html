@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.0</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@
       <a href="../articles/plugins.html">Plugins</a>
     </li>
     <li>
+      <a href="../articles/crosstalk.html">Crosstalk</a>
+    </li>
+    <li>
       <a href="../articles/shiny.html">Shiny</a>
     </li>
   </ul>
@@ -123,7 +126,7 @@
       <h1>Cluster</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-24</h4>
+            <h4 class="date">2018-06-25</h4>
       
       
       <div class="hidden name"><code>cluster.Rmd</code></div>
@@ -133,18 +136,18 @@
     
     
 <p>Since <code>v3.0.0</code> you can color the nodes by cluster. Simply use <code>sg_cluster</code> with your <a href="http://igraph.org/r/">igraph</a> clustering algorithm of choice.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() 
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/cluster.html">sg_cluster</a></span>()</code></pre></div>
-<div id="htmlwidget-b542761e21affc425d51" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/cluster.html">sg_cluster</a></span>()</a></code></pre></div>
+<div id="htmlwidget-e8eb31401404c1024b4d" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-b542761e21affc425d51">{"x":{"data":{"nodes":[{"grp":"1","color":"#B1E2A3","id":"1","size":"4","x":" 9.837025","y":"1.659605"},{"grp":"1","color":"#B1E2A3","id":"3","size":"2","x":"10.591184","y":"1.726833"},{"grp":"1","color":"#B1E2A3","id":"5","size":"5","x":"10.320556","y":"2.930406"},{"grp":"1","color":"#B1E2A3","id":"6","size":"4","x":"11.447003","y":"1.871588"},{"grp":"1","color":"#B1E2A3","id":"7","size":"2","x":" 9.453768","y":"2.162864"},{"grp":"1","color":"#B1E2A3","id":"10","size":"3","x":"11.404480","y":"2.728655"},{"grp":"3","color":"#328983","id":"2","size":"4","x":"12.741760","y":"4.435542"},{"grp":"2","color":"#24C96B","id":"4","size":"3","x":" 9.493641","y":"4.806628"},{"grp":"2","color":"#24C96B","id":"8","size":"3","x":"10.446381","y":"4.345297"},{"grp":"2","color":"#24C96B","id":"9","size":"5","x":" 9.323292","y":"3.966953"}],"edges":[{"id":"1","source":"3","target":"7"},{"id":"2","source":"5","target":"1"},{"id":"3","source":"7","target":"1"},{"id":"4","source":"10","target":"5"},{"id":"5","source":"4","target":"8"},{"id":"6","source":"4","target":"9"},{"id":"7","source":"2","target":"2"},{"id":"8","source":"7","target":"5"},{"id":"9","source":"1","target":"3"},{"id":"10","source":"9","target":"4"},{"id":"11","source":"3","target":"10"},{"id":"12","source":"1","target":"3"},{"id":"13","source":"3","target":"6"},{"id":"14","source":"5","target":"6"},{"id":"15","source":"8","target":"5"},{"id":"16","source":"9","target":"5"},{"id":"17","source":"1","target":"7"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-e8eb31401404c1024b4d">{"x":{"data":{"nodes":[{"grp":"3","color":"#B1E2A3","id":"1","size":"5","x":"13.81024","y":"11.187183"},{"grp":"1","color":"#328983","id":"2","size":"4","x":"10.21615","y":" 8.813746"},{"grp":"1","color":"#328983","id":"5","size":"5","x":"11.14480","y":"10.382412"},{"grp":"1","color":"#328983","id":"7","size":"3","x":"11.45292","y":"11.497798"},{"grp":"1","color":"#328983","id":"8","size":"3","x":"11.32078","y":" 9.311898"},{"grp":"1","color":"#328983","id":"10","size":"2","x":"10.33195","y":" 9.763997"},{"grp":"2","color":"#24C96B","id":"3","size":"4","x":"12.51123","y":" 9.133565"},{"grp":"2","color":"#24C96B","id":"4","size":"2","x":"13.96175","y":" 8.264701"},{"grp":"2","color":"#24C96B","id":"6","size":"5","x":"12.88933","y":" 8.209076"},{"grp":"2","color":"#24C96B","id":"9","size":"5","x":"11.98740","y":" 8.462911"}],"edges":[{"id":"1","source":"3","target":"8"},{"id":"2","source":"9","target":"6"},{"id":"3","source":"8","target":"2"},{"id":"4","source":"6","target":"3"},{"id":"5","source":"10","target":"5"},{"id":"6","source":"9","target":"9"},{"id":"7","source":"10","target":"10"},{"id":"8","source":"6","target":"9"},{"id":"9","source":"10","target":"2"},{"id":"10","source":"8","target":"9"},{"id":"11","source":"8","target":"10"},{"id":"12","source":"8","target":"5"},{"id":"13","source":"9","target":"8"},{"id":"14","source":"3","target":"9"},{"id":"15","source":"5","target":"7"},{"id":"16","source":"8","target":"5"},{"id":"17","source":"4","target":"6"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

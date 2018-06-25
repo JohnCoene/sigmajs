@@ -22,29 +22,6 @@ HTMLWidgets.widget({
 		
     var sel_handle = new crosstalk.SelectionHandle();
     var filter_handle = new crosstalk.FilterHandle();
-
-    sel_handle.on("change", function(ev) {
-      
-      if (ev.sender !== sel_handle) {
-        s.graph.nodes().forEach(function(n) {
-          n.color = n.originalColor;
-        });
-        s.graph.edges().forEach(function(e) {
-          e.color = e.originalColor;
-        });
-        s.refresh();
-      }
-          
-    });
-    filter_handle.on("change", function(ev) {
-      sel_node = s.graph.nodes(ev.value[0]);
-      if (sel_node !== null) {
-        var selected = {
-          node: sel_node,
-        };
-        s.dispatchEvent('clickNode', selected);
-      }
-    });
     
     return {
 
@@ -96,7 +73,7 @@ HTMLWidgets.widget({
             	cam = get_sigma_camera(x.camera.id);
   				  }
   				  
-  				  s.addRenderer({
+  				  var renderer = s.addRenderer({
   						container: el.id,
   						type: x.type,
   				    camera: cam
@@ -104,11 +81,16 @@ HTMLWidgets.widget({
     				
   				  s.refresh();
   				} else {
-  				  s.addRenderer({
+  				  var renderer = s.addRenderer({
   						container: el.id,
   						type: x.type
   				  });
   				}
+				}
+				
+				if(typeof x.crosstalk.crosstalk_key != "undefined"){
+				  console.log("setting neighbours");
+				  x.neighbours = true;
 				}
 				
 				// highlight neighbours
@@ -125,6 +107,7 @@ HTMLWidgets.widget({
             var nodeId = e.data.node.id,
                 toKeep = s.graph.neighbors(nodeId);
             toKeep[nodeId] = e.data.node;
+            sel_handle.set(nodeId);
             s.graph.nodes().forEach(function(n) {
               if (toKeep[n.id])
                 n.color = n.originalColor;
@@ -147,7 +130,7 @@ HTMLWidgets.widget({
               e.color = e.originalColor;
             });
             s.refresh();
-            filter_handle.clear();
+            //filter_handle.clear();
             sel_handle.clear();
           });
 				}
@@ -496,19 +479,50 @@ HTMLWidgets.widget({
 		    });
 			}
 			
+      sel_handle.on("change", function(ev) {
+        
+        if (ev.sender !== sel_handle) {
+          s.graph.nodes().forEach(function(n) {
+            n.color = n.originalColor;
+          });
+          s.graph.edges().forEach(function(e) {
+            e.color = e.originalColor;
+          });
+          s.refresh();
+        }
+        
+        if (typeof ev.value[0] != 'undefined') {
+
+          var nodeId = ev.value[0];
+              toKeep = s.graph.neighbors(nodeId);
+          toKeep[nodeId] = s.graph.nodes(String(nodeId));
+          sel_handle.set(nodeId);
+          s.graph.nodes().forEach(function(n) {
+            if (toKeep[n.id])
+              n.color = n.originalColor;
+            else
+              n.color = '#eee';
+          });
+          s.graph.edges().forEach(function(e) {
+            if (toKeep[e.source] && toKeep[e.target])
+              e.color = e.originalColor;
+            else
+              e.color = '#eee';
+          });
+          s.refresh();
+
+        }
+            
+      });
+			
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
       filter_handle.setGroup(x.crosstalk.crosstalk_group);
-			
-      s.bind("clickNode", function(n) {
-        sel_handle.set(n.data.node.id);
-        //filter_handle.set(n.data.node.id);
-      });
 			
 		},
 
 		resize: function(width, height) {
-			for(var name in s.renderers)
-				s.renderers[name].resize(width, height);
+			for(var i in s.renderers)
+				s.renderers[i].resize(width, height);
 		},
 		
 		getCamera: function() {

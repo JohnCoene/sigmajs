@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.0</span>
       </span>
     </div>
 
@@ -121,6 +121,9 @@
     </li>
     <li>
       <a href="../articles/plugins.html">Plugins</a>
+    </li>
+    <li>
+      <a href="../articles/crosstalk.html">Crosstalk</a>
     </li>
     <li>
       <a href="../articles/shiny.html">Shiny</a>
@@ -195,8 +198,12 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Eaach node must include a unique id, ideally the user passes <code>x</code> and <code>y</code>, if they are not passed then they are randomly generated.
-Each edge also must include a unique id.</p>
+    <p>Each node must include a unique id, ideally the user passes <code>x</code> and <code>y</code>, if they are not passed then they are randomly generated.
+Each edge also must include a unique <code>id</code> as well as two columns named <code>source</code> and <code>target</code>.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p><code>node</code> also takes a <a href='http://www.rdocumentation.org/packages/crosstalk/topics/SharedData'>SharedData</a>.</p>
     
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
@@ -223,6 +230,8 @@ Each edge also must include a unique id.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#functions">Functions</a></li>
       
