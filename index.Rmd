@@ -30,7 +30,7 @@ nodes$to_size <- runif(n, 2, 6) # size
 COLORS <- c("#1C5C70", "#B1E2A3")
 nodes$to_color <- colorRampPalette(COLORS)(n)
  
-# plot
+# --------------------------- HEADER
 sigmajs(width = "100%", height = 150) %>%
 	sg_nodes(nodes, id, size, color, to_x, to_y, to_size, to_color) %>%
 	sg_edges(edges, id, source, target) %>% 
@@ -39,6 +39,44 @@ sigmajs(width = "100%", height = 150) %>%
 	sg_settings(animationsTime = 3000,
 	            mouseEnabled = FALSE,
 	            touchEnabled = FALSE) -> net
+
+# ----------------------------- GET STARTED
+nodes_demo <- sg_make_nodes(5)
+edges_demo <- sg_make_edges(nodes_demo)
+
+nodes_demo$size <- 1
+
+get_started <- sigmajs(height = 150) %>% 
+  sg_nodes(nodes_demo, id, color, size) %>% 
+  sg_edges(edges_demo, id, source, target) %>% 
+  sg_settings(defaultNodeColor = "#98D3A5")
+
+# ----------------------------- DYNAMIC
+edges_demo$delay <- runif(nrow(edges_demo), 500, 2000) # between .5 and 2 seconds
+
+last_edge <- sum(edges_demo$delay) + 100
+
+dyn <- sigmajs(height = 150) %>%
+  sg_force_start() %>%
+  sg_nodes(nodes_demo, id, size, color) %>%
+  sg_add_edges(edges_demo, delay, id, source, target) %>% # read delay documentation
+  sg_force_stop(last_edge)
+
+# ----------------------------- ANIMATE
+n <- nrow(nodes_demo)
+nodes_demo$to_x <- runif(n, 5, 10)
+nodes_demo$to_y <- runif(n, 5, 10)
+nodes_demo$to_size <- runif(n, 5, 10)
+nodes_demo$color <- sample(c("#ffe66d", "#e85d75"), n, replace = TRUE)
+nodes_demo$to_color <- sample(c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
+  "#24C96B"), n, replace = TRUE)
+
+animate <- sigmajs(height = 150) %>%
+  sg_nodes(nodes_demo, id, label, size, color, to_x, to_y, to_size, to_color) %>%
+  sg_edges(edges_demo, id, source, target) %>% 
+  sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
+             delay = 7000) %>%
+  sg_settings(animationsTime = 5000)
 
 h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R")
 br()
@@ -74,6 +112,7 @@ div(
       div(
         class = "caption",
         h3("Get Started"),
+        get_started,
         p("Get started with", code("sigmajs"), ", draw your first graphs and learn about settings."),
         p(
           a(
@@ -99,6 +138,7 @@ div(
       div(
         class = "caption",
         h3("Dynamism"),
+        dyn,
         p("Learn how to make a temporal graph in static R markdown documents."),
         p(
           a(
@@ -117,6 +157,30 @@ div(
       )
     )
   ),
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Animate"),
+        animate,
+        p("Animate the color, size, and x/y coordinates of the nodes on the canvas."),
+        p(
+          a(
+            href = "articles/animate.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-cogs"),
+            "Animate"
+          )
+        )
+      )
+    )
+  )
+)
+
+div(
+  class = "row",
   div(
     class = "col-md-4",
     div(
@@ -142,29 +206,6 @@ div(
         )
       )
     )
-  )
-)
-
-div(
-  class = "row",
-  div(
-    class = "col-md-4",
-    div(
-      class = "thumbnail",
-      div(
-        class = "caption",
-        h3("Animate"),
-        p("Animate the color, size, or position of nodes."),
-        p(
-          a(
-            href = "articles/animate.html",
-            class = "btn btn-primary",
-            tags$i(class = "fa fa-cogs"),
-            "Animate"
-          )
-        )
-      )
-    )
   ),
   div(
     class = "col-md-4",
@@ -174,7 +215,9 @@ div(
         class = "caption",
         h3("Crosstalk"),
         p("Have", code("sigmajs"), "play hand-in-hand with other", 
-          a("htmlwidgets.", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank")),
+          a("htmlwidgets,", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank"),
+          "highlight nodes and neighbours on click."
+        ),
         p(
           a(
             href = "articles/talkcross.html",
@@ -193,7 +236,7 @@ div(
       div(
         class = "caption",
         h3("Formats"),
-        p("Build graphs from igraph objects or GEXF files."),
+        p("Build", code("sigmajs"), "graphs from igraph objects or GEXF files in a single function call."),
         p(
           a(
             href = "articles/formats.html#igraph",
