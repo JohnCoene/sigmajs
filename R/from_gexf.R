@@ -26,5 +26,11 @@ sg_from_gexf <- function(sg, file) {
 	sg$x$data <- data
 	sg$x$gexf <- TRUE # indicate coming from GEXF file
 
+	# crosstalk settings
+	sg$x$crosstalk = list(
+	  crosstalk_key = NULL,
+	  crosstalk_group = NULL
+	)
+	
 	sg
 }

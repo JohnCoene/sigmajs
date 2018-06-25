@@ -75,6 +75,12 @@ sg_from_igraph <- function(sg, igraph, layout = NULL) {
 		nodes$size <- 1
 
 	sg$x$data <- append(sg$x$data, list(nodes = .as_list(nodes), edges = .as_list(edges)))
+	
+	# crosstalk settings
+	sg$x$crosstalk = list(
+	  crosstalk_key = NULL,
+	  crosstalk_group = NULL
+	)
 
 	return(sg)
 }
