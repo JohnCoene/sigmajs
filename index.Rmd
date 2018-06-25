@@ -83,7 +83,7 @@ div(
             "Start"
           ),
           a(
-            href = "articles/layouts.html",
+            href = "articles/layout.html",
             class = "btn btn-success",
             tags$i(class = "fa fa-cubes"),
             "Layouts"
