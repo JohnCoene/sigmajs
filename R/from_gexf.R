@@ -13,7 +13,7 @@
 #'   sg_from_gexf(gexf) 
 #'
 #' @export
-sg_from_gexf <- function(sg, file) {
+sg_from_gexf <- function(sg, file, sd = NULL) {
 
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
@@ -32,7 +32,6 @@ sg_from_gexf <- function(sg, file) {
 	    # Using Crosstalk
 	    key <- sd$key()
 	    group <- sd$groupName()
-	    data <- sd$origData()
 	  } 
 	} else {
 	  # Not using Crosstalk

@@ -14,3 +14,4 @@ bitbucket-pipelines.yml
 ^logo\.png$
 \.circleci
 ct.R
+^CONDUCT\.md$

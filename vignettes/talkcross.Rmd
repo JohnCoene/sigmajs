@@ -63,13 +63,14 @@ div(
 Crosstalk also works with  [other formats](articles/formats.html).
 
 ```{r, warning=FALSE}
+library(DT)
+library(sigmajs)
+library(crosstalk)
+
 g <- igraph::make_graph(sample(LETTERS, 50, replace = TRUE))
 
-# pass node ids as keys
-sd <- SharedData$new(nodes, key = nodes$id)
-
 vertices <- igraph::as_data_frame(g, what = "vertices")
-sd <- SharedData$new(vertices)
+sd <- SharedData$new(vertices, key = vertices$name)
 
 div(
   class = "row",

@@ -4,7 +4,7 @@
 \alias{sg_from_gexf}
 \title{Graph from GEXF file}
 \usage{
-sg_from_gexf(sg, file)
+sg_from_gexf(sg, file, sd = NULL)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
