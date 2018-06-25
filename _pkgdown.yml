@@ -32,7 +32,7 @@ navbar:
         - text: "Plugins"
           href: articles/plugins.html
         - text: "Crosstalk"
-          href: articles/crosstalk.html
+          href: articles/talkcross.html
         - text: "Shiny"
           href: articles/shiny.html
     - text: "Reference"

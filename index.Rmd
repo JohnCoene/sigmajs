@@ -174,7 +174,7 @@ div(
           a("htmlwidgets.", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank")),
         p(
           a(
-            href = "articles/crosstalk.html",
+            href = "articles/talkcross.html",
             class = "btn btn-primary",
             tags$i(class = "fa fa-exchange"),
             "Crosstalk"

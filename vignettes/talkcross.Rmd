@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(sigmajs)
+library(htmltools)
 ```
 
 ## Crosstalk
@@ -36,13 +36,19 @@ edges <- sg_make_edges(nodes)
 # Wrap data frame in SharedData
 sd <- SharedData$new(nodes)
 
-# Use SharedData like a dataframe with Crosstalk-enabled widgets
-bscols(
-  sigmajs() %>% 
-    sg_nodes(sd, id, color, size) %>% 
-    sg_edges(edges, id, source, target) %>% 
-    sg_layout(),
-  datatable(sd, extensions = "Scroller", style = "bootstrap", class = "compact", width = "100%",
-    selection = "single")
+div(
+  class = "row",
+  div(
+    class = "col-md-6",
+    sigmajs() %>% 
+      sg_nodes(sd, id, color, size) %>% 
+      sg_edges(edges, id, source, target) %>% 
+      sg_layout()
+  ),
+  div(
+    class = "col-md-6",
+    datatable(sd, style = "bootstrap", class = "compact", width = "100%",
+      selection = "single")
+  )
 )
 ```
