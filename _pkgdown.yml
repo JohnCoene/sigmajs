@@ -31,6 +31,8 @@ navbar:
           href: articles/animate.html
         - text: "Plugins"
           href: articles/plugins.html
+        - text: "Crosstalk"
+          href: articles/crosstalk.html
         - text: "Shiny"
           href: articles/shiny.html
     - text: "Reference"

@@ -1,3 +1,7 @@
+# sigmajs 0.1.0
+
+* [crosstalk](https://rstudio.github.io/crosstalk/) integration.
+
 # sigmajs 0.0.3
 
 * `sg_layout` added - layout graph using `igraph` package.

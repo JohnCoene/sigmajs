@@ -21,7 +21,7 @@ HTMLWidgets.widget({
 		var s, cam; // initialise s (graph) and cam (camera)
 		
     var sel_handle = new crosstalk.SelectionHandle();
-    //var filter_handle = new crosstalk.FilterHandle();
+    var filter_handle = new crosstalk.FilterHandle();
     
     return {
 
@@ -86,6 +86,11 @@ HTMLWidgets.widget({
   						type: x.type
   				  });
   				}
+				}
+				
+				if(typeof x.crosstalk.crosstalk_key != "undefined"){
+				  console.log("setting neighbours");
+				  x.neighbours = true;
 				}
 				
 				// highlight neighbours
@@ -511,13 +516,13 @@ HTMLWidgets.widget({
       });
 			
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
-      //filter_handle.setGroup(x.crosstalk.crosstalk_group);
+      filter_handle.setGroup(x.crosstalk.crosstalk_group);
 			
 		},
 
 		resize: function(width, height) {
-			for(var name in s.renderers)
-				s.renderers[name].resize(width, height);
+			for(var i in s.renderers)
+				s.renderers[i].resize(width, height);
 		},
 		
 		getCamera: function() {

@@ -39,9 +39,8 @@ sigmajs(width = "100%", height = 150) %>%
 	sg_settings(animationsTime = 3000) -> net
 
 div(
-  class = "row",
-  br(),
-  br(),
+  class = "row jumbotron",
+  h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R"),
   div(
     class = "col-md-6",
     img(
@@ -57,8 +56,6 @@ div(
 )
 br()
 ```
-
-[sigmajs](http://sigmajs.org/) for R.
 
 With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons, and more.
 
@@ -138,6 +135,68 @@ div(
             class = "btn btn-success",
             tags$i(class = "fa fa-desktop"),
             "Demo"
+          )
+        )
+      )
+    )
+  )
+)
+
+div(
+  class = "row",
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Animate"),
+        p("Animate the color, size, or position of nodes."),
+        p(
+          a(
+            href = "articles/animate.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-cogs"),
+            "Animate"
+          )
+        )
+      )
+    )
+  ),
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Crosstalk"),
+        p("Have", code("sigmajs"), "play hand-in-hand with other", 
+          a("htmlwidgets.", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank")),
+        p(
+          a(
+            href = "articles/crosstalk.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-exchange"),
+            "Crosstalk"
+          )
+        )
+      )
+    )
+  ),
+  div(
+    class = "col-md-4",
+    div(
+      class = "thumbnail",
+      div(
+        class = "caption",
+        h3("Formats"),
+        p("Build graphs from igraph objects or GEXF files."),
+        p(
+          a(
+            href = "articles/formats.html",
+            class = "btn btn-primary",
+            tags$i(class = "fa fa-file-code-o"),
+            "Formats"
           )
         )
       )

@@ -1,6 +1,6 @@
 Package: sigmajs
 Title: Interface to 'Sigma.js' Graph Visualization Library
-Version: 0.0.3
+Version: 0.1.0
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
 Description: Interface to 'sigma.js' graph visualization library including animations, plugins and shiny proxies.
 License: MIT + file LICENSE
@@ -19,8 +19,9 @@ Imports:
     igraph,
     htmltools,
     purrr,
-    crosstalk,
-    htmltools
-Suggests: knitr,
-    rmarkdown
+    crosstalk
+Suggests: 
+    knitr,
+    rmarkdown,
+    DT
 VignetteBuilder: knitr

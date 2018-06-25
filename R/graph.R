@@ -6,8 +6,10 @@
 #' @param data Data.frame (or list) of nodes or edges.
 #' @param ... any column.
 #'
-#' @details Eaach node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
-#' Each edge also must include a unique id.
+#' @details Each node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
+#' Each edge also must include a unique \code{id} as well as two columns named \code{source} and \code{target}.
+#' 
+#' @note \code{node} also takes a \link[crosstalk]{SharedData}.
 #'
 #' @section Functions:
 #' \itemize{

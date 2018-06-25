@@ -1,0 +1,48 @@
+---
+title: "Crosstalk"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Crosstalk}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+## Crosstalk
+
+<span class="text-warning"><i class="fa fa-warning"></i> still in development.</span>
+
+Since `v0.1.0` the package is `crosstalk` integrated.
+
+Because graphs consist of two data.frames (nodes and edges), [crosstalk](https://rstudio.github.io/crosstalk/) is restricted to one of them, nodes. In essence, not much changes, you use the `SharedData` built with `crosstalk` like you would normally use the `nodes` data frame. 
+
+```{r}
+library(DT)
+library(sigmajs)
+library(crosstalk)
+
+nodes <- sg_make_nodes(20)
+edges <- sg_make_edges(nodes)
+
+# Wrap data frame in SharedData
+sd <- SharedData$new(nodes)
+
+# Use SharedData like a dataframe with Crosstalk-enabled widgets
+bscols(
+  sigmajs() %>% 
+    sg_nodes(sd, id, color, size) %>% 
+    sg_edges(edges, id, source, target) %>% 
+    sg_layout(),
+  datatable(sd, extensions = "Scroller", style = "bootstrap", class = "compact", width = "100%",
+    selection = "single")
+)
+```

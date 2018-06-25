@@ -26,8 +26,11 @@ sg_nodes2(sg, data)
 Add nodes and edges to a \code{sigmajs} graph.
 }
 \details{
-Eaach node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
-Each edge also must include a unique id.
+Each node must include a unique id, ideally the user passes \code{x} and \code{y}, if they are not passed then they are randomly generated.
+Each edge also must include a unique \code{id} as well as two columns named \code{source} and \code{target}.
+}
+\note{
+\code{node} also takes a \link[crosstalk]{SharedData}.
 }
 \section{Functions}{
 

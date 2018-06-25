@@ -217,6 +217,8 @@ shinyApp(ui, server) # run
 
 Easy! Just use your plot as an `input` that points to the graph id (`sg`) followed by `_` and the name of the event you want to catch; in our case, plot of id (`sg`) and capture node clicked = `input$sg_click_node`. There are many more events to pick up, see the [official](https://github.com/jacomyal/sigma.js/wiki/Events-API) documentation for the full list.
 
+## Filter
+
 Now that you are familiar with proxies, we can add a filter to filter nodes, edges or both.
 
 * `g_filter_gt_p` - filter greater than
