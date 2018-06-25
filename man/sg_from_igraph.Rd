@@ -4,14 +4,16 @@
 \alias{sg_from_igraph}
 \title{Create from igraph}
 \usage{
-sg_from_igraph(sg, igraph, layout = NULL)
+sg_from_igraph(sg, igraph, layout = NULL, sd = NULL)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
-\item{igraph}{An object of class \code{igraph}}
+\item{igraph}{An object of class \code{igraph}.}
 
 \item{layout}{A matrix of coordinates.}
+
+\item{sd}{A \link[crosstalk]{SharedData} of nodes.}
 }
 \description{
 Create a \code{sigmajs} from an \code{igraph} object.

@@ -3,9 +3,10 @@
 #' Create a \code{sigmajs} from an \code{igraph} object.
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
-#' @param igraph An object of class \code{igraph}
+#' @param igraph An object of class \code{igraph}.
 #' @param layout A matrix of coordinates.
-#'
+#' @param sd A \link[crosstalk]{SharedData} of nodes.
+#' 
 #' @examples
 #' \dontrun{
 #' data("lesmis_igraph")
@@ -18,7 +19,7 @@
 #' }
 #'
 #' @export
-sg_from_igraph <- function(sg, igraph, layout = NULL) {
+sg_from_igraph <- function(sg, igraph, layout = NULL, sd = NULL) {
 
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
@@ -55,7 +56,7 @@ sg_from_igraph <- function(sg, igraph, layout = NULL) {
 	if ("id" %in% names(nodes))
 		nodes$id <- as.character(nodes$id)
 	else
-		nodes$id <- as.character(1:nrow(nodes))
+		nodes$id <- nodes$name
 
 	# add layout
 	if (is.null(layout))
@@ -76,10 +77,23 @@ sg_from_igraph <- function(sg, igraph, layout = NULL) {
 
 	sg$x$data <- append(sg$x$data, list(nodes = .as_list(nodes), edges = .as_list(edges)))
 	
+	if(!is.null(sd)){
+	  if (crosstalk::is.SharedData(sd)) {
+	    # Using Crosstalk
+	    key <- sd$key()
+	    group <- sd$groupName()
+	    data <- sd$origData()
+	  } 
+	} else {
+	  # Not using Crosstalk
+	  key <- NULL
+	  group <- NULL
+	}
+	
 	# crosstalk settings
 	sg$x$crosstalk = list(
-	  crosstalk_key = NULL,
-	  crosstalk_group = NULL
+	  crosstalk_key = key,
+	  crosstalk_group = group
 	)
 
 	return(sg)

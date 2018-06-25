@@ -10,6 +10,8 @@ sg_from_gexf(sg, file)
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
 \item{file}{Path to GEXF file.}
+
+\item{sd}{A \link[crosstalk]{SharedData} of nodes.}
 }
 \description{
 Create a sigmajs graph from a GEXF file.

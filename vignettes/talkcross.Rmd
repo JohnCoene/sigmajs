@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(htmltools)
 ```
 
-## Crosstalk
+## Standard
 
 <span class="text-warning"><i class="fa fa-warning"></i> still in development.</span>
 
@@ -47,8 +47,39 @@ div(
       sg_edges(edges, id, source, target) %>% 
       sg_layout() %>% 
       sg_settings(
-        mouseEnabled = FALSE,
-	      touchEnabled = FALSE
+        mouseWheelEnabled = FALSE
+      )
+  ),
+  div(
+    class = "col-md-6",
+    datatable(sd, style = "bootstrap", class = "compact", width = "100%",
+      selection = "single")
+  )
+)
+```
+
+## igraph
+
+Crosstalk also works with  [other formats](articles/formats.html).
+
+```{r, warning=FALSE}
+g <- igraph::make_graph(sample(LETTERS, 50, replace = TRUE))
+
+# pass node ids as keys
+sd <- SharedData$new(nodes, key = nodes$id)
+
+vertices <- igraph::as_data_frame(g, what = "vertices")
+sd <- SharedData$new(vertices)
+
+div(
+  class = "row",
+  div(
+    class = "col-md-6",
+    sigmajs() %>% 
+      sg_from_igraph(g, sd = sd) %>% 
+      sg_settings(
+        mouseWheelEnabled = FALSE,
+        defaultNodeColor = "#98D3A5"
       )
   ),
   div(

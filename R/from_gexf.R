@@ -4,6 +4,7 @@
 #'
 #' @inheritParams sg_nodes
 #' @param file Path to GEXF file.
+#' @param sd A \link[crosstalk]{SharedData} of nodes.
 #'
 #' @examples
 #' gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
@@ -26,10 +27,23 @@ sg_from_gexf <- function(sg, file) {
 	sg$x$data <- data
 	sg$x$gexf <- TRUE # indicate coming from GEXF file
 
+	if(!is.null(sd)){
+	  if (crosstalk::is.SharedData(sd)) {
+	    # Using Crosstalk
+	    key <- sd$key()
+	    group <- sd$groupName()
+	    data <- sd$origData()
+	  } 
+	} else {
+	  # Not using Crosstalk
+	  key <- NULL
+	  group <- NULL
+	}
+	
 	# crosstalk settings
 	sg$x$crosstalk = list(
-	  crosstalk_key = NULL,
-	  crosstalk_group = NULL
+	  crosstalk_key = key,
+	  crosstalk_group = group
 	)
 	
 	sg
