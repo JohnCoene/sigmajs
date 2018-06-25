@@ -79,12 +79,6 @@ div(
             class = "btn btn-primary",
             tags$i(class = "fa fa-rocket"),
             "Get Started"
-          ),
-          a(
-            href = "reference/",
-            class = "btn btn-default",
-            tags$i(class = "fa fa-book"),
-            "Docs"
           )
         )
       )
@@ -194,10 +188,17 @@ div(
         p("Build graphs from igraph objects or GEXF files."),
         p(
           a(
-            href = "articles/formats.html",
+            href = "articles/formats.html#igraph",
             class = "btn btn-primary",
+            tags$i(class = "fa fa-share-alt"),
+            "igraph"
+          ),
+          a(
+            href = "articles/formats.html#gexf",
+            target = "_blank",
+            class = "btn btn-success",
             tags$i(class = "fa fa-file-code-o"),
-            "Formats"
+            "GEXF"
           )
         )
       )
