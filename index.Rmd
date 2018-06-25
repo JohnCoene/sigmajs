@@ -80,7 +80,13 @@ div(
             href = "articles/get_started.html",
             class = "btn btn-primary",
             tags$i(class = "fa fa-rocket"),
-            "Get Started"
+            "Start"
+          ),
+          a(
+            href = "articles/layouts.html",
+            class = "btn btn-success",
+            tags$i(class = "fa fa-cubes"),
+            "Layouts"
           )
         )
       )

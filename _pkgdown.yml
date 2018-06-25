@@ -19,7 +19,8 @@ navbar:
       menu: 
         - text: "Get Started"
           href: articles/get_started.html
-        - text: "Other formats"
+        - text: "------------------"
+        - text: "igraph & GEXF"
           href: articles/formats.html
         - text: "Buttons"
           href: articles/buttons.html
