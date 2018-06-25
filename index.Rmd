@@ -36,7 +36,9 @@ sigmajs(width = "100%", height = 150) %>%
 	sg_edges(edges, id, source, target) %>% 
 	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
 	           delay = 1000) %>%
-	sg_settings(animationsTime = 3000) -> net
+	sg_settings(animationsTime = 3000,
+	            mouseEnabled = FALSE,
+	            touchEnabled = FALSE) -> net
 
 h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R")
 br()
