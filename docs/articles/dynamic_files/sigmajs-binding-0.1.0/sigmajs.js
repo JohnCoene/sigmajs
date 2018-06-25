@@ -18,10 +18,45 @@ HTMLWidgets.widget({
 	factory: function (el, width, height) {
 
     var firstRun = true;
-		var s, cam; // initialise s (graph) and cam (camera)
+		var s, cam, renderer; // initialise s (graph), renderer and cam (camera)
 		
     var sel_handle = new crosstalk.SelectionHandle();
-    var filter_handle = new crosstalk.FilterHandle();
+    
+    sel_handle.on("change", function(ev) {
+      
+      if (ev.sender !== sel_handle) {
+        s.graph.nodes().forEach(function(n) {
+          n.color = n.originalColor;
+        });
+        s.graph.edges().forEach(function(e) {
+          e.color = e.originalColor;
+        });
+        s.refresh();
+      }
+      
+      if (typeof ev.value[0] != 'undefined') {
+
+        var nodeId = ev.value[0];
+            toKeep = s.graph.neighbors(nodeId);
+        toKeep[nodeId] = s.graph.nodes(String(nodeId));
+        sel_handle.set(nodeId);
+        s.graph.nodes().forEach(function(n) {
+          if (toKeep[n.id])
+            n.color = n.originalColor;
+          else
+            n.color = '#eee';
+        });
+        s.graph.edges().forEach(function(e) {
+          if (toKeep[e.source] && toKeep[e.target])
+            e.color = e.originalColor;
+          else
+            e.color = '#eee';
+        });
+        s.refresh();
+
+      }
+
+    });
     
     return {
 
@@ -73,7 +108,7 @@ HTMLWidgets.widget({
             	cam = get_sigma_camera(x.camera.id);
   				  }
   				  
-  				  var renderer = s.addRenderer({
+  				  renderer = s.addRenderer({
   						container: el.id,
   						type: x.type,
   				    camera: cam
@@ -81,15 +116,15 @@ HTMLWidgets.widget({
     				
   				  s.refresh();
   				} else {
-  				  var renderer = s.addRenderer({
+  				  renderer = s.addRenderer({
   						container: el.id,
   						type: x.type
   				  });
   				}
 				}
 				
-				if(typeof x.crosstalk.crosstalk_key != "undefined"){
-				  console.log("setting neighbours");
+				// force neighbours true if crosstalk enabled
+				if(typeof x.crosstalk.crosstalk_key !== undefined){
 				  x.neighbours = true;
 				}
 				
@@ -130,7 +165,6 @@ HTMLWidgets.widget({
               e.color = e.originalColor;
             });
             s.refresh();
-            //filter_handle.clear();
             sel_handle.clear();
           });
 				}
@@ -479,50 +513,14 @@ HTMLWidgets.widget({
 		    });
 			}
 			
-      sel_handle.on("change", function(ev) {
-        
-        if (ev.sender !== sel_handle) {
-          s.graph.nodes().forEach(function(n) {
-            n.color = n.originalColor;
-          });
-          s.graph.edges().forEach(function(e) {
-            e.color = e.originalColor;
-          });
-          s.refresh();
-        }
-        
-        if (typeof ev.value[0] != 'undefined') {
-
-          var nodeId = ev.value[0];
-              toKeep = s.graph.neighbors(nodeId);
-          toKeep[nodeId] = s.graph.nodes(String(nodeId));
-          sel_handle.set(nodeId);
-          s.graph.nodes().forEach(function(n) {
-            if (toKeep[n.id])
-              n.color = n.originalColor;
-            else
-              n.color = '#eee';
-          });
-          s.graph.edges().forEach(function(e) {
-            if (toKeep[e.source] && toKeep[e.target])
-              e.color = e.originalColor;
-            else
-              e.color = '#eee';
-          });
-          s.refresh();
-
-        }
-            
-      });
-			
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
-      filter_handle.setGroup(x.crosstalk.crosstalk_group);
+      //filter_handle.setGroup(x.crosstalk.crosstalk_group);
 			
 		},
 
 		resize: function(width, height) {
-			for(var i in s.renderers)
-				s.renderers[i].resize(width, height);
+			for(var name in s.renderers)
+				s.renderers[name].resize(width, height);
 		},
 		
 		getCamera: function() {
@@ -955,4 +953,3 @@ if (HTMLWidgets.shinyMode) {
 	);
 
 }
-

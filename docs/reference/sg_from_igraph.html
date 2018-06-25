@@ -91,6 +91,12 @@
      
   </a>
 </li>
+<li>
+  <a href="../CONDUCT.html">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Guide
@@ -123,7 +129,7 @@
       <a href="../articles/plugins.html">Plugins</a>
     </li>
     <li>
-      <a href="../articles/crosstalk.html">Crosstalk</a>
+      <a href="../articles/talkcross.html">Crosstalk</a>
     </li>
     <li>
       <a href="../articles/shiny.html">Shiny</a>
@@ -171,7 +177,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_from_igraph</span>(<span class='no'>sg</span>, <span class='no'>igraph</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>sg_from_igraph</span>(<span class='no'>sg</span>, <span class='no'>igraph</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,11 +188,15 @@
     </tr>
     <tr>
       <th>igraph</th>
-      <td><p>An object of class <code>igraph</code></p></td>
+      <td><p>An object of class <code>igraph</code>.</p></td>
     </tr>
     <tr>
       <th>layout</th>
       <td><p>A matrix of coordinates.</p></td>
+    </tr>
+    <tr>
+      <th>sd</th>
+      <td><p>A <a href='http://www.rdocumentation.org/packages/crosstalk/topics/SharedData'>SharedData</a> of nodes.</p></td>
     </tr>
     </table>
     

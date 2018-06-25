@@ -1,15 +1,15 @@
-pandoc: 2.2.1
+pandoc: 1.19.2.4
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
   animate: animate.html
   buttons: buttons.html
   cluster: cluster.html
-  crosstalk: crosstalk.html
   dynamic: dynamic.html
   formats: formats.html
   get_started: get_started.html
   layout: layout.html
   plugins: plugins.html
   shiny: shiny.html
+  talkcross: talkcross.html
 
