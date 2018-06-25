@@ -43,7 +43,11 @@ div(
     sigmajs() %>% 
       sg_nodes(sd, id, color, size) %>% 
       sg_edges(edges, id, source, target) %>% 
-      sg_layout()
+      sg_layout() %>% 
+      sg_settings(
+        mouseEnabled = FALSE,
+	      touchEnabled = FALSE
+      )
   ),
   div(
     class = "col-md-6",
