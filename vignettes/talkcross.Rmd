@@ -25,6 +25,8 @@ Since `v0.1.0` the package is `crosstalk` integrated.
 
 Because graphs consist of two data.frames (nodes and edges), [crosstalk](https://rstudio.github.io/crosstalk/) is restricted to one of them, nodes. In essence, not much changes, you use the `SharedData` built with `crosstalk` like you would normally use the `nodes` data frame. 
 
+**Pass your node ids as keys in `SharedData`*
+
 ```{r}
 library(DT)
 library(sigmajs)
@@ -33,8 +35,8 @@ library(crosstalk)
 nodes <- sg_make_nodes(20)
 edges <- sg_make_edges(nodes)
 
-# Wrap data frame in SharedData
-sd <- SharedData$new(nodes)
+# pass node ids as keys
+sd <- SharedData$new(nodes, key = nodes$id)
 
 div(
   class = "row",
