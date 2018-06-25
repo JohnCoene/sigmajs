@@ -38,9 +38,10 @@ sigmajs(width = "100%", height = 150) %>%
 	           delay = 1000) %>%
 	sg_settings(animationsTime = 3000) -> net
 
+h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R")
+br()
 div(
-  class = "row jumbotron",
-  h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R"),
+  class = "row",
   div(
     class = "col-md-6",
     img(
