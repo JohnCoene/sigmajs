@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Edges from co-appearances of characters in "Les Miserables" — lesmis_edges" />
 
@@ -108,8 +114,9 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)" />
     <li>
       <a href="../articles/get_started.html">Get Started</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="../articles/formats.html">Other formats</a>
+      <a href="../articles/formats.html">igraph &amp; GEXF</a>
     </li>
     <li>
       <a href="../articles/buttons.html">Buttons</a>
@@ -156,6 +163,12 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)" />
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -221,6 +234,23 @@ by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: 'cc578a2bec8bf9530ae13eafedf7013f',
+    indexName: 'sigmajs',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

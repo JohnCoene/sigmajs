@@ -2,6 +2,9 @@ template:
   params:
     bootswatch: flatly
     ganalytics: UA-74544116-1
+    docsearch:
+      api_key: cc578a2bec8bf9530ae13eafedf7013f
+      index_name: sigmajs
 
 development:
   mode: unreleased

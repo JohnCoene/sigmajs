@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Buttons">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Buttons">
 <meta property="og:description" content="">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -70,8 +72,9 @@
 <li>
       <a href="../articles/get_started.html">Get Started</a>
     </li>
+    <li class="divider">
     <li>
-      <a href="../articles/formats.html">Other formats</a>
+      <a href="../articles/formats.html">igraph &amp; GEXF</a>
     </li>
     <li>
       <a href="../articles/buttons.html">Buttons</a>
@@ -117,7 +120,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -132,7 +141,7 @@
       <h1>Buttons</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-25</h4>
+            <h4 class="date">2018-06-26</h4>
       
       
       <div class="hidden name"><code>buttons.Rmd</code></div>
@@ -142,35 +151,35 @@
     
     
 <p><code>sigmajs</code> lets you add buttons to trigger events, <em>in static documents,</em> such as this one.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() 
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(
-    <span class="st">"&lt;i class='fa fa-cogs'&gt;&lt;/i&gt; Layout"</span>, <span class="co"># only use icon if document imports fontawesome</span>
-    <span class="st">"force_start"</span>, <span class="co"># event to trigger</span>
-    <span class="dt">class =</span> <span class="st">"btn btn-success"</span> <span class="co"># class</span>
-  )</code></pre></div>
-<div id="htmlwidget-a95f7819513ceeb285e8" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="st">"&lt;i class='fa fa-cogs'&gt;&lt;/i&gt; Layout"</span>, <span class="co"># only use icon if document imports fontawesome</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    <span class="st">"force_start"</span>, <span class="co"># event to trigger</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    <span class="dt">class =</span> <span class="st">"btn btn-success"</span> <span class="co"># class</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  )</a></code></pre></div>
+<div id="htmlwidget-1c586d2dc0a3a0572943" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-a95f7819513ceeb285e8">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":" 3.295819","y":"14.791210"},{"id":"2","size":"4","color":"#A5DBA3","x":"13.868701","y":" 9.518544"},{"id":"3","size":"2","color":"#9AD4A4","x":"11.615115","y":" 7.176047"},{"id":"4","size":"2","color":"#76BA99","x":"12.150081","y":" 2.173953"},{"id":"5","size":"3","color":"#48998A","x":"16.355079","y":" 6.700633"},{"id":"6","size":"3","color":"#2D7E7E","x":"16.985624","y":"17.637856"},{"id":"7","size":"5","color":"#236B76","x":" 9.084111","y":"15.935953"},{"id":"8","size":"5","color":"#1C686F","x":" 4.630621","y":"11.441267"},{"id":"9","size":"2","color":"#20986D","x":"15.613261","y":"10.765858"},{"id":"10","size":"4","color":"#24C96B","x":" 8.455798","y":" 2.388810"}],"edges":[{"id":"1","source":"5","target":"8"},{"id":"2","source":"5","target":"6"},{"id":"3","source":"10","target":"3"},{"id":"4","source":"10","target":"8"},{"id":"5","source":"2","target":"3"},{"id":"6","source":"4","target":"2"},{"id":"7","source":"7","target":"1"},{"id":"8","source":"5","target":"4"},{"id":"9","source":"2","target":"8"},{"id":"10","source":"8","target":"6"},{"id":"11","source":"2","target":"5"},{"id":"12","source":"9","target":"1"},{"id":"13","source":"7","target":"1"},{"id":"14","source":"1","target":"8"},{"id":"15","source":"9","target":"9"},{"id":"16","source":"6","target":"7"},{"id":"17","source":"10","target":"6"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"force":[],"button":{"label":"<i class='fa fa-cogs'><\/i> Layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/export.html">sg_export</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(
-    <span class="st">"&lt;i class='fa fa-download'&gt;&lt;/i&gt;"</span>, 
-    <span class="st">"export"</span>, 
-    <span class="dt">class =</span> <span class="st">"btn btn-default"</span>
-  )</code></pre></div>
-<div id="htmlwidget-7140b31d4d4510032239" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<script type="application/json" data-for="htmlwidget-1c586d2dc0a3a0572943">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":"18.301787","y":" 5.235475"},{"id":"2","size":"4","color":"#A5DBA3","x":" 5.289066","y":"17.692237"},{"id":"3","size":"4","color":"#9AD4A4","x":"14.665883","y":"19.558844"},{"id":"4","size":"3","color":"#76BA99","x":" 4.689035","y":"10.447794"},{"id":"5","size":"5","color":"#48998A","x":" 4.060140","y":"12.417547"},{"id":"6","size":"5","color":"#2D7E7E","x":"14.155633","y":"12.740085"},{"id":"7","size":"2","color":"#236B76","x":"11.511391","y":"12.228167"},{"id":"8","size":"2","color":"#1C686F","x":" 7.254290","y":"11.269887"},{"id":"9","size":"5","color":"#20986D","x":" 9.553317","y":" 1.801985"},{"id":"10","size":"5","color":"#24C96B","x":"13.747705","y":"11.740485"}],"edges":[{"id":"1","source":"3","target":"1"},{"id":"2","source":"5","target":"10"},{"id":"3","source":"1","target":"9"},{"id":"4","source":"7","target":"10"},{"id":"5","source":"1","target":"4"},{"id":"6","source":"4","target":"2"},{"id":"7","source":"10","target":"1"},{"id":"8","source":"4","target":"4"},{"id":"9","source":"5","target":"2"},{"id":"10","source":"7","target":"3"},{"id":"11","source":"7","target":"1"},{"id":"12","source":"4","target":"9"},{"id":"13","source":"9","target":"8"},{"id":"14","source":"9","target":"6"},{"id":"15","source":"3","target":"9"},{"id":"16","source":"7","target":"5"},{"id":"17","source":"5","target":"1"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"force":[],"button":{"label":"<i class='fa fa-cogs'><\/i> Layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/export.html">sg_export</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="st">"&lt;i class='fa fa-download'&gt;&lt;/i&gt;"</span>, </a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="st">"export"</span>, </a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="dt">class =</span> <span class="st">"btn btn-default"</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">  )</a></code></pre></div>
+<div id="htmlwidget-95111a6dcf0e2f27e6db" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-7140b31d4d4510032239">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":" 5.881124","y":" 9.264358"},{"id":"2","size":"4","color":"#A5DBA3","x":" 9.586527","y":" 9.596271"},{"id":"3","size":"2","color":"#9AD4A4","x":" 9.874028","y":" 8.259571"},{"id":"4","size":"2","color":"#76BA99","x":"10.188491","y":"10.753279"},{"id":"5","size":"3","color":"#48998A","x":" 8.872373","y":"10.383006"},{"id":"6","size":"3","color":"#2D7E7E","x":" 7.578893","y":" 9.962085"},{"id":"7","size":"5","color":"#236B76","x":" 6.094437","y":"10.152719"},{"id":"8","size":"5","color":"#1C686F","x":" 7.908538","y":" 9.357465"},{"id":"9","size":"2","color":"#20986D","x":" 4.323396","y":" 8.871403"},{"id":"10","size":"4","color":"#24C96B","x":" 8.519482","y":" 8.562752"}],"edges":[{"id":"1","source":"5","target":"8"},{"id":"2","source":"5","target":"6"},{"id":"3","source":"10","target":"3"},{"id":"4","source":"10","target":"8"},{"id":"5","source":"2","target":"3"},{"id":"6","source":"4","target":"2"},{"id":"7","source":"7","target":"1"},{"id":"8","source":"5","target":"4"},{"id":"9","source":"2","target":"8"},{"id":"10","source":"8","target":"6"},{"id":"11","source":"2","target":"5"},{"id":"12","source":"9","target":"1"},{"id":"13","source":"7","target":"1"},{"id":"14","source":"1","target":"8"},{"id":"15","source":"9","target":"9"},{"id":"16","source":"6","target":"7"},{"id":"17","source":"10","target":"6"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"export":{"download":true,"filename":"graph.svg","size":1000,"width":1000,"height":1000,"labels":false,"data":false},"button":{"label":"<i class='fa fa-download'><\/i>","event":"export","className":"btn btn-default"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button (corresponding function name minus <code>sg_</code>):</p>
+<script type="application/json" data-for="htmlwidget-95111a6dcf0e2f27e6db">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":"11.321750","y":" 9.327372"},{"id":"2","size":"4","color":"#A5DBA3","x":" 9.546556","y":"10.210982"},{"id":"3","size":"4","color":"#9AD4A4","x":"12.409853","y":" 9.109268"},{"id":"4","size":"3","color":"#76BA99","x":"10.957347","y":"10.600816"},{"id":"5","size":"5","color":"#48998A","x":"10.116337","y":" 8.906311"},{"id":"6","size":"5","color":"#2D7E7E","x":"14.134730","y":"10.913851"},{"id":"7","size":"2","color":"#236B76","x":"11.335900","y":" 8.278081"},{"id":"8","size":"2","color":"#1C686F","x":"13.099266","y":"12.114480"},{"id":"9","size":"5","color":"#20986D","x":"12.530435","y":"10.570369"},{"id":"10","size":"5","color":"#24C96B","x":"10.480106","y":" 7.979823"}],"edges":[{"id":"1","source":"3","target":"1"},{"id":"2","source":"5","target":"10"},{"id":"3","source":"1","target":"9"},{"id":"4","source":"7","target":"10"},{"id":"5","source":"1","target":"4"},{"id":"6","source":"4","target":"2"},{"id":"7","source":"10","target":"1"},{"id":"8","source":"4","target":"4"},{"id":"9","source":"5","target":"2"},{"id":"10","source":"7","target":"3"},{"id":"11","source":"7","target":"1"},{"id":"12","source":"4","target":"9"},{"id":"13","source":"9","target":"8"},{"id":"14","source":"9","target":"6"},{"id":"15","source":"3","target":"9"},{"id":"16","source":"7","target":"5"},{"id":"17","source":"5","target":"1"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"export":{"download":true,"filename":"graph.svg","size":1000,"width":1000,"height":1000,"labels":false,"data":false},"button":{"label":"<i class='fa fa-download'><\/i>","event":"export","className":"btn btn-default"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button (corresponding function name minus <code>sg_</code>):</p>
 <ul>
 <li><code>force_start</code></li>
 <li><code>force_stop</code></li>
@@ -205,6 +214,20 @@ edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gener
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: 'cc578a2bec8bf9530ae13eafedf7013f',
+    indexName: 'sigmajs',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

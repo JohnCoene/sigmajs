@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Get Started">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Get Started">
 <meta property="og:description" content="">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -70,8 +72,9 @@
 <li>
       <a href="../articles/get_started.html">Get Started</a>
     </li>
+    <li class="divider">
     <li>
-      <a href="../articles/formats.html">Other formats</a>
+      <a href="../articles/formats.html">igraph &amp; GEXF</a>
     </li>
     <li>
       <a href="../articles/buttons.html">Buttons</a>
@@ -117,7 +120,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -132,7 +141,7 @@
       <h1>Get Started</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-06-25</h4>
+            <h4 class="date">2018-06-26</h4>
       
       
       <div class="hidden name"><code>get_started.Rmd</code></div>
@@ -198,25 +207,25 @@
 <div id="your-first-graphs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#your-first-graphs" class="anchor"></a>Your first graphs</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data using convenience functions</span>
-nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</code></pre></div>
-<div id="htmlwidget-c91f1bd40379e39faba5" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># generate data using convenience functions</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target)</a></code></pre></div>
+<div id="htmlwidget-7128813d4f40391287ce" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-c91f1bd40379e39faba5">{"x":{"data":{"nodes":[{"id":"1","size":"5","color":"#B1E2A3","x":"18.561266","y":" 6.383320"},{"id":"2","size":"5","color":"#A5DBA3","x":"16.025848","y":"11.397343"},{"id":"3","size":"4","color":"#9AD4A4","x":"12.581556","y":"14.966678"},{"id":"4","size":"2","color":"#76BA99","x":"10.402492","y":"10.165507"},{"id":"5","size":"4","color":"#48998A","x":" 9.191531","y":"12.310193"},{"id":"6","size":"3","color":"#2D7E7E","x":"19.989639","y":" 2.677932"},{"id":"7","size":"5","color":"#236B76","x":"18.426265","y":" 5.655059"},{"id":"8","size":"2","color":"#1C686F","x":" 5.697180","y":"14.531758"},{"id":"9","size":"2","color":"#20986D","x":" 9.846682","y":"13.600029"},{"id":"10","size":"4","color":"#24C96B","x":"15.064688","y":"14.761771"}],"edges":[{"id":"1","source":"10","target":"4"},{"id":"2","source":"2","target":"4"},{"id":"3","source":"10","target":"3"},{"id":"4","source":"5","target":"7"},{"id":"5","source":"3","target":"9"},{"id":"6","source":"8","target":"2"},{"id":"7","source":"3","target":"6"},{"id":"8","source":"9","target":"8"},{"id":"9","source":"2","target":"5"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"3","target":"5"},{"id":"12","source":"8","target":"10"},{"id":"13","source":"5","target":"9"},{"id":"14","source":"9","target":"4"},{"id":"15","source":"8","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></code></pre></div>
-<div id="htmlwidget-ef7b767649bd2a2f0853" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<script type="application/json" data-for="htmlwidget-7128813d4f40391287ce">{"x":{"data":{"nodes":[{"id":"1","size":"3","color":"#B1E2A3","x":"18.039688","y":"16.750961"},{"id":"2","size":"4","color":"#A5DBA3","x":" 7.495866","y":"16.539553"},{"id":"3","size":"3","color":"#9AD4A4","x":" 3.108434","y":" 6.711021"},{"id":"4","size":"3","color":"#76BA99","x":" 8.325992","y":"10.417470"},{"id":"5","size":"3","color":"#48998A","x":"16.141631","y":" 4.035956"},{"id":"6","size":"2","color":"#2D7E7E","x":"12.609806","y":" 8.189863"},{"id":"7","size":"3","color":"#236B76","x":"11.547292","y":" 4.310410"},{"id":"8","size":"3","color":"#1C686F","x":" 9.100114","y":" 5.004447"},{"id":"9","size":"4","color":"#20986D","x":" 6.421063","y":" 8.504304"},{"id":"10","size":"5","color":"#24C96B","x":" 6.472446","y":"12.065005"}],"edges":[{"id":"1","source":"2","target":"8"},{"id":"2","source":"5","target":"1"},{"id":"3","source":"5","target":"6"},{"id":"4","source":"9","target":"3"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"3","target":"10"},{"id":"7","source":"4","target":"5"},{"id":"8","source":"4","target":"7"},{"id":"9","source":"10","target":"5"},{"id":"10","source":"10","target":"2"},{"id":"11","source":"5","target":"7"},{"id":"12","source":"10","target":"1"},{"id":"13","source":"4","target":"6"},{"id":"14","source":"5","target":"2"},{"id":"15","source":"6","target":"6"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><p>Or as stated in the Settings section, you can omit <code>size</code> and <code>color</code> but you then must pass defaults using <code>sg_settings</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(<span class="dt">defaultNodeColor =</span> <span class="st">"#c9423f"</span>) <span class="co"># pass default color</span></a></code></pre></div>
+<div id="htmlwidget-67eb4cc0684a97b5f4f9" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-ef7b767649bd2a2f0853">{"x":{"data":{"nodes":[{"id":"1","size":"5","x":"15.923258","y":"18.783520"},{"id":"2","size":"5","x":" 3.307758","y":"10.180071"},{"id":"3","size":"4","x":" 3.023245","y":" 9.764631"},{"id":"4","size":"2","x":"16.751133","y":" 9.815661"},{"id":"5","size":"4","x":" 1.223449","y":" 6.435123"},{"id":"6","size":"3","x":"10.053225","y":"15.065794"},{"id":"7","size":"5","x":"17.908231","y":" 4.133284"},{"id":"8","size":"2","x":"12.803192","y":" 4.556163"},{"id":"9","size":"2","x":"13.723274","y":" 1.636275"},{"id":"10","size":"4","x":"13.309911","y":" 7.186017"}],"edges":[{"id":"1","source":"10","target":"4"},{"id":"2","source":"2","target":"4"},{"id":"3","source":"10","target":"3"},{"id":"4","source":"5","target":"7"},{"id":"5","source":"3","target":"9"},{"id":"6","source":"8","target":"2"},{"id":"7","source":"3","target":"6"},{"id":"8","source":"9","target":"8"},{"id":"9","source":"2","target":"5"},{"id":"10","source":"8","target":"8"},{"id":"11","source":"3","target":"5"},{"id":"12","source":"8","target":"10"},{"id":"13","source":"5","target":"9"},{"id":"14","source":"9","target":"4"},{"id":"15","source":"8","target":"9"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat <a href="articles/layout.html">layouts</a><a>, </a><a href="articles/animate.html">animate</a> them and more.</p>
+<script type="application/json" data-for="htmlwidget-67eb4cc0684a97b5f4f9">{"x":{"data":{"nodes":[{"id":"1","size":"3","x":" 9.440275","y":" 8.690476"},{"id":"2","size":"4","x":" 4.014249","y":"18.474783"},{"id":"3","size":"3","x":"10.635755","y":" 6.710298"},{"id":"4","size":"3","x":" 5.601048","y":"15.281047"},{"id":"5","size":"3","x":" 6.936063","y":" 8.774375"},{"id":"6","size":"2","x":" 5.786109","y":" 6.498906"},{"id":"7","size":"3","x":" 5.272138","y":"12.210252"},{"id":"8","size":"3","x":" 2.393348","y":"14.452951"},{"id":"9","size":"4","x":"11.080245","y":"19.159240"},{"id":"10","size":"5","x":"16.293073","y":"19.538389"}],"edges":[{"id":"1","source":"2","target":"8"},{"id":"2","source":"5","target":"1"},{"id":"3","source":"5","target":"6"},{"id":"4","source":"9","target":"3"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"3","target":"10"},{"id":"7","source":"4","target":"5"},{"id":"8","source":"4","target":"7"},{"id":"9","source":"10","target":"5"},{"id":"10","source":"10","target":"2"},{"id":"11","source":"5","target":"7"},{"id":"12","source":"10","target":"1"},{"id":"13","source":"4","target":"6"},{"id":"14","source":"5","target":"2"},{"id":"15","source":"6","target":"6"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"defaultNodeColor":"#c9423f"}},"evals":[],"jsHooks":[]}</script><p>Browse the documentation to see how to give your graphs neat <a href="articles/layout.html">layouts</a><a>, </a><a href="articles/animate.html">animate</a> them and more.</p>
 </div>
   </div>
 
@@ -249,6 +258,20 @@ edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gener
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: 'cc578a2bec8bf9530ae13eafedf7013f',
+    indexName: 'sigmajs',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>
