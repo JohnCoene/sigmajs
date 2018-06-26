@@ -184,6 +184,7 @@ HTMLWidgets.widget({
 				if(x.hasOwnProperty('progressBar')){
 				  var bar = document.createElement(x.progressBar.element);
 				  bar.style.textAlign  = x.progressBar.position;
+				  bar.className = x.progressBar.class;
 				  
 				  // widget
 				  var element = document.getElementById(el.id);
