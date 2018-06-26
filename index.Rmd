@@ -87,7 +87,9 @@ animate <- sigmajs(height = 150) %>%
              delay = 4000) %>%
   sg_settings(animationsTime = 6000,
               minNodeSize = 1,
-              maxNodeSize = 5)
+              maxNodeSize = 5,
+              mouseEnabled = FALSE,
+	            touchEnabled = FALSE)
 
 h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R")
 br()
