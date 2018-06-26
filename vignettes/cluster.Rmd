@@ -29,3 +29,35 @@ sigmajs() %>%
   sg_layout() %>% 
   sg_cluster()
 ```
+
+Clustering is brilliant, in part, because (most) are bottom-up approaches; the number of cluster is not pre-defined. However, this might make the above approach somewhat awkward as the node colors should be discrete. In an interactive environment `sg_cluster` prints the number of clusters identified to the console, so you could then set the exact number of colors needed then re-run the graph.
+
+Perhaps a better approach is to use the helper function `sg_get_cluster` to return nodes with an added column, the group they belong to. The helper also lets you set (or re-set) the node colors according to the group they belong to.
+
+Let's take a look at an example
+
+```{r}
+set.seed(19880525) # for reproducability
+
+# make a slightly larger graph
+nodes <- sg_make_nodes(50)
+edges <- sg_make_edges(nodes, 100)
+
+# use the helper
+# first run showed 11 clusters
+nodes <- sg_get_cluster(
+  nodes, edges, colors = c(
+    "#331A00", "#663000",
+    "#996136", "#CC9B7A",
+    "#D9AF98", "#F2DACE",
+    "#CCFDFF", "#99F8FF",
+    "#66F0FF", "#33E4FF",
+    "#00AACC")
+  )
+
+sigmajs() %>% 
+  sg_nodes(nodes, id, size, color) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_layout() %>% 
+  sg_neighbours()
+```

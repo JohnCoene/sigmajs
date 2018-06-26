@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(sigmajs)
 ```
 
-`sigmajs` lets you add buttons to trigger events, *in static documents,* such as this one.
+`sigmajs` lets you add buttons to trigger events, *in static documents,* such as this one. 
 
 ```{r}
 nodes <- sg_make_nodes() 

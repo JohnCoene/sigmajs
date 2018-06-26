@@ -23,6 +23,7 @@ Below are the basics of the package.
 
 1. All graphs *must* be initialised with the `sigmajs()` function.
 2. All the functions of the package start with `sg_`.
+3. Functions starting in `sg_get_` are helpers that do not take a `sigmajs` object as input.
 3. All proxies end in `_p`.
 4. Functions are pipe-friendly (`%>%`).
 
@@ -82,4 +83,4 @@ sigmajs() %>%
   sg_settings(defaultNodeColor = "#c9423f") # pass default color
 ``` 
 
-Browse the documentation to see how to give your graphs neat <a href="articles/layout.html">layouts<a>, <a href="articles/animate.html">animate</a> them and more.
+Browse the documentation to see how to give your graphs neat <a href="layout.html">layouts<a>, <a href="animate.html">animate</a> them, see how the package works with <a href="shiny.html">shiny</a> and more.

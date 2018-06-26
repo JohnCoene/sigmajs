@@ -84,8 +84,8 @@ animate <- sigmajs(height = 150) %>%
   sg_nodes(nodes_demo, id, label, size, color, to_x, to_y, to_size, to_color) %>%
   sg_edges(edges_demo, id, source, target) %>% 
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
-             delay = 4000) %>%
-  sg_settings(animationsTime = 6000,
+             delay = 3400) %>%
+  sg_settings(animationsTime = 7000,
               minNodeSize = 1,
               maxNodeSize = 5,
               mouseEnabled = FALSE,
@@ -296,7 +296,7 @@ sigmajs() %>% # initialise
   sg_nodes(nodes, id, label, size, color) %>% # add nodes
   sg_edges(edges, id, source, target) %>% # add edges
   sg_layout() %>%  # layout
-  sg_neighbours() # show node neighbours on click
+  sg_neighbours() # show node neighbours on node click
 ```
 
 Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).

@@ -30,7 +30,7 @@ library(sigmajs)
 * Edge labels
 * Edge dots
 
-## Examples
+## Example
 
 * foceAtlas2
 * No overlap
@@ -54,6 +54,8 @@ sigmajs() %>%
   sg_drag_nodes() %>% # enable drag nodes
   sg_force_stop(10000) # stop layout algo after 10 seconds
 ```
+
+## Custom shapes
 
 Use custom shapes and image as nodes.
 

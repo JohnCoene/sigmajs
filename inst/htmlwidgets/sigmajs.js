@@ -182,8 +182,7 @@ HTMLWidgets.widget({
 				
 				// progress
 				if(x.hasOwnProperty('progressBar')){
-				  var bar = document.createElement("div");
-				  bar.style.width = "100%";
+				  var bar = document.createElement(x.progressBar.element);
 				  bar.style.textAlign  = x.progressBar.position;
 				  
 				  // widget
