@@ -5,7 +5,7 @@
 \title{Text}
 \usage{
 sg_progress(sg, data, delay, text, position = "right", element = "p",
-  cumsum = TRUE)
+  class = NULL, cumsum = TRUE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -19,6 +19,8 @@ sg_progress(sg, data, delay, text, position = "right", element = "p",
 \item{position}{Text position on graph.}
 
 \item{element}{DOM to contain the \code{text}.}
+
+\item{class}{CSS class of \code{element} added.}
 
 \item{cumsum}{Whether to compute the cumulative sum on the \code{delay}.}
 }

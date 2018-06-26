@@ -8,6 +8,7 @@
 #' @param text Text to appear on graph.
 #' @param position Text position on graph.
 #' @param element DOM to contain the \code{text}.
+#' @param class CSS class of \code{element} added.
 #' @param cumsum Whether to compute the cumulative sum on the \code{delay}.
 #' 
 #' @details The \code{element} is passed to \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement}{Document.createElement()}
@@ -32,7 +33,8 @@
 #'   sg_progress(nodes2, delay, text, element = "h3")
 #' 
 #' @export
-sg_progress <- function(sg, data, delay, text, position = "right", element = "p", cumsum = TRUE){
+sg_progress <- function(sg, data, delay, text, position = "right", 
+                        element = "p", class = NULL, cumsum = TRUE){
   
   if(missing(data) || missing(delay) || missing(text))
     stop("missing data, delay or text")
@@ -44,7 +46,10 @@ sg_progress <- function(sg, data, delay, text, position = "right", element = "p"
   text <- eval(substitute(text), data) # subset ids
   data <- data.frame(delay = delay_col, text = text)
   
+  if(is.null(class)) class <-  ""
+  
   sg$x$progressBar <- list(
+    class = class,
     position = position,
     element = element,
     data = apply(data, 1, as.list)

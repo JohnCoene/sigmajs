@@ -124,7 +124,7 @@ HTMLWidgets.widget({
 				}
 				
 				// force neighbours true if crosstalk enabled
-				if(typeof x.crosstalk.crosstalk_key !== undefined){
+				if(x.crosstalk.crosstalk_key !== null){
 				  x.neighbours = true;
 				}
 				
@@ -184,6 +184,7 @@ HTMLWidgets.widget({
 				if(x.hasOwnProperty('progressBar')){
 				  var bar = document.createElement(x.progressBar.element);
 				  bar.style.textAlign  = x.progressBar.position;
+				  bar.className = x.progressBar.class;
 				  
 				  // widget
 				  var element = document.getElementById(el.id);
