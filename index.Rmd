@@ -41,15 +41,19 @@ sigmajs(width = "100%", height = 150) %>%
 	            touchEnabled = FALSE) -> net
 
 # ----------------------------- GET STARTED
-nodes_demo <- sg_make_nodes(5)
-edges_demo <- sg_make_edges(nodes_demo)
+nodes_demo <- sg_make_nodes(7)
+edges_demo <- sg_make_edges(nodes_demo, 10)
 
 nodes_demo$size <- 1
 
 get_started <- sigmajs(height = 150) %>% 
   sg_nodes(nodes_demo, id, color, size) %>% 
   sg_edges(edges_demo, id, source, target) %>% 
-  sg_settings(defaultNodeColor = "#98D3A5")
+  sg_settings(defaultNodeColor = "#98D3A5",
+              mouseEnabled = FALSE,
+	            touchEnabled = FALSE,
+              minNodeSize = 3,
+              maxNodeSize = 3)
 
 # ----------------------------- DYNAMIC
 edges_demo$delay <- runif(nrow(edges_demo), 500, 2000) # between .5 and 2 seconds
@@ -60,12 +64,17 @@ dyn <- sigmajs(height = 150) %>%
   sg_force_start() %>%
   sg_nodes(nodes_demo, id, size, color) %>%
   sg_add_edges(edges_demo, delay, id, source, target) %>% # read delay documentation
-  sg_force_stop(last_edge)
+  sg_force_stop(last_edge) %>% 
+  sg_settings(mouseEnabled = FALSE,
+	            touchEnabled = FALSE,
+              minNodeSize = 1,
+              maxNodeSize = 4)
 
 # ----------------------------- ANIMATE
 n <- nrow(nodes_demo)
-nodes_demo$to_x <- runif(n, 5, 10)
-nodes_demo$to_y <- runif(n, 5, 10)
+layout <- sg_get_layout(nodes_demo, edges_demo)
+nodes_demo$to_x <- layout$x
+nodes_demo$to_y <- layout$y
 nodes_demo$to_size <- runif(n, 5, 10)
 nodes_demo$color <- sample(c("#ffe66d", "#e85d75"), n, replace = TRUE)
 nodes_demo$to_color <- sample(c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
@@ -75,8 +84,10 @@ animate <- sigmajs(height = 150) %>%
   sg_nodes(nodes_demo, id, label, size, color, to_x, to_y, to_size, to_color) %>%
   sg_edges(edges_demo, id, source, target) %>% 
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
-             delay = 7000) %>%
-  sg_settings(animationsTime = 5000)
+             delay = 4000) %>%
+  sg_settings(animationsTime = 6000,
+              minNodeSize = 1,
+              maxNodeSize = 5)
 
 h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R")
 br()
