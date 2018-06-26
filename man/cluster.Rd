@@ -24,7 +24,7 @@ sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
 
 \item{quiet}{Set to \code{TRUE} to print the number of clusters to the console.}
 
-\item{...}{any column.}
+\item{...}{Any parameter to pass to \code{algo}.}
 
 \item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
 }
@@ -52,6 +52,6 @@ sigmajs() \%>\%
   sg_layout() \%>\% 
   sg_cluster() 
   
-clsutered <- sg_get_cluster(nodes, edges)
+clustered <- sg_get_cluster(nodes, edges)
 
 }

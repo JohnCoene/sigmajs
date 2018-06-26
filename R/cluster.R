@@ -8,6 +8,7 @@
 #' @param directed Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.
 #' @param algo An \code{igraph} clustering function.
 #' @param quiet Set to \code{TRUE} to print the number of clusters to the console.
+#' @param ... Any parameter to pass to \code{algo}.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -25,7 +26,7 @@
 #'   sg_layout() %>% 
 #'   sg_cluster() 
 #'   
-#' clsutered <- sg_get_cluster(nodes, edges)
+#' clustered <- sg_get_cluster(nodes, edges)
 #' 
 #' @return \code{sg_get_cluster} returns nodes with \code{color} variable.
 #' 
