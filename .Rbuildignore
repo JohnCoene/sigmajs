@@ -15,3 +15,5 @@ bitbucket-pipelines.yml
 \.circleci
 ct.R
 ^CONDUCT\.md$
+JOSS
+^codecov\.yml$
