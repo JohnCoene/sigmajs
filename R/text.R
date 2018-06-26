@@ -7,7 +7,11 @@
 #' @param delay Delay, in milliseconds at which text should appear.
 #' @param text Text to appear on graph.
 #' @param position Text position on graph.
+#' @param element DOM to contain the \code{text}.
 #' @param cumsum Whether to compute the cumulative sum on the \code{delay}.
+#' 
+#' @details The \code{element} is passed to \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement}{Document.createElement()}
+#' and therefore takes any valid \code{tagName}, including, but not limited to; \code{p}, \code{h1}, \code{div}.
 #' 
 #' @examples 
 #' # initial nodes
@@ -25,10 +29,10 @@
 #'   sg_nodes(nodes, id, label, size, color) %>%
 #'   sg_add_nodes(nodes2, delay, id, label, size, color) %>% 
 #'   sg_button("add", "add_nodes") %>% 
-#'   sg_progress(nodes2, delay, text)
+#'   sg_progress(nodes2, delay, text, element = "h3")
 #' 
 #' @export
-sg_progress <- function(sg, data, delay, text, position = "right", cumsum = TRUE){
+sg_progress <- function(sg, data, delay, text, position = "right", element = "p", cumsum = TRUE){
   
   if(missing(data) || missing(delay) || missing(text))
     stop("missing data, delay or text")
@@ -42,6 +46,7 @@ sg_progress <- function(sg, data, delay, text, position = "right", cumsum = TRUE
   
   sg$x$progressBar <- list(
     position = position,
+    element = element,
     data = apply(data, 1, as.list)
   )
   

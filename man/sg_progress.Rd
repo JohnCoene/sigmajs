@@ -4,7 +4,8 @@
 \alias{sg_progress}
 \title{Text}
 \usage{
-sg_progress(sg, data, delay, text, position = "right", cumsum = TRUE)
+sg_progress(sg, data, delay, text, position = "right", element = "p",
+  cumsum = TRUE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -17,10 +18,16 @@ sg_progress(sg, data, delay, text, position = "right", cumsum = TRUE)
 
 \item{position}{Text position on graph.}
 
+\item{element}{DOM to contain the \code{text}.}
+
 \item{cumsum}{Whether to compute the cumulative sum on the \code{delay}.}
 }
 \description{
 Add text to your graph.
+}
+\details{
+The \code{element} is passed to \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement}{Document.createElement()}
+and therefore takes any valid \code{tagName}, including, but not limited to; \code{p}, \code{h1}, \code{div}.
 }
 \examples{
 # initial nodes
@@ -38,6 +45,6 @@ sigmajs() \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_add_nodes(nodes2, delay, id, label, size, color) \%>\% 
   sg_button("add", "add_nodes") \%>\% 
-  sg_progress(nodes2, delay, text)
+  sg_progress(nodes2, delay, text, element = "h3")
 
 }
