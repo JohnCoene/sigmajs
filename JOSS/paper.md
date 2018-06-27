@@ -1,10 +1,10 @@
 ---
-title: 'sigmajs:An R htmlwidget interface to the sigma.js visualization library'
+title: 'sigmajs: An R htmlwidget interface to the sigma.js visualization library'
 authors:
   - affiliation: 1
     name: Jean-Philippe Coene
     orcid: 0000-0002-6637-4107
-date: "2 May 2018"
+date: 2018-06-27
 tags:
   - network analysis
   - visualisation
