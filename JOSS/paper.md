@@ -37,7 +37,7 @@ proxies end with `_p`. Functions can be piped to build the desired graph.
 The R package `sigmajs` is available on [GitHub](https://github.com/JohnCoene/sigmajs) or 
 [Bitbucket](https://bitbucket.org/JohnCoene/sigmajs), issues can be opened on 
 [Github](https://github.com/JohnCoene/sigmajs/issues) only. All functions are documented in 
-the package (`.Rd` files) as well as [online](http://sigmajs.john-coene.com/) with the R packages
+the package (`.Rd` files) as well as [online](http://sigmajs.john-coene.com/) with the R package
 `pkgdown` [@pkgdown].
 
 # References
