@@ -9,6 +9,9 @@ tags:
   - network analysis
   - visualisation
 bibliography: paper.bib
+affiliations:
+  - index: 1
+    name: Department of Public Engagement at the World Economic Forum
 ---
 
 # Summary
