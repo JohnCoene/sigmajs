@@ -29,8 +29,12 @@ proxies end with `_p`. Functions can be piped to build the desired graph.
 * Shiny proxies.
 * Crosstalk integration.
 * Buttons to trigger various animations.
-* Capture graph interactions in R.
+* Possibility to capture graph interactions in Shiny.
 
-The R package `sigmajs` is available on [GitHub](https://github.com/JohnCoene/sigmajs).
+The R package `sigmajs` is available on [GitHub](https://github.com/JohnCoene/sigmajs) or 
+[Bitbucket](https://bitbucket.org/JohnCoene/sigmajs), issues can be opened on 
+[Github](https://github.com/JohnCoene/sigmajs/issues) only. All functions are documented in 
+the package (`.Rd` files) as well as [online](http://sigmajs.john-coene.com/) with the R packages
+`pkgdown` [@pkgdown].
 
 # References
