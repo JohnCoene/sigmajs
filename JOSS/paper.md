@@ -23,7 +23,10 @@ enables graphs to be wired to other `htmlwidgets` such as `plotly` [@plotly] and
 
 # Functionality
 
-* Shiny [@shiny] proxies.
+Graphs are initialised with `sigmajs()`, all other functions start with `sg_` and Shiny [@shiny] 
+proxies end with `_p`. Functions can be piped to build the desired graph.
+
+* Shiny proxies.
 * Crosstalk integration.
 * Buttons to trigger various animations.
 * Capture graph interactions in R.
