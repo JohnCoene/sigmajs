@@ -13,5 +13,10 @@ test_that("clusters", {
     sg_layout() %>% 
     sg_cluster()
   
+  expect_error(sg_nodes(nodes, id, size))
+  expect_error(sg_edges(nodes, id, size))
+  
   clustered <- sg_get_cluster(nodes, edges)
+  
+  expect_s3_class(clustered, "data.frame")
 })
