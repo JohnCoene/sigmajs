@@ -62,7 +62,7 @@ sigmajs() \%>\%
   sg_nodes(nodes, id, label, size) \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_force() \%>\% 
-	 sg_force_stop() # stop force after 5 seconds
+  sg_force_stop() # stop force after 5 seconds
 
 }
 \seealso{
