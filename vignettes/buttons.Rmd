@@ -34,15 +34,17 @@ sigmajs() %>%
   )
 ```
 
+A button to export the graph as SVG, not that you can export to an image (png, jpeg, gif or tiff).
+
 ```{r}
 sigmajs() %>% 
   sg_nodes(nodes, id, size, color) %>% 
   sg_edges(edges, id, source, target) %>% 
   sg_layout() %>% 
-  sg_export() %>% 
+  sg_export_svg() %>% 
   sg_button(
     "<i class='fa fa-download'></i>", 
-    "export", 
+    "export_svg", 
     class = "btn btn-default"
   )
 ```
@@ -59,6 +61,7 @@ Events that can be triggered via a button (corresponding function name minus `sg
 * `drop_nodes`
 * `drop_edges`
 * `animate`
-* `export`
+* `export_svg`
+* `export_img`
 
 You will examples of the above scattered throughout the documentation.

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export — sg_export • sigmajs</title>
+<title>Export — sg_export_svg • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Export — sg_export" />
+<meta property="og:title" content="Export — sg_export_svg" />
 
 <meta property="og:description" content="Export graph to SVG." />
 
@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.0</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1.9000</span>
       </span>
     </div>
 
@@ -190,10 +190,16 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_export</span>(<span class='no'>sg</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+    <pre class="usage"><span class='fu'>sg_export_svg</span>(<span class='no'>sg</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
   <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>sg_export_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+<span class='fu'>sg_export_img</span>(<span class='no'>sg</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.png"</span>,
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"png"</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>sg_export_img_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.png"</span>,
+  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"png"</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>sg_export_svg_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
   <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -228,6 +234,14 @@
       <td><p>Whether additional data (node ids for instance) should be included in the svg file.</p></td>
     </tr>
     <tr>
+      <th>background</th>
+      <td><p>Background color of image.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Format of image, takes <code>png</code>, <code>jpg</code>, <code>gif</code> or <code>tiff</code>.</p></td>
+    </tr>
+    <tr>
       <th>proxy</th>
       <td><p>An object of class <code>sigmajsProxy</code> as returned by <code><a href='sigmajs-shiny.html'>sigmajsProxy</a></code>.</p></td>
     </tr>
@@ -241,8 +255,8 @@
 <span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_export</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"download"</span>, <span class='st'>"export"</span>)
+  <span class='fu'>sg_export_svg</span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"download"</span>, <span class='st'>"export_svg"</span>)
 
 <span class='co'># demo("export-graph", package = "sigmajs")</span></div></pre>
   </div>
