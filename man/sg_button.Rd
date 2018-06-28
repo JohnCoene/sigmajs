@@ -34,7 +34,8 @@ The default class (\code{btn btn-default}) works with Bootstrap 3, the default f
   \item{\code{drop_nodes}}
   \item{\code{drop_edges}}
   \item{\code{animate}}
-  \item{\code{export}}
+  \item{\code{export_svg}}
+  \item{\code{export_img}}
 }
 }
 

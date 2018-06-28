@@ -3,6 +3,8 @@ library(sigmajs)
 
 ui <- fluidPage(
   actionButton("export", "export graph to SVG"),
+  actionButton("exportIMG", "export graph to image"),
+  selectInput("format", label = "image format", choices = c("png", "jpg", "gif", "tiff")),
   sigmajsOutput("sg")
 )
 
@@ -13,12 +15,18 @@ server <- function(input, output){
   output$sg <- renderSigmajs({
     sigmajs() %>%
       sg_nodes(nodes, id, label, size, color) %>%
-      sg_edges(edges, id, source, target)
+      sg_edges(edges, id, source, target) %>% 
+      sg_layout()
   })
   
   observeEvent(input$export, {
     sigmajsProxy("sg") %>% 
-      sg_export_p()
+      sg_export_svg_p()
+  })
+  
+  observeEvent(input$exportIMG, {
+    sigmajsProxy("sg") %>% 
+      sg_export_img_p(format = input$format, file = paste0("graph.", input$format))
   })
 }
 

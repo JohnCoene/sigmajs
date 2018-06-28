@@ -9,6 +9,8 @@
 #' @param size Size of the SVG in pixels.
 #' @param width,height Width and height of the SVG in pixels.
 #' @param labels Whether the labels should be included in the svg file.
+#' @param format Format of image, takes \code{png}, \code{jpg}, \code{gif} or \code{tiff}.
+#' @param background Background color of image.
 #' @param data Whether additional data (node ids for instance) should be included in the svg file.
 #' 
 #' @examples 
@@ -18,16 +20,20 @@
 #' sigmajs() %>% 
 #'   sg_nodes(nodes, id, size) %>% 
 #'   sg_edges(edges, id, source, target) %>% 
-#'   sg_export() %>% 
-#'   sg_button("download", "export")
+#'   sg_export_svg() %>% 
+#'   sg_button("download", "export_svg")
 #' 
 #' # demo("export-graph", package = "sigmajs")
 #' 
 #' @rdname export
 #' @export
-sg_export <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
+sg_export_svg <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
                       width = 1000, height = 1000, labels = FALSE, data = FALSE){
-  sg$x$export <- list(
+  
+  if(missing(sg))
+    stop("must pass sg", call. = FALSE)
+  
+  sg$x$exportSVG <- list(
     download = download, 
     filename = file, 
     size = 1000,
@@ -42,14 +48,56 @@ sg_export <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
 
 #' @rdname export
 #' @export
-sg_export_p <- function(proxy, download = TRUE, file = "graph.svg", size = 1000,
+sg_export_img <- function(sg, download = TRUE, file = "graph.png", background = "white",
+                          format = "png", labels = FALSE){
+  
+  if(missing(sg))
+    stop("must pass sg", call. = FALSE)
+  
+  sg$x$exportIMG <- list(
+    format = format,
+    download = download, 
+    filename = file, 
+    background = background,
+    labels = labels
+  )
+  
+  sg
+}
+
+#' @rdname export
+#' @export
+sg_export_img_p <- function(proxy, download = TRUE, file = "graph.png", background = "white",
+                          format = "png", labels = FALSE){
+  
+  if (!"sigmajsProxy" %in% class(proxy))
+    stop("must pass sigmajsProxy object", call. = FALSE)
+  
+  df <- list(
+    format = format,
+    download = download, 
+    filename = file, 
+    background = background,
+    labels = labels
+  )
+  
+  message <- list(id = proxy$id, data = df) # create message
+  
+  proxy$session$sendCustomMessage("sg_export_img_p", message)
+  
+  return(proxy)
+}
+
+#' @rdname export
+#' @export
+sg_export_svg_p <- function(proxy, download = TRUE, file = "graph.svg", size = 1000,
                       width = 1000, height = 1000, labels = FALSE, data = FALSE){
   
   if (!"sigmajsProxy" %in% class(proxy))
     stop("must pass sigmajsProxy object", call. = FALSE)
   
   # build data
-  data <- list(
+  df <- list(
     download = download, 
     filename = file, 
     size = 1000,
@@ -59,9 +107,9 @@ sg_export_p <- function(proxy, download = TRUE, file = "graph.svg", size = 1000,
     data = data
   )
   
-  message <- list(id = proxy$id, data = data) # create message
+  message <- list(id = proxy$id, data = df) # create message
   
-  proxy$session$sendCustomMessage("sg_export_p", message)
+  proxy$session$sendCustomMessage("sg_export_svg_p", message)
   
   return(proxy)
 }

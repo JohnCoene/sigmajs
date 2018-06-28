@@ -20,8 +20,15 @@ test_that("Export", {
   
   sg <- sigmajs() %>%
     sg_nodes(nodes, id, label, size) %>%
-    sg_edges(edges, id, source, target) %>%
-    sg_export()
+    sg_edges(edges, id, source, target) 
   
-  expect_length(sg$x$export, 7)
+  svg <- sg %>%
+    sg_export_svg()
+  
+  expect_length(svg$x$exportSVG, 7)
+  
+  img <- sg %>% 
+    sg_export_img()
+  
+  expect_length(img$x$exportIMG, 5)
 })

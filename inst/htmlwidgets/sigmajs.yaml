@@ -18,3 +18,4 @@ dependencies:
       - plugins/sigma.exporters.svg.js
       - plugins/sigma.plugins.neighborhoods.js
       - plugins/sigma.plugins.filter.js
+      - plugins/sigma.renderers.snapshot.js

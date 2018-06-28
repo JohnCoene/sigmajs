@@ -507,9 +507,15 @@ HTMLWidgets.widget({
 			  }
 			}
 			
-			if(x.hasOwnProperty('export')){
+			if(x.hasOwnProperty('exportSVG')){
 		    button.addEventListener("click", function(event) {
-  				var output = s.toSVG(x.export);
+  				var output = s.toSVG(x.exportSVG);
+		    });
+			}
+			
+			if(x.hasOwnProperty('exportIMG')){
+		    button.addEventListener("click", function(event) {
+  				var output = renderer.snapshot(x.exportIMG);
 		    });
 			}
 			
@@ -529,6 +535,10 @@ HTMLWidgets.widget({
 
 		getChart: function () {
 			return s;
+		},
+		
+		getRenderer: function () {
+			return renderer;
 		}
 
     };
@@ -562,6 +572,20 @@ function get_sigma_camera(id) {
 	}
 
 	return (c);
+}
+
+// get renderer
+function get_sigma_renderer(id) {
+
+	var htmlWidgetsObj = HTMLWidgets.find("#" + id); // find object
+
+	var r; // define
+
+	if (typeof htmlWidgetsObj != 'undefined') { // get chart if defined
+		r = htmlWidgetsObj.getRenderer();
+	}
+
+	return (r);
 }
 
 // only in shiny
@@ -865,11 +889,20 @@ if (HTMLWidgets.shinyMode) {
 	);
 	
 	// export
-	Shiny.addCustomMessageHandler('sg_export_p',
+	Shiny.addCustomMessageHandler('sg_export_svg_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				var output = s.toSVG(message.data);
+			}
+		}
+	);
+	
+	Shiny.addCustomMessageHandler('sg_export_img_p',
+		function (message) {
+			var r = get_sigma_renderer(message.id);
+			if (typeof r != 'undefined') {
+				r.snapshot(message.data);
 			}
 		}
 	);
