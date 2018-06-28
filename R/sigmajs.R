@@ -17,7 +17,11 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
   # forward options using x
   x = list(
     data = list(),
-		type = type
+		type = type,
+		crosstalk = list(
+		  crosstalk_key = NULL,
+		  crosstalk_group = NULL
+		)
   )
 
   # create widget
