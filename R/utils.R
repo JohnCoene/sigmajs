@@ -1,11 +1,13 @@
 globalVariables(c("from", "to", "."))
 
 .build_data <- function(data, ...){
-  dots <- eval(substitute(alist(...))) # capture dots
-  base <- lapply(dots, eval, data) # eval
-  names(base) <- sapply(dots, deparse) # deparse for name
-  base <- as.data.frame(base) # to data.frame
-  return(base)
+  # dots <- eval(substitute(alist(...))) # capture dots
+  # base <- lapply(dots, eval, data) # eval
+  # names(base) <- sapply(dots, deparse) # deparse for name
+  # base <- as.data.frame(base) # to data.frame
+  # return(base)
+  data %>% 
+    dplyr::select(...)
 }
 
 .as_list <- function(data){
@@ -55,17 +57,6 @@ globalVariables(c("from", "to", "."))
   
   sg$x$data$nodes <- imgs
 	sg
-}
-
-.add_image2 <- function(sg, data) {
-  for (i in 1:nrow(data)) {
-    sg$x$data$nodes[[i]]$image <- list()
-    for (j in 1:ncol(data)) {
-      sg$x$data$nodes[[i]]$image[[names(data)[j]]] <- as.character(data[i, j])
-    }
-  }
-  #sg$x$data$nodes <- jsonlite::toJSON(sg$x$data$nodes, auto_unbox = TRUE)
-  sg
 }
 
 .data_2_df <- function(x){
