@@ -1,0 +1,40 @@
+---
+title: "Settings"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Settings}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(sigmajs)
+```
+
+`sigmajs` comes with tons of settings, these are passed to `sg_settings`. Due to the large number of options they are not all listed as arguments, these settings can, however, be found [online](https://github.com/jacomyal/sigma.js/wiki/Settings).
+
+## Example
+
+```{r}
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>% 
+  sg_nodes(nodes, id, label, color, size) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_layout() %>% 
+  sg_settings(
+    drawEdges = FALSE,
+    hoverFontStyle = "bold", # bold labels on hover
+    labelColor = "node", # node label color = respective node color
+    labelSizeRatio = 2,
+    defaultHoverLabelBGColor = "red", # hover label bg
+    defaultLabelHoverColor = "white" # hover label text color
+  )
+```

@@ -58,7 +58,7 @@ get_started <- sigmajs(height = 150) %>%
   sg_layout()
 
 # ----------------------------- DYNAMIC
-edges_demo$delay <- runif(nrow(edges_demo), 500, 2000) # between .5 and 2 seconds
+edges_demo$delay <- runif(nrow(edges_demo), 500, 1500) # between .5 and 2 seconds
 
 last_edge <- sum(edges_demo$delay) + 100
 
