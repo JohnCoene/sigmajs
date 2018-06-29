@@ -42,8 +42,8 @@ library(sigmajs)
 # 	            touchEnabled = FALSE) -> net
 
 # ----------------------------- GET STARTED
-nodes_demo <- sg_make_nodes(7)
-edges_demo <- sg_make_edges(nodes_demo, 10)
+nodes_demo <- sg_make_nodes()
+edges_demo <- sg_make_edges(nodes_demo, 17)
 
 nodes_demo$size <- 1
 
@@ -54,10 +54,11 @@ get_started <- sigmajs(height = 150) %>%
               mouseEnabled = FALSE,
 	            touchEnabled = FALSE,
               minNodeSize = 3,
-              maxNodeSize = 3)
+              maxNodeSize = 3) %>% 
+  sg_layout()
 
 # ----------------------------- DYNAMIC
-edges_demo$delay <- runif(nrow(edges_demo), 500, 3500) # between .5 and 2 seconds
+edges_demo$delay <- runif(nrow(edges_demo), 500, 2000) # between .5 and 2 seconds
 
 last_edge <- sum(edges_demo$delay) + 100
 

@@ -1,6 +1,7 @@
 # sigmajs 0.1.1.9000
 
 * `sg_export` split into `sg_export_img` and `sg_export_svg`.
+* Small bugfix where crosstalk `key` and `group` was not initialised in correct FUN. 
 
 # sigmajs 0.1.0
 

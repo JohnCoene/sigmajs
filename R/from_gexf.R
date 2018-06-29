@@ -20,30 +20,20 @@ sg_from_gexf <- function(sg, file, sd = NULL) {
 
 	if (!inherits(sg, "sigmajs"))
 		stop("sg must be of class sigmajs", call. = FALSE)
+  
+  if(!is.null(sd)){
+    if (crosstalk::is.SharedData(sd)) {
+      # crosstalk settings
+      sg$x$crosstalk$crosstalk_key <- sd$key()
+      sg$x$crosstalk$crosstalk_group <- sd$groupName()
+    } 
+  } 
 
   read <- suppressWarnings(readLines(file))
 	data <- paste(read, collapse = "\n")
 
 	sg$x$data <- data
 	sg$x$gexf <- TRUE # indicate coming from GEXF file
-
-	if(!is.null(sd)){
-	  if (crosstalk::is.SharedData(sd)) {
-	    # Using Crosstalk
-	    key <- sd$key()
-	    group <- sd$groupName()
-	  } 
-	} else {
-	  # Not using Crosstalk
-	  key <- NULL
-	  group <- NULL
-	}
-	
-	# crosstalk settings
-	sg$x$crosstalk = list(
-	  crosstalk_key = key,
-	  crosstalk_group = group
-	)
 	
 	sg
 }

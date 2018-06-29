@@ -39,28 +39,21 @@ sg_nodes <- function(sg, data, ...) {
   
   # crosstalk
   if (crosstalk::is.SharedData(data)) {
-    # Using Crosstalk
-    key <- data$key()
-    group <- data$groupName()
-    data <- data$origData()
+    df <- data$origData()
+    
+    # crosstalk settings
+    sg$x$crosstalk$crosstalk_key <- data$key()
+    sg$x$crosstalk$crosstalk_group <- data$groupName()
   } else {
-    # Not using Crosstalk
-    key <- NULL
-    group <- NULL
+    df <- data
   }
 
-  nodes <- .build_data(data, ...) %>% 
+  nodes <- .build_data(df, ...) %>% 
     .check_ids() %>% 
     .check_x_y() %>% 
     .as_list()
 
   sg$x$data <- append(sg$x$data, list(nodes = nodes))
-  
-  # crosstalk settings
-  sg$x$crosstalk = list(
-    crosstalk_key = key,
-    crosstalk_group = group
-  )
   
   sg
 }
@@ -161,13 +154,24 @@ sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
   if (missing(data) || missing(delay))
     stop("must pass data and delay", call. = FALSE)
   
-  delay_col <- eval(substitute(delay), data) # subset delay
+  # crosstalk
+  if (crosstalk::is.SharedData(data)) {
+    df <- data$origData()
+    
+    # crosstalk settings
+    sg$x$crosstalk$crosstalk_key <- data$key()
+    sg$x$crosstalk$crosstalk_group <- data$groupName()
+  } else {
+    df <- data
+  }
+  
+  delay_col <- eval(substitute(delay), df) # subset delay
   if (isTRUE(cumsum))
     delay_col <- cumsum(delay_col) # cumul for setTimeout
   delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
   
   # build data
-  nodes <- .build_data(data, ...) %>%
+  nodes <- .build_data(df, ...) %>%
     dplyr::bind_cols(delay_table) %>% # bind delay
     .check_ids() %>%
     .check_x_y() %>%

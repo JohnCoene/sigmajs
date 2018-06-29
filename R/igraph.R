@@ -79,22 +79,10 @@ sg_from_igraph <- function(sg, igraph, layout = NULL, sd = NULL) {
 	
 	if(!is.null(sd)){
 	  if (crosstalk::is.SharedData(sd)) {
-	    # Using Crosstalk
-	    key <- sd$key()
-	    group <- sd$groupName()
-	    data <- sd$origData()
+	    sg$x$crosstalk$crosstalk_key <- sd$key()
+	    sg$x$crosstalk$crosstalk_group <- sd$groupName()
 	  } 
-	} else {
-	  # Not using Crosstalk
-	  key <- NULL
-	  group <- NULL
-	}
-	
-	# crosstalk settings
-	sg$x$crosstalk = list(
-	  crosstalk_key = key,
-	  crosstalk_group = group
-	)
+	} 
 
 	return(sg)
 }
