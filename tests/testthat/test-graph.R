@@ -15,6 +15,11 @@ test_that("nodes & edges", {
     sg_edges(edges, id, source, target)
   
   expect_equal(length(sg$x$data), 2)
+  
+  sd <- SharedData$new(nodes)
+  
+  sg <- sigmajs() %>% 
+    sg_nodes(sd, id, size)
 })
 
 test_that("delay", {
