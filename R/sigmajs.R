@@ -5,6 +5,14 @@
 #' @param width,height Dimensions of graph.
 #' @param elementId Id of elment.
 #' @param type Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.
+#' 
+#' @examples 
+#' nodes <- sg_make_nodes()
+#' edges <- sg_make_edges(nodes)
+#'
+#' sigmajs() %>%
+#'   sg_nodes(nodes, id, label, size, color) %>%
+#'   sg_edges(edges, id, source, target) 
 #'
 #' @import htmlwidgets
 #' @importFrom stats runif
