@@ -21,6 +21,9 @@ sg_from_gexf <- function(sg, file, sd = NULL) {
 	if (!inherits(sg, "sigmajs"))
 		stop("sg must be of class sigmajs", call. = FALSE)
   
+  if(missing(file))
+    stop("missing file", call. = FALSE)
+  
   if(!is.null(sd)){
     if (crosstalk::is.SharedData(sd)) {
       # crosstalk settings
