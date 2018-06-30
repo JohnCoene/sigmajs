@@ -31,14 +31,6 @@ globalVariables(c("from", "to", "."))
   return(data)
 }
 
-# returns TRUE if image used in nodes
-.init_custom_shapes <- function(nodes) {
-	if ("image" %in% names(nodes))
-		TRUE
-	else
-		FALSE
-}
-
 .add_image <- function(sg, data) {
   .rename <- function(x){
     x[x == ""] <- "image"
@@ -86,8 +78,4 @@ globalVariables(c("from", "to", "."))
     "drag_nodes", "relative_size", "add_nodes", 
     "add_edges", "drop_nodes", "drop_edges", 
     "animate", "export_svg", "export_img")
-}
-
-.get_proc <- function(x){
-  ifelse(x == "nodes", "filter.processors.nodes", "filter.processors.edges")
 }
