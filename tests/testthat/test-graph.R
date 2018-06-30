@@ -58,3 +58,18 @@ test_that("delay", {
   
   expect_gt(length(sg$x$addNodesDelay) + length(sg$x$addEdgesDelay), 1)
 })
+
+test_that("function bis", {
+  
+  nodes <- sg_make_nodes()
+  edges <- sg_make_edges(nodes)
+  
+  sg <- sigmajs() %>% 
+    sg_nodes2(nodes) %>% 
+    sg_edges2(edges)
+  
+  expect_error(sg_nodes2())
+  expect_error(sg_edges2())
+  expect_error(sigmajs() %>% sg_nodes2())
+  expect_error(sigmajs() %>% sg_edges2())
+})
