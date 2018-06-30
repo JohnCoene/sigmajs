@@ -13,7 +13,7 @@
 #'
 #' @section Functions:
 #' \itemize{
-#'		\item{Functions ending in \code{*2} take a list that resembles the original sigma.js JSON inputs}
+#'		\item{Functions ending in \code{2} take a list like the original sigma.js JSON.}
 #'		\item{Other functions take the arguments described above.}
 #' }
 #'
