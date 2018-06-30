@@ -4,42 +4,6 @@
 ```{r, eval=TRUE, echo = FALSE}
 library(htmltools)
 library(sigmajs)
-# nodes <- sg_make_nodes(20)
-# edges <- sg_make_edges(nodes, 30)
-# 
-# # reset size to 1
-# nodes$size <- 1
-# 
-# # change initial colors
-# nodes$color <- colorRampPalette(c("#922b29", "#da7d7b"))(nrow(nodes))
-#  
-# # add transition
-# n <- nrow(nodes)
-# L <- 10
-# 
-# # in circle
-# nodes$to_x <- 0
-# nodes$to_y <- 0
-# for(i in 1:nrow(nodes)){
-# 	nodes$to_x[i] <- L * cos(pi * 2 * i / n - pi / 2)
-# 	nodes$to_y[i] <- L * sin(pi * 2 * i / n - pi / 2)
-# }
-# 
-# nodes$to_size <- runif(n, 2, 6) # size
-# 
-# # colors
-# COLORS <- c("#1C5C70", "#B1E2A3")
-# nodes$to_color <- colorRampPalette(COLORS)(n)
-#  
-# # --------------------------- HEADER
-# sigmajs(width = "100%", height = 150) %>%
-# 	sg_nodes(nodes, id, size, color, to_x, to_y, to_size, to_color) %>%
-# 	sg_edges(edges, id, source, target) %>% 
-# 	sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
-# 	           delay = 1000) %>%
-# 	sg_settings(animationsTime = 3000,
-# 	            mouseEnabled = FALSE,
-# 	            touchEnabled = FALSE) -> net
 
 # ----------------------------- GET STARTED
 nodes_demo <- sg_make_nodes()
@@ -58,7 +22,7 @@ get_started <- sigmajs(height = 150) %>%
   sg_layout()
 
 # ----------------------------- DYNAMIC
-edges_demo$delay <- runif(nrow(edges_demo), 500, 1500) # between .5 and 2 seconds
+edges_demo$delay <- runif(nrow(edges_demo), 500, 1000) # between .5 and 2 seconds
 
 last_edge <- sum(edges_demo$delay) + 100
 
