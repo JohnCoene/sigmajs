@@ -17,6 +17,13 @@
 #' @rdname neighbours
 #' @export
 sg_neighbours <- function(sg){
+  
+  if(missing(sg))
+    stop("must pass sg", call. = FALSE)
+  
+  if(!inherits(sg, "sigmajs"))
+    stop("sg must be sigmajs object", call. = FALSE)
+  
   sg$x$neighbours <- TRUE
   sg
 }
