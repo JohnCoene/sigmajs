@@ -8,13 +8,27 @@ test_that("test init", {
   edges <- sg_make_edges(nodes, 20)
   
   sg <- sigmajs() %>% 
-    sg_settings(nodeDefaultColor = "blue")
+    sg_settings(nodeDefaultColor = "blue") %>% 
+    sg_neighbours() %>% 
+    sg_noverlap() %>% 
+    sg_relative_size()
   
   expect_length(sg$x$settings, 1)
+  expect_true(sg$x$neighbours)
+  expect_true(sg$x$noverlapStart)
+  expect_equal(sg$x$relativeSize, 1)
   
   expect_error(sg_export_img())
   expect_error(sg_export_svg())
   expect_error(sg_layout())
   expect_error(sg_get_layout())
   expect_error(sg_layout(mtcars))
+  expect_error(sg_neighbors())
+  expect_error(sg_neighbours())
+  expect_error(mtcars %>% sg_neighbors())
+  expect_error(mtcars %>% sg_neighbours())
+  expect_error(sg_noverlap())
+  expect_error(mtcars %>% sg_noverlap())
+  expect_error(sg_relative_size())
+  expect_error(mtcars %>% sg_relative_size())
 })
