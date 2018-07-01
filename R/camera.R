@@ -13,8 +13,8 @@
 #' demo("add-camera", package = "sigmajs")
 #' }
 #' 
-#' @rdname camera
-#' @export
+#' @noRd
+#' @keywords internal
 sg_camera <- function(sg, elementId = NULL, initialise = FALSE) {
   if (missing(elementId) && !isTRUE(initialise))
     stop("must pass element id if not initialising the camera", call. = FALSE)
