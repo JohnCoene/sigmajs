@@ -31,4 +31,6 @@ test_that("test init", {
   expect_error(mtcars %>% sg_noverlap())
   expect_error(sg_relative_size())
   expect_error(mtcars %>% sg_relative_size())
+  expect_error(sg_cluster())
+  expect_error(mycars %>% sg_cluster())
 })

@@ -1,4 +1,5 @@
 library(testthat)
+library(crosstalk)
 
 context("Testing graph")
 
@@ -73,3 +74,70 @@ test_that("function bis", {
   expect_error(sigmajs() %>% sg_nodes2())
   expect_error(sigmajs() %>% sg_edges2())
 })
+
+test_that("Add funs", {
+  
+  set.seed(19880525)
+  
+  nodes <- sg_make_nodes()
+  
+  # additional nodes
+  nodes2 <- sg_make_nodes()
+  nodes2$id <- as.character(seq(11, 20))
+  
+  # add delay
+  nodes2$delay <- runif(nrow(nodes2), 500, 1000)
+  
+  sg1 <- sigmajs() %>%
+    sg_nodes(nodes, id, label, size, color) %>%
+    sg_add_nodes(nodes2, delay, id, label, size, color, cumsum = TRUE)
+  
+  expect_length(sg1$x$addNodesDelay, 10)
+  
+  edges <- sg_make_edges(nodes, 25)
+  edges$delay <- runif(nrow(edges), 100, 2000)
+  
+  sg2 <- sigmajs() %>%
+    sg_nodes(nodes, id, label, size, color) %>% 
+    sg_add_edges(edges, delay, id, source, target, cumsum = TRUE) 
+  
+  expect_length(sg2$x$addEdgesDelay, 2)
+  
+  nodesd <- SharedData$new(nodes, key = nodes$id)
+  
+  sg3 <- sigmajs() %>%
+    sg_nodes(nodesd, id, label, size, color) %>%
+    sg_add_nodes(nodes2, delay, id, label, size, color, cumsum = TRUE)
+  
+  expect_length(sg3$x$addNodesDelay, 10)
+  
+  expect_error(sg_add_nodes())
+  expect_error(mtcars %>% sg_add_nodes())
+  expect_error(sg_add_edges())
+  expect_error(mtcars %>% sg_add_edges())
+})
+
+test_that("Drop funs", {
+  
+  set.seed(19880525)
+  
+  nodes <- sg_make_nodes(50)
+  edges <- sg_make_edges(nodes)
+  
+  # nodes & edges to drop
+  nodes2 <- nodes[sample(nrow(nodes), 50), ]
+  nodes2$delay <- runif(nrow(nodes2), 1000, 3000)
+  
+  edges2 <- edges[sample(nrow(edges), 50), ]
+  edges2$delay <- runif(nrow(edges2), 1000, 3000)
+  
+  sg <- sigmajs() %>% 
+    sg_nodes(nodes, id, size, color) %>% 
+    sg_drop_nodes(nodes2, id, delay, cumsum = FALSE) %>% 
+    sg_drop_edges(edges2, id, delay)
+  
+  expect_length(sg$x$dropNodesDelay, 50)
+  expect_length(sg$x$dropEdgesDelay, 2)
+  
+})
+  
