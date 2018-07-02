@@ -34,8 +34,7 @@ sg_animate <- function(sg, mapping, options = list(easing = "cubicInOut"), delay
 	if (missing(sg) || missing(mapping))
 		stop("missing sg or mapping", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
 	sg$x$animateLoop <- FALSE
 	sg$x$animateOptions <- options

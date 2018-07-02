@@ -38,9 +38,8 @@ sg_force <- function(sg, ...) {
 	
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
-
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  
+  .test_sg(sg)
 
   sg$x$force <- list(...)
   sg
@@ -68,8 +67,10 @@ sg_force_stop <- function(sg, delay = 5000) {
 #' @export
 sg_force_restart_p <- function(proxy, ..., refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
@@ -82,8 +83,10 @@ sg_force_restart_p <- function(proxy, ..., refresh = TRUE) {
 #' @export
 sg_force_start_p <- function(proxy, ..., refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
@@ -96,8 +99,10 @@ sg_force_start_p <- function(proxy, ..., refresh = TRUE) {
 #' @export
 sg_force_stop_p <- function(proxy) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id)
 
@@ -110,8 +115,10 @@ sg_force_stop_p <- function(proxy) {
 #' @export
 sg_force_kill_p <- function(proxy) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id)
 
@@ -124,8 +131,10 @@ sg_force_kill_p <- function(proxy) {
 #' @export
 sg_force_config_p <- function(proxy, ...) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id, data = list(...))
 

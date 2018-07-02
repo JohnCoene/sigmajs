@@ -33,9 +33,8 @@ sg_nodes <- function(sg, data, ...) {
 
 	if (missing(sg) || missing(data))
 		stop("missing sg or data", call. = FALSE)
-
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  
+  .test_sg(sg)
   
   # crosstalk
   if (crosstalk::is.SharedData(data)) {
@@ -65,8 +64,7 @@ sg_edges <- function(sg, data, ...) {
 	if (missing(sg) || missing(data))
 		stop("missing sg or data", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
   edges <- .build_data(data, ...) %>% 
     .check_ids() %>% 
@@ -83,9 +81,7 @@ sg_edges2 <- function(sg, data) {
 	if (missing(sg) || missing(data))
 		stop("missing sg or data", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
-
+  .test_sg(sg)
 
 	sg$x$data <- append(sg$x$data, list(edges = data))
 	sg
@@ -98,16 +94,15 @@ sg_nodes2 <- function(sg, data) {
 	if (missing(sg) || missing(data))
 		stop("missing sg or data", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
 	sg$x$data <- append(sg$x$data, list(nodes = data))
 	sg
 }
 
-#' Add
+#' Add nodes and edges
 #' 
-#' Add nodes or nodes.
+#' Add nodes or edges.
 #' 
 #' @inheritParams sg_nodes
 #' @param delay Column name containing delay in milliseconds.
@@ -148,11 +143,10 @@ sg_nodes2 <- function(sg, data) {
 #' @export
 sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
   
-  if (!inherits(sg, "sigmajs"))
-    stop("sg must be of class sigmajs", call. = FALSE)
+  if (missing(data) || missing(delay) || missing(sg))
+    stop("must pass sg, data and delay", call. = FALSE)
   
-  if (missing(data) || missing(delay))
-    stop("must pass data and delay", call. = FALSE)
+  .test_sg(sg)
   
   # crosstalk
   if (crosstalk::is.SharedData(data)) {
@@ -186,11 +180,10 @@ sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
 #' @export
 sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
   
-  if (!inherits(sg, "sigmajs"))
-    stop("sg must be of class sigmajs", call. = FALSE)
+  if (missing(data) || missing(delay) || missing(sg))
+    stop("must pass sg, data and delay", call. = FALSE)
   
-  if (missing(data) || missing(delay))
-    stop("must pass data and delay", call. = FALSE)
+  .test_sg(sg)
   
   delay_col <- eval(substitute(delay), data) # subset delay
   if (isTRUE(cumsum))
@@ -240,11 +233,10 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE) {
 #' @export
 sg_drop_nodes <- function(sg, data, ids, delay, cumsum = TRUE) {
   
-  if (!inherits(sg, "sigmajs"))
-    stop("sg must be of class sigmajs", call. = FALSE)
+  if (missing(data) || missing(sg) || missing(ids) || missing(delay))
+    stop("must pass sg, data, ids and delay", call. = FALSE)
   
-  if (missing(data))
-    stop("must pass data", call. = FALSE)
+  .test_sg(sg)
   
   delay_col <- eval(substitute(delay), data) # subset delay
   if (isTRUE(cumsum))
@@ -271,11 +263,10 @@ sg_drop_nodes <- function(sg, data, ids, delay, cumsum = TRUE) {
 #' @export
 sg_drop_edges <- function(sg, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
-  if (!inherits(sg, "sigmajs"))
-    stop("sg must be of class sigmajs", call. = FALSE)
+  if (missing(data) || missing(sg) || missing(ids) || missing(delay))
+    stop("must pass sg, data, ids and delay", call. = FALSE)
   
-  if (missing(data))
-    stop("must pass data", call. = FALSE)
+  .test_sg(sg)
   
   delay_col <- eval(substitute(delay), data) # subset delay
   if (isTRUE(cumsum))

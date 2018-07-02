@@ -10,8 +10,7 @@ sg_custom_shapes <- function(sg) {
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
 	sg$x$customShapes <- TRUE
 	sg
@@ -39,8 +38,7 @@ sg_add_images <- function(sg, data, url, ...) {
 	if (missing(sg) || missing(url) || missing(data))
 		stop("missing sg, url or data", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
 	if (!length(sg$x$data$nodes))
 		stop("missing nodes", call. = FALSE)

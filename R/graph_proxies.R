@@ -21,8 +21,10 @@
 #' @export
 sg_add_node_p <- function(proxy, data, ..., refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	# build data
 	nodes <- .build_data(data, ...) %>%
@@ -41,8 +43,10 @@ sg_add_node_p <- function(proxy, data, ..., refresh = TRUE) {
 #' @export
 sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	# build data
 	edges <- .build_data(data, ...) %>%
@@ -80,8 +84,10 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 #' @export
 sg_add_nodes_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data))
 		stop("must pass data", call. = FALSE)
@@ -106,8 +112,10 @@ sg_add_nodes_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 #' @export
 sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data))
 		stop("must pass data", call. = FALSE)
@@ -145,8 +153,10 @@ sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 #' @export
 sg_drop_node_p <- function(proxy, id, refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(id))
 		stop("must pass id")
@@ -162,8 +172,10 @@ sg_drop_node_p <- function(proxy, id, refresh = TRUE) {
 #' @export
 sg_drop_edge_p <- function(proxy, id, refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(id))
 		stop("must pass id")
@@ -191,8 +203,10 @@ sg_drop_edge_p <- function(proxy, id, refresh = TRUE) {
 #' @export
 sg_clear_p <- function(proxy, refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id, refresh = refresh)
 
@@ -205,8 +219,10 @@ sg_clear_p <- function(proxy, refresh = TRUE) {
 #' @export
 sg_kill_p <- function(proxy, refresh = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id, refresh = refresh)
 
@@ -246,8 +262,10 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 #' @export
 sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data) || missing(delay))
 		stop("must pass data and delay", call. = FALSE)
@@ -275,8 +293,10 @@ sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 #' @export
 sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data) || missing(delay))
 		stop("must pass data and delay", call. = FALSE)
@@ -323,8 +343,10 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 #' @export
 sg_drop_nodes_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data))
 		stop("must pass data", call. = FALSE)
@@ -345,8 +367,10 @@ sg_drop_nodes_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 #' @export
 sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
 
 	if (missing(data))
 		stop("must pass data", call. = FALSE)
@@ -394,8 +418,10 @@ sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 #' @export
 sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   if (missing(data))
     stop("must pass data", call. = FALSE)
@@ -428,8 +454,10 @@ sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
 #' @export
 sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE) {
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   if (missing(data))
     stop("must pass data", call. = FALSE)

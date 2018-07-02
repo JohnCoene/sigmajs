@@ -20,8 +20,10 @@
 #' @export
 sg_filter_gt_p <- function(proxy, input, var, target = "nodes"){
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   message <- list(
     id = proxy$id, 
@@ -39,8 +41,10 @@ sg_filter_gt_p <- function(proxy, input, var, target = "nodes"){
 #' @export
 sg_filter_lt_p <- function(proxy, input, var, target = "nodes"){
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   message <- list(
     id = proxy$id, 

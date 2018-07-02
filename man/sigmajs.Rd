@@ -24,7 +24,7 @@ Keep \code{width} at \code{100\%} for a responsive visualisation.
 nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes)
 
-sigmajs() \%>\%
+sigmajs("svg") \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_edges(edges, id, source, target) 
 

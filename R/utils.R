@@ -79,3 +79,14 @@ globalVariables(c("from", "to", "."))
     "add_edges", "drop_nodes", "drop_edges", 
     "animate", "export_svg", "export_img")
 }
+
+
+.test_sg <- function(sg){
+  if(!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
+}
+
+.test_proxy <- function(p){
+  if (!inherits(p, "sigmajsProxy"))
+    stop("proxy must be of class sigmajsProxy", call. = FALSE)
+}

@@ -33,6 +33,8 @@ sg_export_svg <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
   if(missing(sg))
     stop("must pass sg", call. = FALSE)
   
+  .test_sg(sg)
+  
   sg$x$exportSVG <- list(
     download = download, 
     filename = file, 
@@ -54,6 +56,8 @@ sg_export_img <- function(sg, download = TRUE, file = "graph.png", background = 
   if(missing(sg))
     stop("must pass sg", call. = FALSE)
   
+  .test_sg(sg)
+  
   sg$x$exportIMG <- list(
     format = format,
     download = download, 
@@ -70,8 +74,10 @@ sg_export_img <- function(sg, download = TRUE, file = "graph.png", background = 
 sg_export_img_p <- function(proxy, download = TRUE, file = "graph.png", background = "white",
                           format = "png", labels = FALSE){
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   df <- list(
     format = format,
@@ -93,8 +99,10 @@ sg_export_img_p <- function(proxy, download = TRUE, file = "graph.png", backgrou
 sg_export_svg_p <- function(proxy, download = TRUE, file = "graph.svg", size = 1000,
                       width = 1000, height = 1000, labels = FALSE, data = FALSE){
   
-  if (!"sigmajsProxy" %in% class(proxy))
-    stop("must pass sigmajsProxy object", call. = FALSE)
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
   
   # build data
   df <- list(

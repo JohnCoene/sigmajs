@@ -35,6 +35,9 @@ sg_make_nodes <- function(n = 10, colors = c("#B1E2A3", "#98D3A5", "#328983", "#
 #' @export
 sg_make_edges <- function(nodes, n = nrow(nodes) * 1.5) {
   
+  if(missing(nodes))
+    stop("mising nodes", call. = FALSE)
+  
 	ids <- as.character(nodes$id)
 	dplyr::tibble(
 		id = as.character(seq(1, n)),

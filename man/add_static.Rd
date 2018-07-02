@@ -3,7 +3,7 @@
 \name{sg_add_nodes}
 \alias{sg_add_nodes}
 \alias{sg_add_edges}
-\title{Add}
+\title{Add nodes and edges}
 \usage{
 sg_add_nodes(sg, data, delay, ..., cumsum = TRUE)
 
@@ -23,7 +23,7 @@ sg_add_edges(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE)
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.}
 }
 \description{
-Add nodes or nodes.
+Add nodes or edges.
 }
 \details{
 The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.

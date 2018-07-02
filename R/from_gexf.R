@@ -17,9 +17,8 @@ sg_from_gexf <- function(sg, file, sd = NULL) {
 
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
-
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  
+  .test_sg(sg)
   
   if(missing(file))
     stop("missing file", call. = FALSE)

@@ -39,8 +39,7 @@ sg_cluster <- function(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70"
   if (missing(sg))
     stop("missing sg", call. = FALSE)
   
-  if (!inherits(sg, "sigmajs"))
-    stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
   
   # build graph
   nodes <- .data_2_df(sg$x$data$nodes)

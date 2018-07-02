@@ -53,6 +53,8 @@ sg_button <- function(sg, label, event, class = "btn btn-default"){
   if(missing(sg) || missing(label) || missing(event))
     stop("missing sg or label or event")
   
+  .test_sg(sg)
+  
   if(!event %in% .valid_events())
     stop("incorrect event", call. = FALSE)
   

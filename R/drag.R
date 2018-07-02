@@ -27,8 +27,7 @@ sg_drag_nodes <- function(sg) {
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  .test_sg(sg)
 
     sg$x$dragNodes <- TRUE
     sg
@@ -41,8 +40,7 @@ sg_drag_nodes_start_p <- function(proxy) {
 	if (missing(proxy))
 		stop("missing proxy", call. = FALSE)
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id) # create message
 
@@ -57,8 +55,7 @@ sg_drag_nodes_kill_p <- function(proxy) {
 	if (missing(proxy))
 		stop("missing proxy", call. = FALSE)
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  .test_proxy(proxy)
 
 	message <- list(id = proxy$id) # create message
 
