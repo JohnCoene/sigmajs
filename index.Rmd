@@ -50,8 +50,8 @@ animate <- sigmajs(height = 150) %>%
   sg_nodes(nodes_demo, id, label, size, color, to_x, to_y, to_size, to_color) %>%
   sg_edges(edges_demo, id, source, target) %>% 
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color"),
-             delay = 3400) %>%
-  sg_settings(animationsTime = 7000,
+             delay = 500) %>%
+  sg_settings(animationsTime = 10000,
               minNodeSize = 1,
               maxNodeSize = 5,
               mouseEnabled = FALSE,
