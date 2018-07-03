@@ -42,8 +42,6 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
     elementId = elementId,
     dependencies = crosstalk::crosstalkLibs(),
     sizingPolicy = htmlwidgets::sizingPolicy(
-      defaultWidth = "100%",
-      knitr.figure = FALSE,
       browser.fill = TRUE
     )
   )
