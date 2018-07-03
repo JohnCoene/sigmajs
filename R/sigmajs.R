@@ -40,10 +40,7 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
     height = height,
     package = 'sigmajs',
     elementId = elementId,
-    dependencies = crosstalk::crosstalkLibs(),
-    sizingPolicy = htmlwidgets::sizingPolicy(
-      browser.fill = TRUE
-    )
+    dependencies = crosstalk::crosstalkLibs()
   )
 }
 
