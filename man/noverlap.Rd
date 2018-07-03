@@ -5,14 +5,12 @@
 \alias{sg_noverlap_p}
 \title{No overlap}
 \usage{
-sg_noverlap(sg, start = TRUE, ...)
+sg_noverlap(sg, ...)
 
 sg_noverlap_p(proxy)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
-
-\item{start}{Whether to start running the noverlap layout.}
 
 \item{...}{any option to pass to the plugin, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}.}
 
@@ -22,13 +20,13 @@ sg_noverlap_p(proxy)
 This plugin runs an algorithm which distributes nodes in the network, ensuring that they do not overlap and providing a margin where specified.
 }
 \examples{
-nodes <- sg_make_nodes(50)
-edges <- sg_make_edges(nodes, 75)
+nodes <- sg_make_nodes(500)
+edges <- sg_make_edges(nodes)
 
 sigmajs() \%>\%
-  sg_nodes(nodes, id, label, size, color) \%>\%
+  sg_nodes(nodes, id, size, color) \%>\%
   sg_edges(edges, id, source, target) \%>\%
-  sg_force() \%>\%
+  sg_layout() \%>\% 
   sg_noverlap()
 
 }

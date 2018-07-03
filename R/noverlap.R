@@ -4,22 +4,21 @@
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
-#' @param start Whether to start running the noverlap layout.
 #' @param ... any option to pass to the plugin, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}.
 #'
 #' @examples
-#' nodes <- sg_make_nodes(50)
-#' edges <- sg_make_edges(nodes, 75)
+#' nodes <- sg_make_nodes(500)
+#' edges <- sg_make_edges(nodes)
 #'
 #' sigmajs() %>%
-#'   sg_nodes(nodes, id, label, size, color) %>%
+#'   sg_nodes(nodes, id, size, color) %>%
 #'   sg_edges(edges, id, source, target) %>%
-#'   sg_force() %>%
+#'   sg_layout() %>% 
 #'   sg_noverlap()
 #'
 #' @rdname noverlap
 #' @export
-sg_noverlap <- function(sg, start = TRUE, ...) {
+sg_noverlap <- function(sg, ...) {
 
 	if (missing(sg))
 		stop("missing sg", call. = FALSE)
@@ -28,7 +27,6 @@ sg_noverlap <- function(sg, start = TRUE, ...) {
 		stop("sg must be of class sigmajs", call. = FALSE)
 
 	sg$x$noverlap <- list(...)
-	sg$x$noverlapStart <- start
 	sg
 }
 

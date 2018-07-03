@@ -15,7 +15,7 @@ test_that("test init", {
   
   expect_length(sg$x$settings, 1)
   expect_true(sg$x$neighbours)
-  expect_true(sg$x$noverlapStart)
+  expect_length(sg$x$noverlap, 0)
   expect_equal(sg$x$relativeSize, 1)
   
   expect_error(sg_export_img())
