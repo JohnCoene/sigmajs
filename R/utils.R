@@ -77,7 +77,8 @@ globalVariables(c("from", "to", "."))
   c("force_start", "force_stop", "noverlap", 
     "drag_nodes", "relative_size", "add_nodes", 
     "add_edges", "drop_nodes", "drop_edges", 
-    "animate", "export_svg", "export_img")
+    "animate", "export_svg", "export_img",
+    "add_nodes_edges")
 }
 
 

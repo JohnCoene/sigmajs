@@ -16,6 +16,7 @@
 #'   \item{\code{relative_size}}
 #'   \item{\code{add_nodes}}
 #'   \item{\code{add_edges}}
+#'   \item{\code{add_nodes_edges}}
 #'   \item{\code{drop_nodes}}
 #'   \item{\code{drop_edges}}
 #'   \item{\code{animate}}
