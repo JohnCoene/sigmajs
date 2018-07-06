@@ -2,6 +2,8 @@
 
 * `sg_export` split into `sg_export_img` and `sg_export_svg`.
 * Small bugfix where crosstalk `key` and `group` was not initialised in correct FUN. 
+* Added support for button to trigger nodes and edges dynamic addition.
+* `sg_get_layout` returns nodes with coordinates rather than just the coordinates.
 
 # sigmajs 0.1.0
 

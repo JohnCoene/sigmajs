@@ -23,7 +23,7 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_layout()
 #' 
-#' coords <- sg_get_layout(nodes, edges)
+#' nodes_coords <- sg_get_layout(nodes, edges)
 #' 
 #' @return \code{sg_get_layout} returns nodes with \code{x} and \code{y} coordinates.
 #' 
@@ -44,9 +44,8 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
   nodes <- .rm_x_y(nodes)
   edges <- .re_order(edges)
   
-  l <- sg_get_layout(nodes, edges, directed, layout, ...)
+  nodes <- sg_get_layout(nodes, edges, directed, layout, ...)
   
-  nodes <- cbind.data.frame(nodes, l)
   nodes <- apply(nodes, 1, as.list)
   
   sg$x$data$nodes <- nodes
@@ -69,5 +68,7 @@ sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout
   l <- as.data.frame(l) %>% 
     dplyr::select_("x" = "V1", "y" = "V2")
   
-  return(l)
+  nodes <- dplyr::bind_cols(nodes, l)
+  
+  return(nodes)
 }

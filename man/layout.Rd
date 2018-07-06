@@ -44,6 +44,6 @@ sigmajs() \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_layout()
 
-coords <- sg_get_layout(nodes, edges)
+nodes_coords <- sg_get_layout(nodes, edges)
 
 }
