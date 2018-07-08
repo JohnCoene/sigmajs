@@ -254,7 +254,7 @@ HTMLWidgets.widget({
 				
 				if(x.hasOwnProperty('addNodesDelay')){
   				
-				  if(x.button.event === 'add_nodes'){
+				  if(x.button.event === 'add_nodes' || x.button.event === 'add_nodes_edges'){
 				    button.addEventListener("click", function(event) {
       				x.addNodesDelay.forEach((element) => {
         					setTimeout(function () {
@@ -276,7 +276,7 @@ HTMLWidgets.widget({
 				if(x.hasOwnProperty('addEdgesDelay')){
 				  var running = s.isForceAtlas2Running();
   				
-				  if(x.button.event === 'add_edges'){
+				  if(x.button.event === 'add_edges' || x.button.event === 'add_nodes_edges'){
 				    button.addEventListener("click", function(event) {
         			x.addEdgesDelay.data.forEach((element) => {
       					setTimeout(function () {
