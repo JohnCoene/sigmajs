@@ -57,8 +57,8 @@
   </a>
 </li>
 <li>
-  <a href="../CONDUCT.html">
-    <span class="fa fa-users"></span>
+  <a href="../CONTRIBUTING.html">
+    <span class="fa fa-plus-circle"></span>
      
   </a>
 </li>
@@ -141,7 +141,7 @@
       <h1>Buttons</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-07-06</h4>
+            <h4 class="date">2018-07-13</h4>
       
       
       <div class="hidden name"><code>buttons.Rmd</code></div>
@@ -151,36 +151,36 @@
     
     
 <p><code>sigmajs</code> lets you add buttons to trigger events, <em>in static documents,</em> such as this one.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() 
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(
-    <span class="st">"&lt;i class='fa fa-cogs'&gt;&lt;/i&gt; Layout"</span>, <span class="co"># only use icon if document imports fontawesome</span>
-    <span class="st">"force_start"</span>, <span class="co"># event to trigger</span>
-    <span class="dt">class =</span> <span class="st">"btn btn-success"</span> <span class="co"># class</span>
-  )</code></pre></div>
-<div id="htmlwidget-40aa6a411364cd7b2153" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>() </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/force.html">sg_force_start</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="st">"&lt;i class='fa fa-cogs'&gt;&lt;/i&gt; Layout"</span>, <span class="co"># only use icon if document imports fontawesome</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    <span class="st">"force_start"</span>, <span class="co"># event to trigger</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    <span class="dt">class =</span> <span class="st">"btn btn-success"</span> <span class="co"># class</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  )</a></code></pre></div>
+<div id="htmlwidget-53826200489fa3bb56aa" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-40aa6a411364cd7b2153">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":" 1.250090","y":" 4.450347"},{"id":"2","size":"2","color":"#A5DBA3","x":"16.202483","y":" 5.906493"},{"id":"3","size":"2","color":"#9AD4A4","x":" 5.745949","y":"14.040027"},{"id":"4","size":"3","color":"#76BA99","x":"11.072077","y":"12.456369"},{"id":"5","size":"3","color":"#48998A","x":" 1.619898","y":" 7.814432"},{"id":"6","size":"2","color":"#2D7E7E","x":" 8.004806","y":"13.219815"},{"id":"7","size":"3","color":"#236B76","x":" 9.037260","y":"19.060133"},{"id":"8","size":"5","color":"#1C686F","x":" 3.356979","y":" 7.617981"},{"id":"9","size":"2","color":"#20986D","x":" 7.314501","y":"14.430157"},{"id":"10","size":"3","color":"#24C96B","x":"13.923180","y":"18.751005"}],"edges":[{"id":"1","source":"6","target":"2"},{"id":"2","source":"9","target":"1"},{"id":"3","source":"10","target":"8"},{"id":"4","source":"7","target":"7"},{"id":"5","source":"4","target":"8"},{"id":"6","source":"1","target":"7"},{"id":"7","source":"1","target":"10"},{"id":"8","source":"5","target":"1"},{"id":"9","source":"8","target":"7"},{"id":"10","source":"7","target":"2"},{"id":"11","source":"9","target":"6"},{"id":"12","source":"1","target":"7"},{"id":"13","source":"9","target":"9"},{"id":"14","source":"1","target":"10"},{"id":"15","source":"3","target":"5"},{"id":"16","source":"7","target":"3"},{"id":"17","source":"4","target":"8"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"force":[],"button":{"label":"<i class='fa fa-cogs'><\/i> Layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><p>A button to export the graph as SVG, not that you can export to an image (png, jpeg, gif or tiff).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/export.html">sg_export_svg</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(
-    <span class="st">"&lt;i class='fa fa-download'&gt;&lt;/i&gt;"</span>, 
-    <span class="st">"export_svg"</span>, 
-    <span class="dt">class =</span> <span class="st">"btn btn-default"</span>
-  )</code></pre></div>
-<div id="htmlwidget-71bfe78b2d52ba0afd09" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
+<script type="application/json" data-for="htmlwidget-53826200489fa3bb56aa">{"x":{"data":{"nodes":[{"id":"1","size":"4","color":"#B1E2A3","x":"15.776287","y":"10.829151"},{"id":"2","size":"3","color":"#A5DBA3","x":" 4.464825","y":"11.838112"},{"id":"3","size":"3","color":"#9AD4A4","x":"14.857087","y":" 8.562880"},{"id":"4","size":"4","color":"#76BA99","x":" 9.264537","y":"12.552510"},{"id":"5","size":"5","color":"#48998A","x":"12.859044","y":"13.225272"},{"id":"6","size":"3","color":"#2D7E7E","x":"15.495398","y":"19.166417"},{"id":"7","size":"4","color":"#236B76","x":" 9.638594","y":"16.545334"},{"id":"8","size":"3","color":"#1C686F","x":"14.439634","y":"12.943919"},{"id":"9","size":"5","color":"#20986D","x":" 2.205362","y":" 3.639208"},{"id":"10","size":"4","color":"#24C96B","x":"15.913841","y":" 2.733214"}],"edges":[{"id":"1","source":"10","target":"4"},{"id":"2","source":"4","target":"7"},{"id":"3","source":"1","target":"3"},{"id":"4","source":"8","target":"10"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"5","target":"1"},{"id":"7","source":"4","target":"8"},{"id":"8","source":"8","target":"7"},{"id":"9","source":"1","target":"3"},{"id":"10","source":"8","target":"2"},{"id":"11","source":"1","target":"8"},{"id":"12","source":"10","target":"2"},{"id":"13","source":"5","target":"4"},{"id":"14","source":"4","target":"8"},{"id":"15","source":"5","target":"7"},{"id":"16","source":"3","target":"9"},{"id":"17","source":"1","target":"2"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"force":[],"button":{"label":"<i class='fa fa-cogs'><\/i> Layout","event":"force_start","className":"btn btn-success"}},"evals":[],"jsHooks":[]}</script><p>A button to export the graph as SVG, not that you can export to an image (png, jpeg, gif or tiff).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, size, color) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/export.html">sg_export_svg</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/sg_button.html">sg_button</a></span>(</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="st">"&lt;i class='fa fa-download'&gt;&lt;/i&gt;"</span>, </a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="st">"export_svg"</span>, </a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="dt">class =</span> <span class="st">"btn btn-default"</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">  )</a></code></pre></div>
+<div id="htmlwidget-b4eb4b125c40f2e288de" class="sigmajs html-widget" style="width:100%;height:432.632880098888px;">
 <button type="button" style="display:block;"></button>
 </div>
-<script type="application/json" data-for="htmlwidget-71bfe78b2d52ba0afd09">{"x":{"data":{"nodes":[{"id":"1","size":"2","color":"#B1E2A3","x":"5.958342","y":"7.250284"},{"id":"2","size":"2","color":"#A5DBA3","x":"5.300836","y":"5.247753"},{"id":"3","size":"2","color":"#9AD4A4","x":"6.007437","y":"8.484175"},{"id":"4","size":"3","color":"#76BA99","x":"2.320567","y":"8.176093"},{"id":"5","size":"3","color":"#48998A","x":"7.051436","y":"8.345570"},{"id":"6","size":"2","color":"#2D7E7E","x":"6.407411","y":"4.436562"},{"id":"7","size":"3","color":"#236B76","x":"5.033017","y":"7.012500"},{"id":"8","size":"5","color":"#1C686F","x":"3.452039","y":"7.817186"},{"id":"9","size":"2","color":"#20986D","x":"6.842378","y":"5.705467"},{"id":"10","size":"3","color":"#24C96B","x":"4.801097","y":"7.903862"}],"edges":[{"id":"1","source":"6","target":"2"},{"id":"2","source":"9","target":"1"},{"id":"3","source":"10","target":"8"},{"id":"4","source":"7","target":"7"},{"id":"5","source":"4","target":"8"},{"id":"6","source":"1","target":"7"},{"id":"7","source":"1","target":"10"},{"id":"8","source":"5","target":"1"},{"id":"9","source":"8","target":"7"},{"id":"10","source":"7","target":"2"},{"id":"11","source":"9","target":"6"},{"id":"12","source":"1","target":"7"},{"id":"13","source":"9","target":"9"},{"id":"14","source":"1","target":"10"},{"id":"15","source":"3","target":"5"},{"id":"16","source":"7","target":"3"},{"id":"17","source":"4","target":"8"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"exportSVG":{"download":true,"filename":"graph.svg","size":1000,"width":1000,"height":1000,"labels":false,"data":false},"button":{"label":"<i class='fa fa-download'><\/i>","event":"export_svg","className":"btn btn-default"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button (corresponding function name minus <code>sg_</code>):</p>
+<script type="application/json" data-for="htmlwidget-b4eb4b125c40f2e288de">{"x":{"data":{"nodes":[{"id":"1","size":"4","color":"#B1E2A3","x":"6.177426","y":"11.80965"},{"id":"2","size":"3","color":"#A5DBA3","x":"5.273247","y":"11.35286"},{"id":"3","size":"3","color":"#9AD4A4","x":"7.186324","y":"11.68766"},{"id":"4","size":"4","color":"#76BA99","x":"4.209587","y":"12.55202"},{"id":"5","size":"5","color":"#48998A","x":"5.419296","y":"12.63923"},{"id":"6","size":"3","color":"#2D7E7E","x":"6.629890","y":"14.76866"},{"id":"7","size":"4","color":"#236B76","x":"4.664996","y":"13.35527"},{"id":"8","size":"3","color":"#1C686F","x":"4.822449","y":"12.10732"},{"id":"9","size":"5","color":"#20986D","x":"8.057916","y":"12.20594"},{"id":"10","size":"4","color":"#24C96B","x":"4.157080","y":"11.40072"}],"edges":[{"id":"1","source":"10","target":"4"},{"id":"2","source":"4","target":"7"},{"id":"3","source":"1","target":"3"},{"id":"4","source":"8","target":"10"},{"id":"5","source":"2","target":"5"},{"id":"6","source":"5","target":"1"},{"id":"7","source":"4","target":"8"},{"id":"8","source":"8","target":"7"},{"id":"9","source":"1","target":"3"},{"id":"10","source":"8","target":"2"},{"id":"11","source":"1","target":"8"},{"id":"12","source":"10","target":"2"},{"id":"13","source":"5","target":"4"},{"id":"14","source":"4","target":"8"},{"id":"15","source":"5","target":"7"},{"id":"16","source":"3","target":"9"},{"id":"17","source":"1","target":"2"}]},"type":"canvas","crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"exportSVG":{"download":true,"filename":"graph.svg","size":1000,"width":1000,"height":1000,"labels":false,"data":false},"button":{"label":"<i class='fa fa-download'><\/i>","event":"export_svg","className":"btn btn-default"}},"evals":[],"jsHooks":[]}</script><p>Events that can be triggered via a button (corresponding function name minus <code>sg_</code>):</p>
 <ul>
 <li><code>force_start</code></li>
 <li><code>force_stop</code></li>

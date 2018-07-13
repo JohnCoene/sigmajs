@@ -16,8 +16,8 @@ navbar:
       href: index.html
     - icon: fa-newspaper-o
       href: "news/index.html"
-    - icon: fa-users
-      href: "CONDUCT.html"
+    - icon: fa-plus-circle
+      href: "CONTRIBUTING.html"
     - text: "Guide"
       menu: 
         - text: "Get Started"

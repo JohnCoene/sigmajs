@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Graph from GEXF file — sg_from_gexf • sigmajs</title>
+<title>Contributing to sigmajs • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,20 +25,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 <!-- docsearch -->
-<script src="../docsearch.js"></script>
+<script src="docsearch.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="../docsearch.css" rel="stylesheet">
+<link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Graph from GEXF file — sg_from_gexf" />
-
-<meta property="og:description" content="Create a sigmajs graph from a GEXF file." />
+<meta property="og:title" content="Contributing to sigmajs" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -67,7 +65,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -78,7 +76,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">sigmajs</a>
+        <a class="navbar-link" href="index.html">sigmajs</a>
         <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1.9000</span>
       </span>
     </div>
@@ -86,19 +84,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="../news/index.html">
+  <a href="news/index.html">
     <span class="fa fa-newspaper-o"></span>
      
   </a>
 </li>
 <li>
-  <a href="../CONTRIBUTING.html">
+  <a href="CONTRIBUTING.html">
     <span class="fa fa-plus-circle"></span>
      
   </a>
@@ -111,40 +109,40 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/get_started.html">Get Started</a>
+      <a href="articles/get_started.html">Get Started</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="../articles/formats.html">igraph &amp; GEXF</a>
+      <a href="articles/formats.html">igraph &amp; GEXF</a>
     </li>
     <li>
-      <a href="../articles/buttons.html">Buttons</a>
+      <a href="articles/buttons.html">Buttons</a>
     </li>
     <li>
-      <a href="../articles/layout.html">Layouts</a>
+      <a href="articles/layout.html">Layouts</a>
     </li>
     <li>
-      <a href="../articles/cluster.html">Cluster</a>
+      <a href="articles/cluster.html">Cluster</a>
     </li>
     <li>
-      <a href="../articles/dynamic.html">Dynamic</a>
+      <a href="articles/dynamic.html">Dynamic</a>
     </li>
     <li>
-      <a href="../articles/animate.html">Animate</a>
+      <a href="articles/animate.html">Animate</a>
     </li>
     <li>
-      <a href="../articles/plugins.html">Plugins</a>
+      <a href="articles/plugins.html">Plugins</a>
     </li>
     <li>
-      <a href="../articles/talkcross.html">Crosstalk</a>
+      <a href="articles/talkcross.html">Crosstalk</a>
     </li>
     <li>
-      <a href="../articles/shiny.html">Shiny</a>
+      <a href="articles/shiny.html">Shiny</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../reference/">Reference</a>
+  <a href="reference/">Reference</a>
 </li>
       </ul>
       
@@ -177,55 +175,46 @@
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Graph from GEXF file</h1>
-    
-    <div class="hidden name"><code>sg_from_gexf.Rd</code></div>
+      <h1>Contributing to sigmajs</h1>
     </div>
 
-    <div class="ref-description">
-    
-    <p>Create a sigmajs graph from a GEXF file.</p>
-    
-    </div>
+<div id="contributing-to-sigmajs" class="section level1">
 
-    <pre class="usage"><span class='fu'>sg_from_gexf</span>(<span class='no'>sg</span>, <span class='no'>file</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>sg</th>
-      <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>file</th>
-      <td><p>Path to GEXF file.</p></td>
-    </tr>
-    <tr>
-      <th>sd</th>
-      <td><p>A <a href='http://www.rdocumentation.org/packages/crosstalk/topics/SharedData'>SharedData</a> of nodes.</p></td>
-    </tr>
-    </table>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gexf</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"examples/arctic.gexf"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"sigmajs"</span>)
-
-<span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_from_gexf</span>(<span class='no'>gexf</span>)</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-  </div>
+<div id="support" class="section level2">
+<h2 class="hasAnchor">
+<a href="#support" class="anchor"></a>Support</h2>
+<p>If you have a question on how to use the package please first explore the <a href="http://sigmajs.john-coene.com/">online documentation website</a>, you may also want to check if your question has already been asked and answered on <a href="https://stackoverflow.com/">stackoverflow</a> before filing an issue. In the latter case please read the section below before doing so.</p>
 </div>
+<div id="filing-an-issue" class="section level2">
+<h2 class="hasAnchor">
+<a href="#filing-an-issue" class="anchor"></a>Filing an issue</h2>
+<p>You are free to open an <a href="https://github.com/JohnCoene/sigmajs/issues">issue</a> if you encounter a problem with the package, where possible, illustrate the said problem with a <a href="https://www.tidyverse.org/help/#reprex">reproducible example</a>.</p>
+</div>
+<div id="pull-request" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pull-request" class="anchor"></a>Pull request</h2>
+<p>Use pull requests (PR) to contribute.</p>
+<ul>
+<li>Your contribution(s) should follow the <a href="http://style.tidyverse.org/">tidyverse style guide</a>, in particular <em>exported</em> functions. Follow the package naming convention, namely if you are integrating a function from the</li>
+<li>sigmajs uses <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, for documentation. Do not manually edit or create <code>.Rd</code> files (in the <code>man</code> directory), use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> instead.</li>
+<li>sigmajs uses <a href="https://cran.r-project.org/package=testthat">testthat</a>; test your functions where possible. Coverage is tracked on both <a href="https://codecov.io/gh/JohnCoene/sigmajs">Codecov</a> and <a href="https://coveralls.io/github/JohnCoene/sigmajs">Coveralls</a>.</li>
+<li>If your changes or additions affect users please add a bullet point to the <code>NEWS.md</code> with a concise description.</li>
+<li>The package is continually integrated with <a href="https://travis-ci.org/JohnCoene/sigmajs">travis</a> (Linux) and <a href="https://ci.appveyor.com/project/JohnCoene/sigmajs">appveryor</a> (Windows), ensure the build passes on the aforementioned platforms.</li>
+</ul>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note by contributing you agree to the <a href="https://github.com/JohnCoene/sigmajs/blob/master/CONDUCT.html">Code of Conduct</a>.</p>
+</div>
+</div>
+
+  </div>
+
+</div>
+
 
       <footer>
       <div class="copyright">

@@ -10,6 +10,7 @@ articles:
   get_started: get_started.html
   layout: layout.html
   plugins: plugins.html
+  settings: settings.html
   shiny: shiny.html
   talkcross: talkcross.html
 

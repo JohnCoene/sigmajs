@@ -16,7 +16,13 @@ affiliations:
 
 # Summary
 
-The package `sigmajs` [@sigmajs] bridges the [sigma.js JavaScript](http://sigmajs.org/) 
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` is a fully-fledged wrapper for the [sigma.js JavaScript library](http://sigmajs.org/).
+
+The sigma.js JavaScript library is described as follows on its [website]((http://sigmajs.org/)): 
+
+> Sigma is a JavaScript library dedicated to graph drawing. It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications.
+
+The package `sigmajs` [@sigmajs] bridges the sigma.js JavaScript 
 library and R [@R2018] via the `htmlwidgets` package [@htmlwidgets]. The package also 
 extends the original JavaScript library by providing additional functions, namely using 
 the `igraph` package [@igraph] that enable the user to layout and cluster graphs. 
@@ -26,8 +32,7 @@ enables graphs to be wired to other `htmlwidgets` such as `plotly` [@plotly] and
 
 # Functionality
 
-Graphs are initialised with `sigmajs()`, all other functions start with `sg_` and Shiny [@shiny] 
-proxies end with `_p`. Functions can be piped to build the desired graph.
+Graphs are initialised with `sigmajs()`, all other functions start with `sg_`, and its Shiny [@shiny] proxies end with `_p`. Functions can be piped, referring to the magrittr package [@magrittr] pipe operator (`%>%`), to build the desired graph.
 
 * Shiny proxies.
 * Crosstalk integration.
