@@ -31,6 +31,9 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
 		  crosstalk_group = NULL
 		)
   )
+  
+  if(rstudioapi::isAvailable())
+    warning("Graph does not show in the RStudio Viewer; opening in browser", call. = FALSE)
 
   # create widget
   htmlwidgets::createWidget(
@@ -40,6 +43,12 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
     height = height,
     package = 'sigmajs',
     elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.suppress = TRUE,
+      browser.fill = TRUE,
+      padding = 20,
+      browser.external = TRUE
+    ),
     dependencies = crosstalk::crosstalkLibs()
   )
 }

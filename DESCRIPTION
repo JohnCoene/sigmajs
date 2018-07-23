@@ -26,5 +26,6 @@ Suggests:
     rmarkdown,
     DT,
     testthat,
-    covr
+    covr,
+    rstudioapi
 VignetteBuilder: knitr
