@@ -32,7 +32,7 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
 		)
   )
   
-  if(rstudioapi::isAvailable())
+  if(rstudioapi::isAvailable() && isTRUE(interactive()))
     warning("Graph does not show in the RStudio Viewer; opening in browser", call. = FALSE)
 
   # create widget
