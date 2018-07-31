@@ -18,8 +18,11 @@ sg_button(sg, label, event, class = "btn btn-default")
 \description{
 Add buttons to your graph.
 }
+\details{
+You can pass multiple events as a vector, see examples.
+}
 \note{
-The default class (\code{btn btn-default}) works with Bootstrap 3, the default framework for Shiny and R markdown.
+The default class (\code{btn btn-default}) works with Bootstrap 3 (the default framework for Shiny and R markdown).
 }
 \section{Events}{
 
@@ -31,7 +34,6 @@ The default class (\code{btn btn-default}) works with Bootstrap 3, the default f
   \item{\code{relative_size}}
   \item{\code{add_nodes}}
   \item{\code{add_edges}}
-  \item{\code{add_nodes_edges}}
   \item{\code{drop_nodes}}
   \item{\code{drop_edges}}
   \item{\code{animate}}
@@ -42,13 +44,15 @@ The default class (\code{btn btn-default}) works with Bootstrap 3, the default f
 
 \examples{
 nodes <- sg_make_nodes() 
-edges <- sg_make_edges(nodes, 17)
+edges <- sg_make_edges(nodes)
 
+# Button starts the layout and stops it after 3 seconds
 sigmajs() \%>\% 
   sg_nodes(nodes, id, size) \%>\% 
   sg_edges(edges, id, source, target) \%>\% 
   sg_force_start() \%>\% 
-  sg_button("start layout", "force_start")
+  sg_force_stop(3000) \%>\% 
+  sg_button("start layout", c("force_start", "force_stop"))
   
 # additional nodes
 nodes2 <- sg_make_nodes()

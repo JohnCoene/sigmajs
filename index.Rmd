@@ -296,5 +296,3 @@ for(i in 1:length(demos)){
 
 knitr::kable(df, caption = "sigmajs demos", format = "html")
 ```
-
-*`sigmajs` is part of the [twinetverse](http://twinetverse.john-coene.com/); a universe of packages for Twitter network analysis and visualisation.*

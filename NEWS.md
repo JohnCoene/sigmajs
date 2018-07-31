@@ -5,6 +5,7 @@
 * Added support for button to trigger nodes and edges dynamic addition.
 * `sg_get_layout` returns nodes with coordinates rather than just the coordinates.
 * Graphs open in browser by default + warning is sent to console when using RStudio.
+* Added ability to trigger multiple events from the button.
 
 # sigmajs 0.1.0
 

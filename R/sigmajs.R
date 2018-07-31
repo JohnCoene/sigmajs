@@ -26,6 +26,7 @@ sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = 
   x = list(
     data = list(),
 		type = type,
+		button = list(event = "none", label = ""),
 		crosstalk = list(
 		  crosstalk_key = NULL,
 		  crosstalk_group = NULL
