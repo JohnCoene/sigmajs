@@ -12,31 +12,20 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE
 )
 library(sigmajs)
 ```
 
-`sigmajs` lets you add buttons to trigger events, *in static documents,* such as this one. 
-
-```{r}
-nodes <- sg_make_nodes() 
-edges <- sg_make_edges(nodes, 17)
-
-sigmajs() %>% 
-  sg_nodes(nodes, id, size, color) %>% 
-  sg_edges(edges, id, source, target) %>% 
-  sg_force_start() %>% 
-  sg_button(
-    "<i class='fa fa-cogs'></i> Layout", # only use icon if document imports fontawesome
-    "force_start", # event to trigger
-    class = "btn btn-success" # class
-  )
-```
+`sigmajs` lets you add buttons to trigger events, *in static documents*.
 
 A button to export the graph as SVG, not that you can export to an image (png, jpeg, gif or tiff).
 
 ```{r}
+nodes <- sg_make_nodes() 
+edges <- sg_make_edges(nodes)
+
 sigmajs() %>% 
   sg_nodes(nodes, id, size, color) %>% 
   sg_edges(edges, id, source, target) %>% 
@@ -44,8 +33,23 @@ sigmajs() %>%
   sg_export_svg() %>% 
   sg_button(
     "<i class='fa fa-download'></i>", 
-    "export_svg", 
+    "export_svg", # event to trigger
     class = "btn btn-default"
+  )
+```
+
+You can also trigger mutliple events with the button by passing a vector of events to `event`. Below we add a button that will start the forceAtlas2 layout and stop it after 3 seconds. 
+
+```{r}
+sigmajs() %>% 
+  sg_nodes(nodes, id, size, color) %>% 
+  sg_edges(edges, id, source, target) %>% 
+  sg_force_start() %>% 
+  sg_force_stop(3000) %>% 
+  sg_button(
+    "<i class='fa fa-play'></i> Layout", # only use icon if document imports fontawesome
+    c("force_start", "force_stop"), 
+    class = "btn btn-success"
   )
 ```
 

@@ -64,8 +64,8 @@ HTMLWidgets.widget({
 			  
 			  var widget = document.getElementById(el.id);
 			  var button = widget.getElementsByTagName("button")[0];
-			  if(!x.hasOwnProperty('button')){
-			    x.button = "none";
+			  if(x.button.event === 'none'){
+			    x.button.event = "none";
 			    widget.removeChild(button);
 			  } else {
 			    button.className = x.button.className;
@@ -171,7 +171,7 @@ HTMLWidgets.widget({
 
 				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
-				  if(x.button.event === 'force' || x.button.event === 'force_start'){
+				  if(x.button.event.indexOf('force') > -1 || x.button.event.indexOf('force_start') > -1){
 				    button.addEventListener("click", function(event) {
 				      s.startForceAtlas2(x.force);
 				    });
@@ -203,7 +203,7 @@ HTMLWidgets.widget({
 				if (x.hasOwnProperty('noverlap')) {
 					var noverlap = s.configNoverlap(x.noverlap);
 					
-				  if(x.button.event === 'noverlap'){
+				  if(x.button.event.indexOf('noverlap') > -1){
 				    button.addEventListener("click", function(event) {
 				      s.startNoverlap();
 				    });
@@ -219,7 +219,7 @@ HTMLWidgets.widget({
 
 				if (x.animateLoop === false) {
 					
-				  if(x.button.event === 'animate'){
+				  if(x.button.event.indexOf('animate') > -1){
 				    button.addEventListener("click", function(event) {
     					setTimeout(function () {
     						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
@@ -233,7 +233,7 @@ HTMLWidgets.widget({
 				}
 
 				if(x.hasOwnProperty('dragNodes')){
-				  if(x.button.event === 'drag_nodes'){
+				  if(x.button.event.indexOf('drag_nodes') > -1){
 				    button.addEventListener("click", function(event) {
 				      var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
 				    });
@@ -243,7 +243,7 @@ HTMLWidgets.widget({
 				}
 
 				if (x.hasOwnProperty('relativeSize')) {
-				  if(x.button.event === 'relative_size'){
+				  if(x.button.event.indexOf('relative_size') > -1){
 				    button.addEventListener("click", function(event) {
 				      sigma.plugins.relativeSize(s, x.relativeSize);
 				    });
@@ -254,7 +254,7 @@ HTMLWidgets.widget({
 				
 				if(x.hasOwnProperty('addNodesDelay')){
   				
-				  if(x.button.event === 'add_nodes' || x.button.event === 'add_nodes_edges'){
+				  if(x.button.event.indexOf('add_nodes') > -1 || x.button.event.indexOf('add_nodes_edges') > -1){
 				    button.addEventListener("click", function(event) {
       				x.addNodesDelay.forEach((element) => {
         					setTimeout(function () {
@@ -276,7 +276,7 @@ HTMLWidgets.widget({
 				if(x.hasOwnProperty('addEdgesDelay')){
 				  var running = s.isForceAtlas2Running();
   				
-				  if(x.button.event === 'add_edges' || x.button.event === 'add_nodes_edges'){
+				  if(x.button.event.indexOf('add_edges') > -1 || x.button.event.indexOf('add_nodes_edges') > -1){
 				    button.addEventListener("click", function(event) {
         			x.addEdgesDelay.data.forEach((element) => {
       					setTimeout(function () {
@@ -313,7 +313,7 @@ HTMLWidgets.widget({
 				
 				if(x.hasOwnProperty("dropNodesDelay")){
   				
-				  if(x.button.event === 'drop_nodes'){
+				  if(x.button.event.inedxOf('drop_nodes') > -1){
 				    button.addEventListener("click", function(event) {
       				x.dropNodesDelay.forEach((element) => {
       					setTimeout(function () {
@@ -335,7 +335,7 @@ HTMLWidgets.widget({
 				if(x.hasOwnProperty("dropEdgesDelay")){
   				var is_running = s.isForceAtlas2Running();
   				
-				  if(x.button.event === 'drop_edges'){
+				  if(x.button.event.indexOf('drop_edges') > -1){
 				    button.addEventListener("click", function(event) {
       				x.dropEdgesDelay.data.forEach((element, index) => {
       					setTimeout(function () {

@@ -213,9 +213,13 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You can pass multiple events as a vector, see examples.</p>
+    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>The default class (<code>btn btn-default</code>) works with Bootstrap 3, the default framework for Shiny and R markdown.</p>
+    <p>The default class (<code>btn btn-default</code>) works with Bootstrap 3 (the default framework for Shiny and R markdown).</p>
     
     <h2 class="hasAnchor" id="events"><a class="anchor" href="#events"></a>Events</h2>
 
@@ -228,7 +232,6 @@
 <li><p><code>relative_size</code></p></li>
 <li><p><code>add_nodes</code></p></li>
 <li><p><code>add_edges</code></p></li>
-<li><p><code>add_nodes_edges</code></p></li>
 <li><p><code>drop_nodes</code></p></li>
 <li><p><code>drop_edges</code></p></li>
 <li><p><code>animate</code></p></li>
@@ -239,13 +242,15 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>nodes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
-<span class='no'>edges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_edges</a></span>(<span class='no'>nodes</span>, <span class='fl'>17</span>)
+<span class='no'>edges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_edges</a></span>(<span class='no'>nodes</span>)
 
+<span class='co'># Button starts the layout and stops it after 3 seconds</span>
 <span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='force.html'>sg_force_start</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_button</span>(<span class='st'>"start layout"</span>, <span class='st'>"force_start"</span>)
+  <span class='fu'><a href='force.html'>sg_force_stop</a></span>(<span class='fl'>3000</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_button</span>(<span class='st'>"start layout"</span>, <span class='fu'>c</span>(<span class='st'>"force_start"</span>, <span class='st'>"force_stop"</span>))
 
 <span class='co'># additional nodes</span>
 <span class='no'>nodes2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
@@ -264,6 +269,8 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#note">Note</a></li>
 
       <li><a href="#events">Events</a></li>
