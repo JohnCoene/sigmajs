@@ -24,7 +24,7 @@ The sigma.js JavaScript library is described as follows on its [website](http://
 
 The package `sigmajs` [@sigmajs] bridges the sigma.js JavaScript 
 library and R [@R2018] via the `htmlwidgets` package [@htmlwidgets]. The package also 
-extends the original JavaScript library by providing additional functions, namely using 
+extends the original JavaScript library ([sigma.js](http://sigmajs.org/)) by providing additional functions, namely using 
 the `igraph` package [@igraph] to enable the user to layout and cluster graphs. 
 Finally `sigmajs` is also integrated with the `crosstalk` package [@crosstalk] which 
 lets graphs be wired to other `htmlwidgets` such as `plotly` [@plotly] and 
