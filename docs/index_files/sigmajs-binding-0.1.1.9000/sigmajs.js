@@ -36,7 +36,7 @@ HTMLWidgets.widget({
       
       if (typeof ev.value[0] != 'undefined') {
 
-        var nodeId = ev.value[0];
+        var nodeId = ev.value;
             toKeep = s.graph.neighbors(nodeId);
         toKeep[nodeId] = s.graph.nodes(String(nodeId));
         sel_handle.set(nodeId);
