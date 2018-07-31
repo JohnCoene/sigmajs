@@ -229,6 +229,26 @@ div(
     )
   )
 )
+
+div(
+  class = "panel panel-default",
+  div(
+    class = "panel-body",
+    div(
+      class = "row",
+      div(
+        class = "col-md-10",
+        "sigmajs is part of the", a("twinetverse,", href = "http://twinetverse.john-coene.com/", target = "_blank"),
+        "a set of packages for Twitter network analysis and visualisation, which comes with a book in which you will",
+        "find even more use cases of sigmajs."
+      ),
+      div(
+        class = "col-md-2",
+        a(tags$i(class = "fa fa-book"), "Read", href = "http://twinetbook.john-coene.com/", target = "_blank", class = "btn btn-default")
+      )
+    )
+  )
+)
 ```
 
 ## Install
