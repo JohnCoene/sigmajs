@@ -62,6 +62,7 @@ sg_get_cluster <- function(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#3289
     stop("missing nodes or edges", call. = FALSE)
   
   edges <- .re_order(edges)
+  nodes <- .re_order_nodes(nodes)
   g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
   
   # get communities
