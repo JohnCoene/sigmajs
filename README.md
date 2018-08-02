@@ -8,9 +8,16 @@
 
 [sigmajs](http://sigmajs.org/) for R.
 
-With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons, and more.
+* [Install](#install)
+* [Examples](#examples)
+* [Website](http://sigmajs.john-coene.com/)
+* [Shiny Demo](http://shiny.john-coene.com/sigmajs/)
 
-All graphs must be initialised with the `sigmajs()` function, all the functions of the :package: start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`). All [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) can be captured in Shiny.
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` is a fully-fledged wrapper for the [sigma.js JavaScript library](http://sigmajs.org/).
+
+The sigma.js JavaScript library is described as follows on its [website](http://sigmajs.org/): 
+
+> Sigma is a JavaScript library dedicated to graph drawing. It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications
 
 # Install
 
