@@ -67,6 +67,7 @@ div(
   ),
   div(
     class = "col-md-4",
+    br(),
     img(
       src = "man/figures/logo.png",
       class = "img-responsive",
@@ -259,7 +260,7 @@ devtools::install_github("JohnCoene/sigmajs") # github
 devtools::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 ```
 
-## Examples
+## Example
 
 Most functions have corresponding `demo()`.
 
@@ -273,11 +274,14 @@ nodes <- sg_make_nodes(25) # 20 nodes
 edges <- sg_make_edges(nodes, 50) # 50 edges
 
 sigmajs() %>% # initialise
-  sg_nodes(nodes, id, label, size, color) %>% # add nodes
+  sg_nodes(nodes, id, label, size) %>% # add nodes
   sg_edges(edges, id, source, target) %>% # add edges
   sg_layout() %>%  # layout
+  sg_cluster() %>% # cluster
   sg_neighbours() # show node neighbours on node click
 ```
+
+## Demos
 
 Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).
 
@@ -289,7 +293,7 @@ df <- data.frame()
 for(i in 1:length(demos)){
 	row <- data.frame(
 		name = paste0("`", trimws(demos[[i]][1]), "`"), 
-		run = paste0("`demo(", trimws(demos[[i]][1]), ", package='sigmajs')`")
+		run = paste0("`demo('", trimws(demos[[i]][1]), "', package='sigmajs')`")
 	)
 	df <- rbind.data.frame(df, row)
 }
