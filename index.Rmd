@@ -95,7 +95,7 @@ div(
       class = "thumbnail",
       div(
         class = "caption",
-        h3("Customiseable"),
+        h3("Customisation"),
         get_started,
         p("Easily and neatly layout and cluster nodes on your", code("sigmajs"), "graphs."), br(),
         p(
@@ -322,7 +322,26 @@ remotes::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 
 ## Example
 
+*Note that the graphs do not work in the RStudio viewer, and thus open in your default browser.*
+
+```{r, eval=TRUE}
+library(sigmajs)
+
+# generate data
+nodes <- sg_make_nodes(25) # 20 nodes
+edges <- sg_make_edges(nodes, 50) # 50 edges
+
+sigmajs() %>% # initialise
+  sg_nodes(nodes, id, label, size) %>% # add nodes
+  sg_edges(edges, id, source, target) %>% # add edges
+  sg_layout() %>%  # layout
+  sg_cluster() %>% # cluster
+  sg_neighbours() # show node neighbours on node click
+```
+
 ```{r, echo=FALSE}
+br()
+
 div(
   class = "panel panel-default",
   div(
@@ -333,7 +352,8 @@ div(
         class = "col-md-9",
         "sigmajs is part of the", "twinetverse,",
         "a set of packages for Twitter network analysis and visualisation: it'll",
-        tags$strong("get you started with network data"), "and walk you through advanced uses of sigmajs."
+        tags$strong("1) get you started with network data"), "and", 
+        strong("2) walk you through from basic use cases to advanced functions.")
       ),
       div(
         class = "col-md-3",
@@ -386,24 +406,25 @@ div(
           align = "right"
         ),
         "The", a("twinetverse", href = "http://twinetverse.john-coene.com/", target = "_blank"), "is a set of packages,",
-        "including sigmajs, to visualise Twitter interactions:",
+        tags$i("including sigmajs,"), "to visualise Twitter interactions, it includes everything you need to:",
         br(),
         br(),
         tags$ol(
           tags$li(
-            "Data collection"
+            "Collect data"
           ),
           tags$li(
-            "Data processing"
+            "Build, and"
           ),
           tags$li(
-            "Visualisation"
+            "Visualise graphs"
           )
         ),
         br(),
         "The", a("twinetverse", href = "http://twinetverse.john-coene.com/", target = "_blank"), "comes with an in-depth guide:",
         "a 12 chapter-long book filled with examples.", "It is highly recommended if you want to fully grasp the intricacies of sigmajs.",
-        "The book will get you setup and running with network data if you are unfamiliar with it."
+        "The book will also get you setup and running with",
+        strong("real-world, easy to understand"), "network data if you are unfamiliar with it."
       ),
       div(
         class = "modal-footer",
@@ -425,23 +446,6 @@ div(
     )
   )
 )
-```
-
-*Note that the graphs do not work in the RStudio viewer, and thus open in your default browser.*
-
-```{r, eval=TRUE}
-library(sigmajs)
-
-# generate data
-nodes <- sg_make_nodes(25) # 20 nodes
-edges <- sg_make_edges(nodes, 50) # 50 edges
-
-sigmajs() %>% # initialise
-  sg_nodes(nodes, id, label, size) %>% # add nodes
-  sg_edges(edges, id, source, target) %>% # add edges
-  sg_layout() %>%  # layout
-  sg_cluster() %>% # cluster
-  sg_neighbours() # show node neighbours on node click
 ```
 
 ## Demos
