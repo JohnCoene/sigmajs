@@ -238,14 +238,97 @@ div(
     div(
       class = "row",
       div(
-        class = "col-md-10",
-        "sigmajs is part of the", a("twinetverse,", href = "http://twinetverse.john-coene.com/", target = "_blank"),
-        "a set of packages for Twitter network analysis and visualisation, which comes with a book in which you will",
-        "find even more use cases of sigmajs."
+        class = "col-md-9",
+        "sigmajs is part of the", "twinetverse,",
+        "a set of packages for Twitter network analysis and visualisation: it'll",
+        tags$strong("get you started with network data"), "and walk you through advanced uses of sigmajs."
       ),
       div(
-        class = "col-md-2",
-        a(tags$i(class = "fa fa-book"), "Read", href = "http://twinetbook.john-coene.com/", target = "_blank", class = "btn btn-default")
+        class = "col-md-3",
+        tags$button(
+          type = "button",
+          "Twinetverse", 
+          `data-toggle` = "modal", 
+          `data-target` = "#twinetverse", 
+          class = "btn btn-warning",
+          span(
+            class = "badge",
+            "new"
+          )
+        )
+      )
+    )
+  )
+)
+
+div(
+  class = "modal fade",
+  id = "twinetverse",
+  tabindex = "-1", 
+  role = "dialog",
+  `aria-labelledby` = "myModalLabel",
+  div(
+    class = "modal-dialog",
+    role = "document",
+    div(
+      class = "modal-content",
+      div(
+        class = "modal-header",
+        tags$button(
+          type = "button",
+          class = "close",
+          `data-dismiss` = "modal",
+          `aria-label` = "Close",
+          tags$span(
+            `aria-hidden` = "true",
+            tags$i(class = "fa fa-times")
+          )
+        ),
+        tags$h4(class = "modal-title", id = "myModalLabel", "Twinetverse ", span(class = "label label-success", "new"))
+      ),
+      div(
+        class = "modal-body",
+        img(
+          src = "http://twinetverse.john-coene.com/reference/figures/logo.png",
+          style = "max-height:150px;",
+          align = "right"
+        ),
+        "The", a("twinetverse", href = "http://twinetverse.john-coene.com/", target = "_blank"), "is a set of packages,",
+        "including sigmajs, to visualise Twitter interactions:",
+        br(),
+        br(),
+        tags$ol(
+          tags$li(
+            "Data collection"
+          ),
+          tags$li(
+            "Data processing"
+          ),
+          tags$li(
+            "Visualisation"
+          )
+        ),
+        br(),
+        "The", a("twinetverse", href = "http://twinetverse.john-coene.com/", target = "_blank"), "comes with an in-depth guide:",
+        "a 12 chapter-long book filled with examples.", "It is highly recommended if you want to fully grasp the intricacies of sigmajs.",
+        "The book will get you setup and running with network data if you are unfamiliar with it."
+      ),
+      div(
+        class = "modal-footer",
+        tags$a(
+          href = "http://twinetverse.john-coene.com/", 
+          target = "_blank",
+          class = "btn btn-default",
+          tags$i(class = "fa fa-desktop"),
+          " Website"
+        ),
+        tags$a(
+          href = "http://twinetbook.john-coene.com/", 
+          target = "_blank",
+          class = "btn btn-primary",
+          tags$i(class = "fa fa-book"),
+          " Book"
+        )
       )
     )
   )

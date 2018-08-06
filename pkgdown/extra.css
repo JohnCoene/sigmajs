@@ -20,3 +20,11 @@
 code{
   color: #1C5C70;
 }
+
+* {
+  border-radius: 0 !important;
+}
+
+.thumbnail{
+  box-shadow: 2px 2px 6px 0px rgba(163, 163, 163,0.75);
+}
