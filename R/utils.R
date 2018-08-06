@@ -67,6 +67,15 @@ globalVariables(c("from", "to", "."))
   x[, c(first, last)]
 }
 
+.re_order_nodes <- function(x){
+  n <- names(x)
+  
+  first <- n[n %in% c("id")]
+  last <- n[!n %in% c("id")]
+  
+  x[, c(first, last)]
+}
+
 .rm_x_y <- function(x){
   x$x <- NULL
   x$y <- NULL
