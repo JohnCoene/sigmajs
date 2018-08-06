@@ -63,7 +63,7 @@ div(
   div(
     class = "col-md-8",
     h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R"),
-    "With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the", a("original library's", href = "http://sigmajs.org/", target = "_blank"), "great many methods by providing numerous proxies, buttons, and more."
+    "With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the", a("original library's", href = "http://sigmajs.org/", target = "_blank"), "great many methods by providing numerous proxies, buttons to trigger events, and more."
   ),
   div(
     class = "col-md-4",

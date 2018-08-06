@@ -8,9 +8,9 @@
 
 [sigmajs](http://sigmajs.org/) for R.
 
-With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons, and more.
+With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the [original library](http://sigmajs.org/)'s great many methods by providing numerous proxies, buttons to trigger events, and more.
 
-All graphs must be initialised with the `sigmajs()` function, all the functions of the :package: start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`). All [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) can be captured in Shiny.
+All graphs _must_ be initialised with the `sigmajs()` function, all the functions of the :package: start with `sg_` and its proxies end in `_p`, functions are pipe-friendly (`%>%`). All [events](https://github.com/jacomyal/sigma.js/wiki/Events-API) can be captured in Shiny.
 
 # Install
 
