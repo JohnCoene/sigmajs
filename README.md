@@ -3,7 +3,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs) 
 [![CircleCI](https://img.shields.io/circleci/project/github/JohnCoene/sigmajs.svg)](https://github.com/JohnCoene/sigmajs) [![Coverage status](https://coveralls.io/repos/github/JohnCoene/sigmajs/badge.svg)](https://coveralls.io/r/JohnCoene/sigmajs?branch=master) [![Coverage status](https://codecov.io/gh/JohnCoene/sigmajs/branch/master/graph/badge.svg)](https://codecov.io/github/JohnCoene/sigmajs?branch=master) [![twinetverse](https://img.shields.io/badge/twinetverse-0.0.2-yellow.svg)](http://twinetverse.john-coene.com/)
 
-<img src="/man/figures/logo.png" style="height:200px;" align="right" />
+<img src="/man/figures/logo.png" style="max-height:150px;" align="right" />
 
 [sigmajs](http://sigmajs.org/) for R.
 
