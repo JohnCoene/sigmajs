@@ -313,7 +313,7 @@ HTMLWidgets.widget({
 				
 				if(x.hasOwnProperty("dropNodesDelay")){
   				
-				  if(x.button.event.inedxOf('drop_nodes') > -1){
+				  if(x.button.event.indexOf('drop_nodes') > -1){
 				    button.addEventListener("click", function(event) {
       				x.dropNodesDelay.forEach((element) => {
       					setTimeout(function () {

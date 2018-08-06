@@ -1,0 +1,22 @@
+/* syntaxt highlighting */
+.fl      {color: #B1E2A3;}
+.fu      {color: #98D3A5;} /* function */
+.fu a    {color: #328983;}
+.ch,.st  {color: #1C5C70;} /* string */
+.kw      {color: #35b96d;} /* keyword */
+.kw a    {color: #35b96d;}
+.co      {color: #9f9f9f;} /* comment */
+.op      {color: #89c678;} 
+
+.message { color: orange;   font-weight: bolder;}
+.error   { color: red;  font-weight: bolder;}
+.warning { color: purple; font-weight: bolder;
+}
+
+.sourceCode .r, .examples, .usage, pre, pre code {
+  color: #328983;
+}
+
+code{
+  color: #1C5C70;
+}
