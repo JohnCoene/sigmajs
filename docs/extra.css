@@ -4,14 +4,9 @@
 .fu a    {color: #328983;}
 .ch,.st  {color: #62bca4;} /* string */
 .kw      {color: #35b96d;} /* keyword */
-.kw a    {color: #35b96d;}
+.kw a    {color: #1C5C70;}
 .co      {color: #9f9f9f;} /* comment */
 .op      {color: #89c678;} 
-
-.message { color: orange;   font-weight: bolder;}
-.error   { color: red;  font-weight: bolder;}
-.warning { color: purple; font-weight: bolder;
-}
 
 .sourceCode .r, .examples, .usage, pre, pre code {
   color: #328983;
@@ -27,4 +22,15 @@ code{
 
 .thumbnail{
   box-shadow: 2px 2px 6px 0px rgba(163, 163, 163,0.75);
+}
+
+.panel-body{
+  background: #ecf0f1;
+}
+
+.tab-content{
+  padding: 15px;
+  border-bottom: 1px solid #ecf0f1;
+  border-right: 1px solid #ecf0f1;
+  border-left: 1px solid #ecf0f1;
 }

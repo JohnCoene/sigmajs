@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE
 )
+library(htmltools)
 library(sigmajs)
 ```
 
@@ -85,3 +86,15 @@ sigmajs() %>%
 ``` 
 
 Browse the documentation to see how to give your graphs neat <a href="layout.html">layouts<a>, <a href="animate.html">animate</a> them, see how the package works with <a href="shiny.html">shiny</a> and more.
+
+```{r, echo=FALSE}
+tags$a(
+  class = "btn btn-default",
+  href = "layout.html",
+  "Layouts ",
+  tags$i(
+    class = "fa fa-arrow-right"
+  )
+)
+``` 
+

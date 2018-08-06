@@ -63,7 +63,16 @@ div(
   div(
     class = "col-md-8",
     h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R"),
-    "With the rise in popularity of networks, it is important for R users to have access to a package that allows visualising the aforementioned networks in a highly configurable, interactive and dynamic manner. `sigmajs` leverages the", a("original library's", href = "http://sigmajs.org/", target = "_blank"), "great many methods by providing numerous proxies, buttons to trigger events, and more."
+    "A powerful, full-featured R package for interactive graph visualisation.",
+    br(),
+    br(),
+    "Follow this (very) short guide to discover", code("sigmajs"),
+    a(
+      href = "articles/get_started.html",
+      class = "btn btn-primary",
+      tags$i(class = "fa fa-rocket"),
+      "Get Started"
+    )
   ),
   div(
     class = "col-md-4",
@@ -75,7 +84,8 @@ div(
     )
   )
 )
-br()
+
+h2("Features")
 
 div(
   class = "row",
@@ -85,21 +95,21 @@ div(
       class = "thumbnail",
       div(
         class = "caption",
-        h3("Get Started"),
+        h3("Customiseable"),
         get_started,
-        p("Get started with", code("sigmajs"), ", draw your first graphs and learn about settings."),
+        p("Easily and neatly layout and cluster nodes on your", code("sigmajs"), "graphs."), br(),
         p(
           a(
-            href = "articles/get_started.html",
+            href = "articles/layout.html",
             class = "btn btn-primary",
-            tags$i(class = "fa fa-rocket"),
-            "Start"
+            tags$i(class = "fa fa-adjust"),
+            "Layout"
           ),
           a(
-            href = "articles/layout.html",
+            href = "articles/cluster.html",
             class = "btn btn-success",
             tags$i(class = "fa fa-cubes"),
-            "Layouts"
+            "Cluster"
           )
         )
       )
@@ -137,7 +147,7 @@ div(
       class = "thumbnail",
       div(
         class = "caption",
-        h3("Animate"),
+        h3("Animations"),
         animate,
         p("Animate the color, size, and x/y coordinates of the nodes on the canvas."),
         p(
@@ -154,83 +164,165 @@ div(
 )
 
 div(
-  class = "row",
-  div(
-    class = "col-md-4",
-    div(
-      class = "thumbnail",
-      div(
-        class = "caption",
-        h3("Shiny"),
-        p("Explore the package's proxies and learn how to capture user interactions."),
-        p(
-          a(
-            href = "articles/shiny.html",
-            class = "btn btn-primary",
-            tags$i(class = "fa fa-graduation-cap"),
-            "Guide"
-          ),
-          a(
-            href = "http://shiny.john-coene.com/sigmajs/",
-            target = "_blank",
-            class = "btn btn-success",
-            tags$i(class = "fa fa-desktop"),
-            "Demo"
-          )
-        )
+  tags$ul(
+    class = "nav nav-tabs",
+    role = "tablist",
+    tags$li(
+      role = "presentation",
+      class = "active",
+      tags$a(
+        href = "#shiny",
+        `aria-controls` = "shiny",
+        role = "tab",
+        `data-toggle` = "tab",
+        tags$i(class = "fa fa-desktop"),
+        "Shiny"
+      )
+    ),
+    tags$li(
+      role = "presentation",
+      tags$a(
+        href = "#dynamism",
+        `aria-controls` = "dynamism",
+        role = "tab",
+        `data-toggle` = "tab",
+        tags$i(class = "fa fa-exchange"),
+        "Crosstalk"
+      )
+    ),
+    tags$li(
+      role = "presentation",
+      tags$a(
+        href = "#formats",
+        `aria-controls` = "formats",
+        role = "tab",
+        `data-toggle` = "tab",
+        tags$i(class = "fa fa-file-code-o"),
+        "Formats"
       )
     )
   ),
   div(
-    class = "col-md-4",
+    class = "tab-content",
     div(
-      class = "thumbnail",
+      class = "tabpanel",
+      class = "tab-pane fade active in",
+      id = "shiny",
       div(
-        class = "caption",
-        h3("Crosstalk"),
-        p("Have", code("sigmajs"), "play hand-in-hand with other", 
-          a("htmlwidgets,", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank"),
-          "highlight nodes and neighbours on click."
+        class = "row",
+        div(
+          class = "col-md-8",
+          p(
+            code("sigmajs"), "plays hand-in-hand with Shiny, it lets you:",
+            tags$ul(
+              tags$li("Catch how users interact with your graphs."),
+              tags$li("Easily apply filters."),
+              tags$li("Trigger events.")
+            )
+          )
         ),
-        p(
-          a(
-            href = "articles/talkcross.html",
-            class = "btn btn-primary",
-            tags$i(class = "fa fa-exchange"),
-            "Crosstalk"
+        div(
+          class = "col-md-4",
+          br(),
+         p(
+            a(
+              href = "articles/shiny.html",
+              class = "btn btn-primary",
+              tags$i(class = "fa fa-graduation-cap"),
+              "Guide"
+            ),
+            a(
+              href = "http://shiny.john-coene.com/sigmajs/",
+              target = "_blank",
+              class = "btn btn-success",
+              tags$i(class = "fa fa-desktop"),
+              "Demo"
+            )
           )
         )
       )
-    )
-  ),
-  div(
-    class = "col-md-4",
+    ),
     div(
-      class = "thumbnail",
+      class = "tabpanel",
+      class = "tab-pane fade",
+      id = "dynamism",
       div(
-        class = "caption",
-        h3("Formats"),
-        p("Build", code("sigmajs"), "graphs from igraph objects or GEXF files in a single function call."),
-        p(
-          a(
-            href = "articles/formats.html#igraph",
-            class = "btn btn-primary",
-            tags$i(class = "fa fa-share-alt"),
-            "igraph"
-          ),
-          a(
-            href = "articles/formats.html#gexf",
-            target = "_blank",
-            class = "btn btn-success",
-            tags$i(class = "fa fa-file-code-o"),
-            "GEXF"
+        class = "row",
+        div(
+          class = "col-md-10",
+          p("Have", code("sigmajs"), "play hand-in-hand with other", 
+            a("htmlwidgets,", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank"),
+            " such as", a("leaflet", href = "https://rstudio.github.io/leaflet/", target = "_blank"), "or", 
+            a("DT", href = "https://rstudio.github.io/DT/", target = "_blank"), 
+            " to highlight nodes and neighbours on click."
+          )
+        ),
+        div(
+          class = "col-md-2",
+          p(
+            a(
+              href = "articles/talkcross.html",
+              class = "btn btn-primary",
+              tags$i(class = "fa fa-exchange"),
+              "Crosstalk"
+            )
+          )
+        )
+      )
+    ),
+    div(
+      class = "tabpanel",
+      class = "tab-pane fade",
+      id = "formats",
+      div(
+        class = "row",
+        div(
+          class = "col-md-8",
+          p("Build", code("sigmajs"), "graphs from igraph objects or GEXF files in a single function call.")
+        ),
+        div(
+          class = "col-md-4",
+          p(
+            a(
+              href = "articles/formats.html#igraph",
+              class = "btn btn-primary",
+              tags$i(class = "fa fa-share-alt"),
+              "igraph"
+            ),
+            a(
+              href = "articles/formats.html#gexf",
+              target = "_blank",
+              class = "btn btn-success",
+              tags$i(class = "fa fa-file-code-o"),
+              "GEXF"
+            )
           )
         )
       )
     )
   )
 )
+```
 
+## Install
+
+`sigmajs` can be installed from Github,
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("JohnCoene/sigmajs") # github
+```
+
+or Bitbucket,
+
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_bitbucket("JohnCoene/sigmajs") # bitbucket
+```
+
+## Example
+
+```{r, echo=FALSE}
 div(
   class = "panel panel-default",
   div(
@@ -247,7 +339,7 @@ div(
         class = "col-md-3",
         tags$button(
           type = "button",
-          "Twinetverse", 
+          "Twinetverse ", 
           `data-toggle` = "modal", 
           `data-target` = "#twinetverse", 
           class = "btn btn-warning",
@@ -334,18 +426,6 @@ div(
   )
 )
 ```
-
-## Install
-
-```{r, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("JohnCoene/sigmajs") # github
-devtools::install_bitbucket("JohnCoene/sigmajs") # bitbucket
-```
-
-## Example
-
-Most functions have corresponding `demo()`.
 
 *Note that the graphs do not work in the RStudio viewer, and thus open in your default browser.*
 
