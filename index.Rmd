@@ -62,8 +62,8 @@ div(
   class = "row",
   div(
     class = "col-md-8",
-    h2(
-      a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R",
+    h1(
+      "sigmajs",
       a(
         class = "github-button",
         href = "https://github.com/JohnCoene/sigmajs",
@@ -72,7 +72,8 @@ div(
         "Star"
       )
     ),
-    "A powerful, full-featured R package for interactive graph visualisation.",
+    a("sigma.js", href = "http://sigmajs.org/", target = "_blank"), 
+    " for R. A powerful, full-featured R package for interactive graph visualisation.",
     br(),
     br(),
     "Follow this (very) short guide to discover", code("sigmajs"),
