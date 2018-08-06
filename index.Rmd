@@ -62,7 +62,16 @@ div(
   class = "row",
   div(
     class = "col-md-8",
-    h2(a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R"),
+    h2(
+      a("sigmajs", href = "http://sigmajs.org/", target = "_blank"), "for R",
+      a(
+        class = "github-button",
+        href = "https://github.com/JohnCoene/sigmajs",
+        `data-show-count` = "true",
+        `aria-label`="Star JohnCoene/sigmajs on GitHub",
+        "Star"
+      )
+    ),
     "A powerful, full-featured R package for interactive graph visualisation.",
     br(),
     br(),
@@ -102,7 +111,7 @@ div(
           a(
             href = "articles/layout.html",
             class = "btn btn-primary",
-            tags$i(class = "fa fa-adjust"),
+            tags$i(class = "fa fa-share-alt"),
             "Layout"
           ),
           a(
@@ -252,7 +261,7 @@ div(
           class = "col-md-10",
           p("Have", code("sigmajs"), "play hand-in-hand with other", 
             a("htmlwidgets,", href = "https://rstudio.github.io/crosstalk/widgets.html", target = "_blank"),
-            " such as", a("leaflet", href = "https://rstudio.github.io/leaflet/", target = "_blank"), "or", 
+            " such as", a("leaflet,", href = "https://rstudio.github.io/leaflet/", target = "_blank"), "or", 
             a("DT", href = "https://rstudio.github.io/DT/", target = "_blank"), 
             " to highlight nodes and neighbours on click."
           )
@@ -467,3 +476,6 @@ for(i in 1:length(demos)){
 
 knitr::kable(df, caption = "sigmajs demos", format = "html")
 ```
+
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
