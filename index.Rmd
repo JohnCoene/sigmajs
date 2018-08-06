@@ -458,6 +458,25 @@ div(
 )
 ```
 
+## Performances
+
+`sigmajs` can handle very large graphs thanks to its support of WebGL, below we graph 25,000 nodes. _Note that the package also supports SVG._
+
+```{r, cache=TRUE}
+data <- sg_make_nodes_edges(25000) # make 25,000 nodes
+
+sigmajs("webgl") %>% # set to webgl
+  sg_nodes(data$nodes, id, size) %>% 
+  sg_edges(data$edges, id, source ,target) %>% 
+  sg_layout() %>% 
+  sg_settings(
+    nodeColor = "default",
+    defaultNodeColor = "#328983",
+    edgeColor = "default",
+    defaultEdgeColor = "#b9b9b9"
+  )
+```
+
 ## Demos
 
 Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).
