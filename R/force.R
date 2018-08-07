@@ -18,6 +18,7 @@
 #'	\item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
 #'	\item{\code{sg_force_kill_p} proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.}
 #'	\item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
+#'	\item{\code{sg_force_restart} Restarts (kills then starts) forceAtlas2 at given delay.}
 #' }
 #' 
 #' @examples
@@ -78,6 +79,30 @@ sg_force_restart_p <- function(proxy, ..., refresh = TRUE) {
 
 	return(proxy)
 }
+
+#' @rdname force
+#' @export
+sg_force_restart <- function(sg, data, delay, cumsum = TRUE) {
+  
+  if (missing(data) || missing(delay) || missing(sg))
+    stop("must pass sg, data and delay", call. = FALSE)
+  
+  .test_sg(sg)
+  
+  delay_col <- eval(substitute(delay), data) 
+  if (isTRUE(cumsum))
+    delay_col <- cumsum(delay_col) 
+  
+  delay_table <- dplyr::tibble(sigmajsdelay = delay_col)
+  
+  # build data
+  delay <- .build_data(data, ...) %>%
+    dplyr::bind_cols(delay_table) %>% 
+    .as_list()
+  
+  sg$x$forceRestartDelay <- append(sg$x$forceRestartDelay, delay)
+  sg
+} 
 
 #' @rdname force
 #' @export

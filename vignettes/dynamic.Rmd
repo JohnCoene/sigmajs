@@ -18,20 +18,20 @@ knitr::opts_chunk$set(
 library(sigmajs)
 ```
 
-You also add nodes and edges to static graphs. Below we graph the nodes then add (`sg_add_edges`) at random intervals (0.5 to 2 seconds *between* each edge added). We also stop the layout algorithm after all edges have been aded (+ 100 milliseconds to be on the safe side).
+You also add nodes and edges to static graphs. Below we graph the nodes then add (`sg_add_edges`) at random intervals (0.5 to 2 seconds *between* each edge added). We also stop the layout algorithm after all edges have been aded (+ 100 milliseconds to make sure it stops when all edges are plotted).
 
 ```{r}
 # generate data using convenience functions
 nodes <- sg_make_nodes(50)
 edges <- sg_make_edges(nodes)
-edges$delay <- runif(15, 500, 2000) # between .5 and 2 seconds
+edges$delay <- runif(15, 500, 750) # between .5 and .75 seconds between each edge
 
 last_edge <- sum(edges$delay) + 100
 
 sigmajs() %>%
   sg_force_start() %>%
   sg_nodes(nodes, id, size, color) %>%
-  sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
+  sg_add_edges(edges, delay, id, source, target, refresh = TRUE) %>% # read delay documentation
   sg_force_stop(last_edge) %>% 
   sg_button(
     "Add edges", # label
@@ -52,7 +52,7 @@ edges$dates <- dates[order(dates)]
 sigmajs() %>%
   sg_force_start() %>%
   sg_nodes(nodes, id, size, color) %>%
-  sg_add_edges(edges, delay, id, source, target) %>% # read delay documentation
+  sg_add_edges(edges, delay, id, source, target, refresh = TRUE) %>% # read delay documentation
   sg_progress(edges, delay, dates, class = "text-warning") %>% # add progress text
   sg_force_stop(last_edge) %>% 
   sg_button(
@@ -61,5 +61,6 @@ sigmajs() %>%
     class = "btn btn-primary"
   )
 ```
+
 
 You can also drop nodes or edges with `sg_drop_edges` and `sg_drop_nodes`, same principles, I'll let you explore the examples.

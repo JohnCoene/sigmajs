@@ -7,7 +7,7 @@
 \usage{
 sg_drop_nodes(sg, data, ids, delay, cumsum = TRUE)
 
-sg_drop_edges(sg, data, ids, delay, refresh = TRUE, cumsum = TRUE)
+sg_drop_edges(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

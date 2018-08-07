@@ -1,10 +1,11 @@
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/sigmajs.svg?branch=master)](https://travis-ci.org/JohnCoene/sigmajs) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/sigmajs?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/sigmajs)  [![bitbucket](https://img.shields.io/bitbucket/pipelines/JohnCoene/sigmajs.svg)](https://bitbucket.org/JohnCoene/sigmajs) [![CircleCI](https://img.shields.io/circleci/project/github/JohnCoene/sigmajs.svg)](https://github.com/JohnCoene/sigmajs) [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![CRAN status](https://www.r-pkg.org/badges/version/sigmajs)](https://cran.r-project.org/package=sigmajs) [![Coverage status](https://codecov.io/gh/JohnCoene/sigmajs/branch/master/graph/badge.svg)](https://codecov.io/github/JohnCoene/sigmajs?branch=master) [![Coverage status](https://coveralls.io/repos/github/JohnCoene/sigmajs/badge.svg)](https://coveralls.io/r/JohnCoene/sigmajs?branch=master) [![twinetverse](https://img.shields.io/badge/twinetverse-0.0.2-yellow.svg)](http://twinetverse.john-coene.com/)
 
-
-```{r, eval=TRUE, echo = FALSE}
+```{r, include=FALSE}
 library(htmltools)
 library(sigmajs)
+```
 
+```{r, eval=TRUE, echo = FALSE, warning = FALSE}
 # ----------------------------- GET STARTED
 nodes_demo <- sg_make_nodes()
 edges_demo <- sg_make_edges(nodes_demo, 17)
@@ -29,7 +30,7 @@ last_edge <- sum(edges_demo$delay) + 100
 dyn <- sigmajs(height = 150) %>%
   sg_force_start() %>%
   sg_nodes(nodes_demo, id, size, color) %>%
-  sg_add_edges(edges_demo, delay, id, source, target) %>% # read delay documentation
+  sg_add_edges(edges_demo, delay, id, source, target, refresh = TRUE) %>% # read delay documentation
   sg_force_stop(last_edge) %>% 
   sg_settings(mouseEnabled = FALSE,
 	            touchEnabled = FALSE,
@@ -334,7 +335,7 @@ remotes::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 
 *Note that the graphs do not work in the RStudio viewer, and thus open in your default browser.*
 
-```{r, eval=TRUE}
+```{r, eval=TRUE, warning = FALSE}
 library(sigmajs)
 
 # generate data
@@ -349,7 +350,7 @@ sigmajs() %>% # initialise
   sg_neighbours() # show node neighbours on node click
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 br()
 
 div(
@@ -462,7 +463,7 @@ div(
 
 `sigmajs` can handle very large graphs thanks to its support of WebGL, below we graph 25,000 nodes. _Note that the package also supports SVG._
 
-```{r, cache=TRUE}
+```{r, cache=FALSE, warning = FALSE}
 data <- sg_make_nodes_edges(25000) # make 25,000 nodes
 
 sigmajs("webgl") %>% # set to webgl
@@ -481,7 +482,7 @@ sigmajs("webgl") %>% # set to webgl
 
 Most functions have corresponding demos, execute the command in the `run` column to see sigmajs in action. You can also see some of these examples [here](http://shiny.john-coene.com/sigmajs/).
 
-```{r, eval = TRUE, echo = FALSE}
+```{r, eval = TRUE, echo = FALSE, warning = FALSE}
 demos <- readLines("./demo/00Index")
 demos <- strsplit(demos, "\t+|([[:space:]]){3}")
 demos <- demos[lapply(demos, length) > 1]

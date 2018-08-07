@@ -5,6 +5,7 @@
 \alias{sg_force_start}
 \alias{sg_force_stop}
 \alias{sg_force_restart_p}
+\alias{sg_force_restart}
 \alias{sg_force_start_p}
 \alias{sg_force_stop_p}
 \alias{sg_force_kill_p}
@@ -18,6 +19,8 @@ sg_force_start(sg, ...)
 sg_force_stop(sg, delay = 5000)
 
 sg_force_restart_p(proxy, ..., refresh = TRUE)
+
+sg_force_restart(sg, data, delay, cumsum = TRUE)
 
 sg_force_start_p(proxy, ..., refresh = TRUE)
 
@@ -37,6 +40,8 @@ sg_force_config_p(proxy, ...)
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
+
+\item{data}{Data.frame (or list) of nodes or edges.}
 }
 \description{
 Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
@@ -51,6 +56,7 @@ Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/jour
 \item{\code{sg_force_stop_p} proxy to stop forceAtlas2.}
 \item{\code{sg_force_kill_p} proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.}
 \item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
+\item{\code{sg_force_restart} Restarts (kills then starts) forceAtlas2 at given delay.}
 }
 }
 

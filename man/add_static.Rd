@@ -7,7 +7,7 @@
 \usage{
 sg_add_nodes(sg, data, delay, ..., cumsum = TRUE)
 
-sg_add_edges(sg, data, delay, ..., cumsum = TRUE, refresh = TRUE)
+sg_add_edges(sg, data, delay, ..., cumsum = TRUE, refresh = FALSE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
