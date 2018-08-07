@@ -97,28 +97,16 @@ div(
     " for R. A powerful, full-featured R package for interactive graph visualisation.",
     br(),
     br(),
-    div(
-      class = "panel panel-default",
-      div(
-        class = "panel-body",
-        div(
-          class = "row",
-          div(
-            class = "col-md-8",
-            "Follow this", strong("very short"), "guide to grasp the basics of the package."
-          ),
-          div(
-            class = "col-md-4",
-            tags$button(
-              type = "button",
-              tags$i(
-                class = "fa fa-rocket"
-              ),
-              " Get Started", 
-              class = "btn btn-success"
-            )
-          )
-        )
+    tags$button(
+      role = "button",
+      "How to ", 
+      class = "btn btn-warning",
+      `data-toggle` = "collapse",
+      href = "#collapseExample",
+      `aria-expanded` = "false",
+      `aria-controls` = "collapseExample",
+      tags$i(
+        class = "fa fa-rocket"
       )
     )
   ),
@@ -130,6 +118,23 @@ div(
       class = "img-responsive",
       style = "margin:0 auto;max-height:150px;"
     )
+  )
+)
+
+br()
+br()
+
+div(
+  class = "collapse",
+  id = "collapseExample",
+  div(
+    class = "well",
+    "Start with the 1)", a("get started guide", href = "articles/get_started.html"), 
+    "to get up to speed, then move on to 2)", 
+    a("layouts", href = "articles/layout.html"), "then to 3)", 
+    a("buttons", href = "articles/buttons.html"), "and finally 4)", 
+    a("dynamic graphs", href = "articles/dynamic.html"),
+    "and you should be at ease with the core functionalities."
   )
 )
 
