@@ -1,10 +1,12 @@
-#' Add force
+#' Add forceAtlas2
 #' 
 #' Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
 #' 
 #' @inheritParams sg_nodes
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param delay Milliseconds after which the layout algorithm should stop running.
+#' @param data \code{data.frame} holding \code{delay} column.
+#' @param cumsum Whether to compute the cumulative sum of the delay.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' 
@@ -20,6 +22,12 @@
 #'	\item{\code{sg_force_config_p} proxy to set configurations of forceAtlas2.}
 #'	\item{\code{sg_force_restart} Restarts (kills then starts) forceAtlas2 at given delay.}
 #' }
+#' 
+#' @details The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+#' How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+#' of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+#' before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+#' edge is added to the visualisation; \code{delay} is used as passed to the function.
 #' 
 #' @examples
 #' nodes <- sg_make_nodes(50)
@@ -96,7 +104,7 @@ sg_force_restart <- function(sg, data, delay, cumsum = TRUE) {
   delay_table <- dplyr::tibble(sigmajsdelay = delay_col)
   
   # build data
-  delay <- .build_data(data, ...) %>%
+  delay <- .build_data(data) %>%
     dplyr::bind_cols(delay_table) %>% 
     .as_list()
   

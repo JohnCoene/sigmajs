@@ -10,7 +10,7 @@
 \alias{sg_force_stop_p}
 \alias{sg_force_kill_p}
 \alias{sg_force_config_p}
-\title{Add force}
+\title{Add forceAtlas2}
 \usage{
 sg_force(sg, ...)
 
@@ -41,10 +41,19 @@ sg_force_config_p(proxy, ...)
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect.}
 
-\item{data}{Data.frame (or list) of nodes or edges.}
+\item{data}{\code{data.frame} holding \code{delay} column.}
+
+\item{cumsum}{Whether to compute the cumulative sum of the delay.}
 }
 \description{
 Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
+}
+\details{
+The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+How the delay works depends on the \code{cumsum} parameter. if \code{TRUE} the function computes the cumulative sum
+of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
+edge is added to the visualisation; \code{delay} is used as passed to the function.
 }
 \section{Functions}{
 

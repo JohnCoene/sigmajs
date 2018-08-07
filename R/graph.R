@@ -1,3 +1,5 @@
+globalVariables(c("id", "label", "sigmajsdelay", "size"))
+
 #' Add nodes and edges
 #'
 #' Add nodes and edges to a \code{sigmajs} graph.
