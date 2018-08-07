@@ -164,6 +164,7 @@ sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
   delay_col <- eval(substitute(delay), df) # subset delay
   if (isTRUE(cumsum))
     delay_col <- cumsum(delay_col) # cumul for setTimeout
+  
   delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
   
   # build data
@@ -171,6 +172,7 @@ sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
     dplyr::bind_cols(delay_table) %>% # bind delay
     .check_ids() %>%
     .check_x_y() %>%
+    dplyr::mutate(id = as.character(id)) %>% 
     dplyr::arrange(sigmajsdelay) %>% 
     .as_list()
   
@@ -191,12 +193,14 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = FALSE) {
   delay_col <- eval(substitute(delay), data) # subset delay
   if (isTRUE(cumsum))
     delay_col <- cumsum(delay_col) # cumul for setTimeout
+  
   delay_table <- dplyr::tibble(sigmajsdelay = delay_col) # build delay tibble
   
   # build data
   nodes <- .build_data(data, ...) %>%
     dplyr::bind_cols(delay_table) %>% # bind delay
     .check_ids() %>%
+    dplyr::mutate(id = as.character(id)) %>% 
     dplyr::arrange(sigmajsdelay) %>% 
     .as_list()
   
@@ -248,12 +252,7 @@ sg_drop_nodes <- function(sg, data, ids, delay, cumsum = TRUE) {
   ids <- eval(substitute(ids), data) # subset ids
   
   to_drop <- dplyr::tibble(
-    id = ids,
-    sigmajsdelay = delay_col
-  )
-  
-  to_drop <- dplyr::tibble(
-    id = ids,
+    id = as.character(ids),
     sigmajsdelay = delay_col
   ) %>%
     dplyr::arrange(sigmajsdelay) %>% 
@@ -277,19 +276,14 @@ sg_drop_edges <- function(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE) 
     delay_col <- cumsum(delay_col) # cumul for setTimeout
   
   ids <- eval(substitute(ids), data) # subset ids
-  
+
   to_drop <- dplyr::tibble(
-    id = ids,
-    sigmajsdelay = delay_col
-  )
-  
-  to_drop <- dplyr::tibble(
-    id = ids,
+    id = as.character(ids),
     sigmajsdelay = delay_col
   ) %>%
     dplyr::arrange(sigmajsdelay) %>% 
     .as_list()
   
-  sg$x$dropEdgesDelay <- append(sg$x$dropEdges, list(data = to_drop, refresh = refresh))
+  sg$x$dropEdgesDelay <- list(data = to_drop, refresh = refresh)
   sg
 }
