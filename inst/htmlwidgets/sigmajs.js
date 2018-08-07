@@ -339,14 +339,14 @@ HTMLWidgets.widget({
 				    button.addEventListener("click", function(event) {
       				x.dropEdgesDelay.data.forEach((element, index) => {
       					setTimeout(function () {
-      						if (message.refresh === true && is_running === true) {
+      						if (x.dropEdgesDelay.refresh === true && is_running === true) {
       							s.killForceAtlas2();
       						}
       						s.graph.dropEdge(element);
-      						if (message.refresh === true && is_running === true) {
+      						if (x.dropEdgesDelay.refresh === true && is_running === true) {
       							s.startForceAtlas2();
       						}
-      						if (message.refresh === true) {
+      						if (x.dropEdgesDelay.refresh === true) {
       							s.refresh();
       						}
       					}, element.sigmajsdelay);
@@ -355,14 +355,14 @@ HTMLWidgets.widget({
 				  } else {
     				x.dropEdgesDelay.data.forEach((element, index) => {
     					setTimeout(function () {
-    						if (message.refresh === true && running === true) {
+    						if (x.dropEdgesDelay.refresh === true && running === true) {
     							s.killForceAtlas2();
     						}
     						s.graph.dropEdge(element);
-    						if (message.refresh === true && running === true) {
+    						if (x.dropEdgesDelay.refresh === true && running === true) {
     							s.startForceAtlas2();
     						}
-    						if (message.refresh === true) {
+    						if (x.dropEdgesDelay.refresh === true) {
     							s.refresh();
     						}
     					}, element.sigmajsdelay);
