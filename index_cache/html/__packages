@@ -2,3 +2,4 @@ base
 htmltools
 sigmajs
 bindrcpp
+dplyr

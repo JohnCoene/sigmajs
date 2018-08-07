@@ -3,6 +3,7 @@
 ```{r, include=FALSE}
 library(htmltools)
 library(sigmajs)
+library(dplyr)
 ```
 
 ```{r, eval=TRUE, echo = FALSE, warning = FALSE}
@@ -23,14 +24,33 @@ get_started <- sigmajs(height = 150) %>%
   sg_layout()
 
 # ----------------------------- DYNAMIC
-edges_demo$delay <- runif(nrow(edges_demo), 500, 1000) # between .5 and 2 seconds
+edges_demo$delay <- runif(nrow(edges_demo), 2000, 10000) # between .5 and 2 seconds
 
-last_edge <- sum(edges_demo$delay) + 100
+src <- edges_demo[, c("source", "delay")]
+tgt <- edges_demo[, c("target", "delay")]
+
+names(tgt) <- c("source", "delay")
+
+nodes <- src %>% 
+  bind_rows(tgt) %>% 
+  group_by(source) %>% 
+  summarise(
+    delay = min(delay) - 10,
+    size = n()
+  ) %>% 
+  ungroup() %>% 
+  mutate(
+    color = sample(
+      c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"), 
+      n(), replace = TRUE)) %>% 
+  select(id = source, delay, size, color)
+
+last_edge <- max(nodes$delay) + 100
 
 dyn <- sigmajs(height = 150) %>%
   sg_force_start() %>%
-  sg_nodes(nodes_demo, id, size, color) %>%
-  sg_add_edges(edges_demo, delay, id, source, target, refresh = TRUE) %>% # read delay documentation
+  sg_add_nodes(nodes, delay, id, size, color, cumsum = FALSE) %>%
+  sg_add_edges(edges_demo, delay, id, source, target, refresh = TRUE, cumsum = FALSE) %>% # read delay documentation
   sg_force_stop(last_edge) %>% 
   sg_settings(mouseEnabled = FALSE,
 	            touchEnabled = FALSE,
@@ -77,12 +97,29 @@ div(
     " for R. A powerful, full-featured R package for interactive graph visualisation.",
     br(),
     br(),
-    "Follow this (very) short guide to discover", code("sigmajs"),
-    a(
-      href = "articles/get_started.html",
-      class = "btn btn-primary",
-      tags$i(class = "fa fa-rocket"),
-      "Get Started"
+    div(
+      class = "panel panel-default",
+      div(
+        class = "panel-body",
+        div(
+          class = "row",
+          div(
+            class = "col-md-8",
+            "Follow this", strong("very short"), "guide to grasp the basics of the package."
+          ),
+          div(
+            class = "col-md-4",
+            tags$button(
+              type = "button",
+              tags$i(
+                class = "fa fa-rocket"
+              ),
+              " Get Started", 
+              class = "btn btn-success"
+            )
+          )
+        )
+      )
     )
   ),
   div(
@@ -461,20 +498,24 @@ div(
 
 ## Performances
 
-`sigmajs` can handle very large graphs thanks to its support of WebGL, below we graph 25,000 nodes. _Note that the package also supports SVG._
+`sigmajs` can handle very large graphs thanks to its support of WebGL, below we graph 10,000 nodes (and it can handle much more!). _Note that the package also supports SVG._
 
-```{r, cache=FALSE, warning = FALSE}
-data <- sg_make_nodes_edges(25000) # make 25,000 nodes
+```{r, cache=TRUE, warning = FALSE}
+data <- sg_make_nodes_edges(10000) # make 10,000 nodes
 
 sigmajs("webgl") %>% # set to webgl
   sg_nodes(data$nodes, id, size) %>% 
-  sg_edges(data$edges, id, source ,target) %>% 
+  sg_edges(data$edges, id, source, target) %>% 
   sg_layout() %>% 
+  sg_cluster() %>% 
   sg_settings(
     nodeColor = "default",
     defaultNodeColor = "#328983",
     edgeColor = "default",
-    defaultEdgeColor = "#b9b9b9"
+    defaultEdgeColor = "#b9b9b9",
+    minNodeSize = .8,
+    maxNodeSize = 2,
+    maxEdgeSize = .2
   )
 ```
 
