@@ -106,6 +106,7 @@ sg_force_restart <- function(sg, data, delay, cumsum = TRUE) {
   # build data
   delay <- .build_data(data) %>%
     dplyr::bind_cols(delay_table) %>% 
+    dplyr::arrange(sigmajsdelay) %>% 
     .as_list()
   
   sg$x$forceRestartDelay <- append(sg$x$forceRestartDelay, delay)

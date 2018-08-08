@@ -504,6 +504,23 @@ HTMLWidgets.widget({
     			}, x.forceStopDelay);
 			  }
 			}
+		
+			if(x.hasOwnProperty('forceRestartDelay')){
+			  
+			  var is_it_running = s.isForceAtlas2Running();
+			  
+			  if(is_it_running === false){
+			    s.startForceAtlas2();
+			  }
+				
+  				x.forceRestartDelay.forEach((force) => {
+  					setTimeout(function () {
+  						s.killForceAtlas2();
+  						s.startForceAtlas2();
+  					}, force.sigmajsdelay);
+  				});
+  				
+			}
 			
 			if(x.hasOwnProperty('exportSVG')){
 		    button.addEventListener("click", function(event) {
