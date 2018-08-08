@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add force — sg_force • sigmajs</title>
+<title>Add forceAtlas2 — sg_force • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -38,7 +38,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
-<meta property="og:title" content="Add force — sg_force" />
+<meta property="og:title" content="Add forceAtlas2 — sg_force" />
 
 <meta property="og:description" content="Implementation of forceAtlas2." />
 
@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1</span>
       </span>
     </div>
 
@@ -181,7 +181,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add force</h1>
+    <h1>Add forceAtlas2</h1>
     
     <div class="hidden name"><code>force.Rd</code></div>
     </div>
@@ -199,6 +199,8 @@
 <span class='fu'>sg_force_stop</span>(<span class='no'>sg</span>, <span class='kw'>delay</span> <span class='kw'>=</span> <span class='fl'>5000</span>)
 
 <span class='fu'>sg_force_restart_p</span>(<span class='no'>proxy</span>, <span class='no'>...</span>, <span class='kw'>refresh</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>sg_force_restart</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>delay</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>sg_force_start_p</span>(<span class='no'>proxy</span>, <span class='no'>...</span>, <span class='kw'>refresh</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -231,7 +233,23 @@
       <th>refresh</th>
       <td><p>Whether to refresh the graph after node is dropped, required to take effect.</p></td>
     </tr>
+    <tr>
+      <th>data</th>
+      <td><p><code>data.frame</code> holding <code>delay</code> column.</p></td>
+    </tr>
+    <tr>
+      <th>cumsum</th>
+      <td><p>Whether to compute the cumulative sum of the delay.</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The delay helps for build dynamic visualisations where nodes and edges do not appear all at the same time.
+How the delay works depends on the <code>cumsum</code> parameter. if <code>TRUE</code> the function computes the cumulative sum
+of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
+before the row is added *since the previous row*). If <code>FALSE</code> this is the number of milliseconds to wait before the node or
+edge is added to the visualisation; <code>delay</code> is used as passed to the function.</p>
     
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
@@ -244,6 +262,7 @@
 <li><p><code>sg_force_stop_p</code> proxy to stop forceAtlas2.</p></li>
 <li><p><code>sg_force_kill_p</code> proxy to ompletely stops the layout and terminates the assiociated worker. You can still restart it later, but a new worker will have to initialize.</p></li>
 <li><p><code>sg_force_config_p</code> proxy to set configurations of forceAtlas2.</p></li>
+<li><p><code>sg_force_restart</code> Restarts (kills then starts) forceAtlas2 at given delay.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -266,6 +285,8 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#functions">Functions</a></li>
 
       <li><a href="#see-also">See also</a></li>

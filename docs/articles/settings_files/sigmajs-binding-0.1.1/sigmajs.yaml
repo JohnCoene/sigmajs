@@ -1,0 +1,21 @@
+dependencies:
+  - name: sigma
+    version: 1.2.1
+    src: htmlwidgets/lib/sigma.js-1.2.1
+    script:
+      - sigma.min.js
+      - plugins/sigma.layout.forceAtlas2.min.js
+      - plugins/sigma.layout.noverlap.min.js
+      - plugins/sigma.renderers.parallelEdges.min.js
+      - plugins/sigma.plugins.animate.min.js
+      - plugins/sigma.renderers.customShapes.min.js
+      - plugins/sigma.plugins.dragNodes.min.js
+      - plugins/sigma.renderers.customEdgeShapes.min.js
+      - plugins/sigma.plugins.relativeSize.min.js
+      - plugins/sigma.renderers.edgeDots.min.js
+      - plugins/sigma.renderers.edgeLabels.min.js
+      - plugins/sigma.parsers.gexf.min.js
+      - plugins/sigma.exporters.svg.js
+      - plugins/sigma.plugins.neighborhoods.js
+      - plugins/sigma.plugins.filter.js
+      - plugins/sigma.renderers.snapshot.js
