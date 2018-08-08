@@ -1,17 +1,14 @@
 globalVariables(c("from", "to", "."))
 
 .build_data <- function(data, ...){
-  # dots <- eval(substitute(alist(...))) # capture dots
-  # base <- lapply(dots, eval, data) # eval
-  # names(base) <- sapply(dots, deparse) # deparse for name
-  # base <- as.data.frame(base) # to data.frame
-  # return(base)
+
   data %>% 
     dplyr::select(...)
 }
 
 .as_list <- function(data){
-  apply(data, 1, as.list) # json formatted list
+  apply(data, 1, as.list) %>%  # json formatted list
+    unname() # in case of row.names
 }
 
 .check_ids <- function(data){
