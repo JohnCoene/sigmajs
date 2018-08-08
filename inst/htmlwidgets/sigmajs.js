@@ -147,13 +147,13 @@ HTMLWidgets.widget({
               if (toKeep[n.id])
                 n.color = n.originalColor;
               else
-                n.color = '#eee';
+                n.color = x.neighbours.nodes;
             });
             s.graph.edges().forEach(function(e) {
               if (toKeep[e.source] && toKeep[e.target])
                 e.color = e.originalColor;
               else
-                e.color = '#eee';
+                e.color = x.neighbours.edges;
             });
             s.refresh();
           });

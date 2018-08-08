@@ -1,8 +1,9 @@
-#' Neighbours
+#' Highlight neighbours
 #' 
 #' Highlight node neighbours on click.
 #' 
-#' @inheritParams sg_nodes
+#' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
+#' @param nodes,edges Color of nodes and edges
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes() 
@@ -16,7 +17,7 @@
 #'
 #' @rdname neighbours
 #' @export
-sg_neighbours <- function(sg){
+sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee"){
   
   if(missing(sg))
     stop("must pass sg", call. = FALSE)
@@ -24,7 +25,10 @@ sg_neighbours <- function(sg){
   if(!inherits(sg, "sigmajs"))
     stop("sg must be sigmajs object", call. = FALSE)
   
-  sg$x$neighbours <- TRUE
+  sg$x$neighbours <- list(
+    nodes = nodes,
+    edges = edges
+  )
   sg
 }
 

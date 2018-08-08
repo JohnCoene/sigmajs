@@ -3,14 +3,16 @@
 \name{sg_neighbours}
 \alias{sg_neighbours}
 \alias{sg_neighbors}
-\title{Neighbours}
+\title{Highlight neighbours}
 \usage{
-sg_neighbours(sg)
+sg_neighbours(sg, nodes = "#eee", edges = "#eee")
 
-sg_neighbors(sg)
+sg_neighbors(sg, nodes = "#eee", edges = "#eee")
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+
+\item{nodes, edges}{Color of nodes and edges}
 }
 \description{
 Highlight node neighbours on click.

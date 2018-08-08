@@ -7,6 +7,7 @@
 * Graphs open in browser by default + warning is sent to console when using RStudio.
 * Added ability to trigger multiple events from the button.
 * Fixed bug in cluster and layout function where igraph would error on duplicate vertex name.
+* `sg_neighbours` now takes nodes and edges color as argument.
 
 # sigmajs 0.1.0
 
