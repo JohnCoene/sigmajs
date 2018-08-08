@@ -22,42 +22,6 @@ HTMLWidgets.widget({
 		
     var sel_handle = new crosstalk.SelectionHandle();
     
-    sel_handle.on("change", function(ev) {
-      
-      if (ev.sender !== sel_handle) {
-        s.graph.nodes().forEach(function(n) {
-          n.color = n.originalColor;
-        });
-        s.graph.edges().forEach(function(e) {
-          e.color = e.originalColor;
-        });
-        s.refresh();
-      }
-      
-      if (typeof ev.value[0] != 'undefined') {
-
-        var nodeId = ev.value[0];
-            toKeep = s.graph.neighbors(nodeId);
-        toKeep[nodeId] = s.graph.nodes(String(nodeId));
-        sel_handle.set(nodeId);
-        s.graph.nodes().forEach(function(n) {
-          if (toKeep[n.id])
-            n.color = n.originalColor;
-          else
-            n.color = '#eee';
-        });
-        s.graph.edges().forEach(function(e) {
-          if (toKeep[e.source] && toKeep[e.target])
-            e.color = e.originalColor;
-          else
-            e.color = '#eee';
-        });
-        s.refresh();
-
-      }
-
-    });
-    
     return {
 
 			renderValue: function (x) {
@@ -124,8 +88,10 @@ HTMLWidgets.widget({
 				}
 				
 				// force neighbours true if crosstalk enabled
-				if(x.crosstalk.crosstalk_key !== null){
-				  x.neighbours = true;
+				if(x.crosstalk.crosstalk_key !== null && !x.hasOwnProperty('neighbours')){
+				  x.neighbours = [];
+				  x.neighbours.edges = "#eee";
+				  x.neighbours.nodes = "#eee";
 				}
 				
 				// highlight neighbours
@@ -168,6 +134,43 @@ HTMLWidgets.widget({
             sel_handle.clear();
           });
 				}
+				
+
+      sel_handle.on("change", function(ev) {
+        
+        if (ev.sender !== sel_handle) {
+          s.graph.nodes().forEach(function(n) {
+            n.color = n.originalColor;
+          });
+          s.graph.edges().forEach(function(e) {
+            e.color = e.originalColor;
+          });
+          s.refresh();
+        }
+        
+        if (typeof ev.value[0] != 'undefined') {
+  
+          var nodeId = ev.value[0];
+              toKeep = s.graph.neighbors(nodeId);
+          toKeep[nodeId] = s.graph.nodes(String(nodeId));
+          sel_handle.set(nodeId);
+          s.graph.nodes().forEach(function(n) {
+            if (toKeep[n.id])
+              n.color = n.originalColor;
+            else
+              n.color = x.neighbours.nodes;
+          });
+          s.graph.edges().forEach(function(e) {
+            if (toKeep[e.source] && toKeep[e.target])
+              e.color = e.originalColor;
+            else
+              e.color = x.neighbours.edges;
+          });
+          s.refresh();
+  
+        }
+  
+      });
 
 				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
