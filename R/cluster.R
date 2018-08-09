@@ -18,7 +18,7 @@
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes() 
-#' edges <- sg_make_edges(nodes, 17)
+#' edges <- sg_make_edges(nodes, 15)
 #' 
 #' sigmajs() %>% 
 #'   sg_nodes(nodes, id, size) %>% 
@@ -63,7 +63,7 @@ sg_get_cluster <- function(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#3289
   
   edges <- .re_order(edges)
   nodes <- .re_order_nodes(nodes)
-  g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
+  g <- .build_igraph(edges, directed = directed, nodes)
   
   # get communities
   communities <- algo(g, ...)

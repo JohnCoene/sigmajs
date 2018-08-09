@@ -17,8 +17,8 @@ HTMLWidgets.widget({
 
 	factory: function (el, width, height) {
 
-    var firstRun = true;
-		var s, cam, renderer; // initialise s (graph), renderer and cam (camera)
+    var initialized = false;
+		var s, cam, renderer;
 		
     var sel_handle = new crosstalk.SelectionHandle();
     
@@ -30,7 +30,11 @@ HTMLWidgets.widget({
 			  var button = widget.getElementsByTagName("button")[0];
 			  if(x.button.event === 'none'){
 			    x.button.event = "none";
-			    widget.removeChild(button);
+			    
+			    if(typeof button !== "undefined"){
+			      widget.removeChild(button);
+			    }
+			    
 			  } else {
 			    button.className = x.button.className;
 			    button.innerHTML = x.button.label;
@@ -58,33 +62,29 @@ HTMLWidgets.widget({
 					);
 				} else {
 					// create
-  				s = new sigma({
-  					graph: x.data,
-  					settings: x.settings
-  				});
-  				// add camera
-  				if(x.hasOwnProperty('camera')){
-  				  
-  				  // get or initialise camera
-  				  if(x.camera.init === true){
-  				    cam = s.addCamera();
-  				  } else {
-            	cam = get_sigma_camera(x.camera.id);
-  				  }
-  				  
-  				  renderer = s.addRenderer({
-  						container: el.id,
-  						type: x.type,
-  				    camera: cam
-  				  });
-    				
-  				  s.refresh();
-  				} else {
-  				  renderer = s.addRenderer({
-  						container: el.id,
-  						type: x.type
-  				  });
-  				}
+					if(!initialized){
+					  initialized = true;
+    				s = new sigma({
+    					graph: x.data,
+    					settings: x.settings
+    				});
+					} 
+					
+					if(x.kill === true){
+					  
+					  s.kill();
+					  
+    				s = new sigma({
+    					graph: x.data,
+    					settings: x.settings
+    				});
+					}
+					
+				  renderer = s.addRenderer({
+						container: el.id,
+						type: x.type
+						
+				  });
 				}
 				
 				// force neighbours true if crosstalk enabled
@@ -511,32 +511,32 @@ HTMLWidgets.widget({
 
 					// over edge
 					s.bind('overEdge', function (e) {
-						Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParse", e.data.edge);
+						Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// over edgeS
 					s.bind('overEdges', function (e) {
-						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParse", e.data.edges);
+						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edges);
 					});
 
 					// out node
 					s.bind('outNode', function (e) {
-						Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParse", e.data.node);
+						Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
 					});
 
 					// out nodeS
 					s.bind('outNodes', function (e) {
-						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParse", e.data.nodes);
+						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.nodes);
 					});
 
 					// out edge
 					s.bind('outEdge', function (e) {
-						Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParse", e.data.edge);
+						Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// out edgeS
 					s.bind('outEdges', function (e) {
-						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParse", e.data.edges);
+						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edges);
 					});
 				}
 			

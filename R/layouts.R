@@ -63,7 +63,7 @@ sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout
   nodes <- .rm_x_y(nodes)
   nodes <- .re_order_nodes(nodes)
   
-  g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
+  g <- .build_igraph(edges, directed = directed, nodes)
   
   l <- layout(g, ...)
   l <- as.data.frame(l) %>% 

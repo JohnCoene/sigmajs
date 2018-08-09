@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE
 )
+library(htmltools)
 library(sigmajs)
 ```
 
@@ -24,6 +25,18 @@ library(sigmajs)
   <i class="fa fa-desktop"></i>
   See it in action
 </a>
+
+```{r, echo=FALSE}
+div(
+  class = "panel panel-danger",
+  div(
+    class = "panel-body",
+    tags$i(class = "fa fa-warning text-danger"),
+    " Set", code("kill"), "to", code("TRUE"), "in", code("sigmajs"), "or pipe", code("sg_kill"), "to your graph if you are",
+    strong("not updating the Shiny graph with", code("sigmajsProxy"))
+  )
+)
+```
 
 ## Features
 

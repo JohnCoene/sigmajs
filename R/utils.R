@@ -58,8 +58,10 @@ globalVariables(c("from", "to", "."))
 .re_order <- function(x){
   n <- names(x)
   
-  first <- n[n %in% c("source", "target")]
-  last <- n[!n %in% c("source", "target")]
+  cols <- c("source", "target")
+  
+  first <- n[n %in% cols]
+  last <- n[!n %in% cols]
   
   x[, c(first, last)]
 }
@@ -67,8 +69,10 @@ globalVariables(c("from", "to", "."))
 .re_order_nodes <- function(x){
   n <- names(x)
   
-  first <- n[n %in% c("id")]
-  last <- n[!n %in% c("id")]
+  id <- c("id")
+  
+  first <- n[n %in% id]
+  last <- n[!n %in% id]
   
   x[, c(first, last)]
 }
@@ -96,4 +100,30 @@ globalVariables(c("from", "to", "."))
 .test_proxy <- function(p){
   if (!inherits(p, "sigmajsProxy"))
     stop("proxy must be of class sigmajsProxy", call. = FALSE)
+}
+
+.get_graph <- function(){
+  graph <- tryCatch(
+    get("igraph", envir = storage_env),
+    error = function(e) NULL
+  )
+}
+
+.build_igraph <- function(edges, directed = directed, nodes){
+  
+  opt <- getOption("SIGMAJS_STORAGE")
+  g <- NULL
+  
+  if(isTRUE(opt))
+    g <- .get_graph()
+  
+  if(is.null(g)){
+    g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
+    
+    if(isTRUE(opt))
+      assign("igraph", g, envir = storage_env)
+  } 
+  
+  return(g)
+  
 }

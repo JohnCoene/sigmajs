@@ -4,13 +4,16 @@
 \alias{sigmajs}
 \title{Initialise}
 \usage{
-sigmajs(type = "canvas", width = "100\%", height = NULL,
+sigmajs(type = "canvas", width = "100\%", kill = FALSE, height = NULL,
   elementId = NULL)
 }
 \arguments{
 \item{type}{Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.}
 
 \item{width, height}{Dimensions of graph.}
+
+\item{kill}{Whether to kill the graph, set to \code{FALSE} 
+if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shiny.}
 
 \item{elementId}{Id of elment.}
 }
@@ -28,4 +31,7 @@ sigmajs("svg") \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_edges(edges, id, source, target) 
 
+}
+\seealso{
+\code{\link{sg_kill}}.
 }

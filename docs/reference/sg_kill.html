@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cluster — sg_cluster • sigmajs</title>
+<title>Kill — sg_kill • sigmajs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -38,9 +38,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
-<meta property="og:title" content="Cluster — sg_cluster" />
+<meta property="og:title" content="Kill — sg_kill" />
 
-<meta property="og:description" content="Color nodes by cluster." />
+<meta property="og:description" content="Kill the graph to ensure new data is redrawn, useful in Shiny 
+when graph is not updated bz sigmajsProxy." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -181,24 +182,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cluster</h1>
+    <h1>Kill</h1>
     
-    <div class="hidden name"><code>cluster.Rd</code></div>
+    <div class="hidden name"><code>sg_kill.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Color nodes by cluster.</p>
+    <p>Kill the graph to ensure new data is redrawn, useful in Shiny 
+when graph is not updated bz <code><a href='sigmajs-shiny.html'>sigmajsProxy</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_cluster</span>(<span class='no'>sg</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#B1E2A3"</span>, <span class='st'>"#98D3A5"</span>, <span class='st'>"#328983"</span>, <span class='st'>"#1C5C70"</span>,
-  <span class='st'>"#24C96B"</span>), <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>algo</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/igraph/topics/cluster_walktrap'>cluster_walktrap</a></span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'>interactive</span>(), <span class='no'>...</span>)
-
-<span class='fu'>sg_get_cluster</span>(<span class='no'>nodes</span>, <span class='no'>edges</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#B1E2A3"</span>, <span class='st'>"#98D3A5"</span>, <span class='st'>"#328983"</span>,
-  <span class='st'>"#1C5C70"</span>, <span class='st'>"#24C96B"</span>), <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>algo</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/igraph/topics/cluster_walktrap'>cluster_walktrap</a></span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'>interactive</span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>sg_kill</span>(<span class='no'>sg</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,68 +203,15 @@
       <th>sg</th>
       <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
     </tr>
-    <tr>
-      <th>colors</th>
-      <td><p>Palette to color the nodes.</p></td>
-    </tr>
-    <tr>
-      <th>directed</th>
-      <td><p>Whether or not to create a directed graph, passed to <code><a href='http://www.rdocumentation.org/packages/igraph/topics/graph_from_data_frame'>graph_from_data_frame</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>algo</th>
-      <td><p>An <code>igraph</code> clustering function.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>Set to <code>TRUE</code> to print the number of clusters to the console.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Any parameter to pass to <code>algo</code>.</p></td>
-    </tr>
-    <tr>
-      <th>nodes, edges</th>
-      <td><p>Nodes and edges as prepared for sigmajs.</p></td>
-    </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>sg_get_cluster</code> returns nodes with <code>color</code> variable.</p>
-    
-    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
-
-    
-    <ul>
-<li><p><code>sg_cluster</code> Color nodes by cluster.</p></li>
-<li><p><code>sg_get_cluster</code> helper to get graph's nodes color by cluster.</p></li>
-</ul>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>nodes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
-<span class='no'>edges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_edges</a></span>(<span class='no'>nodes</span>, <span class='fl'>15</span>)
-
-<span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='layout.html'>sg_layout</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_cluster</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='output co'>#&gt; Found # 5 clusters</div><div class='input'>
-<span class='no'>clustered</span> <span class='kw'>&lt;-</span> <span class='fu'>sg_get_cluster</span>(<span class='no'>nodes</span>, <span class='no'>edges</span>)</div><div class='output co'>#&gt; Found # 5 clusters</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#functions">Functions</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

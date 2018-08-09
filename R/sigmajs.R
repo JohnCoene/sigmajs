@@ -4,6 +4,8 @@
 #' 
 #' @param width,height Dimensions of graph.
 #' @param elementId Id of elment.
+#' @param kill Whether to kill the graph, set to \code{FALSE} 
+#' if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shiny.
 #' @param type Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.
 #' 
 #' @examples 
@@ -18,12 +20,15 @@
 #' @importFrom stats runif
 #' 
 #' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
+#' 
+#' @seealso \code{\link{sg_kill}}.
 #'
 #' @export
-sigmajs <- function(type = "canvas", width = "100%", height = NULL, elementId = NULL) {
+sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
+    kill = kill,
     data = list(),
 		type = type,
 		button = list(event = "none", label = ""),
