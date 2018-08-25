@@ -17,46 +17,10 @@ HTMLWidgets.widget({
 
 	factory: function (el, width, height) {
 
-    var firstRun = true;
-		var s, cam, renderer; // initialise s (graph), renderer and cam (camera)
+    var initialized = false;
+		var s, cam, renderer;
 		
     var sel_handle = new crosstalk.SelectionHandle();
-    
-    sel_handle.on("change", function(ev) {
-      
-      if (ev.sender !== sel_handle) {
-        s.graph.nodes().forEach(function(n) {
-          n.color = n.originalColor;
-        });
-        s.graph.edges().forEach(function(e) {
-          e.color = e.originalColor;
-        });
-        s.refresh();
-      }
-      
-      if (typeof ev.value[0] != 'undefined') {
-
-        var nodeId = ev.value[0];
-            toKeep = s.graph.neighbors(nodeId);
-        toKeep[nodeId] = s.graph.nodes(String(nodeId));
-        sel_handle.set(nodeId);
-        s.graph.nodes().forEach(function(n) {
-          if (toKeep[n.id])
-            n.color = n.originalColor;
-          else
-            n.color = '#eee';
-        });
-        s.graph.edges().forEach(function(e) {
-          if (toKeep[e.source] && toKeep[e.target])
-            e.color = e.originalColor;
-          else
-            e.color = '#eee';
-        });
-        s.refresh();
-
-      }
-
-    });
     
     return {
 
@@ -66,7 +30,11 @@ HTMLWidgets.widget({
 			  var button = widget.getElementsByTagName("button")[0];
 			  if(x.button.event === 'none'){
 			    x.button.event = "none";
-			    widget.removeChild(button);
+			    
+			    if(typeof button !== "undefined"){
+			      widget.removeChild(button);
+			    }
+			    
 			  } else {
 			    button.className = x.button.className;
 			    button.innerHTML = x.button.label;
@@ -94,38 +62,36 @@ HTMLWidgets.widget({
 					);
 				} else {
 					// create
-  				s = new sigma({
-  					graph: x.data,
-  					settings: x.settings
-  				});
-  				// add camera
-  				if(x.hasOwnProperty('camera')){
-  				  
-  				  // get or initialise camera
-  				  if(x.camera.init === true){
-  				    cam = s.addCamera();
-  				  } else {
-            	cam = get_sigma_camera(x.camera.id);
-  				  }
-  				  
-  				  renderer = s.addRenderer({
-  						container: el.id,
-  						type: x.type,
-  				    camera: cam
-  				  });
-    				
-  				  s.refresh();
-  				} else {
-  				  renderer = s.addRenderer({
-  						container: el.id,
-  						type: x.type
-  				  });
-  				}
+					if(!initialized){
+					  initialized = true;
+    				s = new sigma({
+    					graph: x.data,
+    					settings: x.settings
+    				});
+					} 
+					
+					if(x.kill === true){
+					  
+					  s.kill();
+					  
+    				s = new sigma({
+    					graph: x.data,
+    					settings: x.settings
+    				});
+					}
+					
+				  renderer = s.addRenderer({
+						container: el.id,
+						type: x.type
+						
+				  });
 				}
 				
 				// force neighbours true if crosstalk enabled
-				if(x.crosstalk.crosstalk_key !== null){
-				  x.neighbours = true;
+				if(x.crosstalk.crosstalk_key !== null && !x.hasOwnProperty('neighbours')){
+				  x.neighbours = [];
+				  x.neighbours.edges = "#eee";
+				  x.neighbours.nodes = "#eee";
 				}
 				
 				// highlight neighbours
@@ -147,13 +113,13 @@ HTMLWidgets.widget({
               if (toKeep[n.id])
                 n.color = n.originalColor;
               else
-                n.color = '#eee';
+                n.color = x.neighbours.nodes;
             });
             s.graph.edges().forEach(function(e) {
               if (toKeep[e.source] && toKeep[e.target])
                 e.color = e.originalColor;
               else
-                e.color = '#eee';
+                e.color = x.neighbours.edges;
             });
             s.refresh();
           });
@@ -168,6 +134,43 @@ HTMLWidgets.widget({
             sel_handle.clear();
           });
 				}
+				
+
+      sel_handle.on("change", function(ev) {
+        
+        if (ev.sender !== sel_handle) {
+          s.graph.nodes().forEach(function(n) {
+            n.color = n.originalColor;
+          });
+          s.graph.edges().forEach(function(e) {
+            e.color = e.originalColor;
+          });
+          s.refresh();
+        }
+        
+        if (typeof ev.value[0] != 'undefined') {
+  
+          var nodeId = ev.value[0];
+              toKeep = s.graph.neighbors(nodeId);
+          toKeep[nodeId] = s.graph.nodes(String(nodeId));
+          sel_handle.set(nodeId);
+          s.graph.nodes().forEach(function(n) {
+            if (toKeep[n.id])
+              n.color = n.originalColor;
+            else
+              n.color = x.neighbours.nodes;
+          });
+          s.graph.edges().forEach(function(e) {
+            if (toKeep[e.source] && toKeep[e.target])
+              e.color = e.originalColor;
+            else
+              e.color = x.neighbours.edges;
+          });
+          s.refresh();
+  
+        }
+  
+      });
 
 				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
@@ -370,126 +373,6 @@ HTMLWidgets.widget({
 				  }
 				}
 
-				// events
-				if (HTMLWidgets.shinyMode) {
-					// click node
-					s.bind('clickNode', function (e) {
-						Shiny.onInputChange(el.id + '_click_node' + ":sigmajsParse", e.data.node);
-					});
-
-					// click nodeS
-					s.bind('clickNodes', function (e) {
-						Shiny.onInputChange(el.id + '_click_nodes' + ":sigmajsParse", e.data.nodes);
-					});
-
-					// click edge
-					s.bind('clickEdge', function (e) {
-						Shiny.onInputChange(el.id + '_click_edge' + ":sigmajsParse", e.data.edge);
-					});
-
-					// click edgeS
-					s.bind('clickEdges', function (e) {
-						Shiny.onInputChange(el.id + '_click_edges' + ":sigmajsParse", e.data.edges);
-					});
-
-					// click stage
-					s.bind('clickStage', function (e) {
-						Shiny.onInputChange(el.id + '_click_stage' + ":sigmajsParse", true);
-					});
-
-					// double click stage
-					s.bind('doubleClickStage', function (e) {
-						Shiny.onInputChange(el.id + '_double_click_stage' + ":sigmajsParse", true);
-					});
-
-					// right click stage
-					s.bind('rightClickStage', function (e) {
-						Shiny.onInputChange(el.id + '_right_click_stage' + ":sigmajsParse", true);
-					});
-
-					// double click node
-					s.bind('doubleClickNode', function (e) {
-						Shiny.onInputChange(el.id + '_double_click_node' + ":sigmajsParse", e.data.node);
-					});
-
-					// double click nodeS
-					s.bind('doubleClickNodes', function (e) {
-						Shiny.onInputChange(el.id + '_double_click_nodes' + ":sigmajsParse", e.data.nodes);
-					});
-
-					// double click edge
-					s.bind('doubleClickEdge', function (e) {
-						Shiny.onInputChange(el.id + '_double_click_edge' + ":sigmajsParse", e.data.edge);
-					});
-
-					// double click edgeS
-					s.bind('doubleClickEdges', function (e) {
-						Shiny.onInputChange(el.id + '_double_click_edges' + ":sigmajsParse", e.data.edges);
-					});
-
-					// right click node
-					s.bind('rightClickNode', function (e) {
-						Shiny.onInputChange(el.id + '_right_click_node' + ":sigmajsParse", e.data.node);
-					});
-
-					// right click nodeS
-					s.bind('rightClickNodes', function (e) {
-						Shiny.onInputChange(el.id + '_right_click_nodes' + ":sigmajsParse", e.data.nodes);
-					});
-
-					// right click edge
-					s.bind('rightClickEdge', function (e) {
-						Shiny.onInputChange(el.id + '_right_click_edge' + ":sigmajsParse", e.data.edge);
-					});
-
-					// right click edgeS
-					s.bind('rightClickEdges', function (e) {
-						Shiny.onInputChange(el.id + '_right_click_edges' + ":sigmajsParse", e.data.edges);
-					});
-
-					// over node
-					s.bind('overNode', function (e) {
-						Shiny.onInputChange(el.id + '_over_node' + ":sigmajsParse", e.data.node);
-					});
-
-					// over nodeS
-					s.bind('overNodes', function (e) {
-						Shiny.onInputChange(el.id + '_over_nodes' + ":sigmajsParse", e.data.nodes);
-					});
-
-					// over edge
-					s.bind('overEdge', function (e) {
-						Shiny.onInputChange(el.id + '_over_edge' + ":sigmajsParse", e.data.edge);
-					});
-
-					// over edgeS
-					s.bind('overEdges', function (e) {
-						Shiny.onInputChange(el.id + '_over_edges' + ":sigmajsParse", e.data.edges);
-					});
-
-					// out node
-					s.bind('outNode', function (e) {
-						Shiny.onInputChange(el.id + '_out_node' + ":sigmajsParse", e.data.node);
-					});
-
-					// out nodeS
-					s.bind('outNodes', function (e) {
-						Shiny.onInputChange(el.id + '_out_nodes' + ":sigmajsParse", e.data.nodes);
-					});
-
-					// out edge
-					s.bind('outEdge', function (e) {
-						Shiny.onInputChange(el.id + '_out_edge' + ":sigmajsParse", e.data.edge);
-					});
-
-					// out edgeS
-					s.bind('outEdges', function (e) {
-						Shiny.onInputChange(el.id + '_out_edges' + ":sigmajsParse", e.data.edges);
-					});
-				}
-
-			s.refresh(); // refresh
-
 			// stop force
 			if(x.hasOwnProperty('forceStopDelay')){
 			  if(x.button.event === 'force_stop'){
@@ -536,6 +419,126 @@ HTMLWidgets.widget({
 			
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
       //filter_handle.setGroup(x.crosstalk.crosstalk_group);
+      s.refresh(); // refresh
+      
+				// events
+				if (HTMLWidgets.shinyMode) {
+				  
+					// click node
+					s.bind('clickNode', function (e) {
+						Shiny.setInputValue(el.id + '_click_node' + ":sigmajsParseJS", e.data.node);
+					});
+
+					// click nodeS
+					s.bind('clickNodes', function (e) {
+						Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+					});
+
+					// click edge
+					s.bind('clickEdge', function (e) {
+						Shiny.setInputValue(el.id + '_click_edge' + ":sigmajsParseJS", e.data.edge);
+					});
+
+					// click edgeS
+					s.bind('clickEdges', function (e) {
+						Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edges);
+					});
+
+					// click stage
+					s.bind('clickStage', function (e) {
+						Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", true);
+					});
+
+					// double click stage
+					s.bind('doubleClickStage', function (e) {
+						Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", true);
+					});
+
+					// right click stage
+					s.bind('rightClickStage', function (e) {
+						Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", true);
+					});
+
+					// double click node
+					s.bind('doubleClickNode', function (e) {
+						Shiny.setInputValue(el.id + '_double_click_node' + ":sigmajsParseJS", e.data.node);
+					});
+
+					// double click nodeS
+					s.bind('doubleClickNodes', function (e) {
+						Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+					});
+
+					// double click edge
+					s.bind('doubleClickEdge', function (e) {
+						Shiny.setInputValue(el.id + '_double_click_edge' + ":sigmajsParseJS", e.data.edge);
+					});
+
+					// double click edgeS
+					s.bind('doubleClickEdges', function (e) {
+						Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edges);
+					});
+
+					// right click node
+					s.bind('rightClickNode', function (e) {
+						Shiny.setInputValue(el.id + '_right_click_node' + ":sigmajsParseJS", e.data.node);
+					});
+
+					// right click nodeS
+					s.bind('rightClickNodes', function (e) {
+						Shiny.setInputValue(el.id + '_right_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+					});
+
+					// right click edge
+					s.bind('rightClickEdge', function (e) {
+						Shiny.setInputValue(el.id + '_right_click_edge' + ":sigmajsParseJS", e.data.edge);
+					});
+
+					// right click edgeS
+					s.bind('rightClickEdges', function (e) {
+						Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edges);
+					});
+
+					// over node
+					s.bind('overNode', function (e) {
+						Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
+					});
+
+					// over nodeS
+					s.bind('overNodes', function (e) {
+						Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.nodes);
+					});
+
+					// over edge
+					s.bind('overEdge', function (e) {
+						Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
+					});
+
+					// over edgeS
+					s.bind('overEdges', function (e) {
+						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edges);
+					});
+
+					// out node
+					s.bind('outNode', function (e) {
+						Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
+					});
+
+					// out nodeS
+					s.bind('outNodes', function (e) {
+						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.nodes);
+					});
+
+					// out edge
+					s.bind('outEdge', function (e) {
+						Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
+					});
+
+					// out edgeS
+					s.bind('outEdges', function (e) {
+						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edges);
+					});
+				}
 			
 		},
 

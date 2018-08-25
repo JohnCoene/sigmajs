@@ -16,8 +16,9 @@ sg_export_img(sg, download = TRUE, file = "graph.png",
 sg_export_img_p(proxy, download = TRUE, file = "graph.png",
   background = "white", format = "png", labels = FALSE)
 
-sg_export_svg_p(proxy, download = TRUE, file = "graph.svg", size = 1000,
-  width = 1000, height = 1000, labels = FALSE, data = FALSE)
+sg_export_svg_p(proxy, download = TRUE, file = "graph.svg",
+  size = 1000, width = 1000, height = 1000, labels = FALSE,
+  data = FALSE)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
