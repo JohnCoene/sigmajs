@@ -359,17 +359,18 @@ div(
 
 ## Install
 
-`sigmajs` can be installed from Github,
+
+Install the stable version from CRAN.
 
 ```{r, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("JohnCoene/sigmajs") # github
+install.packages("sigmajs")
 ```
 
-or Bitbucket,
+or the development version Github or Bitbucket.
 
 ```{r, eval = FALSE}
 # install.packages("remotes")
+remotes::install_github("JohnCoene/sigmajs") # github
 remotes::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 ```
 

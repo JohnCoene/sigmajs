@@ -20,6 +20,14 @@ The sigma.js JavaScript library is described as follows on its [website](http://
 
 # Install
 
+The stable version from CRAN.
+
+```r
+install.packages("sigmajs")
+```
+
+The development version from Github of Bitbucket.
+
 ```r
 # install.packages("devtools")
 devtools::install_github("JohnCoene/sigmajs") # github
