@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.2.9000</span>
       </span>
     </div>
 
@@ -197,8 +197,8 @@
   <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'>interactive</span>(), <span class='no'>...</span>)
 
 <span class='fu'>sg_get_cluster</span>(<span class='no'>nodes</span>, <span class='no'>edges</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#B1E2A3"</span>, <span class='st'>"#98D3A5"</span>, <span class='st'>"#328983"</span>,
-  <span class='st'>"#1C5C70"</span>, <span class='st'>"#24C96B"</span>), <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>algo</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/igraph/topics/cluster_walktrap'>cluster_walktrap</a></span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'>interactive</span>(), <span class='no'>...</span>)</pre>
+  <span class='st'>"#1C5C70"</span>, <span class='st'>"#24C96B"</span>), <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>algo</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/igraph/topics/cluster_walktrap'>cluster_walktrap</a></span>, <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'>interactive</span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -254,8 +254,8 @@
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='layout.html'>sg_layout</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_cluster</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='output co'>#&gt; Found # 5 clusters</div><div class='input'>
-<span class='no'>clustered</span> <span class='kw'>&lt;-</span> <span class='fu'>sg_get_cluster</span>(<span class='no'>nodes</span>, <span class='no'>edges</span>)</div><div class='output co'>#&gt; Found # 5 clusters</div><div class='input'>
+  <span class='fu'>sg_cluster</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='output co'>#&gt; Found # 3 clusters</div><div class='input'>
+<span class='no'>clustered</span> <span class='kw'>&lt;-</span> <span class='fu'>sg_get_cluster</span>(<span class='no'>nodes</span>, <span class='no'>edges</span>)</div><div class='output co'>#&gt; Found # 3 clusters</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

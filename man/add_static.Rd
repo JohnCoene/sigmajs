@@ -16,7 +16,7 @@ sg_add_edges(sg, data, delay, ..., cumsum = TRUE, refresh = FALSE)
 
 \item{delay}{Column name containing delay in milliseconds.}
 
-\item{...}{any column.}
+\item{...}{Any column name.}
 
 \item{cumsum}{Whether to compute the cumulative sum of the delay.}
 

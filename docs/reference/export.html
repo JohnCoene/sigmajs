@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.2.9000</span>
       </span>
     </div>
 
@@ -201,8 +201,9 @@
 <span class='fu'>sg_export_img_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.png"</span>,
   <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"png"</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>sg_export_svg_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>sg_export_svg_p</span>(<span class='no'>proxy</span>, <span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"graph.svg"</span>,
+  <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -258,9 +259,10 @@
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>size</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>sg_export_svg</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"download"</span>, <span class='st'>"export_svg"</span>)
+  <span class='fu'><a href='sg_button.html'>sg_button</a></span>(<span class='st'>"download"</span>, <span class='st'>"export_svg"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='input'>
+# demo("export-graph", package = "sigmajs")
 
-<span class='co'># demo("export-graph", package = "sigmajs")</span></div></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

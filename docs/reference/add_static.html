@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.2.9000</span>
       </span>
     </div>
 
@@ -213,7 +213,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>any column.</p></td>
+      <td><p>Any column name.</p></td>
     </tr>
     <tr>
       <th>cumsum</th>
@@ -247,7 +247,7 @@ edge is added to the visualisation; <code>delay</code> is used as passed to the 
 
 <span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_add_nodes</span>(<span class='no'>nodes2</span>, <span class='no'>delay</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'bindrcpp' was built under R version 3.4.4</span></div><div class='input'>
+  <span class='fu'>sg_add_nodes</span>(<span class='no'>nodes2</span>, <span class='no'>delay</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘bindrcpp’ was built under R version 3.4.4</span></div><div class='input'>
 <span class='no'>edges</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_edges</a></span>(<span class='no'>nodes</span>, <span class='fl'>25</span>)
 <span class='no'>edges</span>$<span class='no'>delay</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fu'>nrow</span>(<span class='no'>edges</span>), <span class='fl'>100</span>, <span class='fl'>2000</span>)
 
@@ -255,7 +255,8 @@ edge is added to the visualisation; <code>delay</code> is used as passed to the 
   <span class='fu'><a href='force.html'>sg_force_start</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>sg_add_edges</span>(<span class='no'>edges</span>, <span class='no'>delay</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='force.html'>sg_force_stop</a></span>(<span class='fl'>2300</span>) <span class='co'># stop after all edges added</span></div></pre>
+  <span class='fu'><a href='force.html'>sg_force_stop</a></span>(<span class='fl'>2300</span>) <span class='co'># stop after all edges added</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Graph does not show in the RStudio Viewer; opening in browser</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
