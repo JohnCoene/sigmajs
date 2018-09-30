@@ -6,7 +6,7 @@ globalVariables(c("id", "label", "sigmajsdelay", "size"))
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
 #' @param data Data.frame (or list) of nodes or edges.
-#' @param ... Any column name.
+#' @param ... Any column name, see details.
 #'
 #' @details 
 #' \strong{nodes}:

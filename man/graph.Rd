@@ -20,7 +20,7 @@ sg_nodes2(sg, data)
 
 \item{data}{Data.frame (or list) of nodes or edges.}
 
-\item{...}{Any column name.}
+\item{...}{Any column name, see details.}
 }
 \description{
 Add nodes and edges to a \code{sigmajs} graph.
