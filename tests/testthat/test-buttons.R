@@ -11,7 +11,7 @@ test_that("Buttons", {
     sg_nodes(nodes, id, size) %>% 
     sg_edges(edges, id, source, target) %>% 
     sg_force_start() %>% 
-    sg_button("start layout", "force_start", class = "btn btn-primary")
+    sg_button("force_start", "start layout", class = "btn btn-primary")
   
   expect_gt(length(sg$x$button), 0)
   

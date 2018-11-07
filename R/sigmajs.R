@@ -32,6 +32,7 @@ sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL
     data = list(),
 		type = type,
 		button = list(),
+		buttonevent = list(),
 		crosstalk = list(
 		  crosstalk_key = NULL,
 		  crosstalk_group = NULL
@@ -50,8 +51,10 @@ sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL
     package = 'sigmajs',
     elementId = elementId,
     sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.suppress = TRUE,
       browser.fill = TRUE,
-      padding = 20
+      padding = 20,
+      browser.external = TRUE
     ),
     dependencies = crosstalk::crosstalkLibs()
   )

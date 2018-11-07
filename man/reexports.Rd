@@ -4,6 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
+\alias{tags}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -11,6 +12,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{htmltools}{\code{\link[htmltools]{tags}}}
+
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 }}
 

@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.1</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.2.9000</span>
       </span>
     </div>
 
@@ -192,7 +192,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_button</span>(<span class='no'>sg</span>, <span class='no'>label</span>, <span class='no'>event</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"btn btn-default"</span>)</pre>
+    <pre class="usage"><span class='fu'>sg_button</span>(<span class='no'>sg</span>, <span class='no'>event</span>, <span class='no'>...</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"top"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"btn btn-default"</span>,
+  <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw pkg'>htmltools</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/htmltools/topics/builder'>tags</a></span>$<span class='no'>button</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,22 +203,34 @@
       <td><p>An object of class <code>sigmajs</code>as intatiated by <code><a href='sigmajs.html'>sigmajs</a></code>.</p></td>
     </tr>
     <tr>
-      <th>label</th>
-      <td><p>Button label.</p></td>
-    </tr>
-    <tr>
       <th>event</th>
       <td><p>Event the button triggers, see valid events.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Content of the button, complient with <code>htmltools</code>.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>Position of button, <code>top</code> or <code>bottom</code>.</p></td>
     </tr>
     <tr>
       <th>class</th>
       <td><p>Button <code>CSS</code> class, see note.</p></td>
     </tr>
+    <tr>
+      <th>tag</th>
+      <td><p>A Valid <a href='http://www.rdocumentation.org/packages/htmltools/topics/builder'>tags</a> function.</p></td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td><p>A valid CSS id.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>You can pass multiple events as a vector, see examples.</p>
+    <p>You can pass multiple events as a vector, see examples. You can also pass multiple buttons.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -239,6 +252,7 @@
 <li><p><code>animate</code></p></li>
 <li><p><code>export_svg</code></p></li>
 <li><p><code>export_img</code></p></li>
+<li><p><code>progress</code></p></li>
 </ul>
     
 
@@ -252,7 +266,7 @@
   <span class='fu'><a href='graph.html'>sg_edges</a></span>(<span class='no'>edges</span>, <span class='no'>id</span>, <span class='no'>source</span>, <span class='no'>target</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='force.html'>sg_force_start</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='force.html'>sg_force_stop</a></span>(<span class='fl'>3000</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_button</span>(<span class='st'>"start layout"</span>, <span class='fu'>c</span>(<span class='st'>"force_start"</span>, <span class='st'>"force_stop"</span>))
+  <span class='fu'>sg_button</span>(<span class='fu'>c</span>(<span class='st'>"force_start"</span>, <span class='st'>"force_stop"</span>), <span class='st'>"start layout"</span>)
 
 <span class='co'># additional nodes</span>
 <span class='no'>nodes2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate.html'>sg_make_nodes</a></span>()
@@ -264,7 +278,10 @@
 <span class='fu'><a href='sigmajs.html'>sigmajs</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='graph.html'>sg_nodes</a></span>(<span class='no'>nodes</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_static.html'>sg_add_nodes</a></span>(<span class='no'>nodes2</span>, <span class='no'>delay</span>, <span class='no'>id</span>, <span class='no'>label</span>, <span class='no'>size</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>sg_button</span>(<span class='st'>"add nodes"</span>, <span class='st'>"add_nodes"</span>)</div></pre>
+  <span class='fu'><a href='force.html'>sg_force_start</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='force.html'>sg_force_stop</a></span>(<span class='fl'>3000</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_button</span>(<span class='fu'>c</span>(<span class='st'>"force_start"</span>, <span class='st'>"force_stop"</span>), <span class='st'>"start layout"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>sg_button</span>(<span class='st'>"add_nodes"</span>, <span class='st'>"add nodes"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

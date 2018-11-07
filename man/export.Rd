@@ -52,7 +52,7 @@ sigmajs() \%>\%
   sg_nodes(nodes, id, size) \%>\% 
   sg_edges(edges, id, source, target) \%>\% 
   sg_export_svg() \%>\% 
-  sg_button("download", "export_svg")
+  sg_button("export_svg", "download")
 
 # demo("export-graph", package = "sigmajs")
 

@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE
 )
+library(htmltools)
 library(sigmajs)
 ```
 [sigma.js](http://sigmajs.org/) comes with countless [plugins](https://github.com/jacomyal/sigma.js/tree/master/plugins); the vast majority is available in the package.
@@ -94,10 +95,11 @@ sigmajs() %>%
   sg_edges(edges, id, source, target) %>% 
   sg_export_svg() %>% 
   sg_layout() %>% 
-  sg_button(
-    "<i class='fa fa-download'></i>", 
+  sg_button( 
     "export_svg", 
-    class = "btn btn-success"
+    tags$i("fa fa-download"),
+    class = "btn btn-success",
+    tag = tags$a
   )
 ```
 

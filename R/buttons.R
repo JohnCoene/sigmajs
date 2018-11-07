@@ -3,9 +3,12 @@
 #' Add buttons to your graph.
 #' 
 #' @inheritParams sg_nodes
-#' @param label Button label.
 #' @param event Event the button triggers, see valid events.
 #' @param class Button \code{CSS} class, see note.
+#' @param tag A Valid \link[htmltools]{tags} function.
+#' @param id A valid CSS id.
+#' @param position Position of button, \code{top} or \code{bottom}.
+#' @param ... Content of the button, complient with \code{htmltools}.
 #' 
 #' @section Events:
 #' \itemize{
@@ -21,9 +24,10 @@
 #'   \item{\code{animate}}
 #'   \item{\code{export_svg}}
 #'   \item{\code{export_img}}
+#'   \item{\code{progress}}
 #' }
 #' 
-#' @details You can pass multiple events as a vector, see examples.
+#' @details You can pass multiple events as a vector, see examples. You can also pass multiple buttons.
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes() 
@@ -35,7 +39,7 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_force_start() %>% 
 #'   sg_force_stop(3000) %>% 
-#'   sg_button("start layout", c("force_start", "force_stop"))
+#'   sg_button(c("force_start", "force_stop"), "start layout")
 #'   
 #' # additional nodes
 #' nodes2 <- sg_make_nodes()
@@ -47,15 +51,18 @@
 #' sigmajs() %>%
 #'   sg_nodes(nodes, id, label, size, color) %>%
 #'   sg_add_nodes(nodes2, delay, id, label, size, color) %>% 
-#'   sg_button("add nodes", "add_nodes")
+#'   sg_force_start() %>% 
+#'   sg_force_stop(3000) %>% 
+#'   sg_button(c("force_start", "force_stop"), "start layout") %>% 
+#'   sg_button("add_nodes", "add nodes")
 #' 
 #' @note The default class (\code{btn btn-default}) works with Bootstrap 3 (the default framework for Shiny and R markdown).
 #' 
 #' @export
-sg_button <- function(sg, label, event, class = "btn btn-default", tag = htmltools::tags$button, id = NULL){
+sg_button <- function(sg, event, ..., position = "top", class = "btn btn-default", tag = htmltools::tags$button, id = NULL){
   
-  if(missing(sg) || missing(label) || missing(event))
-    stop("missing sg or label or event")
+  if(missing(sg) ||  missing(event))
+    stop("missing sg or event")
   
   .test_sg(sg)
   
@@ -65,7 +72,7 @@ sg_button <- function(sg, label, event, class = "btn btn-default", tag = htmltoo
   if("add_nodes_edges" %in% event)
     warning("add_nodes_edges is deprecated, in favour of c('add_nodes', 'add_edges')", call. = FALSE)
   
-  if(!is.null(class)) 
+  if(is.null(class)) 
     class <- ""
   
   if(is.null(id))
@@ -73,12 +80,17 @@ sg_button <- function(sg, label, event, class = "btn btn-default", tag = htmltoo
   
   btn <- list(
     id = id,
-    label = label,
-    event = event,
-    className = paste("sigmajsbtn", class)
+    event = event
   )
   
   sg$x$button <- append(sg$x$button, list(btn))
-  sg %>% 
-    htmlwidgets::prependContent(sg, tag(id = id, class = paste("sigmajsbtn", class), label))
+  sg$x$buttonevent <- append(sg$x$buttonevent, event)
+  
+  if(position == "top"){
+    sg %>% 
+      htmlwidgets::prependContent(tag(id = id, class = paste("sigmajsbtn", class), ...))
+  } else {
+    sg %>% 
+      htmlwidgets::appendContent(tag(id = id, class = paste("sigmajsbtn", class), ...))
+  }
 }

@@ -4,23 +4,29 @@
 \alias{sg_button}
 \title{Buttons}
 \usage{
-sg_button(sg, label, event, class = "btn btn-default",
+sg_button(sg, event, ..., position = "top", class = "btn btn-default",
   tag = htmltools::tags$button, id = NULL)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
-\item{label}{Button label.}
-
 \item{event}{Event the button triggers, see valid events.}
 
+\item{...}{Content of the button, complient with \code{htmltools}.}
+
+\item{position}{Position of button, \code{top} or \code{bottom}.}
+
 \item{class}{Button \code{CSS} class, see note.}
+
+\item{tag}{A Valid \link[htmltools]{tags} function.}
+
+\item{id}{A valid CSS id.}
 }
 \description{
 Add buttons to your graph.
 }
 \details{
-You can pass multiple events as a vector, see examples.
+You can pass multiple events as a vector, see examples. You can also pass multiple buttons.
 }
 \note{
 The default class (\code{btn btn-default}) works with Bootstrap 3 (the default framework for Shiny and R markdown).
@@ -40,6 +46,7 @@ The default class (\code{btn btn-default}) works with Bootstrap 3 (the default f
   \item{\code{animate}}
   \item{\code{export_svg}}
   \item{\code{export_img}}
+  \item{\code{progress}}
 }
 }
 
@@ -53,7 +60,7 @@ sigmajs() \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_force_start() \%>\% 
   sg_force_stop(3000) \%>\% 
-  sg_button("start layout", c("force_start", "force_stop"))
+  sg_button(c("force_start", "force_stop"), "start layout")
   
 # additional nodes
 nodes2 <- sg_make_nodes()
@@ -65,6 +72,9 @@ nodes2$delay <- runif(nrow(nodes2), 500, 1000)
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_add_nodes(nodes2, delay, id, label, size, color) \%>\% 
-  sg_button("add nodes", "add_nodes")
+  sg_force_start() \%>\% 
+  sg_force_stop(3000) \%>\% 
+  sg_button(c("force_start", "force_stop"), "start layout") \%>\% 
+  sg_button("add_nodes", "add nodes")
 
 }

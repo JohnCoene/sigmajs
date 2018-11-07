@@ -46,7 +46,7 @@ nodes2$text <- seq.Date(Sys.Date(), Sys.Date() + 9, "days")
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_add_nodes(nodes2, delay, id, label, size, color) \%>\% 
-  sg_button("add", "add_nodes") \%>\% 
-  sg_progress(nodes2, delay, text, element = "h3")
+  sg_progress(nodes2, delay, text, element = "h3") \%>\%
+  sg_button(c("add_nodes", "progress"), "add") 
 
 }

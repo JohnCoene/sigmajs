@@ -1,3 +1,8 @@
+# sigmajs 0.1.2
+
+* Add multiple buttons with `sg_button`.
+* Improved documentation.
+
 # sigmajs 0.1.1
 
 * `sg_export` split into `sg_export_img` and `sg_export_svg`.
