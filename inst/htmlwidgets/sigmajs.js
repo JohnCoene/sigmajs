@@ -27,8 +27,8 @@ HTMLWidgets.widget({
 			renderValue: function (x) {
 			  
 			  var widget = document.getElementById(el.id);
-			  var button = widget.getElementsByTagName("button")[0];
-			  if(x.button.event === 'none'){
+			  var button = widget.getElementsByClassName("sigmajsbtn");
+			  /*if(x.button.event === 'none'){
 			    x.button.event = "none";
 			    
 			    if(typeof button !== "undefined"){
@@ -38,7 +38,16 @@ HTMLWidgets.widget({
 			  } else {
 			    button.className = x.button.className;
 			    button.innerHTML = x.button.label;
+			  }*/
+			  
+			  var btn; 
+			  for (var i = 0; i < x.button.length; i++){
+			    console.log(x.button[i]);
+			    btn = document.getElementById(x.button[i].id);
+			    x.button[i].btn = btn;
 			  }
+			  
+			  console.log(x.button);
 
 				// if gexf file
 				if (x.hasOwnProperty('gexf')) {

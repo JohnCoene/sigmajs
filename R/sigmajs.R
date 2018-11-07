@@ -31,7 +31,7 @@ sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL
     kill = kill,
     data = list(),
 		type = type,
-		button = list(event = "none", label = ""),
+		button = list(),
 		crosstalk = list(
 		  crosstalk_key = NULL,
 		  crosstalk_group = NULL
@@ -50,10 +50,8 @@ sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL
     package = 'sigmajs',
     elementId = elementId,
     sizingPolicy = htmlwidgets::sizingPolicy(
-      viewer.suppress = TRUE,
       browser.fill = TRUE,
-      padding = 20,
-      browser.external = TRUE
+      padding = 20
     ),
     dependencies = crosstalk::crosstalkLibs()
   )
@@ -98,12 +96,12 @@ sigmajsProxy <- function(id, session = shiny::getDefaultReactiveDomain()) {
 	return(proxy)
 }
 
-sigmajs_html <- function(id, style, class, ...){
-  htmltools::tags$div(
-    id = id, class = class, style = style,
-    htmltools::tags$button(
-      type = "button",
-      style = "display:block;"
-    )
-  )
-}
+# sigmajs_html <- function(id, style, class, ...){
+#   htmltools::tags$div(
+#     id = id, class = class, style = style,
+#     htmltools::tags$button(
+#       type = "button",
+#       style = "display:block;"
+#     )
+#   )
+# }

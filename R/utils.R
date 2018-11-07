@@ -127,3 +127,7 @@ globalVariables(c("from", "to", "."))
   return(g)
   
 }
+
+.make_rand_id <- function(){
+  paste0(sample(LETTERS, 5), 1:9, collapse = "")
+}

@@ -52,7 +52,7 @@
 #' @note The default class (\code{btn btn-default}) works with Bootstrap 3 (the default framework for Shiny and R markdown).
 #' 
 #' @export
-sg_button <- function(sg, label, event, class = "btn btn-default"){
+sg_button <- function(sg, label, event, class = "btn btn-default", tag = htmltools::tags$button, id = NULL){
   
   if(missing(sg) || missing(label) || missing(event))
     stop("missing sg or label or event")
@@ -65,13 +65,20 @@ sg_button <- function(sg, label, event, class = "btn btn-default"){
   if("add_nodes_edges" %in% event)
     warning("add_nodes_edges is deprecated, in favour of c('add_nodes', 'add_edges')", call. = FALSE)
   
+  if(!is.null(class)) 
+    class <- ""
+  
+  if(is.null(id))
+    id <- .make_rand_id()
+  
   btn <- list(
+    id = id,
     label = label,
-    event = event
+    event = event,
+    className = paste("sigmajsbtn", class)
   )
   
-  if(!is.null(class)) btn$className <- class
-  
-  sg$x$button <- btn
-  sg
+  sg$x$button <- append(sg$x$button, list(btn))
+  sg %>% 
+    htmlwidgets::prependContent(sg, tag(id = id, class = paste("sigmajsbtn", class), label))
 }
