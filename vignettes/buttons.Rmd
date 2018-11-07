@@ -75,8 +75,8 @@ sigmajs() %>%
   sg_add_nodes(nodes2, delay, id, label, size, color) %>% 
   sg_progress(nodes2, delay, text, element = "h3") %>%
   sg_force() %>% 
-  sg_button(c("add_nodes", "progress"), "add", tag = tags$a, style = "z-index:999;") %>% 
-  sg_button("force_start", "force", tag = tags$a, style = "z-index:999;")
+  sg_button(c("add_nodes", "progress"), "add", tag = tags$a, position = "bottom") %>% 
+  sg_button("force_start", "force", tag = tags$a, position = "bottom")
 ```
 
 Events that can be triggered via a button (corresponding function name minus `sg_`):
