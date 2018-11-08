@@ -142,7 +142,7 @@
       <h1>Settings</h1>
                         <h4 class="author">John Coene</h4>
             
-            <h4 class="date">2018-11-07</h4>
+            <h4 class="date">2018-11-08</h4>
       
       
       <div class="hidden name"><code>settings.Rmd</code></div>
@@ -155,23 +155,23 @@
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()
-edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)
-
-<span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, label, color, size) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(
-    <span class="dt">drawEdges =</span> <span class="ot">FALSE</span>,
-    <span class="dt">hoverFontStyle =</span> <span class="st">"bold"</span>, <span class="co"># bold labels on hover</span>
-    <span class="dt">labelColor =</span> <span class="st">"node"</span>, <span class="co"># node label color = respective node color</span>
-    <span class="dt">labelSizeRatio =</span> <span class="dv">2</span>,
-    <span class="dt">defaultHoverLabelBGColor =</span> <span class="st">"red"</span>, <span class="co"># hover label bg</span>
-    <span class="dt">defaultLabelHoverColor =</span> <span class="st">"white"</span> <span class="co"># hover label text color</span>
-  )</code></pre></div>
-<div id="htmlwidget-0c722345302760696793" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0c722345302760696793">{"x":{"kill":false,"data":{"nodes":[{"id":"1","label":"S19","color":"#B1E2A3","size":"2","x":" 7.467141","y":"13.27598"},{"id":"2","label":"D30","color":"#A5DBA3","size":"4","x":" 6.557479","y":"14.08872"},{"id":"3","label":"L64","color":"#9AD4A4","size":"5","x":" 9.541456","y":"13.48714"},{"id":"4","label":"K11","color":"#76BA99","size":"3","x":" 8.933793","y":"12.46670"},{"id":"5","label":"T72","color":"#48998A","size":"2","x":"10.174075","y":"12.27502"},{"id":"6","label":"G7","color":"#2D7E7E","size":"5","x":" 4.915639","y":"13.91626"},{"id":"7","label":"C29","color":"#236B76","size":"2","x":" 6.949318","y":"14.76248"},{"id":"8","label":"B28","color":"#1C686F","size":"3","x":" 9.426259","y":"16.20551"},{"id":"9","label":"H34","color":"#20986D","size":"3","x":" 8.388429","y":"14.92310"},{"id":"10","label":"I9","color":"#24C96B","size":"3","x":" 7.446115","y":"15.92564"}],"edges":[{"id":"1","source":"2","target":"1"},{"id":"2","source":"6","target":"2"},{"id":"3","source":"7","target":"7"},{"id":"4","source":"7","target":"10"},{"id":"5","source":"2","target":"7"},{"id":"6","source":"7","target":"1"},{"id":"7","source":"5","target":"4"},{"id":"8","source":"2","target":"2"},{"id":"9","source":"3","target":"5"},{"id":"10","source":"9","target":"8"},{"id":"11","source":"3","target":"9"},{"id":"12","source":"2","target":"9"},{"id":"13","source":"4","target":"3"},{"id":"14","source":"9","target":"10"},{"id":"15","source":"1","target":"4"}]},"type":"canvas","button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"drawEdges":false,"hoverFontStyle":"bold","labelColor":"node","labelSizeRatio":2,"defaultHoverLabelBGColor":"red","defaultLabelHoverColor":"white"}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">nodes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_nodes</a></span>()</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate.html">sg_make_edges</a></span>(nodes)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="../reference/sigmajs.html">sigmajs</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_nodes</a></span>(nodes, id, label, color, size) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/graph.html">sg_edges</a></span>(edges, id, source, target) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/layout.html">sg_layout</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/sg_settings.html">sg_settings</a></span>(</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="dt">drawEdges =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    <span class="dt">hoverFontStyle =</span> <span class="st">"bold"</span>, <span class="co"># bold labels on hover</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    <span class="dt">labelColor =</span> <span class="st">"node"</span>, <span class="co"># node label color = respective node color</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">    <span class="dt">labelSizeRatio =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="dt">defaultHoverLabelBGColor =</span> <span class="st">"red"</span>, <span class="co"># hover label bg</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">    <span class="dt">defaultLabelHoverColor =</span> <span class="st">"white"</span> <span class="co"># hover label text color</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">  )</a></code></pre></div>
+<div id="htmlwidget-d19f59d9de72c79095dd" style="width:100%;height:432.632880098888px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d19f59d9de72c79095dd">{"x":{"kill":false,"data":{"nodes":[{"id":"1","label":"V48","color":"#B1E2A3","size":"3","x":" 5.9029173","y":"6.698341"},{"id":"2","label":"A27","color":"#A5DBA3","size":"2","x":"-2.4493551","y":"7.978714"},{"id":"3","label":"N92","color":"#9AD4A4","size":"4","x":" 2.4356345","y":"6.238892"},{"id":"4","label":"H8","color":"#76BA99","size":"2","x":" 1.8136276","y":"5.063348"},{"id":"5","label":"N14","color":"#48998A","size":"5","x":" 1.2035255","y":"5.977360"},{"id":"6","label":"M91","color":"#2D7E7E","size":"5","x":" 4.0582296","y":"6.426419"},{"id":"7","label":"N92","color":"#236B76","size":"5","x":" 0.5969026","y":"6.711415"},{"id":"8","label":"D56","color":"#1C686F","size":"3","x":" 5.0193846","y":"6.391431"},{"id":"9","label":"L38","color":"#20986D","size":"2","x":"-1.1139357","y":"7.420212"},{"id":"10","label":"O93","color":"#24C96B","size":"5","x":" 7.3935657","y":"6.916199"}],"edges":[{"id":"1","source":"7","target":"5"},{"id":"2","source":"5","target":"4"},{"id":"3","source":"6","target":"8"},{"id":"4","source":"2","target":"9"},{"id":"5","source":"6","target":"8"},{"id":"6","source":"9","target":"7"},{"id":"7","source":"3","target":"7"},{"id":"8","source":"6","target":"3"},{"id":"9","source":"1","target":"10"},{"id":"10","source":"5","target":"3"},{"id":"11","source":"1","target":"6"},{"id":"12","source":"5","target":"7"},{"id":"13","source":"1","target":"8"},{"id":"14","source":"3","target":"6"},{"id":"15","source":"4","target":"3"}]},"type":"canvas","button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null},"settings":{"drawEdges":false,"hoverFontStyle":"bold","labelColor":"node","labelSizeRatio":2,"defaultHoverLabelBGColor":"red","defaultLabelHoverColor":"white"}},"evals":[],"jsHooks":[]}</script>
 </div>
   </div>
 

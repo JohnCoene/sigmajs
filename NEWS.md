@@ -1,6 +1,7 @@
 # sigmajs 0.1.2
 
 * Add multiple buttons with `sg_button`.
+* `sg_progress` * `sg_button` make use of `htmlwidgets` function to prepend or append elements rather than the previous hacky way; improved performances.
 * Improved documentation.
 
 # sigmajs 0.1.1

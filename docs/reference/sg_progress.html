@@ -192,8 +192,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>sg_progress</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>delay</span>, <span class='no'>text</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>, <span class='kw'>element</span> <span class='kw'>=</span> <span class='st'>"p"</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>sg_progress</span>(<span class='no'>sg</span>, <span class='no'>data</span>, <span class='no'>delay</span>, <span class='no'>text</span>, <span class='no'>...</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"top"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw pkg'>htmltools</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/htmltools/topics/builder'>span</a></span>, <span class='kw'>cumsum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,16 +215,20 @@
       <td><p>Text to appear on graph.</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Content of the button, complient with <code>htmltools</code>.</p></td>
+    </tr>
+    <tr>
       <th>position</th>
-      <td><p>Text position on graph.</p></td>
+      <td><p>Position of button, <code>top</code> or <code>bottom</code>.</p></td>
     </tr>
     <tr>
-      <th>element</th>
-      <td><p>DOM to contain the <code>text</code>.</p></td>
+      <th>id</th>
+      <td><p>A valid CSS id.</p></td>
     </tr>
     <tr>
-      <th>class</th>
-      <td><p>CSS class of <code>element</code> added.</p></td>
+      <th>tag</th>
+      <td><p>A Valid <a href='http://www.rdocumentation.org/packages/htmltools/topics/builder'>tags</a> function.</p></td>
     </tr>
     <tr>
       <th>cumsum</th>

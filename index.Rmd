@@ -391,6 +391,7 @@ sigmajs() %>% # initialise
   sg_edges(edges, id, source, target) %>% # add edges
   sg_layout() %>%  # layout
   sg_cluster() %>% # cluster
+  sg_drag_nodes() %>% # allows user to drag nodes
   sg_neighbours() # show node neighbours on node click
 ```
 
@@ -501,29 +502,6 @@ div(
     )
   )
 )
-```
-
-## Performances
-
-`sigmajs` can handle very large graphs thanks to its support of WebGL, below we graph 10,000 nodes (and it can handle much more!). _Note that the package also supports SVG._
-
-```{r, cache=TRUE, warning = FALSE}
-data <- sg_make_nodes_edges(10000) # make 10,000 nodes
-
-sigmajs("webgl") %>% # set to webgl
-  sg_nodes(data$nodes, id, size) %>% 
-  sg_edges(data$edges, id, source, target) %>% 
-  sg_layout() %>% 
-  sg_cluster() %>% 
-  sg_settings(
-    nodeColor = "default",
-    defaultNodeColor = "#328983",
-    edgeColor = "default",
-    defaultEdgeColor = "#b9b9b9",
-    minNodeSize = .8,
-    maxNodeSize = 2,
-    maxEdgeSize = .2
-  )
 ```
 
 ## Demos

@@ -181,14 +181,8 @@ HTMLWidgets.widget({
 				
 				// progress
 				if(x.hasOwnProperty('progressBar')){
-				  var bar = document.createElement(x.progressBar.element);
-				  bar.style.textAlign  = x.progressBar.position;
-				  bar.className = x.progressBar.class;
 				  
-				  // widget
-				  var element = document.getElementById(el.id);
-				  
-				  element.appendChild(bar);
+				  var bar = document.getElementById(x.progressBar.id);
 				  
 				  if(x.buttonevent.indexOf('progress') > -1){
 				    
@@ -204,6 +198,12 @@ HTMLWidgets.widget({
 				      }
 				    }
 				  
+				  } else {
+    				x.progressBar.data.forEach((element) => {
+    					setTimeout(function () {
+    						bar.innerHTML = element.text;
+    					}, element.delay);
+    				});
 				  }
 				}
 

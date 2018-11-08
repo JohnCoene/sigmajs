@@ -6,9 +6,10 @@
 #' @param data Data.frame holding \code{delay} and \code{text}.
 #' @param delay Delay, in milliseconds at which text should appear.
 #' @param text Text to appear on graph.
-#' @param position Text position on graph.
-#' @param element DOM to contain the \code{text}.
-#' @param class CSS class of \code{element} added.
+#' @param tag A Valid \link[htmltools]{tags} function.
+#' @param id A valid CSS id.
+#' @param position Position of button, \code{top} or \code{bottom}.
+#' @param ... Content of the button, complient with \code{htmltools}.
 #' @param cumsum Whether to compute the cumulative sum on the \code{delay}.
 #' 
 #' @details The \code{element} is passed to \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement}{Document.createElement()}
@@ -33,8 +34,8 @@
 #'   sg_button(c("add_nodes", "progress"), "add") 
 #' 
 #' @export
-sg_progress <- function(sg, data, delay, text, position = "right", 
-                        element = "p", class = NULL, cumsum = TRUE){
+sg_progress <- function(sg, data, delay, text, ..., position = "top", id = NULL,
+                        tag = htmltools::span, cumsum = TRUE){
   
   if(missing(data) || missing(delay) || missing(text))
     stop("missing data, delay or text")
@@ -46,14 +47,17 @@ sg_progress <- function(sg, data, delay, text, position = "right",
   text <- eval(substitute(text), data) # subset ids
   data <- data.frame(delay = delay_col, text = text)
   
-  if(is.null(class)) class <-  ""
+  if(is.null(id))
+    id <- .make_rand_id()
   
   sg$x$progressBar <- list(
-    class = class,
+    id = id,
     position = position,
-    element = element,
     data = apply(data, 1, as.list)
   )
   
-  sg
+  if(position == "top")
+    htmlwidgets::prependContent(sg, tag(id = id, ...))
+  else
+    htmlwidgets::appendContent(sg, tag(id = id, ...))
 }
