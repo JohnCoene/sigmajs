@@ -97,7 +97,7 @@ sigmajs() %>%
   sg_layout() %>% 
   sg_button( 
     "export_svg", 
-    tags$i("fa fa-download"),
+    tags$i(class = "fa fa-download"),
     class = "btn btn-success",
     tag = tags$a
   )
