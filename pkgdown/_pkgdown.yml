@@ -7,7 +7,7 @@ template:
       index_name: sigmajs
 
 development:
-  mode: unreleased
+  mode: release
 
 navbar:
   title: "sigmajs"
