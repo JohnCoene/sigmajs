@@ -3,6 +3,7 @@
 * Add multiple buttons with `sg_button`.
 * `sg_progress` * `sg_button` make use of `htmlwidgets` function to prepend or append elements rather than the previous hacky way; improved performances.
 * Improved documentation.
+* Works in RStudio viewer.
 
 # sigmajs 0.1.1
 
