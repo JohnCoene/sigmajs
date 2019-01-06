@@ -70,6 +70,7 @@ sigmajs() %>%
 # proxies demos
 demo(package = "sigmajs")
 ```
+
 ![](pkgdown/delay.gif)
 
 ## Contributing
