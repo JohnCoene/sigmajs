@@ -39,8 +39,6 @@ devtools::install_bitbucket("JohnCoene/sigmajs") # bitbucket
 
 Most functions have corresponding `demo()`, see [documentation](http://sigmajs.john-coene.com/) and [shiny demo](http://shiny.john-coene.com/sigmajs/).
 
-*Note that the graphs do not work in the RStudio viewer, and thus open in your default browser.*
-
 ```r
 library(sigmajs)
 
