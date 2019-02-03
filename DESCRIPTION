@@ -20,6 +20,7 @@ Imports:
     igraph,
     htmltools,
     purrr,
+    scales,
     crosstalk
 Suggests:
     knitr,

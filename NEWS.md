@@ -1,3 +1,8 @@
+# sigmajs 0.1.3
+
+* `igraph` object saved to speed up computations.
+* Added `sg_scale_color` to scale color according to node size.
+
 # sigmajs 0.1.2
 
 * Add multiple buttons with `sg_button`.
