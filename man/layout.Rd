@@ -5,10 +5,11 @@
 \alias{sg_get_layout}
 \title{Layouts}
 \usage{
-sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely, ...)
+sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely,
+  save_igraph = TRUE, ...)
 
 sg_get_layout(nodes, edges, directed = TRUE,
-  layout = igraph::layout_nicely, ...)
+  layout = igraph::layout_nicely, save_igraph = TRUE, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -16,6 +17,8 @@ sg_get_layout(nodes, edges, directed = TRUE,
 \item{directed}{Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.}
 
 \item{layout}{An \code{igraph} layout function.}
+
+\item{save_igraph}{Whether to save the \code{igraph} object used internally.}
 
 \item{...}{Any other parameter to pass to \code{layout} function.}
 
@@ -26,6 +29,10 @@ sg_get_layout(nodes, edges, directed = TRUE,
 }
 \description{
 Layout your graph.
+}
+\details{
+The package uses \code{igraph} internally for a lot of computations the \code{save_igraph} 
+allows saving the object to speed up subsequent computations.
 }
 \section{Functions}{
 

@@ -109,18 +109,14 @@ globalVariables(c("from", "to", "."))
   )
 }
 
-.build_igraph <- function(edges, directed = directed, nodes){
+.build_igraph <- function(edges, directed = FALSE, nodes, save = TRUE){
   
-  opt <- getOption("SIGMAJS_STORAGE")
-  g <- NULL
-  
-  if(isTRUE(opt))
-    g <- .get_graph()
+  g <- .get_graph()
   
   if(is.null(g)){
-    g <- igraph::graph_from_data_frame(edges, directed = directed, nodes)
+    g <- igraph::graph_from_data_frame(edges, directed, nodes)
     
-    if(isTRUE(opt))
+    if(isTRUE(save))
       assign("igraph", g, envir = storage_env)
   } 
   

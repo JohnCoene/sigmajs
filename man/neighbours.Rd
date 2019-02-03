@@ -19,7 +19,7 @@ Highlight node neighbours on click.
 }
 \examples{
 nodes <- sg_make_nodes() 
-edges <- sg_make_edges(nodes, 17)
+edges <- sg_make_edges(nodes, 20)
 
 sigmajs() \%>\% 
   sg_nodes(nodes, id, size, color) \%>\% 

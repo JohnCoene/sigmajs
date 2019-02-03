@@ -7,11 +7,12 @@
 \usage{
 sg_cluster(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
   "#24C96B"), directed = TRUE, algo = igraph::cluster_walktrap,
-  quiet = !interactive(), ...)
+  quiet = !interactive(), save_igraph = TRUE, ...)
 
 sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
   "#1C5C70", "#24C96B"), directed = TRUE,
-  algo = igraph::cluster_walktrap, quiet = !interactive(), ...)
+  algo = igraph::cluster_walktrap, quiet = !interactive(),
+  save_igraph = TRUE, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
@@ -24,6 +25,8 @@ sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
 
 \item{quiet}{Set to \code{TRUE} to print the number of clusters to the console.}
 
+\item{save_igraph}{Whether to save the \code{igraph} object used internally.}
+
 \item{...}{Any parameter to pass to \code{algo}.}
 
 \item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
@@ -33,6 +36,10 @@ sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
 }
 \description{
 Color nodes by cluster.
+}
+\details{
+The package uses \code{igraph} internally for a lot of computations the \code{save_igraph} 
+allows saving the object to speed up subsequent computations.
 }
 \section{Functions}{
 

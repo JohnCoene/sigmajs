@@ -6,7 +6,11 @@
 #' @param nodes,edges Nodes and edges as prepared for sigmajs.
 #' @param directed Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.
 #' @param layout An \code{igraph} layout function.
+#' @param save_igraph Whether to save the \code{igraph} object used internally.
 #' @param ... Any other parameter to pass to \code{layout} function.
+#' 
+#' @details The package uses \code{igraph} internally for a lot of computations the \code{save_igraph} 
+#' allows saving the object to speed up subsequent computations.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -29,7 +33,7 @@
 #' 
 #' @rdname layout
 #' @export
-sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
+sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, save_igraph = TRUE, ...){
   
   if (missing(sg))
     stop("missing sg", call. = FALSE)
@@ -43,7 +47,7 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
   # clean
   nodes <- .rm_x_y(nodes)
   
-  nodes <- sg_get_layout(nodes, edges, directed, layout, ...)
+  nodes <- sg_get_layout(nodes, edges, directed, layout, save_igraph = save_igraph, ...)
   
   nodes <- apply(nodes, 1, as.list)
   
@@ -53,7 +57,7 @@ sg_layout <- function(sg, directed = TRUE, layout = igraph::layout_nicely, ...){
 
 #' @rdname layout
 #' @export
-sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout_nicely, ...){
+sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout_nicely, save_igraph = TRUE, ...){
   
   if (missing(nodes) || missing(edges))
     stop("missing nodes or edges", call. = FALSE)
@@ -63,7 +67,7 @@ sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout
   nodes <- .rm_x_y(nodes)
   nodes <- .re_order_nodes(nodes)
   
-  g <- .build_igraph(edges, directed = directed, nodes)
+  g <- .build_igraph(edges, directed = directed, nodes, save = save_igraph)
   
   l <- layout(g, ...)
   l <- as.data.frame(l) %>% 
