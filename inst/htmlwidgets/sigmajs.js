@@ -502,7 +502,7 @@ HTMLWidgets.widget({
 
 					// click nodeS
 					s.bind('clickNodes', function (e) {
-						Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+						Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.node);
 					});
 
 					// click edge
@@ -512,7 +512,7 @@ HTMLWidgets.widget({
 
 					// click edgeS
 					s.bind('clickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edges);
+						Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// click stage
@@ -537,7 +537,7 @@ HTMLWidgets.widget({
 
 					// double click nodeS
 					s.bind('doubleClickNodes', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+						Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.node);
 					});
 
 					// double click edge
@@ -547,7 +547,7 @@ HTMLWidgets.widget({
 
 					// double click edgeS
 					s.bind('doubleClickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edges);
+						Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// right click node
@@ -567,7 +567,7 @@ HTMLWidgets.widget({
 
 					// right click edgeS
 					s.bind('rightClickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edges);
+						Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// over node
@@ -577,7 +577,7 @@ HTMLWidgets.widget({
 
 					// over nodeS
 					s.bind('overNodes', function (e) {
-						Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.nodes);
+						Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
 					});
 
 					// over edge
@@ -587,7 +587,7 @@ HTMLWidgets.widget({
 
 					// over edgeS
 					s.bind('overEdges', function (e) {
-						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edges);
+						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 
 					// out node
@@ -597,7 +597,7 @@ HTMLWidgets.widget({
 
 					// out nodeS
 					s.bind('outNodes', function (e) {
-						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.nodes);
+						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.node);
 					});
 
 					// out edge
@@ -607,7 +607,7 @@ HTMLWidgets.widget({
 
 					// out edgeS
 					s.bind('outEdges', function (e) {
-						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edges);
+						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 				}
 			
