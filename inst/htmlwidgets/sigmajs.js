@@ -995,6 +995,24 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
+
+	Shiny.addCustomMessageHandler('sg_zoom_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				let aNode = s.graph.nodes()[message.node]
+				let cam = s.camera 
+				let pfx = cam.readPrefix
+				sigma.utils.zoomTo(
+					cam,                        // cam
+					aNode[pfx + 'x'] - cam.x,   // x
+					aNode[pfx + 'y'] - cam.y,   // y
+					.5,                         // ratio
+					{'duration': message.duration}          // animation
+				)
+			}
+		}
+	);
 	
 	// filter greater than
 	Shiny.addCustomMessageHandler('sg_filter_gt_p',
