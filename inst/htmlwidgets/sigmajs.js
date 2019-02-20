@@ -1016,8 +1016,8 @@ if (HTMLWidgets.shinyMode) {
 				let pfx = cam.readPrefix
 				sigma.utils.zoomTo(
 					cam,                        // cam
-					aNode[pfx + 'x'] - cam.x,   // x
-					aNode[pfx + 'y'] - cam.y,   // y
+					aNode[pfx + 'x'],  // x
+					aNode[pfx + 'y'],   // y
 					message.ratio,                         // ratio
 					{'duration': message.duration}          // animation
 				)
