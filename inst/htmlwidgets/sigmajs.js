@@ -1011,16 +1011,16 @@ if (HTMLWidgets.shinyMode) {
 		function (message) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
-				let aNode = s.graph.nodes()[message.node]
-				let cam = s.camera 
-				let pfx = cam.readPrefix
-				sigma.utils.zoomTo(
-					cam,                        // cam
-					aNode[pfx + 'x'],  // x
-					aNode[pfx + 'y'],   // y
-					message.ratio,                         // ratio
-					{'duration': message.duration}          // animation
-				)
+				let n = s.graph.nodes()[message.node];
+				sigma.misc.animation.camera(
+					s.camera, 
+					{
+						x: n[s.camera.readPrefix + 'x'], 
+						y: n[s.camera.readPrefix + 'y'],
+						ratio: message.ratio
+					}, 
+					{duration: message.duration}
+				);
 			}
 		}
 	);
