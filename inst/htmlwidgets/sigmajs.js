@@ -976,6 +976,17 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
+
+	// noverlap
+	Shiny.addCustomMessageHandler('sg_noverlap_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				var listener_proxy = s.configNoverlap(message.config);
+				s.startNoverlap();
+			}
+		}
+	);
 	
 	// export
 	Shiny.addCustomMessageHandler('sg_export_svg_p',
@@ -1007,7 +1018,7 @@ if (HTMLWidgets.shinyMode) {
 					cam,                        // cam
 					aNode[pfx + 'x'] - cam.x,   // x
 					aNode[pfx + 'y'] - cam.y,   // y
-					.5,                         // ratio
+					message.ratio,                         // ratio
 					{'duration': message.duration}          // animation
 				)
 			}

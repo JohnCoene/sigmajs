@@ -7,7 +7,7 @@
 \usage{
 sg_noverlap(sg, ...)
 
-sg_noverlap_p(proxy)
+sg_noverlap_p(proxy, nodeMargin = 5, ...)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

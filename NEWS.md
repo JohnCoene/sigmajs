@@ -2,6 +2,9 @@
 
 * `igraph` object saved to speed up computations.
 * Added `sg_scale_color` to scale color according to node size.
+* `sg_noverlap_p` fixed.
+* `sg_zoom_p` added.
+* fixed many events callbacks.
 
 # sigmajs 0.1.2
 

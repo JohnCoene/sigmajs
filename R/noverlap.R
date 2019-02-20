@@ -4,6 +4,7 @@
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
+#' @param nodeMargin The additional minimum space to apply around each and every node.
 #' @param ... any option to pass to the plugin, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}.
 #'
 #' @examples
@@ -32,13 +33,13 @@ sg_noverlap <- function(sg, ...) {
 
 #' @rdname noverlap
 #' @export
-sg_noverlap_p <- function(proxy) {
+sg_noverlap_p <- function(proxy, nodeMargin = 5, ...) {
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id) # create message
+	message <- list(id = proxy$id, config = list(nodeMargin = nodeMargin, ...)) # create message
 
-	proxy$session$sendCustomMessage("sg_noverlap_start_p", message)
+	proxy$session$sendCustomMessage("sg_noverlap_p", message)
 
 	return(proxy)
 }

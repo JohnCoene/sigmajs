@@ -53,6 +53,8 @@ div(
 * Enable nodes drag.
 * Start/kill/restart force layout.
 * Refresh the graph.
+* Zoom on a node.
+* Export the graph to SVG or image format.
 
 ### Walkthrough
 

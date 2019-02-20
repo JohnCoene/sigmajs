@@ -4,12 +4,14 @@
 \alias{sg_zoom_p}
 \title{Zoom}
 \usage{
-sg_zoom_p(proxy, id, duration = 1000)
+sg_zoom_p(proxy, id, ratio = 0.5, duration = 1000)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
 \item{id}{Node id to zoom to.}
+
+\item{ratio}{The zoom ratio of the graph and its items.}
 
 \item{duration}{Duration of animation.}
 }
