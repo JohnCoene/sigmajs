@@ -15,6 +15,8 @@ sg_noverlap_p(proxy, nodeMargin = 5, ...)
 \item{...}{any option to pass to the plugin, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}.}
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
+
+\item{nodeMargin}{The additional minimum space to apply around each and every node.}
 }
 \description{
 This plugin runs an algorithm which distributes nodes in the network, ensuring that they do not overlap and providing a margin where specified.
