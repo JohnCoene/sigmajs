@@ -5,6 +5,7 @@
 * `sg_noverlap_p` fixed.
 * `sg_zoom_p` added.
 * fixed many events callbacks.
+* `sg_get_nodes_p` and `sg_get_edges_p` added to retrieve nodes and edges from draw graph.
 
 # sigmajs 0.1.2
 
