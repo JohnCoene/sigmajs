@@ -48,7 +48,7 @@ sg_get_nodes_p <- function(proxy) {
 	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_get_nodes_p", message)
-
+  return(proxy)
 }
 
 #' @rdname get_graph
@@ -63,5 +63,5 @@ sg_get_edges_p <- function(proxy) {
 	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_get_edges_p", message)
-
+  return(proxy)
 }

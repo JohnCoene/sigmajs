@@ -45,6 +45,6 @@ server <- function(input, output){
   })
 
 }
-if(interative()) shinyApp(ui, server) # run
+if(interactive()) shinyApp(ui, server) # run
 
 }
