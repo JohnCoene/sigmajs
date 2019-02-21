@@ -27,10 +27,3 @@ Proxies to dynamically drop *multiple* nodes or edges from an already existing g
 Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 make sure you also have it in your proxy.
 }
-\examples{
-\dontrun{
-demo("add-nodes", package = "sigmajs")
-demo("add-edges", package = "sigmajs")
-}
-
-}

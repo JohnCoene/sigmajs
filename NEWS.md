@@ -6,6 +6,7 @@
 * `sg_zoom_p` added.
 * fixed many events callbacks.
 * `sg_get_nodes_p` and `sg_get_edges_p` added to retrieve nodes and edges from draw graph.
+* `sg_drop_edges_p` and `sg_drop_nodes_p` now function properly.
 
 # sigmajs 0.1.2
 

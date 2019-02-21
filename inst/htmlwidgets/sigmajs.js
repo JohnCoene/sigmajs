@@ -922,6 +922,42 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
+
+	Shiny.addCustomMessageHandler('sg_drop_nodes_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				message.data.forEach((element) => {
+					s.graph.dropNode(element);
+					if (message.refresh === true && message.rate === "iteration") {
+						s.refresh();
+					}
+				});
+
+				if (message.refresh === true && message.rate === "once") {
+					s.refresh();
+				}
+			}
+		}
+	);
+
+	Shiny.addCustomMessageHandler('sg_drop_edges_p',
+	function (message) {
+		var s = get_sigma_graph(message.id);
+		if (typeof s != 'undefined') {
+			message.data.forEach((element) => {
+				s.graph.dropEdge(element);
+				if (message.refresh === true && message.rate === "iteration") {
+					s.refresh();
+				}
+			});
+
+			if (message.refresh === true && message.rate === "once") {
+				s.refresh();
+			}
+		}
+	}
+);
 	
 	// add edges delay
 	Shiny.addCustomMessageHandler('sg_drop_edges_delay_p',
@@ -1048,7 +1084,7 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			var id = get_sigma_element(message.id);
 			if (typeof s != 'undefined') {
-				Shiny.setInputValue(id + '_nodes' + ":sigmajsParseJS", s.graph.nodes());
+				Shiny.setInputValue(id + '_nodes' + ":sigmajsParseJS", s.graph.nodes(), {priority: "event"});
 			}
 		}
 	);
@@ -1058,7 +1094,7 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			var id = get_sigma_element(message.id);
 			if (typeof s != 'undefined') {
-				Shiny.setInputValue(id + '_edges' + ":sigmajsParseJS", s.graph.edges());
+				Shiny.setInputValue(id + '_edges' + ":sigmajsParseJS", s.graph.edges(), {priority: "event"});
 			}
 		}
 	);

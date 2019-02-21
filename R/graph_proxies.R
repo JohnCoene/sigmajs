@@ -329,12 +329,6 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 #' @param ids Column containing ids to drop from the graph.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
-#' 
-#' @examples
-#' \dontrun{
-#' demo("add-nodes", package = "sigmajs")
-#' demo("add-edges", package = "sigmajs")
-#' }
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
