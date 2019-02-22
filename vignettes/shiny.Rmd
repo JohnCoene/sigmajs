@@ -237,14 +237,16 @@ Easy! Just use your plot as an `input` that points to the graph id (`sg`) follow
 
 Now that you are familiar with proxies, we can add a filter to filter nodes, edges or both.
 
-* `g_filter_gt_p` - filter greater than
-* `g_filter_lt_p` - filter less than
-* `g_filter_eq_p` - filter equal to
-* `g_filter_not_eq_p` - filter not equal to
+* `sg_filter_gt_p` - filter greater than
+* `sg_filter_lt_p` - filter less than
+* `sg_filter_eq_p` - filter equal to $x$
+* `sg_filter_not_eq_p` - filter not equal to $x$
+* `sg_filter_not_eq_p` - undo filter
 
 Let's take our basic Shiny app and add our filter.
 
 ```{r, eval = FALSE}
+
 nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes)
 
@@ -269,7 +271,8 @@ server <- function(input, output){
 
   observeEvent(input$filter, {
     sigmajsProxy("sg") %>% 
-      sg_filter_gt_p(input$filterNodes, "size")
+      sg_filter_undo_p("sz") %>% # we undo the filter before applying it
+      sg_filter_gt_p(input$filter, "size", name = "sz")
   })
 
 }
