@@ -8,6 +8,7 @@
 * `sg_get_nodes_p` and `sg_get_edges_p` added to retrieve nodes and edges from draw graph.
 * `sg_drop_edges_p` and `sg_drop_nodes_p` now function properly.
 * The filter family of functions sees the addition of the `name` argument as well as `sg_filter_undo_p` to undo fitlers (by name).
+* `sg_clear` added
 
 # sigmajs 0.1.2
 

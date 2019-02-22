@@ -61,6 +61,10 @@ HTMLWidgets.widget({
     					settings: x.settings
     				});
 					} 
+
+					if(s.clear === true){
+					  s.clear();
+					}
 					
 					if(x.kill === true){
 					  
@@ -617,6 +621,8 @@ HTMLWidgets.widget({
 			for(var name in s.renderers)
 				s.renderers[name].resize(width, height);
 		},
+
+		s: s,
 		
 		getCamera: function() {
 		  return cam;
