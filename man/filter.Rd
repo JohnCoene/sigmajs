@@ -3,11 +3,18 @@
 \name{sg_filter_gt_p}
 \alias{sg_filter_gt_p}
 \alias{sg_filter_lt_p}
+\alias{sg_filter_eq_p}
+\alias{sg_filter_not_eq_p}
 \title{FIlter}
 \usage{
-sg_filter_gt_p(proxy, input, var, target = "nodes")
+sg_filter_gt_p(proxy, input, var, target = c("nodes", "edges", "both"))
 
-sg_filter_lt_p(proxy, input, var, target = "nodes")
+sg_filter_lt_p(proxy, input, var, target = c("nodes", "edges", "both"))
+
+sg_filter_eq_p(proxy, input, var, target = c("nodes", "edges", "both"))
+
+sg_filter_not_eq_p(proxy, input, var, target = c("nodes", "edges",
+  "both"))
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
@@ -26,6 +33,8 @@ Filter nodes and/or edges.
 \itemize{
   \item{\code{sg_filter_gt_p} Filter greater than \code{var}.}
   \item{\code{sg_filter_lt_p} Filter less than \code{var}.}
+  \item{\code{sg_filter_eq_p} Filter equal to \code{var}.}
+  \item{\code{sg_filter_not_eq_p} Filter not equal to \code{var}.}
 }
 }
 

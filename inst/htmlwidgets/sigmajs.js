@@ -1177,4 +1177,82 @@ if (HTMLWidgets.shinyMode) {
 		}
 	);
 
+	// filter equal
+	Shiny.addCustomMessageHandler('sg_filter_eq_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			
+			if (typeof s != 'undefined') {
+			  
+			  var filter = new sigma.plugins.filter(s);
+			  
+			  if(message.target === "both"){
+          filter
+            .undo()
+            .nodesBy(function(n) {
+              return n[message.var] == message.input;
+            })
+            .edgesBy(function(e) {
+              return e[message.var] == message.input;
+            })
+            .apply();
+			  } else if(message.target === "nodes"){
+          filter
+            .undo()
+            .nodesBy(function(n) {
+              return n[message.var] == message.input;
+            })
+            .apply();
+			  } else {
+          filter
+            .undo()
+            .edgesBy(function(e) {
+              return e[message.var] == message.input;
+            })
+            .apply();
+			  }
+				
+			}
+		}
+	);
+
+	// filter not equal
+	Shiny.addCustomMessageHandler('sg_filter_not_eq_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			
+			if (typeof s != 'undefined') {
+			  
+			  var filter = new sigma.plugins.filter(s);
+			  
+			  if(message.target === "both"){
+          filter
+            .undo()
+            .nodesBy(function(n) {
+              return n[message.var] != message.input;
+            })
+            .edgesBy(function(e) {
+              return e[message.var] != message.input;
+            })
+            .apply();
+			  } else if(message.target === "nodes"){
+          filter
+            .undo()
+            .nodesBy(function(n) {
+              return n[message.var] != message.input;
+            })
+            .apply();
+			  } else {
+          filter
+            .undo()
+            .edgesBy(function(e) {
+              return e[message.var] != message.input;
+            })
+            .apply();
+			  }
+				
+			}
+		}
+	);
+
 }

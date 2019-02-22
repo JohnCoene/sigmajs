@@ -239,6 +239,8 @@ Now that you are familiar with proxies, we can add a filter to filter nodes, edg
 
 * `g_filter_gt_p` - filter greater than
 * `g_filter_lt_p` - filter less than
+* `g_filter_eq_p` - filter equal to
+* `g_filter_not_eq_p` - filter not equal to
 
 Let's take our basic Shiny app and add our filter.
 

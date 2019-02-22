@@ -11,6 +11,8 @@
 #' \itemize{
 #'   \item{\code{sg_filter_gt_p} Filter greater than \code{var}.}
 #'   \item{\code{sg_filter_lt_p} Filter less than \code{var}.}
+#'   \item{\code{sg_filter_eq_p} Filter equal to \code{var}.}
+#'   \item{\code{sg_filter_not_eq_p} Filter not equal to \code{var}.}
 #' }
 #' 
 #' @examples 
@@ -18,7 +20,7 @@
 #' 
 #' @rdname filter
 #' @export
-sg_filter_gt_p <- function(proxy, input, var, target = "nodes"){
+sg_filter_gt_p <- function(proxy, input, var, target = c("nodes", "edges", "both")){
   
   if (missing(proxy))
     stop("must pass proxy", call. = FALSE)
@@ -29,7 +31,7 @@ sg_filter_gt_p <- function(proxy, input, var, target = "nodes"){
     id = proxy$id, 
     input = input, 
     var = var,
-    target = target
+    target = match.arg(target)
   ) 
   
   proxy$session$sendCustomMessage("sg_filter_gt_p", message)
@@ -39,7 +41,7 @@ sg_filter_gt_p <- function(proxy, input, var, target = "nodes"){
 
 #' @rdname filter
 #' @export
-sg_filter_lt_p <- function(proxy, input, var, target = "nodes"){
+sg_filter_lt_p <- function(proxy, input, var, target = c("nodes", "edges", "both")){
   
   if (missing(proxy))
     stop("must pass proxy", call. = FALSE)
@@ -50,10 +52,52 @@ sg_filter_lt_p <- function(proxy, input, var, target = "nodes"){
     id = proxy$id, 
     input = input, 
     var = var,
-    target = target
+    target = match.arg(target)
   ) 
   
   proxy$session$sendCustomMessage("sg_filter_lt_p", message)
+  
+  return(proxy)
+}
+
+#' @rdname filter
+#' @export
+sg_filter_eq_p <- function(proxy, input, var, target = c("nodes", "edges", "both")){
+  
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
+  
+  message <- list(
+    id = proxy$id, 
+    input = input, 
+    var = var,
+    target = match.arg(target)
+  ) 
+  
+  proxy$session$sendCustomMessage("sg_filter_eq_p", message)
+  
+  return(proxy)
+}
+
+#' @rdname filter
+#' @export
+sg_filter_not_eq_p <- function(proxy, input, var, target = c("nodes", "edges", "both")){
+  
+  if (missing(proxy))
+    stop("must pass proxy", call. = FALSE)
+  
+  .test_proxy(proxy)
+  
+  message <- list(
+    id = proxy$id, 
+    input = input, 
+    var = var,
+    target = match.arg(target)
+  ) 
+  
+  proxy$session$sendCustomMessage("sg_filter_not_eq_p", message)
   
   return(proxy)
 }
