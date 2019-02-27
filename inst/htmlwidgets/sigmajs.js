@@ -61,6 +61,10 @@ HTMLWidgets.widget({
     					settings: x.settings
     				});
 					} 
+
+					if(s.clear === true){
+					  s.clear();
+					}
 					
 					if(x.kill === true){
 					  
@@ -619,6 +623,8 @@ HTMLWidgets.widget({
 			for(var name in s.renderers)
 				s.renderers[name].resize(width, height);
 		},
+
+		s: s,
 		
 		getCamera: function() {
 		  return cam;
@@ -1097,6 +1103,47 @@ if (HTMLWidgets.shinyMode) {
 			var id = get_sigma_element(message.id);
 			if (typeof s != 'undefined') {
 				Shiny.setInputValue(id + '_edges' + ":sigmajsParseJS", s.graph.edges(), {priority: "event"});
+			}
+		}
+	);
+
+	// change node attributes
+	Shiny.addCustomMessageHandler('sg_change_nodes_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			var i = 0;
+			if (typeof s != 'undefined') {
+				s.graph.nodes().forEach((n) => {
+					n[message.message.attribute] = message.message.value[i];
+					if (message.message.refresh === true && message.message.rate === "iteration") {
+						s.refresh();
+					}
+					i = i + 1
+				});
+
+				if (message.message.refresh === true && message.message.rate === "once") {
+					s.refresh();
+				}
+			}
+		}
+	);
+
+	Shiny.addCustomMessageHandler('sg_change_edges_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			var i = 0;
+			if (typeof s != 'undefined') {
+				s.graph.edges().forEach((n) => {
+					n[message.message.attribute] = message.message.value[i];
+					if (message.message.refresh === true && message.message.rate === "iteration") {
+						s.refresh();
+					}
+					i = i + 1
+				});
+
+				if (message.message.refresh === true && message.message.rate === "once") {
+					s.refresh();
+				}
 			}
 		}
 	);

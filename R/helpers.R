@@ -94,13 +94,14 @@ sg_make_nodes_edges <- function(n, ...){
   )
 }
 
-#' Kill
+#' Kill or clear
 #' 
 #' Kill the graph to ensure new data is redrawn, useful in Shiny 
-#' when graph is not updated bz \code{\link{sigmajsProxy}}.
+#' when graph is not updated by \code{\link{sigmajsProxy}}.
 #' 
 #' @inheritParams sg_nodes
 #' 
+#' @rdname clear-kill
 #' @export
 sg_kill <- function(sg){
   .test_sg(sg)
@@ -108,6 +109,16 @@ sg_kill <- function(sg){
   sg$x$kill <- TRUE
   sg
 }
+
+#' @rdname clear-kill
+#' @export
+sg_clear <- function(sg){
+  .test_sg(sg)
+  
+  sg$x$clear <- TRUE
+  sg
+}
+
 
 #' Color
 #' 
