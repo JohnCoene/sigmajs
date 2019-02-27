@@ -517,17 +517,17 @@ HTMLWidgets.widget({
 
 					// click stage
 					s.bind('clickStage', function (e) {
-						Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", true);
+						Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
 					});
 
 					// double click stage
 					s.bind('doubleClickStage', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", true);
+						Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
 					});
 
 					// right click stage
 					s.bind('rightClickStage', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", true);
+						Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
 					});
 
 					// double click node
@@ -610,6 +610,8 @@ HTMLWidgets.widget({
 						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
 					});
 				}
+
+				var initialized = true;
 			
 		},
 
