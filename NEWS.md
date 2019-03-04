@@ -10,6 +10,7 @@
 * The filter family of functions sees the addition of the `name` argument as well as `sg_filter_undo_p` to undo fitlers (by name).
 * `sg_clear` added to clear the graph.
 * `sg_change_*_p` family added to change nodes and edges attributes on the fly.
+* Event improved.
 
 # sigmajs 0.1.2
 

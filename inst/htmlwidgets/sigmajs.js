@@ -53,33 +53,24 @@ HTMLWidgets.widget({
 						}
 					);
 				} else {
-					// create
-					if(!initialized){
-					  initialized = true;
-    				s = new sigma({
-    					graph: x.data,
-    					settings: x.settings
-    				});
-					} 
 
-					if(s.clear === true){
-					  s.clear();
-					}
-					
-					if(x.kill === true){
-					  
-					  s.kill();
-					  
+					if (HTMLWidgets.shinyMode) { // If in Shiny app
+						// Remove previous occurences of plots in the <div>
+						sigmaID = document.getElementById(el.id)
+						while (sigmaID.firstChild) {
+							//The list is LIVE so it will re-index each call
+							sigmaID.removeChild(sigmaID.firstChild);
+						}
     				s = new sigma({
     					graph: x.data,
     					settings: x.settings
     				});
+						s.refresh();
 					}
 					
 				  renderer = s.addRenderer({
 						container: el.id,
 						type: x.type
-						
 				  });
 				}
 				
@@ -623,8 +614,6 @@ HTMLWidgets.widget({
 			for(var name in s.renderers)
 				s.renderers[name].resize(width, height);
 		},
-
-		s: s,
 		
 		getCamera: function() {
 		  return cam;
