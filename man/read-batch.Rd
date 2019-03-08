@@ -20,9 +20,10 @@ sg_read_delay_exec_p(proxy, refresh = TRUE)
 
 \item{...}{any column.}
 
-\item{refresh}{Whether to refresh the graph after each batch (\code{delay}) has been added to the graph.}
+\item{delay}{Column name of containing batch identifier.}
 
-\item{batch}{Column name of containing batch identifier.}
+\item{refresh}{Whether to refresh the graph after each batch (\code{delay}) has been added to the graph.
+Note that this will also automatically restart any running force layout.}
 }
 \description{
 Read nodes and edges by batch with a delay.
@@ -52,11 +53,11 @@ server <- function(input, output, session){
 			id = 1:80,
 			source = c(
 				sample(1:25, 40, replace = TRUE),
-				sample(26:50, 40, replace = TRUE)
+				sample(1:50, 40, replace = TRUE)
 			),
 			target = c(
 				sample(1:25, 40, replace = TRUE),
-				sample(26:50, 40, replace = TRUE)
+				sample(1:50, 40, replace = TRUE)
 			),
 			batch = c(
 				rep(1000, 40),
@@ -66,10 +67,10 @@ server <- function(input, output, session){
 		dplyr::mutate_all(as.character)
 
 		sigmajsProxy("sg") \%>\% 
-			sg_read_batch_nodes_p(nodes, id, color, label, size, batch = "batch") \%>\% 
-			sg_read_batch_edges_p(edges, id, source, target, batch = "batch") \%>\% 
-			sg_read_batch_exec_p() \%>\% 
-			sg_refresh_p()
+     sg_force_start_p() \%>\% 
+			sg_read_delay_nodes_p(nodes, id, color, label, size, delay = "batch") \%>\% 
+			sg_read_delay_edges_p(edges, id, source, target, delay = "batch") \%>\% 
+			sg_read_delay_exec_p() 
 	})
 
 }

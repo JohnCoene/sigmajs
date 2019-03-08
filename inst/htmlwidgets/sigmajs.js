@@ -1043,10 +1043,17 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				message.data.forEach(function(data){
+					var running = s.isForceAtlas2Running();
 					setTimeout(function () {
+						if (message.refresh === true && running === true) {
+							s.killForceAtlas2();
+						}
 						s.graph.read(data);
 						if(message.refresh === true)
 							s.refresh();
+						if (message.refresh === true && running === true) {
+							s.startForceAtlas2();
+						}
 					}, data.nodes[0].delay);
 				});
 			}
