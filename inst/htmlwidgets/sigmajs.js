@@ -1033,7 +1033,18 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				s.graph.read(message.data)
-				s.refresh();
+			}
+		}
+	);
+
+	// read batch data
+	Shiny.addCustomMessageHandler('sg_read_bacth_exec_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				message.data.forEach(function(data){
+					s.graph.read(data);
+				});
 			}
 		}
 	);

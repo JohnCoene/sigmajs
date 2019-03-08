@@ -593,3 +593,128 @@ sg_read_exec_p <- function(proxy){
 	proxy$session$sendCustomMessage("sg_read_exec_p", proxy$message)
 	return(proxy)
 }
+
+#' Batch read
+#' 
+#' Read nodes and edges by batch.
+#'
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param ... any column.
+#' @param batch Column name of containing batch identifier.
+#'
+#' @examples
+#' library(shiny)
+#' 
+#' ui <- fluidPage(
+#' 	actionButton("add", "add nodes & edges"),
+#' 	sigmajsOutput("sg")
+#' )
+#' 
+#' server <- function(input, output, session){
+#' 
+#' 	output$sg <- renderSigmajs({
+#' 		sigmajs()
+#' 	})
+#' 
+#' 	observeEvent(input$add, {
+#' 		nodes <- sg_make_nodes(50)
+#' 		nodes$batch <- c(
+#' 			rep(1, 25),
+#' 			rep(2, 25)
+#' 		)
+#' 
+#' 		edges <- data.frame(
+#' 			id = 1:80,
+#' 			source = c(
+#' 				sample(1:25, 40, replace = TRUE),
+#' 				sample(26:50, 40, replace = TRUE)
+#' 			),
+#' 			target = c(
+#' 				sample(1:25, 40, replace = TRUE),
+#' 				sample(26:50, 40, replace = TRUE)
+#' 			),
+#' 			batch = c(
+#' 				rep(1, 40),
+#' 				rep(2, 40)
+#' 			)
+#' 		) %>% 
+#' 		dplyr::mutate_all(as.character)
+#' 
+#' 		sigmajsProxy("sg") %>% 
+#' 			sg_read_batch_nodes_p(nodes, id, color, label, size, batch = "batch") %>% 
+#' 			sg_read_batch_edges_p(edges, id, source, target, batch = "batch") %>% 
+#' 			sg_read_batch_exec_p() %>% 
+#' 			sg_refresh_p()
+#' 	})
+#' 
+#' }
+#' 
+#' if(interactive()) shinyApp(ui, server)
+#' 
+#' @name read-batch
+#' @export
+sg_read_batch_nodes_p <- function(proxy, data, ..., batch){
+  
+  .test_proxy(proxy)
+
+	if(missing(batch))
+		stop("missing batch", call. = FALSE)
+
+	# build data
+	nodes <- data %>% 
+		.build_data(..., batch) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		split(.[[batch]]) %>% 
+		purrr::map(.as_list)
+
+	proxy$message$data$nodes <- nodes
+
+	return(proxy)
+}
+
+#' @rdname read-batch
+#' @export
+sg_read_batch_edges_p <- function(proxy, data, ..., batch){
+  .test_proxy(proxy)
+
+	# build data
+	edges <- data %>% 
+		.build_data(..., batch) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		split(.[[batch]]) %>% 
+		purrr::map(.as_list)
+
+	proxy$message$data$edges <- edges
+
+	return(proxy)
+}
+
+#' @rdname read-batch
+#' @export
+sg_read_batch_exec_p <- function(proxy){
+	.test_proxy(proxy)
+
+	proxy$message$id <- proxy$id
+
+	if(is.null(proxy$message$data$edges))
+		proxy$message$data$edges <- list()
+
+	if(is.null(proxy$message$data$nodes))
+		proxy$message$data$nodes <- list()
+
+	.grp <- function(x, y){
+		list(
+			nodes = x,
+			edges = y
+		)
+	}
+
+	proxy$message$data <- purrr::map2(proxy$message$data$nodes, proxy$message$data$edges, .grp) %>% 
+		unname()
+
+	proxy$session$sendCustomMessage("sg_read_bacth_exec_p", proxy$message)
+	return(proxy)
+}

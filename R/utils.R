@@ -1,7 +1,6 @@
 globalVariables(c("from", "to", "."))
 
 .build_data <- function(data, ...){
-
   data %>% 
     dplyr::select(...)
 }
