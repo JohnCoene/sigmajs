@@ -16,7 +16,7 @@ sg_read_delay_exec_p(proxy, refresh = TRUE)
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 
-\item{data}{A \code{data.frame} of _one_ node or edge.}
+\item{data}{A \code{data.frame} of nodes or edges to add to the graph.}
 
 \item{...}{any column.}
 

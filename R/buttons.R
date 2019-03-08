@@ -25,6 +25,7 @@
 #'   \item{\code{export_svg}}
 #'   \item{\code{export_img}}
 #'   \item{\code{progress}}
+#'   \item{\code{read_exec}}
 #' }
 #' 
 #' @details You can pass multiple events as a vector, see examples. You can also pass multiple buttons.

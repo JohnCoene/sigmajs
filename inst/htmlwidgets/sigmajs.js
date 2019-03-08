@@ -481,6 +481,42 @@ HTMLWidgets.widget({
 			  }
 			  
 			}
+
+			if(x.hasOwnProperty('read')){
+			  
+				var is_it_running = s.isForceAtlas2Running();
+				
+			  if(x.buttonevent.indexOf('read_exec') > -1){
+  			  for (var i = 0; i < x.button.length; i++){
+    		    x.button[i].btn.addEventListener("click", function(event) {
+      				x.read.data.forEach(function(data){
+								setTimeout(function(){
+									if(x.read.refresh == true && is_it_running == true)
+										s.killForceAtlas2();
+								
+									s.graph.read(data);
+		
+									if(x.read.refresh == true && is_it_running == true)
+										s.startForceAtlas2();
+								}, data.nodes[0].delay)
+							});
+    		    });  
+  			  }
+			  } else {
+					x.read.data.forEach(function(data){
+						setTimeout(function(){
+							if(x.read.refresh == true && is_it_running == true)
+								s.killForceAtlas2();
+							
+							s.graph.read(data);
+
+							if(x.read.refresh == true && is_it_running == true)
+								s.startForceAtlas2();
+							
+						}, data.nodes[0].delay)
+					});
+				}
+			}
 			
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
       //filter_handle.setGroup(x.crosstalk.crosstalk_group);

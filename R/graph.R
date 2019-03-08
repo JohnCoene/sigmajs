@@ -312,3 +312,99 @@ sg_drop_edges <- function(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE) 
   sg$x$dropEdgesDelay <- list(data = to_drop, refresh = refresh)
   sg
 }
+
+#' Read 
+#' 
+#' Read nodes and edges into your graph, with or without a delay.
+#' 
+#' @inheritParams sg_nodes
+#' @param delay Column name containing delay in milliseconds.
+#' @param refresh Whether to refresh the \code{\link{force}} layout.
+#' 
+#' @examples
+#' nodes <- sg_make_nodes(50)
+#'  nodes$batch <- c(
+#' 	 rep(1000, 25),
+#' 	 rep(3000, 25)
+#' 	)
+#' 
+#' edges <- data.frame(
+#'  id = 1:80,
+#' 	 source = c(
+#' 	  sample(1:25, 40, replace = TRUE),
+#' 		sample(1:50, 40, replace = TRUE)
+#' 	 ),
+#' 	 target = c(
+#' 	  sample(1:25, 40, replace = TRUE),
+#' 		sample(1:50, 40, replace = TRUE)
+#' 	 ),
+#' 	 batch = c(
+#' 	  rep(1000, 40),
+#' 		rep(3000, 40)
+#' 	 )
+#' ) %>% 
+#'  dplyr::mutate_all(as.character)
+#' 
+#' sigmajs() %>% 
+#'   sg_force_start() %>% 
+#'   sg_read_nodes(nodes, id, label, color, size, delay = "batch") %>% 
+#'   sg_read_edges(edges, id, source, target, delay = "batch") %>% 
+#'   sg_read_exec()
+#' @name read-static
+#' @export
+sg_read_nodes <- function(sg, data, ..., delay){
+  
+  if (missing(sg) || missing(data) || missing(delay))
+    stop("must pass sg, data, and delay", call. = FALSE)
+
+  .test_sg(sg)
+
+	nodes <- data %>% 
+		.build_data(..., delay = delay) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		split(.[["delay"]]) %>% 
+		purrr::map(.as_list)
+
+  sg$x$read$data$nodes <- nodes
+  return(sg)
+}
+
+#' @rdname read-static
+#' @export
+sg_read_edges <- function(sg, data, ..., delay){
+  
+  if (missing(sg) || missing(data) || missing(delay))
+    stop("must pass sg, data, and delay", call. = FALSE)
+
+  .test_sg(sg)
+
+	edges <- data %>% 
+		.build_data(..., delay = delay) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		split(.[["delay"]]) %>% 
+		purrr::map(.as_list)
+
+  sg$x$read$data$edges <- edges
+  return(sg)
+}
+
+#' @rdname read-static
+#' @export
+sg_read_exec <- function(sg, refresh = TRUE){
+	.test_sg(sg)
+
+	if(is.null(sg$x$read$data$edges))
+		sg$x$read$data$edges <- list()
+
+	if(is.null(sg$x$read$data$nodes))
+		sg$x$read$data$nodes <- list()
+
+	sg$x$read$data <- purrr::map2(sg$x$read$data$nodes, sg$x$read$data$edges, .grp) %>% 
+		unname()
+
+	sg$x$read$refresh <- refresh
+
+	return(sg)
+}

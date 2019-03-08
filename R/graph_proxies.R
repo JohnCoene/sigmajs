@@ -599,7 +599,7 @@ sg_read_exec_p <- function(proxy){
 #' Read nodes and edges by batch with a delay.
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
-#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param data A \code{data.frame} of nodes or edges to add to the graph.
 #' @param ... any column.
 #' @param delay Column name of containing batch identifier.
 #' @param refresh Whether to refresh the graph after each batch (\code{delay}) has been added to the graph.
@@ -706,13 +706,6 @@ sg_read_delay_exec_p <- function(proxy, refresh = TRUE){
 
 	if(is.null(proxy$message$data$nodes))
 		proxy$message$data$nodes <- list()
-
-	.grp <- function(x, y){
-		list(
-			nodes = x,
-			edges = y
-		)
-	}
 
 	proxy$message$data <- purrr::map2(proxy$message$data$nodes, proxy$message$data$edges, .grp) %>% 
 		unname()

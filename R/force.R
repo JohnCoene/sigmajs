@@ -41,7 +41,7 @@
 #' 
 #' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}
 #'
-#' @rdname force
+#' @name force
 #' @export
 sg_force <- function(sg, ...) {
 	
@@ -69,7 +69,7 @@ sg_force_stop <- function(sg, delay = 5000) {
 		stop("sg must be of class sigmajs", call. = FALSE)
 
 	sg$x$forceStopDelay <- delay
-  	sg
+  sg
 }
 
 #' @rdname force

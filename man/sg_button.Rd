@@ -47,6 +47,7 @@ The default class (\code{btn btn-default}) works with Bootstrap 3 (the default f
   \item{\code{export_svg}}
   \item{\code{export_img}}
   \item{\code{progress}}
+  \item{\code{read_exec}}
 }
 }
 
