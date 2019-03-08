@@ -53,7 +53,10 @@ edges <- data.frame(
 
 sigmajs() \%>\% 
   sg_force_start() \%>\% 
-  sg_read_nodes(nodes, id, label, color, size, delay = "batch") \%>\% 
-  sg_read_edges(edges, id, source, target, delay = "batch") \%>\% 
-  sg_read_exec()
+  sg_read_nodes(nodes, id, label, color, size, delay = batch) \%>\% 
+  sg_read_edges(edges, id, source, target, delay = batch) \%>\% 
+	 sg_force_stop(4000) \%>\% 
+  sg_read_exec() \%>\% 
+	 sg_button("read_exec", "Add nodes & edges")
+
 }

@@ -347,15 +347,20 @@ sg_drop_edges <- function(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE) 
 #' 
 #' sigmajs() %>% 
 #'   sg_force_start() %>% 
-#'   sg_read_nodes(nodes, id, label, color, size, delay = "batch") %>% 
-#'   sg_read_edges(edges, id, source, target, delay = "batch") %>% 
-#'   sg_read_exec()
+#'   sg_read_nodes(nodes, id, label, color, size, delay = batch) %>% 
+#'   sg_read_edges(edges, id, source, target, delay = batch) %>% 
+#' 	 sg_force_stop(4000) %>% 
+#'   sg_read_exec() %>% 
+#' 	 sg_button("read_exec", "Add nodes & edges")
+#' 
 #' @name read-static
 #' @export
 sg_read_nodes <- function(sg, data, ..., delay){
   
   if (missing(sg) || missing(data) || missing(delay))
     stop("must pass sg, data, and delay", call. = FALSE)
+
+	delay <- deparse(substitute(delay))
 
   .test_sg(sg)
 
@@ -378,6 +383,8 @@ sg_read_edges <- function(sg, data, ..., delay){
     stop("must pass sg, data, and delay", call. = FALSE)
 
   .test_sg(sg)
+
+	delay <- deparse(substitute(delay))
 
 	edges <- data %>% 
 		.build_data(..., delay = delay) %>%

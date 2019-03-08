@@ -21,6 +21,30 @@ library(sigmajs)
 
 `sigmajs` lets you add buttons to trigger events, *in static documents*.
 
+## All events
+
+Events that can be triggered via a button (corresponding function name minus `sg_`):
+
+* `force_start`
+* `force_stop`
+* `noverlap`
+* `drag_nodes`
+* `relative_size`
+* `add_nodes`
+* `add_edges`
+* `add_nodes_edges`
+* `drop_nodes`
+* `drop_edges`
+* `animate`
+* `export_svg`
+* `export_img`
+* `progress`
+* `read_exec`
+
+You will examples of the above scattered throughout the documentation.
+
+## Download
+
 A button to export the graph as SVG, not that you can export to an image (png, jpeg, gif or tiff).
 
 ```{r}
@@ -56,7 +80,9 @@ sigmajs() %>%
   )
 ```
 
-Since version `1.1.2` you can add multiple buttons.
+## Multiple buttons
+
+Since version `1.1.2` you can add multiple buttons, and a single button can trigger multiple events.
 
 ```{r}
 # initial nodes
@@ -78,22 +104,3 @@ sigmajs() %>%
   sg_button(c("add_nodes", "progress"), "add", tag = tags$a, position = "bottom") %>% 
   sg_button("force_start", "force", tag = tags$a, position = "bottom")
 ```
-
-Events that can be triggered via a button (corresponding function name minus `sg_`):
-
-* `force_start`
-* `force_stop`
-* `noverlap`
-* `drag_nodes`
-* `relative_size`
-* `add_nodes`
-* `add_edges`
-* `add_nodes_edges`
-* `drop_nodes`
-* `drop_edges`
-* `animate`
-* `export_svg`
-* `export_img`
-* `progress`
-
-You will examples of the above scattered throughout the documentation.

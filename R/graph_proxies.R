@@ -645,9 +645,10 @@ sg_read_exec_p <- function(proxy){
 #' 
 #' 		sigmajsProxy("sg") %>% 
 #'      sg_force_start_p() %>% 
-#' 			sg_read_delay_nodes_p(nodes, id, color, label, size, delay = "batch") %>% 
-#' 			sg_read_delay_edges_p(edges, id, source, target, delay = "batch") %>% 
-#' 			sg_read_delay_exec_p() 
+#' 			sg_read_delay_nodes_p(nodes, id, color, label, size, delay = batch) %>% 
+#' 			sg_read_delay_edges_p(edges, id, source, target, delay = batch) %>% 
+#' 			sg_read_delay_exec_p()  %>% 
+#' 			sg_force_stop_p()
 #' 	})
 #' 
 #' }
@@ -660,8 +661,10 @@ sg_read_delay_nodes_p <- function(proxy, data, ..., delay){
   
   .test_proxy(proxy)
 
-	if(missing(delay))
-		stop("missing delay", call. = FALSE)
+	if(missing(delay) || missing(data))
+		stop("missing data or delay", call. = FALSE)
+
+	delay <- deparse(substitute(delay))
 
 	# build data
 	nodes <- data %>% 
@@ -680,6 +683,11 @@ sg_read_delay_nodes_p <- function(proxy, data, ..., delay){
 #' @export
 sg_read_delay_edges_p <- function(proxy, data, ..., delay){
   .test_proxy(proxy)
+
+	if(missing(delay) || missing(data))
+		stop("missing data or delay", call. = FALSE)
+
+	delay <- deparse(substitute(delay))
 
 	# build data
 	edges <- data %>% 
