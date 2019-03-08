@@ -54,20 +54,19 @@ HTMLWidgets.widget({
 					);
 				} else {
 
-					if (HTMLWidgets.shinyMode) { // If in Shiny app
-						// Remove previous occurences of plots in the <div>
-						sigmaID = document.getElementById(el.id)
-						while (sigmaID.firstChild) {
-							//The list is LIVE so it will re-index each call
-							sigmaID.removeChild(sigmaID.firstChild);
+					if (HTMLWidgets.shinyMode) { 
+						sigInst = document.getElementById(el.id)
+						while (sigInst.firstChild) {
+							sigInst.removeChild(sigInst.firstChild);
 						}
-    				s = new sigma({
-    					graph: x.data,
-    					settings: x.settings
-    				});
-						s.refresh();
 					}
 					
+					s = new sigma({
+						graph: x.data,
+						settings: x.settings
+					});
+					s.refresh();
+
 				  renderer = s.addRenderer({
 						container: el.id,
 						type: x.type
@@ -1024,6 +1023,17 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				sigma.plugins.killDragNodes(s);
+			}
+		}
+	);
+
+	// read data
+	Shiny.addCustomMessageHandler('sg_read_exec_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				s.graph.read(message.data)
+				s.refresh();
 			}
 		}
 	);

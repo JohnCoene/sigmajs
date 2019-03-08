@@ -479,3 +479,117 @@ sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
   
   return(proxy)
 }
+
+#' Read
+#'
+#' Read nodes and edges to add to the graph. Other proxy methods to add data to a graph have to add nodes and edges one by one, 
+#' thereby draining the browser, this method will add multiple nodes and edges more efficiently.
+#'
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#' @param data A \code{data.frame} of _one_ node or edge.
+#' @param ... any column.
+#'
+#' @section Functions:
+#' \itemize{
+#'   \item{\code{sg_read_nodes_p} read nodes.}
+#'   \item{\code{sg_read_edges_p} read edges.}
+#'   \item{\code{sg_read_exec_p} send read nodes and edges to JavaScript front end.}
+#' }
+#' 
+#' @examples
+#' library(shiny)
+#' 
+#' ui <- fluidPage(
+#' 	actionButton("add", "add nodes & edges"),
+#' 	sigmajsOutput("sg")
+#' )
+#' 
+#' server <- function(input, output, session){
+#' 
+#' 	nodes <- sg_make_nodes()
+#' 	edges <- sg_make_edges(nodes)
+#' 
+#' 	output$sg <- renderSigmajs({
+#' 		sigmajs() %>% 
+#' 			sg_nodes(nodes, id, label, color, size) %>% 
+#' 			sg_edges(edges, id, source, target) %>% 
+#' 			sg_layout()
+#' 	})
+#' 
+#' 	i <- 10
+#' 
+#' 	observeEvent(input$add, {
+#' 		new_nodes <- sg_make_nodes()
+#' 		new_nodes$id <- as.character(as.numeric(new_nodes$id) + i)
+#' 		i <<- i + 10
+#' 		ids <- 1:(i)
+#' 		new_edges <- data.frame(
+#' 			id = as.character((i * 2 + 15):(i * 2 + 29)),
+#' 			source = as.character(sample(ids, 15)),
+#' 			target = as.character(sample(ids, 15))
+#' 		)
+#' 		
+#' 		sigmajsProxy("sg") %>% 
+#' 			sg_force_kill_p() %>% 
+#' 			sg_read_nodes_p(new_nodes, id, label, color, size) %>% 
+#' 			sg_read_edges_p(new_edges, id, source, target) %>% 
+#' 			sg_read_exec_p() %>% 
+#' 			sg_force_start_p() %>% 
+#' 			sg_refresh_p()
+#' 	})
+#' 
+#' }
+#' 
+#' if(interactive()) shinyApp(ui, server)
+#' 
+#' @name read
+#' @export
+sg_read_nodes_p <- function(proxy, data, ...){
+  
+  .test_proxy(proxy)
+
+	# build data
+	nodes <- data %>% 
+		.build_data(...) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	proxy$message$data$nodes <- nodes
+
+	return(proxy)
+}
+
+#' @rdname read
+#' @export
+sg_read_edges_p <- function(proxy, data, ...){
+  .test_proxy(proxy)
+
+	# build data
+	edges <- data %>% 
+		.build_data(...) %>%
+		.check_ids() %>%
+		.check_x_y() %>%
+		.as_list()
+
+	proxy$message$data$edges <- edges
+
+	return(proxy)
+}
+
+#' @rdname read
+#' @export
+sg_read_exec_p <- function(proxy){
+	.test_proxy(proxy)
+
+	proxy$message$id <- proxy$id
+
+	if(is.null(proxy$message$data$edges))
+		proxy$message$data$edges <- list()
+
+	if(is.null(proxy$message$data$nodes))
+		proxy$message$data$nodes <- list()
+
+	proxy$session$sendCustomMessage("sg_read_exec_p", proxy$message)
+	return(proxy)
+}

@@ -11,6 +11,7 @@
 * `sg_clear` added to clear the graph.
 * `sg_change_*_p` family added to change nodes and edges attributes on the fly.
 * Event improved.
+* `sg_read_*_p` family of functions to easily add nodes and edges in bulk.
 
 # sigmajs 0.1.2
 
