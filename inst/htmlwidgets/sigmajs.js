@@ -1043,7 +1043,11 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			if (typeof s != 'undefined') {
 				message.data.forEach(function(data){
-					s.graph.read(data);
+					setTimeout(function () {
+						s.graph.read(data);
+						if(message.refresh === true)
+							s.refresh();
+					}, data.nodes[0].delay);
 				});
 			}
 		}

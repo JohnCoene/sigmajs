@@ -596,12 +596,13 @@ sg_read_exec_p <- function(proxy){
 
 #' Batch read
 #' 
-#' Read nodes and edges by batch.
+#' Read nodes and edges by batch with a delay.
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param data A \code{data.frame} of _one_ node or edge.
 #' @param ... any column.
 #' @param batch Column name of containing batch identifier.
+#' @param refresh Whether to refresh the graph after each batch (\code{delay}) has been added to the graph.
 #'
 #' @examples
 #' library(shiny)
@@ -620,8 +621,8 @@ sg_read_exec_p <- function(proxy){
 #' 	observeEvent(input$add, {
 #' 		nodes <- sg_make_nodes(50)
 #' 		nodes$batch <- c(
-#' 			rep(1, 25),
-#' 			rep(2, 25)
+#' 			rep(1000, 25),
+#' 			rep(3000, 25)
 #' 		)
 #' 
 #' 		edges <- data.frame(
@@ -635,8 +636,8 @@ sg_read_exec_p <- function(proxy){
 #' 				sample(26:50, 40, replace = TRUE)
 #' 			),
 #' 			batch = c(
-#' 				rep(1, 40),
-#' 				rep(2, 40)
+#' 				rep(1000, 40),
+#' 				rep(3000, 40)
 #' 			)
 #' 		) %>% 
 #' 		dplyr::mutate_all(as.character)
@@ -654,19 +655,19 @@ sg_read_exec_p <- function(proxy){
 #' 
 #' @name read-batch
 #' @export
-sg_read_batch_nodes_p <- function(proxy, data, ..., batch){
+sg_read_delay_nodes_p <- function(proxy, data, ..., delay){
   
   .test_proxy(proxy)
 
-	if(missing(batch))
-		stop("missing batch", call. = FALSE)
+	if(missing(delay))
+		stop("missing delay", call. = FALSE)
 
 	# build data
 	nodes <- data %>% 
-		.build_data(..., batch) %>%
+		.build_data(..., delay = delay) %>%
 		.check_ids() %>%
 		.check_x_y() %>%
-		split(.[[batch]]) %>% 
+		split(.[["delay"]]) %>% 
 		purrr::map(.as_list)
 
 	proxy$message$data$nodes <- nodes
@@ -676,15 +677,15 @@ sg_read_batch_nodes_p <- function(proxy, data, ..., batch){
 
 #' @rdname read-batch
 #' @export
-sg_read_batch_edges_p <- function(proxy, data, ..., batch){
+sg_read_delay_edges_p <- function(proxy, data, ..., delay){
   .test_proxy(proxy)
 
 	# build data
 	edges <- data %>% 
-		.build_data(..., batch) %>%
+		.build_data(..., delay = delay) %>%
 		.check_ids() %>%
 		.check_x_y() %>%
-		split(.[[batch]]) %>% 
+		split(.[["delay"]]) %>% 
 		purrr::map(.as_list)
 
 	proxy$message$data$edges <- edges
@@ -694,7 +695,7 @@ sg_read_batch_edges_p <- function(proxy, data, ..., batch){
 
 #' @rdname read-batch
 #' @export
-sg_read_batch_exec_p <- function(proxy){
+sg_read_delay_exec_p <- function(proxy, refresh = TRUE){
 	.test_proxy(proxy)
 
 	proxy$message$id <- proxy$id
@@ -714,6 +715,8 @@ sg_read_batch_exec_p <- function(proxy){
 
 	proxy$message$data <- purrr::map2(proxy$message$data$nodes, proxy$message$data$edges, .grp) %>% 
 		unname()
+
+	proxy$message$refresh <- refresh
 
 	proxy$session$sendCustomMessage("sg_read_bacth_exec_p", proxy$message)
 	return(proxy)

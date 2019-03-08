@@ -12,7 +12,7 @@
 * `sg_change_*_p` family added to change nodes and edges attributes on the fly.
 * Event improved.
 * `sg_read_*_p` family of functions to easily add nodes and edges in bulk.
-* `sg_read_batch_*_p` family of functions to easily add nodes and edges in bulk and by batch.
+* `sg_read_delay_*_p` family of functions to easily add nodes and edges in bulk with a delay.
 
 # sigmajs 0.1.2
 
