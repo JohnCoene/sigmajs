@@ -27,6 +27,15 @@ sg_read_exec(sg, refresh = TRUE)
 \description{
 Read nodes and edges into your graph, with or without a delay.
 }
+\section{Functions}{
+
+\itemize{
+  \item{\code{sg_read_nodes} read nodes.}
+  \item{\code{sg_read_edges} read edges.}
+  \item{\code{sg_read_exec} send read nodes and edges to JavaScript front end.}
+}
+}
+
 \examples{
 nodes <- sg_make_nodes(50)
  nodes$batch <- c(

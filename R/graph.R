@@ -320,6 +320,13 @@ sg_drop_edges <- function(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE) 
 #' @inheritParams sg_nodes
 #' @param delay Column name containing delay in milliseconds.
 #' @param refresh Whether to refresh the \code{\link{force}} layout.
+#'
+#' @section Functions:
+#' \itemize{
+#'   \item{\code{sg_read_nodes} read nodes.}
+#'   \item{\code{sg_read_edges} read edges.}
+#'   \item{\code{sg_read_exec} send read nodes and edges to JavaScript front end.}
+#' }
 #' 
 #' @examples
 #' nodes <- sg_make_nodes(50)
@@ -408,7 +415,8 @@ sg_read_exec <- function(sg, refresh = TRUE){
 	if(is.null(sg$x$read$data$nodes))
 		sg$x$read$data$nodes <- list()
 
-	sg$x$read$data <- purrr::map2(sg$x$read$data$nodes, sg$x$read$data$edges, .grp) %>% 
+	sg$x$read$data <- sg$x$read$data$nodes %>% 
+		purrr::map2(sg$x$read$data$edges, .grp) %>% 
 		unname()
 
 	sg$x$read$refresh <- refresh

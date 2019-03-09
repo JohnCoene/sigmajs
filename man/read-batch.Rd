@@ -28,6 +28,9 @@ Note that this will also automatically restart any running force layout.}
 \description{
 Read nodes and edges by batch with a delay.
 }
+\details{
+Add nodes and edges with \code{sg_read_delay_nodes_p} and \code{sg_read_delay_edges_p} then execute (send to JavaScript end) with \code{sg_read_delay_exec_p}.
+}
 \examples{
 library(shiny)
 
