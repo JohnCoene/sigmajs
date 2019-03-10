@@ -26,6 +26,8 @@ library(sigmajs)
   See it in action
 </a>
 
+Another good example of the package in the wild is [chirp.sh](chttps://chirp.sh).
+
 ## Features
 
 * Proxies
