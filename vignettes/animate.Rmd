@@ -20,6 +20,8 @@ library(sigmajs)
 
 `sigmajs` also lets you easily animate your graphs.
 
+## Random
+
 Pass the *initial* variables to nodes and edges as well as those you want to *animate to*, you then reference those variables you want to animate to in the mapping of `sg_animate`.
 
 ```{r}
@@ -41,6 +43,8 @@ sigmajs() %>%
   sg_settings(animationsTime = 2000)
 ```
 
+## Layout
+
 You can animate `x`, `y`, `size` and `color`, the function lets you specify the `delay`; time before the animation trigers. You can also specify the animation duration in `sg_settings` with `animationsTime`.
 
 Let's redo the above and use the `sg_get_layout` function to get the `x` and `y` coordinates of our graph and use it in the animation, going from a random graph to a nice layout.
@@ -57,6 +61,8 @@ sigmajs() %>%
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size", color = "to_color")) %>%
   sg_settings(animationsTime = 2000)
 ```
+
+## Button
 
 Or better, you could tie the animation to a button so the user can trigger it him/herself (I set the delay to 0 on `sg_animate`).
 

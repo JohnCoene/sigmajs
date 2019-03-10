@@ -20,6 +20,8 @@ library(sigmajs)
 
 Since `v0.0.3` you can use any of the [igraph layout](http://igraph.org/r/doc/layout_.html) algorithms, simply use `sg_layout` and pass the actual igraph layout to the function.
 
+## Static
+
 ```{r}
 # generate data using convenience functions
 nodes <- sg_make_nodes(50)
@@ -31,9 +33,9 @@ sigmajs() %>%
   sg_layout(FALSE, igraph::layout_with_fr) # pass layout FUN
 ```
 
-You can also use the forceAtlas2 algorithm to layout your graphs, `sg_force_start`. The algorithm is relatively computationally expensive so it is good to stop it at some point `sg_force_stop`.
+## Force
 
-*Note that the layout algorithm might already have stopped running by the time you reach this section, refresh the page to see it in action.*
+You can also use the forceAtlas2 algorithm to layout your graphs, `sg_force_start`. The algorithm is relatively computationally expensive so it is good to stop it at some point `sg_force_stop`.
 
 ```{r}
 sigmajs() %>%

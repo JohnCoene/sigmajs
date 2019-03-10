@@ -7,7 +7,7 @@
 * fixed many events callbacks.
 * `sg_get_nodes_p` and `sg_get_edges_p` added to retrieve nodes and edges from draw graph.
 * `sg_drop_edges_p` and `sg_drop_nodes_p` now function properly.
-* The filter family of functions sees the addition of the `name` argument as well as `sg_filter_undo_p` to undo fitlers (by name).
+* The filter family of functions has been reworked and sees the addition of the `name` argument as well as `sg_filter_undo_p` to undo fitlers (by name) as well as new functions to filter neightbours and more.
 * `sg_clear` added to clear the graph.
 * `sg_change_*_p` family added to change nodes and edges attributes on the fly.
 * Event improved.
