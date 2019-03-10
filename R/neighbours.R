@@ -3,6 +3,7 @@
 #' Highlight node neighbours on click.
 #' 
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param nodes,edges Color of nodes and edges
 #' 
 #' @examples 
@@ -35,3 +36,18 @@ sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee"){
 #' @rdname neighbours
 #' @export
 sg_neighbors <- sg_neighbours
+
+#' @rdname neighbours
+#' @export
+sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee"){
+
+	.test_proxy(proxy)
+	message <- list(id = proxy$id, nodes = nodes, edges = edges)
+
+	proxy$session$sendCustomMessage("sg_neighbours_p", proxy$message)
+	return(proxy)
+}
+
+#' @rdname neighbours
+#' @export
+sg_neighbors_p <- sg_neighbours_p

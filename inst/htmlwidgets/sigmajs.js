@@ -1366,4 +1366,70 @@ if (HTMLWidgets.shinyMode) {
 		}
 	);
 
+	// filter neighbours
+	Shiny.addCustomMessageHandler('sg_filter_neighbours_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			
+			if (typeof s != 'undefined') {
+			  
+			  var filter = new sigma.plugins.filter(s);
+			  
+				filter
+					.neighborsOf(message.node, message.name)
+					.apply()
+				
+			}
+		}
+	);
+
+	// set neightbours highlight
+	Shiny.addCustomMessageHandler('sg_neighbours_p',
+		function(message){
+			var s = get_sigma_graph(message.id);
+			
+			if (typeof s != 'undefined') {
+			  
+				db = new sigma.plugins.neighborhoods();
+
+				s.graph.nodes().forEach(function(n) {
+					n.originalColor = n.color;
+				});
+				s.graph.edges().forEach(function(e) {
+					e.originalColor = e.color;
+				});
+				s.bind("clickNode", function(e) {
+					var nodeId = e.data.node.id,
+							toKeep = s.graph.neighbors(nodeId);
+					toKeep[nodeId] = e.data.node;
+					sel_handle.set(nodeId);
+					s.graph.nodes().forEach(function(n) {
+						if (toKeep[n.id])
+							n.color = n.originalColor;
+						else
+							n.color = message.nodes;
+					});
+					s.graph.edges().forEach(function(e) {
+						if (toKeep[e.source] && toKeep[e.target])
+							e.color = e.originalColor;
+						else
+							e.color = message.edges;
+					});
+					s.refresh();
+				});
+				s.bind("clickStage", function(e) {
+					s.graph.nodes().forEach(function(n) {
+						n.color = n.originalColor;
+					});
+					s.graph.edges().forEach(function(e) {
+						e.color = e.originalColor;
+					});
+					s.refresh();
+					sel_handle.clear();
+				});
+
+			}
+		}
+	);
+
 }

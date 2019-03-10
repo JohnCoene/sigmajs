@@ -232,6 +232,7 @@ Now that you are familiar with proxies, we can add a filter to filter nodes, edg
 * `sg_filter_eq_p` - filter equal to $x$
 * `sg_filter_not_eq_p` - filter not equal to $x$
 * `sg_filter_undo_p` - undo filter
+* `sg_filter_neighbours_p` - to filter neighbours of node $x$
 
 Let's take our basic Shiny app and add our filter. Note that we pass a name to the filter, this allows referencing the filter in `sg_filter_undo_p` function. 
 Every time the user moves the slider the filter is actually undone and re-applied.

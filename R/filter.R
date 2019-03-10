@@ -7,6 +7,7 @@
 #' @param var Variable to filter.
 #' @param target Target of filter, \code{nodes}, \code{edges}, or \code{both}.
 #' @param name Name of the filter, useful to undo the filter later on with \code{sg_filter_undo}.
+#' @param node Node id to filter neighbours.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -123,6 +124,25 @@ sg_filter_undo_p <- function(proxy, name){
   ) 
   
   proxy$session$sendCustomMessage("sg_filter_undo_p", message)
+  
+  return(proxy)
+}
+
+#' @rdname filter
+#' @export
+sg_filter_neighbours_p <- function(proxy, node, name = NULL){
+  if (missing(proxy) || missing(node))
+    stop("must pass proxy and node id", call. = FALSE)
+  
+  .test_proxy(proxy)
+
+  message <- list(
+    id = proxy$id,
+    node = node,
+		name = name
+  ) 
+  
+  proxy$session$sendCustomMessage("sg_filter_neighbours_p", message)
   
   return(proxy)
 }
