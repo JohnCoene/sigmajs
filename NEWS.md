@@ -1,5 +1,7 @@
 # sigmajs 0.1.3
 
+Overall install size reduced.
+
 * `igraph` object saved to speed up computations.
 * Added `sg_scale_color` to scale color according to node size.
 * `sg_noverlap_p` fixed.
