@@ -47,9 +47,11 @@ sigmajs() %>%
 You can also create graphs from gexf files.
 
 ```{r}
-gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
+file <- "arctic.gexf"
+url <- "https://raw.githubusercontent.com/Yomguithereal/gexf/master/test/resources/arctic.gexf"
+download.file(url, file)
 
 sigmajs() %>% 
-  sg_from_gexf(gexf) %>%
-  sg_settings(drawLabels = FALSE, drawEdgeLabels = FALSE)
+  sg_from_gexf(file) %>%
+  sg_settings()
 ```

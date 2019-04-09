@@ -7,11 +7,12 @@
 #' @param sd A \link[crosstalk]{SharedData} of nodes.
 #'
 #' @examples
-#' gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
+#' \dontrun{
+#' gexf <- "https://gephi.org/gexf/data/yeast.gexf"
 #' 
 #' sigmajs() %>% 
 #'   sg_from_gexf(gexf) 
-#'
+#' }
 #' @export
 sg_from_gexf <- function(sg, file, sd = NULL) {
 

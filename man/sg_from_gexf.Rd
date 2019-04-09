@@ -17,9 +17,10 @@ sg_from_gexf(sg, file, sd = NULL)
 Create a sigmajs graph from a GEXF file.
 }
 \examples{
-gexf <- system.file("examples/arctic.gexf", package = "sigmajs")
+\dontrun{
+gexf <- "https://gephi.org/gexf/data/yeast.gexf"
 
 sigmajs() \%>\% 
   sg_from_gexf(gexf) 
-
+}
 }
