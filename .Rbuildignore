@@ -22,3 +22,4 @@ JOSS
 ^LICENSE\.md$
 ^CONTRIBUTING\.md$
 index_cache
+vignettes

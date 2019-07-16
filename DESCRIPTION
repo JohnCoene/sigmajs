@@ -23,9 +23,4 @@ Imports:
     scales,
     crosstalk
 Suggests:
-    knitr,
-    rmarkdown,
-    DT,
-    testthat,
-    covr
-VignetteBuilder: knitr
+    testthat
