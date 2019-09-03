@@ -3,6 +3,7 @@
 #' Graph settings.
 #' 
 #' @inheritParams sg_nodes
+#' @param proxy A proxy as returned by \code{\link{sigmajsProxy}}.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/wiki/Settings}{official documentation}.
 #' 
 #' @examples 
@@ -18,6 +19,7 @@
 #'     defaultNodeColor = "#0011ff"
 #'   )
 #' 
+#' @rdname sg_settings
 #' @export
 sg_settings <- function(sg, ...) {
 
@@ -31,6 +33,13 @@ sg_settings <- function(sg, ...) {
   sg
 }
 
+#' @rdname sg_settings
+#' @export
+sg_settings_p <- function(proxy, ...){
+	message <- list(id = proxy$id, opts = list(...))
+	proxy$session$sendCustomMessage("sg_settings_p", message)
+	return(proxy)
+}
 #' Refresh instance
 #'
 #' Refresh your instance.

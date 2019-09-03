@@ -802,6 +802,18 @@ if (HTMLWidgets.shinyMode) {
 		}
 	);
 
+	// settings
+	Shiny.addCustomMessageHandler('sg_settings_p',
+		function (message) {
+			var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+				for (var name in message.opts)
+					s.settings(name, message.opts[name]);
+					s.refresh();
+			}
+		}
+	);
+
 	// stop forceAtlas2
 	Shiny.addCustomMessageHandler('sg_force_config_p',
 		function (message) {
