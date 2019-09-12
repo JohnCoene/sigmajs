@@ -27,7 +27,7 @@ You also add nodes and edges to static graphs. Below we graph the nodes then add
 # generate data using convenience functions
 nodes <- sg_make_nodes(50)
 edges <- sg_make_edges(nodes)
-edges$delay <- runif(15, 500, 750) # between .5 and .75 seconds between each edge
+edges$delay <- runif(50, 500, 750) # between .5 and .75 seconds between each edge
 
 last_edge <- sum(edges$delay) + 100
 

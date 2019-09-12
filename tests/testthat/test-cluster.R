@@ -5,7 +5,7 @@ context("Cluster")
 test_that("clusters", {
   
   nodes <- sg_make_nodes() 
-  edges <- sg_make_edges(nodes, 17)
+  edges <- sg_make_edges(nodes)
   
   sg <- sigmajs() %>% 
     sg_nodes(nodes, id, size) %>% 
