@@ -69,7 +69,7 @@ HTMLWidgets.widget({
 
 				  renderer = s.addRenderer({
 						container: el.id,
-						type: x.type
+						type: sigma.renderers.canvas
 				  });
 				}
 				

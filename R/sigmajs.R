@@ -11,7 +11,6 @@ sigmajs_render <- function(sg){
 #' @param elementId Id of elment.
 #' @param kill Whether to kill the graph, set to \code{FALSE} 
 #' if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shiny.
-#' @param type Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes()
@@ -29,7 +28,7 @@ sigmajs_render <- function(sg){
 #' @seealso \code{\link{sg_kill}}.
 #'
 #' @export
-sigmajs <- function(type = "canvas", width = "100%", kill = FALSE, height = NULL, elementId = NULL) {
+sigmajs <- function(width = "100%", kill = FALSE, height = NULL, elementId = NULL) {
   
   assign("igraph", NULL, envir = storage_env)
 
