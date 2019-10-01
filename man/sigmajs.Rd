@@ -4,10 +4,12 @@
 \alias{sigmajs}
 \title{Initialise}
 \usage{
-sigmajs(width = "100\%", kill = FALSE, height = NULL,
+sigmajs(type = NULL, width = "100\%", kill = FALSE, height = NULL,
   elementId = NULL)
 }
 \arguments{
+\item{type}{Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.}
+
 \item{width, height}{Dimensions of graph.}
 
 \item{kill}{Whether to kill the graph, set to \code{FALSE} 
