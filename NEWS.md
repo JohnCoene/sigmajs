@@ -1,3 +1,8 @@
+# sigmajs 0.1.4
+
+- Improved random graph generators
+- Removed renderer type as it breaks arrows.
+
 # sigmajs 0.1.3
 
 Overall install size reduced.
