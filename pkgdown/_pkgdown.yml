@@ -49,6 +49,77 @@ navbar:
     - icon: fa-bitbucket fa-lg
       href: https://bitbucket.org/JohnCoene/sigmajs
 
+reference:
+  - title: "Initialise"
+    desc: >
+      Initialise and render graphs.
+    contents: 
+      - sigmajs
+      - sigmajsOutput
+      - renderSigmajs
+      - sg_nodes
+      - sg_edges
+      - sg_nodes2
+      - sg_edges2
+  - title: "Data"
+    desc: >
+      Datasets and functions to generate data for example purposes.
+    contents: 
+      - starts_with("sg_make")
+      - lesmis_nodes
+      - lesmis_edges
+      - lesmis_igraph
+  - title: "Shiny"
+    desc: >
+      Dynamically interact with graph through a proxy.
+    contents: 
+      - ends_with("_p")
+      - sigmajsProxy
+      - sg_events
+  - title: "Shiny"
+    desc: >
+      Dynamically interact with graph through a proxy.
+    contents: 
+      - matches("_p")
+  - title: "Export"
+    desc: >
+      Export the visualisation to various formats.
+    contents: 
+      - starts_with("sg_export_")
+  - title: "Layout"
+    desc: >
+      Layout the graph using igraph algorithms or forceAtlas2.
+    contents: 
+      - matches("force")
+      - matches("layout")
+      - matches("noverlap")
+  - title: "Style"
+    desc: >
+      Customize graph and its components.
+    contents: 
+      - matches("cluster")
+      - sg_scale_color
+      - sg_add_images
+      - sg_relative_size
+      - sg_settings
+      - sg_custom_shapes
+  - title: "Button"
+    desc: >
+      Allow users to trigger functions in static documents via a button.
+    contents: 
+      - sg_button
+      - sg_progress
+      - sg_add_nodes
+      - sg_drop_nodes
+      - sg_animate
+      - read-static
+  - title: "Formats"
+    desc: >
+      Import gexf and igraph objects.
+    contents: 
+      - sg_from_gexf
+      - sg_from_igraph
+
 authors:
   John Coene:
     href: https://john-coene.com

@@ -1,4 +1,4 @@
-#' FIlter
+#' Filter
 #' 
 #' Filter nodes and/or edges.
 #' 

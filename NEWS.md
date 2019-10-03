@@ -1,7 +1,13 @@
 # sigmajs 0.1.4
 
-- Improved random graph generators
-- Removed renderer type as it breaks arrows.
+**Breaking Changes**
+
+- New `sg_events` function. Previously sigmajs sent _all_ events to the server when in Shiny, this caused the whole visualisation to nearly crash when enabling edges events as too many events/too much data was sent to the server. You now need to specify which events you want to captur with `sg_events`. The [shiny documentation](http://sigmajs.john-coene.com/articles/shiny) has been changed to reflect those changes.
+
+**Minor**
+
+- Improved random graph generators for more sensible examples
+- Removed renderer type as it breaks arrows on edges. 
 
 # sigmajs 0.1.3
 

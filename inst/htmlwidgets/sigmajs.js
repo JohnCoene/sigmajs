@@ -526,119 +526,142 @@ HTMLWidgets.widget({
 				if (HTMLWidgets.shinyMode) {
 				  
 					// click node
-					s.bind('clickNode', function (e) {
-						Shiny.setInputValue(el.id + '_click_node' + ":sigmajsParseJS", e.data.node);
-					});
+					if(x.events.includes('clickNode'))
+						s.bind('clickNode', function (e) {
+							Shiny.setInputValue(el.id + '_click_node' + ":sigmajsParseJS", e.data.node);
+						});
 
-					// click nodeS
-					s.bind('clickNodes', function (e) {
-						Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.node);
-					});
+					// click nodes
+					if(x.events.includes('clickNodes'))
+						s.bind('clickNodes', function (e) {
+							Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.node);
+						});
 
 					// click edge
-					s.bind('clickEdge', function (e) {
-						Shiny.setInputValue(el.id + '_click_edge' + ":sigmajsParseJS", e.data.edge);
-					});
+					if(x.events.includes('clickEdge'))
+						s.bind('clickEdge', function (e) {
+							Shiny.setInputValue(el.id + '_click_edge' + ":sigmajsParseJS", e.data.edge);
+						});
 
-					// click edgeS
-					s.bind('clickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edge);
-					});
+					// click edges
+					if(x.events.includes('clickEdges'))
+						s.bind('clickEdges', function (e) {
+							Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edge);
+						});
 
 					// click stage
-					s.bind('clickStage', function (e) {
-						Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
-					});
+					if(x.events.includes('clickStage'))
+						s.bind('clickStage', function (e) {
+							Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+						});
 
 					// double click stage
-					s.bind('doubleClickStage', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
-					});
+					if(x.events.includes('doubleClickStage'))
+						s.bind('doubleClickStage', function (e) {
+							Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+						});
 
 					// right click stage
-					s.bind('rightClickStage', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
-					});
+					if(x.events.includes('rightClickStage'))
+						s.bind('rightClickStage', function (e) {
+							Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+						});
 
 					// double click node
-					s.bind('doubleClickNode', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_node' + ":sigmajsParseJS", e.data.node);
-					});
+					if(x.events.includes('doubleClickNode'))
+						s.bind('doubleClickNode', function (e) {
+							Shiny.setInputValue(el.id + '_double_click_node' + ":sigmajsParseJS", e.data.node);
+						});
 
-					// double click nodeS
-					s.bind('doubleClickNodes', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.node);
-					});
+					// double click nodes
+					if(x.events.includes('doubleClickNodes'))
+						s.bind('doubleClickNodes', function (e) {
+							Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.node);
+						});
 
 					// double click edge
-					s.bind('doubleClickEdge', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_edge' + ":sigmajsParseJS", e.data.edge);
-					});
+					if(x.events.includes('doubleClickEdge'))
+						s.bind('doubleClickEdge', function (e) {
+							Shiny.setInputValue(el.id + '_double_click_edge' + ":sigmajsParseJS", e.data.edge);
+						});
 
-					// double click edgeS
-					s.bind('doubleClickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edge);
-					});
+					// double click edges
+					if(x.events.includes('doubleClickEdges'))
+						s.bind('doubleClickEdges', function (e) {
+							Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edge);
+						});
 
 					// right click node
-					s.bind('rightClickNode', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_node' + ":sigmajsParseJS", e.data.node);
-					});
+					if(x.events.includes('rightClickNode'))
+						s.bind('rightClickNode', function (e) {
+							Shiny.setInputValue(el.id + '_right_click_node' + ":sigmajsParseJS", e.data.node);
+						});
 
-					// right click nodeS
-					s.bind('rightClickNodes', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_nodes' + ":sigmajsParseJS", e.data.nodes);
-					});
+					// right click nodes
+					if(x.events.includes('rightClickNodes'))
+						s.bind('rightClickNodes', function (e) {
+							Shiny.setInputValue(el.id + '_right_click_nodes' + ":sigmajsParseJS", e.data.nodes);
+						});
 
 					// right click edge
-					s.bind('rightClickEdge', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_edge' + ":sigmajsParseJS", e.data.edge);
-					});
+					if(x.events.includes('rightClickEdge'))
+						s.bind('rightClickEdge', function (e) {
+							Shiny.setInputValue(el.id + '_right_click_edge' + ":sigmajsParseJS", e.data.edge);
+						});
 
-					// right click edgeS
-					s.bind('rightClickEdges', function (e) {
-						Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edge);
-					});
+					// right click edges
+					if(x.events.includes('rightClickEdges'))
+						s.bind('rightClickEdges', function (e) {
+							Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edge);
+						});
 
 					// over node
-					s.bind('overNode', function (e) {
-						Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
-					});
+					if(x.events.includes('hoverNode'))
+						s.bind('overNode', function (e) {
+							Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
+						});
 
-					// over nodeS
-					s.bind('overNodes', function (e) {
-						Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
-					});
+					// over nodes
+					if(x.events.includes('hoverNodes'))
+						s.bind('overNodes', function (e) {
+							Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
+						});
 
 					// over edge
-					s.bind('overEdge', function (e) {
-						Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
-					});
+					if(x.events.includes('hoverEdge'))
+						s.bind('overEdge', function (e) {
+							Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
+						});
 
-					// over edgeS
-					s.bind('overEdges', function (e) {
-						Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
-					});
+					// over edges
+					if(x.events.includes('hoverEdges'))
+						s.bind('overEdges', function (e) {
+							Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
+						});
 
 					// out node
-					s.bind('outNode', function (e) {
-						Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
-					});
+					if(x.events.includes('outNode'))
+						s.bind('outNode', function (e) {
+							Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
+						});
 
-					// out nodeS
-					s.bind('outNodes', function (e) {
-						Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.node);
-					});
+					// out nodes
+					if(x.events.includes('overNodes'))
+						s.bind('outNodes', function (e) {
+							Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.node);
+						});
 
 					// out edge
-					s.bind('outEdge', function (e) {
-						Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
-					});
+					if(x.events.includes('outEdge'))
+						s.bind('outEdge', function (e) {
+							Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
+						});
 
-					// out edgeS
-					s.bind('outEdges', function (e) {
-						Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
-					});
+					// out edges
+					if(x.events.includes('outEdges'))
+						s.bind('outEdges', function (e) {
+							Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
+						});
 				}
 
 				var initialized = true;

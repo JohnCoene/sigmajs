@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sigmajs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -204,8 +204,66 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-initialise" class="hasAnchor"><a href="#section-initialise" class="anchor"></a>Initialise</h2>
+          <p class="section-desc"><p>Initialise and render graphs.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="sigmajs.html">sigmajs()</a></code> </p>
+        </td>
+        <td><p>Initialise</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sigmajs-shiny.html">sigmajsOutput()</a></code> <code><a href="sigmajs-shiny.html">renderSigmajs()</a></code> <code><a href="sigmajs-shiny.html">sigmajsProxy()</a></code> </p>
+        </td>
+        <td><p>Shiny bindings for sigmajs</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="graph.html">sg_nodes()</a></code> <code><a href="graph.html">sg_edges()</a></code> <code><a href="graph.html">sg_edges2()</a></code> <code><a href="graph.html">sg_nodes2()</a></code> </p>
+        </td>
+        <td><p>Add nodes and edges</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Datasets and functions to generate data for example purposes.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="generate.html">sg_make_nodes()</a></code> <code><a href="generate.html">sg_make_edges()</a></code> <code><a href="generate.html">sg_make_nodes_edges()</a></code> </p>
+        </td>
+        <td><p>Generate data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lesmis_nodes.html">lesmis_nodes</a></code> </p>
+        </td>
+        <td><p>Nodes from co-appearances of characters in "Les Miserables"</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lesmis_edges.html">lesmis_edges</a></code> </p>
+        </td>
+        <td><p>Edges from co-appearances of characters in "Les Miserables"</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lesmis_igraph.html">lesmis_igraph</a></code> </p>
+        </td>
+        <td><p>Co-appearances of characters in "Les Miserables" as igraph object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-shiny" class="hasAnchor"><a href="#section-shiny" class="anchor"></a>Shiny</h2>
+          <p class="section-desc"><p>Dynamically interact with graph through a proxy.</p></p>
         </th>
       </tr>
       <tr>
@@ -214,12 +272,6 @@
           <p><code><a href="add_p.html">sg_add_node_p()</a></code> <code><a href="add_p.html">sg_add_edge_p()</a></code> </p>
         </td>
         <td><p>Add node or edge</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_static.html">sg_add_nodes()</a></code> <code><a href="add_static.html">sg_add_edges()</a></code> </p>
-        </td>
-        <td><p>Add nodes and edges</p></td>
       </tr><tr>
         
         <td>
@@ -235,12 +287,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="animation.html">sg_animate()</a></code> </p>
-        </td>
-        <td><p>Animate</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="change.html">sg_change_nodes_p()</a></code> <code><a href="change.html">sg_change_edges_p()</a></code> </p>
         </td>
         <td><p>Change</p></td>
@@ -250,18 +296,6 @@
           <p><code><a href="clear-kill.html">sg_clear_p()</a></code> <code><a href="clear-kill.html">sg_kill_p()</a></code> <code><a href="clear-kill.html">sg_kill()</a></code> <code><a href="clear-kill.html">sg_clear()</a></code> </p>
         </td>
         <td><p>Clear or kill the graph</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cluster.html">sg_cluster()</a></code> <code><a href="cluster.html">sg_get_cluster()</a></code> </p>
-        </td>
-        <td><p>Cluster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="color-scale.html">sg_scale_color()</a></code> </p>
-        </td>
-        <td><p>Color</p></td>
       </tr><tr>
         
         <td>
@@ -280,12 +314,6 @@
           <p><code><a href="drop_p.html">sg_drop_node_p()</a></code> <code><a href="drop_p.html">sg_drop_edge_p()</a></code> </p>
         </td>
         <td><p>Remove node or edge</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="drop_static.html">sg_drop_nodes()</a></code> <code><a href="drop_static.html">sg_drop_edges()</a></code> </p>
-        </td>
-        <td><p>Drop</p></td>
       </tr><tr>
         
         <td>
@@ -313,45 +341,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="generate.html">sg_make_nodes()</a></code> <code><a href="generate.html">sg_make_edges()</a></code> <code><a href="generate.html">sg_make_nodes_edges()</a></code> </p>
-        </td>
-        <td><p>Generate data</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="get_graph.html">sg_get_nodes_p()</a></code> <code><a href="get_graph.html">sg_get_edges_p()</a></code> </p>
         </td>
         <td><p>Get nodes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="graph.html">sg_nodes()</a></code> <code><a href="graph.html">sg_edges()</a></code> <code><a href="graph.html">sg_edges2()</a></code> <code><a href="graph.html">sg_nodes2()</a></code> </p>
-        </td>
-        <td><p>Add nodes and edges</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="layout.html">sg_layout()</a></code> <code><a href="layout.html">sg_get_layout()</a></code> </p>
-        </td>
-        <td><p>Layouts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lesmis_edges.html">lesmis_edges</a></code> </p>
-        </td>
-        <td><p>Edges from co-appearances of characters in "Les Miserables"</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lesmis_igraph.html">lesmis_igraph</a></code> </p>
-        </td>
-        <td><p>Co-appearances of characters in "Les Miserables" as igraph object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lesmis_nodes.html">lesmis_nodes</a></code> </p>
-        </td>
-        <td><p>Nodes from co-appearances of characters in "Les Miserables"</p></td>
       </tr><tr>
         
         <td>
@@ -373,63 +365,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="read-static.html">sg_read_nodes()</a></code> <code><a href="read-static.html">sg_read_edges()</a></code> <code><a href="read-static.html">sg_read_exec()</a></code> </p>
-        </td>
-        <td><p>Read</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="read.html">sg_read_nodes_p()</a></code> <code><a href="read.html">sg_read_edges_p()</a></code> <code><a href="read.html">sg_read_exec_p()</a></code> </p>
         </td>
         <td><p>Read</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sg_add_images.html">sg_add_images()</a></code> </p>
-        </td>
-        <td><p>Add images to nodes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_button.html">sg_button()</a></code> </p>
-        </td>
-        <td><p>Buttons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_custom_shapes.html">sg_custom_shapes()</a></code> </p>
-        </td>
-        <td><p>Custom shapes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_from_gexf.html">sg_from_gexf()</a></code> </p>
-        </td>
-        <td><p>Graph from GEXF file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_from_igraph.html">sg_from_igraph()</a></code> </p>
-        </td>
-        <td><p>Create from igraph</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_progress.html">sg_progress()</a></code> </p>
-        </td>
-        <td><p>Text</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="sg_refresh_p.html">sg_refresh_p()</a></code> </p>
         </td>
         <td><p>Refresh instance</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sg_relative_size.html">sg_relative_size()</a></code> </p>
-        </td>
-        <td><p>Relative node sizes</p></td>
       </tr><tr>
         
         <td>
@@ -451,9 +395,291 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sigmajs.html">sigmajs()</a></code> </p>
+          <p><code><a href="sg_events.html">sg_events()</a></code> </p>
         </td>
-        <td><p>Initialise</p></td>
+        <td><p>Events</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-shiny" class="hasAnchor"><a href="#section-shiny" class="anchor"></a>Shiny</h2>
+          <p class="section-desc"><p>Dynamically interact with graph through a proxy.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="add_p.html">sg_add_node_p()</a></code> <code><a href="add_p.html">sg_add_edge_p()</a></code> </p>
+        </td>
+        <td><p>Add node or edge</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="adds_delay_p.html">sg_add_nodes_delay_p()</a></code> <code><a href="adds_delay_p.html">sg_add_edges_delay_p()</a></code> </p>
+        </td>
+        <td><p>Add nodes or edges with a delay</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="adds_p.html">sg_add_nodes_p()</a></code> <code><a href="adds_p.html">sg_add_edges_p()</a></code> </p>
+        </td>
+        <td><p>Add nodes or edges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="change.html">sg_change_nodes_p()</a></code> <code><a href="change.html">sg_change_edges_p()</a></code> </p>
+        </td>
+        <td><p>Change</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="clear-kill.html">sg_clear_p()</a></code> <code><a href="clear-kill.html">sg_kill_p()</a></code> <code><a href="clear-kill.html">sg_kill()</a></code> <code><a href="clear-kill.html">sg_clear()</a></code> </p>
+        </td>
+        <td><p>Clear or kill the graph</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drag-nodes.html">sg_drag_nodes()</a></code> <code><a href="drag-nodes.html">sg_drag_nodes_start_p()</a></code> <code><a href="drag-nodes.html">sg_drag_nodes_kill_p()</a></code> </p>
+        </td>
+        <td><p>Drag nodes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drop_delay_p.html">sg_drop_nodes_delay_p()</a></code> <code><a href="drop_delay_p.html">sg_drop_edges_delay_p()</a></code> </p>
+        </td>
+        <td><p>Drop nodes or edges with a delay</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drop_p.html">sg_drop_node_p()</a></code> <code><a href="drop_p.html">sg_drop_edge_p()</a></code> </p>
+        </td>
+        <td><p>Remove node or edge</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drops_p.html">sg_drop_nodes_p()</a></code> <code><a href="drops_p.html">sg_drop_edges_p()</a></code> </p>
+        </td>
+        <td><p>Drop nodes or edges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="export.html">sg_export_svg()</a></code> <code><a href="export.html">sg_export_img()</a></code> <code><a href="export.html">sg_export_img_p()</a></code> <code><a href="export.html">sg_export_svg_p()</a></code> </p>
+        </td>
+        <td><p>Export</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter.html">sg_filter_gt_p()</a></code> <code><a href="filter.html">sg_filter_lt_p()</a></code> <code><a href="filter.html">sg_filter_eq_p()</a></code> <code><a href="filter.html">sg_filter_not_eq_p()</a></code> <code><a href="filter.html">sg_filter_undo_p()</a></code> <code><a href="filter.html">sg_filter_neighbours_p()</a></code> </p>
+        </td>
+        <td><p>FIlter</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="force.html">sg_force()</a></code> <code><a href="force.html">sg_force_start()</a></code> <code><a href="force.html">sg_force_stop()</a></code> <code><a href="force.html">sg_force_restart_p()</a></code> <code><a href="force.html">sg_force_restart()</a></code> <code><a href="force.html">sg_force_start_p()</a></code> <code><a href="force.html">sg_force_stop_p()</a></code> <code><a href="force.html">sg_force_kill_p()</a></code> <code><a href="force.html">sg_force_config_p()</a></code> </p>
+        </td>
+        <td><p>Add forceAtlas2</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_graph.html">sg_get_nodes_p()</a></code> <code><a href="get_graph.html">sg_get_edges_p()</a></code> </p>
+        </td>
+        <td><p>Get nodes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="neighbours.html">sg_neighbours()</a></code> <code><a href="neighbours.html">sg_neighbors()</a></code> <code><a href="neighbours.html">sg_neighbours_p()</a></code> <code><a href="neighbours.html">sg_neighbors_p()</a></code> </p>
+        </td>
+        <td><p>Highlight neighbours</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="noverlap.html">sg_noverlap()</a></code> <code><a href="noverlap.html">sg_noverlap_p()</a></code> </p>
+        </td>
+        <td><p>No overlap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read-batch.html">sg_read_delay_nodes_p()</a></code> <code><a href="read-batch.html">sg_read_delay_edges_p()</a></code> <code><a href="read-batch.html">sg_read_delay_exec_p()</a></code> </p>
+        </td>
+        <td><p>Batch read</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read.html">sg_read_nodes_p()</a></code> <code><a href="read.html">sg_read_edges_p()</a></code> <code><a href="read.html">sg_read_exec_p()</a></code> </p>
+        </td>
+        <td><p>Read</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_progress.html">sg_progress()</a></code> </p>
+        </td>
+        <td><p>Text</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_refresh_p.html">sg_refresh_p()</a></code> </p>
+        </td>
+        <td><p>Refresh instance</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_settings.html">sg_settings()</a></code> <code><a href="sg_settings.html">sg_settings_p()</a></code> </p>
+        </td>
+        <td><p>Settings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_zoom_p.html">sg_zoom_p()</a></code> </p>
+        </td>
+        <td><p>Zoom</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-export" class="hasAnchor"><a href="#section-export" class="anchor"></a>Export</h2>
+          <p class="section-desc"><p>Export the visualisation to various formats.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="export.html">sg_export_svg()</a></code> <code><a href="export.html">sg_export_img()</a></code> <code><a href="export.html">sg_export_img_p()</a></code> <code><a href="export.html">sg_export_svg_p()</a></code> </p>
+        </td>
+        <td><p>Export</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-layout" class="hasAnchor"><a href="#section-layout" class="anchor"></a>Layout</h2>
+          <p class="section-desc"><p>Layout the graph using igraph algorithms or forceAtlas2.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="force.html">sg_force()</a></code> <code><a href="force.html">sg_force_start()</a></code> <code><a href="force.html">sg_force_stop()</a></code> <code><a href="force.html">sg_force_restart_p()</a></code> <code><a href="force.html">sg_force_restart()</a></code> <code><a href="force.html">sg_force_start_p()</a></code> <code><a href="force.html">sg_force_stop_p()</a></code> <code><a href="force.html">sg_force_kill_p()</a></code> <code><a href="force.html">sg_force_config_p()</a></code> </p>
+        </td>
+        <td><p>Add forceAtlas2</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="layout.html">sg_layout()</a></code> <code><a href="layout.html">sg_get_layout()</a></code> </p>
+        </td>
+        <td><p>Layouts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="noverlap.html">sg_noverlap()</a></code> <code><a href="noverlap.html">sg_noverlap_p()</a></code> </p>
+        </td>
+        <td><p>No overlap</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-style" class="hasAnchor"><a href="#section-style" class="anchor"></a>Style</h2>
+          <p class="section-desc"><p>Customize graph and its components.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="cluster.html">sg_cluster()</a></code> <code><a href="cluster.html">sg_get_cluster()</a></code> </p>
+        </td>
+        <td><p>Cluster</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="color-scale.html">sg_scale_color()</a></code> </p>
+        </td>
+        <td><p>Color</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_add_images.html">sg_add_images()</a></code> </p>
+        </td>
+        <td><p>Add images to nodes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_relative_size.html">sg_relative_size()</a></code> </p>
+        </td>
+        <td><p>Relative node sizes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_settings.html">sg_settings()</a></code> <code><a href="sg_settings.html">sg_settings_p()</a></code> </p>
+        </td>
+        <td><p>Settings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_custom_shapes.html">sg_custom_shapes()</a></code> </p>
+        </td>
+        <td><p>Custom shapes</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-button" class="hasAnchor"><a href="#section-button" class="anchor"></a>Button</h2>
+          <p class="section-desc"><p>Allow users to trigger functions in static documents via a button.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="sg_button.html">sg_button()</a></code> </p>
+        </td>
+        <td><p>Buttons</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_progress.html">sg_progress()</a></code> </p>
+        </td>
+        <td><p>Text</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_static.html">sg_add_nodes()</a></code> <code><a href="add_static.html">sg_add_edges()</a></code> </p>
+        </td>
+        <td><p>Add nodes and edges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drop_static.html">sg_drop_nodes()</a></code> <code><a href="drop_static.html">sg_drop_edges()</a></code> </p>
+        </td>
+        <td><p>Drop</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="animation.html">sg_animate()</a></code> </p>
+        </td>
+        <td><p>Animate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read-static.html">sg_read_nodes()</a></code> <code><a href="read-static.html">sg_read_edges()</a></code> <code><a href="read-static.html">sg_read_exec()</a></code> </p>
+        </td>
+        <td><p>Read</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-formats" class="hasAnchor"><a href="#section-formats" class="anchor"></a>Formats</h2>
+          <p class="section-desc"><p>Import gexf and igraph objects.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="sg_from_gexf.html">sg_from_gexf()</a></code> </p>
+        </td>
+        <td><p>Graph from GEXF file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sg_from_igraph.html">sg_from_igraph()</a></code> </p>
+        </td>
+        <td><p>Create from igraph</p></td>
       </tr>
     </tbody>
     </table>
@@ -462,7 +688,15 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-initialise">Initialise</a></li>
+      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-shiny">Shiny</a></li>
+      <li><a href="#section-shiny">Shiny</a></li>
+      <li><a href="#section-export">Export</a></li>
+      <li><a href="#section-layout">Layout</a></li>
+      <li><a href="#section-style">Style</a></li>
+      <li><a href="#section-button">Button</a></li>
+      <li><a href="#section-formats">Formats</a></li>
     </ul>
   </div>
 </div>

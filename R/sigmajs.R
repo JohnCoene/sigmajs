@@ -38,6 +38,7 @@ sigmajs <- function(type = NULL, width = "100%", kill = FALSE, height = NULL, el
 
   # forward options using x
   x = list(
+    events = list(),
     kill = kill,
     data = list(),
 		type = type,

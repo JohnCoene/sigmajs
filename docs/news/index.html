@@ -198,9 +198,14 @@
 <h1 class="page-header">
 <a href="#sigmajs-0-1-4" class="anchor"></a>sigmajs 0.1.4<small> Unreleased </small>
 </h1>
+<p><strong>Breaking Changes</strong></p>
 <ul>
-<li>Improved random graph generators</li>
-<li>Removed renderer type as it breaks arrows.</li>
+<li>New <code>sg_events</code> function. Previously sigmajs sent <em>all</em> events to the server when in Shiny, this caused the whole visualisation to nearly crash when enabling edges events as too many events/too much data was sent to the server. You now need to specify which events you want to captur with <code>sg_events</code>. The <a href="http://sigmajs.john-coene.com/articles/shiny">shiny documentation</a> has been changed to reflect those changes.</li>
+</ul>
+<p><strong>Minor</strong></p>
+<ul>
+<li>Improved random graph generators for more sensible examples</li>
+<li>Removed renderer type as it breaks arrows on edges.</li>
 </ul>
 </div>
     <div id="sigmajs-0-1-3" class="section level1">
