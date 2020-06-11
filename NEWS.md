@@ -1,3 +1,7 @@
+# sigmajs 0.1.5
+
+CRAN re-submission.
+
 # sigmajs 0.1.4
 
 **Breaking Changes**

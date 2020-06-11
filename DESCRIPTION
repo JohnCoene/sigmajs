@@ -1,7 +1,7 @@
 Package: sigmajs
 Title: Interface to 'Sigma.js' Graph Visualization Library
-Date: 2019-04-08
-Version: 0.1.4
+Date: 2020-06-10
+Version: 0.1.5
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6637-4107"))
 Description: Interface to 'sigma.js' graph visualization library including animations, plugins and shiny proxies.
 License: MIT + file LICENSE
