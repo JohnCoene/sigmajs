@@ -4,8 +4,13 @@
 \alias{sigmajs}
 \title{Initialise}
 \usage{
-sigmajs(type = NULL, width = "100\%", kill = FALSE, height = NULL,
-  elementId = NULL)
+sigmajs(
+  type = NULL,
+  width = "100\%",
+  kill = FALSE,
+  height = NULL,
+  elementId = NULL
+)
 }
 \arguments{
 \item{type}{Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.}

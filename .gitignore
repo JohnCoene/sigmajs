@@ -5,3 +5,4 @@ sigmajs.Rproj
 *.vs
 inst/doc
 ct.R
+test.R

@@ -5,11 +5,9 @@
 \alias{sg_drop_edges_delay_p}
 \title{Drop nodes or edges with a delay}
 \usage{
-sg_drop_nodes_delay_p(proxy, data, ids, delay, refresh = TRUE,
-  cumsum = TRUE)
+sg_drop_nodes_delay_p(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE)
 
-sg_drop_edges_delay_p(proxy, data, ids, delay, refresh = TRUE,
-  cumsum = TRUE)
+sg_drop_edges_delay_p(proxy, data, ids, delay, refresh = TRUE, cumsum = TRUE)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}

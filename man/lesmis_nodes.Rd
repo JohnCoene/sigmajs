@@ -4,11 +4,13 @@
 \name{lesmis_nodes}
 \alias{lesmis_nodes}
 \title{Nodes from co-appearances of characters in "Les Miserables"}
-\format{An igraph object with 181 nodes and 2 variables
+\format{
+An igraph object with 181 nodes and 2 variables
 \describe{
   \item{\code{id}}{ abbreviation of character name}
   \item{\code{label}}{ character name}
-}}
+}
+}
 \source{
 \url{https://github.com/MADStudioNU/lesmiserables-character-network}
 }

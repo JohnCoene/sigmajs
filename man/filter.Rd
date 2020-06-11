@@ -7,19 +7,39 @@
 \alias{sg_filter_not_eq_p}
 \alias{sg_filter_undo_p}
 \alias{sg_filter_neighbours_p}
-\title{FIlter}
+\title{Filter}
 \usage{
-sg_filter_gt_p(proxy, input, var, target = c("nodes", "edges", "both"),
-  name = NULL)
+sg_filter_gt_p(
+  proxy,
+  input,
+  var,
+  target = c("nodes", "edges", "both"),
+  name = NULL
+)
 
-sg_filter_lt_p(proxy, input, var, target = c("nodes", "edges", "both"),
-  name = NULL)
+sg_filter_lt_p(
+  proxy,
+  input,
+  var,
+  target = c("nodes", "edges", "both"),
+  name = NULL
+)
 
-sg_filter_eq_p(proxy, input, var, target = c("nodes", "edges", "both"),
-  name = NULL)
+sg_filter_eq_p(
+  proxy,
+  input,
+  var,
+  target = c("nodes", "edges", "both"),
+  name = NULL
+)
 
-sg_filter_not_eq_p(proxy, input, var, target = c("nodes", "edges",
-  "both"), name = NULL)
+sg_filter_not_eq_p(
+  proxy,
+  input,
+  var,
+  target = c("nodes", "edges", "both"),
+  name = NULL
+)
 
 sg_filter_undo_p(proxy, name)
 

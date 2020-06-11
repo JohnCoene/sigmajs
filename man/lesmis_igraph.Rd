@@ -4,12 +4,14 @@
 \name{lesmis_igraph}
 \alias{lesmis_igraph}
 \title{Co-appearances of characters in "Les Miserables" as igraph object}
-\format{An igraph object with 181 nodes and 1589 edges
+\format{
+An igraph object with 181 nodes and 1589 edges
 \describe{
   \item{\code{id}}{ abbreviation of character name}
   \item{\code{label}}{ character name}
   \item{\code{color}}{ random color}
-}}
+}
+}
 \source{
 \url{https://github.com/MADStudioNU/lesmiserables-character-network}
 }

@@ -5,14 +5,26 @@
 \alias{sg_get_cluster}
 \title{Cluster}
 \usage{
-sg_cluster(sg, colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70",
-  "#24C96B"), directed = TRUE, algo = igraph::cluster_walktrap,
-  quiet = !interactive(), save_igraph = TRUE, ...)
+sg_cluster(
+  sg,
+  colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"),
+  directed = TRUE,
+  algo = igraph::cluster_walktrap,
+  quiet = !interactive(),
+  save_igraph = TRUE,
+  ...
+)
 
-sg_get_cluster(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#328983",
-  "#1C5C70", "#24C96B"), directed = TRUE,
-  algo = igraph::cluster_walktrap, quiet = !interactive(),
-  save_igraph = TRUE, ...)
+sg_get_cluster(
+  nodes,
+  edges,
+  colors = c("#B1E2A3", "#98D3A5", "#328983", "#1C5C70", "#24C96B"),
+  directed = TRUE,
+  algo = igraph::cluster_walktrap,
+  quiet = !interactive(),
+  save_igraph = TRUE,
+  ...
+)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

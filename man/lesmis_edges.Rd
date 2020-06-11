@@ -4,13 +4,15 @@
 \name{lesmis_edges}
 \alias{lesmis_edges}
 \title{Edges from co-appearances of characters in "Les Miserables"}
-\format{An igraph object with 181 nodes and 4 variables
+\format{
+An igraph object with 181 nodes and 4 variables
 \describe{
   \item{\code{source}}{ abbreviation of character name}
   \item{\code{target}}{ abbreviation of character name}
   \item{\code{id}}{ unique edge id}
  \item{\code{label}}{ edge label}
-}}
+}
+}
 \source{
 \url{https://github.com/MADStudioNU/lesmiserables-character-network}
 }

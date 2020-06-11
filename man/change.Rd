@@ -5,11 +5,23 @@
 \alias{sg_change_edges_p}
 \title{Change}
 \usage{
-sg_change_nodes_p(proxy, data, value, attribute, rate = c("once",
-  "iteration"), refresh = TRUE)
+sg_change_nodes_p(
+  proxy,
+  data,
+  value,
+  attribute,
+  rate = c("once", "iteration"),
+  refresh = TRUE
+)
 
-sg_change_edges_p(proxy, data, value, attribute, rate = c("once",
-  "iteration"), refresh = TRUE)
+sg_change_edges_p(
+  proxy,
+  data,
+  value,
+  attribute,
+  rate = c("once", "iteration"),
+  refresh = TRUE
+)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}

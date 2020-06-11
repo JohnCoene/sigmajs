@@ -5,11 +5,9 @@
 \alias{sg_add_edges_delay_p}
 \title{Add nodes or edges with a delay}
 \usage{
-sg_add_nodes_delay_p(proxy, data, delay, ..., refresh = TRUE,
-  cumsum = TRUE)
+sg_add_nodes_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 
-sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE,
-  cumsum = TRUE)
+sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 }
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}

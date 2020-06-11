@@ -4,8 +4,17 @@
 \alias{sg_progress}
 \title{Text}
 \usage{
-sg_progress(sg, data, delay, text, ..., position = "top", id = NULL,
-  tag = htmltools::span, cumsum = TRUE)
+sg_progress(
+  sg,
+  data,
+  delay,
+  text,
+  ...,
+  position = "top",
+  id = NULL,
+  tag = htmltools::span,
+  cumsum = TRUE
+)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

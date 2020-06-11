@@ -4,8 +4,7 @@
 \alias{sg_animate}
 \title{Animate}
 \usage{
-sg_animate(sg, mapping, options = list(easing = "cubicInOut"),
-  delay = 5000)
+sg_animate(sg, mapping, options = list(easing = "cubicInOut"), delay = 5000)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

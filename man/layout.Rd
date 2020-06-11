@@ -5,11 +5,22 @@
 \alias{sg_get_layout}
 \title{Layouts}
 \usage{
-sg_layout(sg, directed = TRUE, layout = igraph::layout_nicely,
-  save_igraph = TRUE, ...)
+sg_layout(
+  sg,
+  directed = TRUE,
+  layout = igraph::layout_nicely,
+  save_igraph = TRUE,
+  ...
+)
 
-sg_get_layout(nodes, edges, directed = TRUE,
-  layout = igraph::layout_nicely, save_igraph = TRUE, ...)
+sg_get_layout(
+  nodes,
+  edges,
+  directed = TRUE,
+  layout = igraph::layout_nicely,
+  save_igraph = TRUE,
+  ...
+)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}

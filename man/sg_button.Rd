@@ -4,8 +4,15 @@
 \alias{sg_button}
 \title{Buttons}
 \usage{
-sg_button(sg, event, ..., position = "top", class = "btn btn-default",
-  tag = htmltools::tags$button, id = NULL)
+sg_button(
+  sg,
+  event,
+  ...,
+  position = "top",
+  class = "btn btn-default",
+  tag = htmltools::tags$button,
+  id = NULL
+)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
