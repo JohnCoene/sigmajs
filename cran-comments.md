@@ -8,4 +8,4 @@
 
 0 errors | 0 warnings | 1 note
 
-Package was archived on CRAN, notification email of Check errors from Kurt went to the Spam folder :(
+Package was archived on CRAN

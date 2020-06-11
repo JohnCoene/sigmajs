@@ -31,7 +31,7 @@ sg_progress(
 
 \item{id}{A valid CSS id.}
 
-\item{tag}{A Valid \link[htmltools]{tags} function.}
+\item{tag}{A Valid \code{htmltools} tags function.}
 
 \item{cumsum}{Whether to compute the cumulative sum on the \code{delay}.}
 }

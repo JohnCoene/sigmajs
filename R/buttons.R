@@ -5,7 +5,7 @@
 #' @inheritParams sg_nodes
 #' @param event Event the button triggers, see valid events.
 #' @param class Button \code{CSS} class, see note.
-#' @param tag A Valid \link[htmltools]{tags} function.
+#' @param tag A Valid \code{htmltools} tags function.
 #' @param id A valid CSS id.
 #' @param position Position of button, \code{top} or \code{bottom}.
 #' @param ... Content of the button, complient with \code{htmltools}.

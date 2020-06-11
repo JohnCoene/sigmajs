@@ -6,7 +6,7 @@
 #' @param data Data.frame holding \code{delay} and \code{text}.
 #' @param delay Delay, in milliseconds at which text should appear.
 #' @param text Text to appear on graph.
-#' @param tag A Valid \link[htmltools]{tags} function.
+#' @param tag A Valid \code{htmltools} tags function.
 #' @param id A valid CSS id.
 #' @param position Position of button, \code{top} or \code{bottom}.
 #' @param ... Content of the button, complient with \code{htmltools}.

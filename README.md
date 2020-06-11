@@ -69,7 +69,7 @@ sigmajs() %>%
 demo(package = "sigmajs")
 ```
 
-![](pkgdown/delay.gif)
+![](https://raw.githubusercontent.com/JohnCoene/sigmajs/master/pkgdown/delay.gif)
 
 ## Contributing
 

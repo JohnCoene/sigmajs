@@ -25,7 +25,7 @@ sg_button(
 
 \item{class}{Button \code{CSS} class, see note.}
 
-\item{tag}{A Valid \link[htmltools]{tags} function.}
+\item{tag}{A Valid \code{htmltools} tags function.}
 
 \item{id}{A valid CSS id.}
 }
