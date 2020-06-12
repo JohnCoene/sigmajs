@@ -73,4 +73,4 @@ demo(package = "sigmajs")
 
 ## Contributing
 
-See the [contrinuting guidelines](CONTRIBUTING.md) if you encounter any issue. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+See the [contrinuting guidelines](https://github.com/JohnCoene/sigmajs/blob/master/CONTRIBUTING.md) if you encounter any issue. Please note that this project is released with a [Contributor Code of Conduct](https://github.com/JohnCoene/sigmajs/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
