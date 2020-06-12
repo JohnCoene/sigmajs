@@ -23,6 +23,7 @@ sigmajs_render <- function(sg){
 #'
 #' @import htmlwidgets
 #' @importFrom stats runif
+#' @importFrom htmltools tags
 #' 
 #' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
 #' 

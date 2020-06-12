@@ -71,7 +71,7 @@ sg_get_layout <- function(nodes, edges, directed = TRUE, layout = igraph::layout
   
   l <- layout(g, ...)
   l <- as.data.frame(l) %>% 
-    dplyr::select_("x" = "V1", "y" = "V2")
+    dplyr::select("x" = "V1", "y" = "V2")
   
   nodes <- dplyr::bind_cols(nodes, l)
   

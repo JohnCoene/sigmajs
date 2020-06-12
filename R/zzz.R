@@ -4,11 +4,6 @@ storage_env <- new.env(hash = TRUE)
   shiny::registerInputHandler("sigmajsParseJS", function(data, ...) {
     jsonlite::fromJSON(jsonlite::toJSON(data, auto_unbox = TRUE))
   }, force = TRUE)
-  
-  packageStartupMessage(
-    "Welcome to sigmajs\n\n",
-    "Docs: sigmajs.john-coene.com"
-  )
 }
 
 .onLoad <- function(libname, pkgname) {
