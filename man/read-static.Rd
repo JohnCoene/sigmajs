@@ -24,6 +24,9 @@ sg_read_exec(sg, refresh = TRUE)
 
 \item{refresh}{Whether to refresh the \code{\link{force}} layout.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Read nodes and edges into your graph, with or without a delay.
 }

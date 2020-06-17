@@ -29,6 +29,9 @@ sg_button(
 
 \item{id}{A valid CSS id.}
 }
+\value{
+An object of class \code{htmlwidget} which renders the visualisation on print.
+}
 \description{
 Add buttons to your graph.
 }

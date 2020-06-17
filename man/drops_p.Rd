@@ -20,6 +20,9 @@ sg_drop_edges_p(proxy, data, ids, refresh = TRUE, rate = "once")
 
 \item{rate}{Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Proxies to dynamically drop *multiple* nodes or edges from an already existing graph.
 }

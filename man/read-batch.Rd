@@ -25,6 +25,9 @@ sg_read_delay_exec_p(proxy, refresh = TRUE)
 \item{refresh}{Whether to refresh the graph after each batch (\code{delay}) has been added to the graph.
 Note that this will also automatically restart any running force layout.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Read nodes and edges by batch with a delay.
 }

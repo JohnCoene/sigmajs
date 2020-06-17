@@ -36,6 +36,8 @@
 #' }
 #' if(interactive()) shinyApp(ui, server) # run
 #' 
+#' @return The \code{proxy} object.
+#' 
 #' @rdname get_graph
 #' @export
 sg_get_nodes_p <- function(proxy) {

@@ -58,6 +58,9 @@ sg_filter_neighbours_p(proxy, node, name = NULL)
 
 \item{node}{Node id to filter neighbours.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Filter nodes and/or edges.
 }
@@ -72,7 +75,3 @@ Filter nodes and/or edges.
 }
 }
 
-\examples{
-# demo("filter-nodes", package = "sigmajs")
-
-}

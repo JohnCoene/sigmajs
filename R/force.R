@@ -39,6 +39,8 @@
 #'   sg_force() %>% 
 #'   sg_force_stop() # stop force after 5 seconds
 #' 
+#' @return Their first arguments, either \code{sg} or \code{proxy}.
+#' 
 #' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap}{official documentation}
 #'
 #' @name force

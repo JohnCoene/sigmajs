@@ -22,6 +22,9 @@ if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shi
 
 \item{elementId}{Id of elment.}
 }
+\value{
+An object of class \code{htmlwidget} which renders the visualisation on print.
+}
 \description{
 Initialise a graph.
 }

@@ -12,6 +12,9 @@ sg_scale_color(sg, pal)
 
 \item{pal}{Vector of color.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Scale color by node size.
 }

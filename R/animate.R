@@ -26,6 +26,8 @@
 #'   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
 #' 
 #' @seealso \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.plugins.animate}{official documentation}
+#' 
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
 #'
 #' @rdname animation
 #' @export

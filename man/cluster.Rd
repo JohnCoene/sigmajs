@@ -44,7 +44,9 @@ sg_get_cluster(
 \item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
 }
 \value{
-\code{sg_get_cluster} returns nodes with \code{color} variable.
+\code{sg_get_cluster} returns nodes with \code{color} variable while 
+\code{sg_cluster} returns an object of class \code{htmlwidget} which renders 
+the visualisation on print.
 }
 \description{
 Color nodes by cluster.

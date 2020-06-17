@@ -13,6 +13,8 @@
 #' demo("add-camera", package = "sigmajs")
 #' }
 #' 
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
+#' 
 #' @noRd
 #' @keywords internal
 sg_camera <- function(sg, elementId = NULL, initialise = FALSE) {

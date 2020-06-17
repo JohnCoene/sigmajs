@@ -16,12 +16,9 @@ sg_drop_edge_p(proxy, id, refresh = TRUE)
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Proxies to dynamically remove a node or an edge to an already existing graph.
-}
-\examples{
-\dontrun{
-demo("drop-node", package = "sigmajs")
-}
-
 }

@@ -22,6 +22,9 @@ sg_add_edges_delay_p(proxy, data, delay, ..., refresh = TRUE, cumsum = TRUE)
 
 \item{cumsum}{Whether to compute the cumulative sum of the delay.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Proxies to dynamically add multiple nodes or edges to an already existing graph with a *delay* between each addition.
 }
@@ -35,12 +38,4 @@ edge is added to the visualisation; \code{delay} is used as passed to the functi
 \note{
 Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 make sure you also have it in your proxy.
-}
-\examples{
-\dontrun{
-demo("add-nodes-delay", package = "sigmajs") # add nodes with a delay
-demo("add-edges-delay", package = "sigmajs") # add edges with a delay
-demo("add-delay", package = "sigmajs") # add nodes and edges with a delay
-}
-
 }

@@ -18,6 +18,9 @@ sg_noverlap_p(proxy, nodeMargin = 5, ...)
 
 \item{nodeMargin}{The additional minimum space to apply around each and every node.}
 }
+\value{
+The first argument either \code{sg} or \code{proxy}.
+}
 \description{
 This plugin runs an algorithm which distributes nodes in the network, ensuring that they do not overlap and providing a margin where specified.
 }

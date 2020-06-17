@@ -11,6 +11,9 @@ sg_relative_size(sg, initial = 1)
 
 \item{initial}{Initial node size.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Change nodes size depending to their degree (number of relationships)
 }

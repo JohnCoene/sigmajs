@@ -33,6 +33,8 @@
 #'   sg_progress(nodes2, delay, text, element = "h3") %>%
 #'   sg_button(c("add_nodes", "progress"), "add") 
 #' 
+#' @return A modified version of the \code{sg} object.
+#' 
 #' @export
 sg_progress <- function(sg, data, delay, text, ..., position = "top", id = NULL,
                         tag = htmltools::span, cumsum = TRUE){

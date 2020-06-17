@@ -35,6 +35,9 @@ sg_progress(
 
 \item{cumsum}{Whether to compute the cumulative sum on the \code{delay}.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Add text to your graph.
 }

@@ -23,7 +23,8 @@
 #'   sg_export_svg() %>% 
 #'   sg_button("export_svg", "download")
 #' 
-#' # demo("export-graph", package = "sigmajs")
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
+#' Functions ending in \code{_p} return the \code{proxy}.
 #' 
 #' @rdname export
 #' @export

@@ -11,6 +11,9 @@ sg_events(sg, events)
 
 \item{events}{A vector of valid events (see section below).}
 }
+\value{
+An object of class \code{htmlwidget} which renders the visualisation on print.
+}
 \description{
 Get events server-side.
 }

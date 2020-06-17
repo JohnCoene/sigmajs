@@ -16,6 +16,8 @@
 #'   sg_edges(edges, id, source, target) %>%
 #'   sg_layout() %>% 
 #'   sg_noverlap()
+#' 
+#' @return The first argument either \code{sg} or \code{proxy}.
 #'
 #' @rdname noverlap
 #' @export

@@ -19,6 +19,9 @@
 #' # proxies
 #' demo("drag-nodes", package = "sigmajs")
 #' }
+#' 
+#' @return \code{sg_drag_nodes} An object of class \code{htmlwidget} which renders the visualisation on print.
+#' While \code{sg_drag_nodes_start_p} and \code{sg_drag_nodes_kill_p}
 #'
 #' @rdname drag-nodes
 #' @export
@@ -29,8 +32,8 @@ sg_drag_nodes <- function(sg) {
 
   .test_sg(sg)
 
-    sg$x$dragNodes <- TRUE
-    sg
+  sg$x$dragNodes <- TRUE
+  sg
 }
 
 #' @rdname drag-nodes
@@ -45,7 +48,8 @@ sg_drag_nodes_start_p <- function(proxy) {
 	message <- list(id = proxy$id) # create message
 
 	proxy$session$sendCustomMessage("sg_drag_nodes_start_p", message)
-    proxy
+  
+  proxy
 }
 
 #' @rdname drag-nodes
@@ -60,5 +64,5 @@ sg_drag_nodes_kill_p <- function(proxy) {
 	message <- list(id = proxy$id) # create message
 
 	proxy$session$sendCustomMessage("sg_drag_nodes_kill_p", message)
-    proxy
+  proxy
 }

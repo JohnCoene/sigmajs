@@ -15,6 +15,8 @@
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_layout() %>% 
 #'   sg_neighbours()
+#' 
+#' @return A modified version of the \code{sg} object.
 #'
 #' @rdname neighbours
 #' @export

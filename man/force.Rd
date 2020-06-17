@@ -46,6 +46,9 @@ sg_force_config_p(proxy, ...)
 
 \item{cumsum}{Whether to compute the cumulative sum of the delay.}
 }
+\value{
+Their first arguments, either \code{sg} or \code{proxy}.
+}
 \description{
 Implementation of \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679}{forceAtlas2}.
 }

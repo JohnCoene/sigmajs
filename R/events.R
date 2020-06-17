@@ -63,6 +63,8 @@
 #' 
 #' @seealso \href{https://github.com/jacomyal/sigma.js/wiki/Events-API}{official documentation}.
 #' 
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
+#' 
 #' @export 
 sg_events <- function(sg, events){
   if(missing(events))

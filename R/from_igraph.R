@@ -17,6 +17,8 @@
 #'		sg_from_igraph(lesmis_igraph, layout) %>%
 #'		sg_settings(defaultNodeColor = "#000")
 #' }
+#' 
+#' @return A modified version of the \code{sg} object.
 #'
 #' @export
 sg_from_igraph <- function(sg, igraph, layout = NULL, sd = NULL) {

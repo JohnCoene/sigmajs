@@ -13,6 +13,8 @@
 #'   sg_nodes(nodes, id, label) %>% # no need to pass size
 #'   sg_edges(edges, id, source, target) %>% 
 #'   sg_relative_size()
+#' 
+#' @return A modified version of the \code{sg} object.
 #'
 #' @export
 sg_relative_size <- function(sg, initial = 1) {

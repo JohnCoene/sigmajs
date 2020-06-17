@@ -13,6 +13,9 @@
 #' sigmajs() %>% 
 #'   sg_from_gexf(gexf) 
 #' }
+#' 
+#' @return A modified version of the \code{sg} object.
+#' 
 #' @export
 sg_from_gexf <- function(sg, file, sd = NULL) {
 

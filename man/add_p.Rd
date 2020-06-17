@@ -18,6 +18,9 @@ sg_add_edge_p(proxy, data, ..., refresh = TRUE)
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Proxies to dynamically add a node or an edge to an already existing graph.
 }

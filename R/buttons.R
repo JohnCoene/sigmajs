@@ -59,6 +59,8 @@
 #' 
 #' @note The default class (\code{btn btn-default}) works with Bootstrap 3 (the default framework for Shiny and R markdown).
 #' 
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
+#' 
 #' @export
 sg_button <- function(sg, event, ..., position = "top", class = "btn btn-default", tag = htmltools::tags$button, id = NULL){
   

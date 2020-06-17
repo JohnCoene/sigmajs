@@ -18,8 +18,7 @@
 #'   \item{\code{sg_filter_undo_p} Undo filters, accepts vector of \code{name}s.}
 #' }
 #' 
-#' @examples 
-#' # demo("filter-nodes", package = "sigmajs")
+#' @return The \code{proxy} object.
 #' 
 #' @rdname filter
 #' @export

@@ -13,6 +13,9 @@ sg_from_gexf(sg, file, sd = NULL)
 
 \item{sd}{A \link[crosstalk]{SharedData} of nodes.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Create a sigmajs graph from a GEXF file.
 }
@@ -23,4 +26,5 @@ gexf <- "https://gephi.org/gexf/data/yeast.gexf"
 sigmajs() \%>\% 
   sg_from_gexf(gexf) 
 }
+
 }

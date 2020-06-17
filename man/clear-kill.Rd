@@ -22,15 +22,14 @@ sg_clear(sg)
 
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 }
+\value{
+The \code{proxy} object.
+
+A modified version of the \code{sg} object.
+}
 \description{
 Clear all nodes and edges from the graph or kills the graph.
 
 Kill the graph to ensure new data is redrawn, useful in Shiny 
 when graph is not updated by \code{\link{sigmajsProxy}}.
-}
-\examples{
-\dontrun{
-demo("clear-graph", package = "sigmajs")
-}
-
 }

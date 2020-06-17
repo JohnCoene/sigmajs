@@ -17,6 +17,8 @@
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
 #' 
+#' @return The \code{proxy} object.
+#' 
 #' @rdname add_p
 #' @export
 sg_add_node_p <- function(proxy, data, ..., refresh = TRUE) {
@@ -79,6 +81,8 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
+#' 
+#' @return The \code{proxy} object.
 #' 
 #' @rdname adds_p
 #' @export
@@ -144,10 +148,7 @@ sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 #' @param id Id of edge or node to delete.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.
 #'
-#' @examples
-#' \dontrun{
-#' demo("drop-node", package = "sigmajs")
-#' }
+#' @return The \code{proxy} object.
 #'
 #' @rdname drop_p
 #' @export
@@ -193,11 +194,8 @@ sg_drop_edge_p <- function(proxy, id, refresh = TRUE) {
 #'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.
-#'
-#' @examples
-#' \dontrun{
-#' demo("clear-graph", package = "sigmajs")
-#' }
+#' 
+#' @return The \code{proxy} object.
 #'
 #' @rdname clear-kill
 #' @export
@@ -247,13 +245,8 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
 #' of the delay to effectively add each row one after the other: delay is thus applied at each row (number of seconds to wait
 #' before the row is added *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
 #' edge is added to the visualisation; \code{delay} is used as passed to the function.
-#'
-#' @examples
-#' \dontrun{
-#' demo("add-nodes-delay", package = "sigmajs") # add nodes with a delay
-#' demo("add-edges-delay", package = "sigmajs") # add edges with a delay
-#' demo("add-delay", package = "sigmajs") # add nodes and edges with a delay
-#' }
+#' 
+#' @return The \code{proxy} object.
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
@@ -330,6 +323,8 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 #' @param refresh Whether to refresh the graph after node is dropped, required to take effect.
 #' @param rate Refresh rate, either \code{once}, the graph is refreshed after data.frame of nodes is added or at each \code{iteration} (row-wise). Only applies if \code{refresh} is set to \code{TRUE}.
 #'
+#' @return The \code{proxy} object.
+#' 
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
 #' 
@@ -398,12 +393,7 @@ sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 #' before the row is dropped *since the previous row*). If \code{FALSE} this is the number of milliseconds to wait before the node or
 #' edge is added to the visualisation; \code{delay} is used as passed to the function.
 #'
-#' @examples
-#' \dontrun{
-#' demo("drop-nodes-delay", package = "sigmajs") # add nodes with a delay
-#' demo("drop-edges-delay", package = "sigmajs") # add edges with a delay
-#' demo("drop-delay", package = "sigmajs") # add nodes and edges with a delay
-#' }
+#' @return The \code{proxy} object.
 #'
 #' @note Have the parameters from your initial graph match that of the node you add, i.e.: if you pass \code{size} in your initial chart,
 #' make sure you also have it in your proxy.
@@ -542,6 +532,8 @@ sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
 #' 
 #' if(interactive()) shinyApp(ui, server)
 #' 
+#' @return The \code{proxy} object.
+#' 
 #' @name read
 #' @export
 sg_read_nodes_p <- function(proxy, data, ...){
@@ -656,6 +648,8 @@ sg_read_exec_p <- function(proxy){
 #' }
 #' 
 #' if(interactive()) shinyApp(ui, server)
+#' 
+#' @return The \code{proxy} object.
 #' 
 #' @name read-batch
 #' @export

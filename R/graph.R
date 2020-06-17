@@ -53,6 +53,8 @@ globalVariables(c("id", "label", "sigmajsdelay", "size"))
 #'   
 #' # all source and target are present in node ids
 #' all(c(edges$source, edges$target) %in% nodes$id)
+#' 
+#' @return A modified version of the \code{sg} object.
 #'
 #' @rdname graph
 #' @export
@@ -166,6 +168,8 @@ sg_nodes2 <- function(sg, data) {
 #'   sg_add_edges(edges, delay, id, source, target, cumsum = FALSE) %>%
 #'   sg_force_stop(2300) # stop after all edges added
 #' 
+#' @return A modified version of the \code{sg} object.
+#' 
 #' @rdname add_static
 #' @export
 sg_add_nodes <- function(sg, data, delay, ..., cumsum = TRUE) {
@@ -260,6 +264,8 @@ sg_add_edges <- function(sg, data, delay, ..., cumsum = TRUE, refresh = FALSE) {
 #' sigmajs() %>% 
 #'   sg_nodes(nodes, id, size, color) %>% 
 #'   sg_drop_nodes(nodes2, id, delay, cumsum = FALSE)
+#' 
+#' @return A modified version of the \code{sg} object.
 #' 
 #' @rdname drop_static 
 #' @export
@@ -359,6 +365,8 @@ sg_drop_edges <- function(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE) 
 #' 	 sg_force_stop(4000) %>% 
 #'   sg_read_exec() %>% 
 #' 	 sg_button("read_exec", "Add nodes & edges")
+#' 
+#' @return A modified version of the \code{sg} object.
 #' 
 #' @name read-static
 #' @export

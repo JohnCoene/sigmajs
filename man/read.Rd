@@ -20,6 +20,9 @@ sg_read_exec_p(proxy)
 
 \item{...}{any column.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Read nodes and edges to add to the graph. Other proxy methods to add data to a graph have to add nodes and edges one by one, 
 thereby draining the browser, this method will add multiple nodes and edges more efficiently.

@@ -12,6 +12,9 @@ sg_get_edges_p(proxy)
 \arguments{
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 }
+\value{
+The \code{proxy} object.
+}
 \description{
 Retrieve nodes and edges from the widget.
 }

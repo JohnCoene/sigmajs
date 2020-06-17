@@ -32,7 +32,9 @@
 #'   
 #' clustered <- sg_get_cluster(nodes, edges)
 #' 
-#' @return \code{sg_get_cluster} returns nodes with \code{color} variable.
+#' @return \code{sg_get_cluster} returns nodes with \code{color} variable while 
+#' \code{sg_cluster} returns an object of class \code{htmlwidget} which renders 
+#' the visualisation on print.
 #' 
 #' @rdname cluster
 #' @export

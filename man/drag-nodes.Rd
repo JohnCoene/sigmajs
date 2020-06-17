@@ -17,6 +17,10 @@ sg_drag_nodes_kill_p(proxy)
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 }
+\value{
+\code{sg_drag_nodes} An object of class \code{htmlwidget} which renders the visualisation on print.
+While \code{sg_drag_nodes_start_p} and \code{sg_drag_nodes_kill_p}
+}
 \description{
 Allow user to drag and drop nodes.
 }

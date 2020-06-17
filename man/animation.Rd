@@ -15,6 +15,9 @@ sg_animate(sg, mapping, options = list(easing = "cubicInOut"), delay = 5000)
 
 \item{delay}{Delay in milliseconds before animation is triggered.}
 }
+\value{
+An object of class \code{htmlwidget} which renders the visualisation on print.
+}
 \description{
 Animate graph components.
 }

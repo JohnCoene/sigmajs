@@ -104,6 +104,8 @@ sg_make_nodes_edges <- function(n, ...){
 #' 
 #' @inheritParams sg_nodes
 #' 
+#' @return A modified version of the \code{sg} object.
+#' 
 #' @rdname clear-kill
 #' @export
 sg_kill <- function(sg){
@@ -137,6 +139,8 @@ sg_clear <- function(sg){
 #' sigmajs() %>% 
 #'   sg_nodes(nodes, id, size) %>% 
 #'   sg_scale_color(pal = c("red", "blue"))
+#' 
+#' @return A modified version of the \code{sg} object.
 #' 
 #' @name color-scale
 #' @export

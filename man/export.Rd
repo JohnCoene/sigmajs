@@ -68,6 +68,10 @@ sg_export_svg_p(
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 }
+\value{
+An object of class \code{htmlwidget} which renders the visualisation on print.
+Functions ending in \code{_p} return the \code{proxy}.
+}
 \description{
 Export graph to SVG.
 }
@@ -80,7 +84,5 @@ sigmajs() \%>\%
   sg_edges(edges, id, source, target) \%>\% 
   sg_export_svg() \%>\% 
   sg_button("export_svg", "download")
-
-# demo("export-graph", package = "sigmajs")
 
 }

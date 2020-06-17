@@ -22,6 +22,9 @@ sg_nodes2(sg, data)
 
 \item{...}{Any column name, see details.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Add nodes and edges to a \code{sigmajs} graph.
 }

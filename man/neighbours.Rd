@@ -22,6 +22,9 @@ sg_neighbors_p(proxy, nodes = "#eee", edges = "#eee")
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Highlight node neighbours on click.
 }

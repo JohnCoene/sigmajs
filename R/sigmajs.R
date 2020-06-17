@@ -28,7 +28,9 @@ sigmajs_render <- function(sg){
 #' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
 #' 
 #' @seealso \code{\link{sg_kill}}.
-#'
+#' 
+#' @return An object of class \code{htmlwidget} which renders the visualisation on print.
+#' 
 #' @export
 sigmajs <- function(type = NULL, width = "100%", kill = FALSE, height = NULL, elementId = NULL) {
   

@@ -15,6 +15,9 @@ sg_from_igraph(sg, igraph, layout = NULL, sd = NULL)
 
 \item{sd}{A \link[crosstalk]{SharedData} of nodes.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Create a \code{sigmajs} from an \code{igraph} object.
 }

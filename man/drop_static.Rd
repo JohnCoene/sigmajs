@@ -22,6 +22,9 @@ sg_drop_edges(sg, data, ids, delay, cumsum = TRUE, refresh = FALSE)
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted at every iteration.}
 }
+\value{
+A modified version of the \code{sg} object.
+}
 \description{
 Drop nodes or edges.
 }
