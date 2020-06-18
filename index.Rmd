@@ -7,7 +7,7 @@ library(sigmajs)
 library(dplyr)
 ```
 
-```{r, eval=TRUE, echo = FALSE, warning = FALSE}
+```{r, message = FALSE, eval=TRUE, echo = FALSE, warning = FALSE}
 # ----------------------------- GET STARTED
 nodes_demo <- sg_make_nodes()
 edges_demo <- sg_make_edges(nodes_demo, 17)
