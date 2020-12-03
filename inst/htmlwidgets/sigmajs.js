@@ -1131,6 +1131,18 @@ if (HTMLWidgets.shinyMode) {
 		}
 	);
 
+	// animate
+	Shiny.addCustomMessageHandler('sg_animate_p',
+		function (message) {
+		  var s = get_sigma_graph(message.id);
+			if (typeof s != 'undefined') {
+			  setTimeout(function() {
+          sigma.plugins.animate(s, message.mapping, message.options);
+        }, message.delay);
+			}
+		}
+	);
+
 	// noverlap
 	Shiny.addCustomMessageHandler('sg_noverlap_p',
 		function (message) {
