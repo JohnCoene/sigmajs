@@ -719,3 +719,62 @@ sg_read_delay_exec_p <- function(proxy, refresh = TRUE){
 	proxy$session$sendCustomMessage("sg_read_bacth_exec_p", proxy$message)
 	return(proxy)
 }
+
+#' Animate
+#'
+#' Proxy to dynamically animate an already existing graph.
+#'
+#' @inheritParams sg_animate
+#' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
+#'
+#' @details You can animate, \code{x}, \code{y}, \code{size} and \code{color}.
+#'
+#' @note You have to make sure that all the columns you want to animate to
+#' (e.g. \code{to_x}, \code{to_size}) are also provided as arguments when you
+#' create the graph with \code{sigmajs() \%>\% sg_nodes()}.
+#'
+#' @seealso \code{\link{sg_animate}}
+#'
+#' @examples
+#' \dontrun{
+#' # generate graph
+#' nodes <- sg_make_nodes(20)
+#' edges <- sg_make_edges(nodes)
+#'
+#' # add transition
+#' n <- nrow(nodes)
+#' nodes$to_x <- runif(n, 5, 10)
+#' nodes$to_y <- runif(n, 5, 10)
+#' nodes$to_size <- runif(n, 5, 10)
+#'
+#' # in server function:
+#' output$my_sigmajs_id <- renderSigmajs({
+#'   sigmajs() %>%
+#'     sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size) %>%
+#'     sg_edges(edges, id, source, target)
+#' })
+#'
+#' observeEvent(input$button, {
+#'   sigmajsProxy("my_sigmajs_id") %>%
+#'     sg_animate_p(mapping = list(x = "to_x", y = "to_y", size = "to_size"),
+#'                  options = list(duration = 1000), delay = 0)
+#' })
+#' }
+#'
+#' @return The \code{proxy} object.
+#'
+#' @rdname animation_p
+#' @export
+sg_animate_p <- function(proxy, mapping, options = list(easing = "cubicInOut"), delay = 5000) {
+
+  if (missing(proxy) || missing(mapping))
+    stop("missing proxy or mapping", call. = FALSE)
+
+  .test_proxy(proxy)
+
+  message <- list(id = proxy$id, mapping = mapping, options = options, delay = delay) # create message
+
+  proxy$session$sendCustomMessage("sg_animate_p", message)
+
+  return(proxy)
+}
