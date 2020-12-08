@@ -11,7 +11,8 @@ sg_change_nodes_p(
   value,
   attribute,
   rate = c("once", "iteration"),
-  refresh = TRUE
+  refresh = TRUE,
+  delay = NULL
 )
 
 sg_change_edges_p(
@@ -20,7 +21,8 @@ sg_change_edges_p(
   value,
   attribute,
   rate = c("once", "iteration"),
-  refresh = TRUE
+  refresh = TRUE,
+  delay = NULL
 )
 }
 \arguments{
@@ -36,6 +38,8 @@ sg_change_edges_p(
 and \code{iteration} which refreshes at every iteration.}
 
 \item{refresh}{Whether to refresh the graph after the change is made.}
+
+\item{delay}{Optional delay in milliseconds before change is applied. If \code{NULL} (default), no delay.}
 }
 \description{
 Change nodes and edges attributes on the fly
