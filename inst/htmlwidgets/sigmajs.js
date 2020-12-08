@@ -1217,17 +1217,19 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			var i = 0;
 			if (typeof s != 'undefined') {
-				s.graph.nodes().forEach((n) => {
-					n[message.message.attribute] = message.message.value[i];
-					if (message.message.refresh === true && message.message.rate === "iteration") {
-						s.refresh();
-					}
-					i = i + 1
-				});
+			  setTimeout(function() {
+  				s.graph.nodes().forEach((n) => {
+  					n[message.message.attribute] = message.message.value[i];
+  					if (message.message.refresh === true && message.message.rate === "iteration") {
+  						s.refresh();
+  					}
+  					i = i + 1
+  				});
 
-				if (message.message.refresh === true && message.message.rate === "once") {
-					s.refresh();
-				}
+  				if (message.message.refresh === true && message.message.rate === "once") {
+  					s.refresh();
+  				}
+			  }, message.delay);
 			}
 		}
 	);
@@ -1237,17 +1239,19 @@ if (HTMLWidgets.shinyMode) {
 			var s = get_sigma_graph(message.id);
 			var i = 0;
 			if (typeof s != 'undefined') {
-				s.graph.edges().forEach((n) => {
-					n[message.message.attribute] = message.message.value[i];
-					if (message.message.refresh === true && message.message.rate === "iteration") {
-						s.refresh();
-					}
-					i = i + 1
-				});
+			  setTimeout(function() {
+  				s.graph.edges().forEach((n) => {
+  					n[message.message.attribute] = message.message.value[i];
+  					if (message.message.refresh === true && message.message.rate === "iteration") {
+  						s.refresh();
+  					}
+  					i = i + 1
+  				});
 
-				if (message.message.refresh === true && message.message.rate === "once") {
-					s.refresh();
-				}
+  				if (message.message.refresh === true && message.message.rate === "once") {
+  					s.refresh();
+  				}
+			  }, message.delay);
 			}
 		}
 	);

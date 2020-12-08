@@ -9,7 +9,8 @@
 #' @param rate Rate at chich to refresh takes \code{once} refreshes once after all \code{values} have been changed, 
 #'  and \code{iteration} which refreshes at every iteration.
 #' @param refresh Whether to refresh the graph after the change is made.
-#' 
+#' @param delay Optional delay in milliseconds before change is applied. If \code{NULL} (default), no delay.
+#'
 #' @examples
 #' 
 #' library(shiny)
@@ -42,7 +43,8 @@
 #' 
 #' @rdname change
 #' @export
-sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "iteration"), refresh = TRUE) {
+sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "iteration"),
+                              refresh = TRUE, delay = NULL) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
@@ -54,7 +56,9 @@ sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "i
 
 	val <- eval(substitute(value), data) 
 
-	message <- list(id = proxy$id, message = list(rate = rate, value = val, attribute = attribute, refresh = refresh)) # create message
+	message <- list(id = proxy$id,
+	                message = list(rate = rate, value = val, attribute = attribute, refresh = refresh),
+	                delay = delay) # create message
 
 	proxy$session$sendCustomMessage("sg_change_nodes_p", message)
 
@@ -64,7 +68,8 @@ sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "i
 
 #' @rdname change
 #' @export
-sg_change_edges_p <- function(proxy, data, value, attribute, rate = c("once", "iteration"), refresh = TRUE) {
+sg_change_edges_p <- function(proxy, data, value, attribute, rate = c("once", "iteration"),
+                              refresh = TRUE, delay = NULL) {
 
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
@@ -76,7 +81,9 @@ sg_change_edges_p <- function(proxy, data, value, attribute, rate = c("once", "i
 
 	val <- eval(substitute(value), data) 
 
-	message <- list(id = proxy$id, message = list(rate = rate, value = val, attribute = attribute, refresh = refresh)) # create message
+	message <- list(id = proxy$id,
+	                message = list(rate = rate, value = val, attribute = attribute, refresh = refresh),
+	                delay = delay) # create message
 
 	proxy$session$sendCustomMessage("sg_change_edges_p", message)
 
