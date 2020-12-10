@@ -45,7 +45,7 @@ sg_drag_nodes_start_p <- function(proxy) {
 
   .test_proxy(proxy)
 
-	message <- list(id = proxy$id) # create message
+	message <- list(id = .build_id(proxy)) # create message
 
 	proxy$session$sendCustomMessage("sg_drag_nodes_start_p", message)
   
@@ -61,7 +61,7 @@ sg_drag_nodes_kill_p <- function(proxy) {
 
   .test_proxy(proxy)
 
-	message <- list(id = proxy$id) # create message
+	message <- list(id = .build_id(proxy)) # create message
 
 	proxy$session$sendCustomMessage("sg_drag_nodes_kill_p", message)
   proxy

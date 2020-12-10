@@ -39,7 +39,7 @@ sg_noverlap_p <- function(proxy, nodeMargin = 5, ...) {
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id, config = list(nodeMargin = nodeMargin, ...)) # create message
+	message <- list(id = .build_id(proxy), config = list(nodeMargin = nodeMargin, ...)) # create message
 
 	proxy$session$sendCustomMessage("sg_noverlap_p", message)
 

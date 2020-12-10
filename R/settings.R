@@ -36,7 +36,7 @@ sg_settings <- function(sg, ...) {
 #' @rdname sg_settings
 #' @export
 sg_settings_p <- function(proxy, ...){
-	message <- list(id = proxy$id, opts = list(...))
+	message <- list(id = .build_id(proxy), opts = list(...))
 	proxy$session$sendCustomMessage("sg_settings_p", message)
 	return(proxy)
 }
@@ -54,7 +54,7 @@ sg_refresh_p <- function(proxy) {
 	if (!"sigmajsProxy" %in% class(proxy))
 		stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id)
+	message <- list(id = .build_id(proxy))
 
 	proxy$session$sendCustomMessage("sg_refresh_p", message)
 

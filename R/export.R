@@ -88,7 +88,7 @@ sg_export_img_p <- function(proxy, download = TRUE, file = "graph.png", backgrou
     labels = labels
   )
   
-  message <- list(id = proxy$id, data = df) # create message
+  message <- list(id = .build_id(proxy), data = df) # create message
   
   proxy$session$sendCustomMessage("sg_export_img_p", message)
   
@@ -116,7 +116,7 @@ sg_export_svg_p <- function(proxy, download = TRUE, file = "graph.svg", size = 1
     data = data
   )
   
-  message <- list(id = proxy$id, data = df) # create message
+  message <- list(id = .build_id(proxy), data = df) # create message
   
   proxy$session$sendCustomMessage("sg_export_svg_p", message)
   

@@ -133,3 +133,7 @@ globalVariables(c("from", "to", "."))
     edges = y
   )
 }
+
+.build_id <- function(proxy) {
+  proxy$session$ns(proxy$id)
+}
