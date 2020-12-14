@@ -34,7 +34,7 @@ sg_add_node_p <- function(proxy, data, ..., refresh = TRUE) {
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = nodes, refresh = refresh) # create message
+	message <- list(id = proxy$id, data = nodes, refresh = refresh) # create message
 
 	proxy$session$sendCustomMessage("sg_add_node_p", message)
 
@@ -56,7 +56,7 @@ sg_add_edge_p <- function(proxy, data, ..., refresh = TRUE) {
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = edges, refresh = refresh) # create message
+	message <- list(id = proxy$id, data = edges, refresh = refresh) # create message
 
 	proxy$session$sendCustomMessage("sg_add_edge_p", message) # send message
 
@@ -105,7 +105,7 @@ sg_add_nodes_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = nodes, refresh = refresh, rate = rate) # create message
+	message <- list(id = proxy$id, data = nodes, refresh = refresh, rate = rate) # create message
 
 	proxy$session$sendCustomMessage("sg_add_nodes_p", message)
 
@@ -133,7 +133,7 @@ sg_add_edges_p <- function(proxy, data, ..., refresh = TRUE, rate = "once") {
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = nodes, refresh = refresh, rate = rate) # create message
+	message <- list(id = proxy$id, data = nodes, refresh = refresh, rate = rate) # create message
 
 	proxy$session$sendCustomMessage("sg_add_edges_p", message)
 
@@ -162,7 +162,7 @@ sg_drop_node_p <- function(proxy, id, refresh = TRUE) {
 	if (missing(id))
 		stop("must pass id")
 
-  message <- list(id = .build_id(proxy), data = id, refresh = refresh)
+	message <- list(id = proxy$id, data = id, refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_drop_node_p", message)
 
@@ -181,7 +181,7 @@ sg_drop_edge_p <- function(proxy, id, refresh = TRUE) {
 	if (missing(id))
 		stop("must pass id")
 
-  message <- list(id = .build_id(proxy), data = id, refresh = refresh)
+	message <- list(id = proxy$id, data = id, refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_drop_edge_p", message)
 
@@ -206,7 +206,7 @@ sg_clear_p <- function(proxy, refresh = TRUE) {
   
   .test_proxy(proxy)
 
-  message <- list(id = .build_id(proxy), refresh = refresh)
+	message <- list(id = proxy$id, refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_clear_p", message)
 
@@ -222,7 +222,7 @@ sg_kill_p <- function(proxy, refresh = TRUE) {
   
   .test_proxy(proxy)
 
-  message <- list(id = .build_id(proxy), refresh = refresh)
+	message <- list(id = proxy$id, refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_kill_p", message)
 
@@ -275,7 +275,7 @@ sg_add_nodes_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = nodes, refresh = refresh) # create message
+	message <- list(id = proxy$id, data = nodes, refresh = refresh) # create message
 
 	proxy$session$sendCustomMessage("sg_add_nodes_delay_p", message)
 
@@ -306,7 +306,7 @@ sg_add_edges_delay_p <- function(proxy, data, delay, ..., refresh = TRUE, cumsum
 		.check_x_y() %>%
 		.as_list()
 
-  message <- list(id = .build_id(proxy), data = nodes, refresh = refresh) # create message
+	message <- list(id = proxy$id, data = nodes, refresh = refresh) # create message
 
 	proxy$session$sendCustomMessage("sg_add_edges_delay_p", message)
 
@@ -345,7 +345,7 @@ sg_drop_nodes_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 
 	ids <- eval(substitute(ids), data) # subset ids
 
-  message <- list(id = .build_id(proxy), data = ids, refresh = refresh, rate = rate) # create message
+	message <- list(id = proxy$id, data = ids, refresh = refresh, rate = rate) # create message
 
 	proxy$session$sendCustomMessage("sg_drop_nodes_p", message)
 
@@ -369,7 +369,7 @@ sg_drop_edges_p <- function(proxy, data, ids, refresh = TRUE, rate = "once") {
 
 	ids <- eval(substitute(ids), data) # subset ids
 
-  message <- list(id = .build_id(proxy), data = ids, refresh = refresh, rate = rate) # create message
+	message <- list(id = proxy$id, data = ids, refresh = refresh, rate = rate) # create message
 
 	proxy$session$sendCustomMessage("sg_drop_edges_p", message)
 
@@ -427,7 +427,7 @@ sg_drop_nodes_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
   ) %>% # bind delay
     .as_list()
   
-  message <- list(id = .build_id(proxy), data = to_drop, refresh = refresh) # create message
+  message <- list(id = proxy$id, data = to_drop, refresh = refresh) # create message
   
   proxy$session$sendCustomMessage("sg_drop_nodes_delay_p", message)
   
@@ -463,7 +463,7 @@ sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
   ) %>% # bind delay
     .as_list()
   
-  message <- list(id = .build_id(proxy), data = to_drop, refresh = refresh) # create message
+  message <- list(id = proxy$id, data = to_drop, refresh = refresh) # create message
   
   proxy$session$sendCustomMessage("sg_drop_edges_delay_p", message)
   
@@ -574,7 +574,7 @@ sg_read_edges_p <- function(proxy, data, ...){
 sg_read_exec_p <- function(proxy){
 	.test_proxy(proxy)
 
-  proxy$message$id <- .build_id(proxy)
+	proxy$message$id <- proxy$id
 
 	if(is.null(proxy$message$data$edges))
 		proxy$message$data$edges <- list()
@@ -703,7 +703,7 @@ sg_read_delay_edges_p <- function(proxy, data, ..., delay){
 sg_read_delay_exec_p <- function(proxy, refresh = TRUE){
 	.test_proxy(proxy)
 
-  proxy$message$id <- .build_id(proxy)
+	proxy$message$id <- proxy$id
 
 	if(is.null(proxy$message$data$edges))
 		proxy$message$data$edges <- list()
@@ -772,7 +772,7 @@ sg_animate_p <- function(proxy, mapping, options = list(easing = "cubicInOut"), 
 
   .test_proxy(proxy)
 
-  message <- list(id = .build_id(proxy), mapping = mapping, options = options, delay = delay) # create message
+  message <- list(id = proxy$id, mapping = mapping, options = options, delay = delay) # create message
 
   proxy$session$sendCustomMessage("sg_animate_p", message)
 

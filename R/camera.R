@@ -52,7 +52,7 @@ sg_zoom_p <- function(proxy, id, ratio = .5, duration = 1000) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy), node = id, duration = duration, ratio = ratio)
+	message <- list(id = proxy$id, node = id, duration = duration, ratio = ratio)
 
 	proxy$session$sendCustomMessage("sg_zoom_p", message)
 

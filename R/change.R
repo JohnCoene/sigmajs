@@ -56,7 +56,7 @@ sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "i
 
 	val <- eval(substitute(value), data) 
 
-	message <- list(id = .build_id(proxy),
+	message <- list(id = proxy$id,
 	                message = list(rate = rate, value = val, attribute = attribute, refresh = refresh),
 	                delay = delay) # create message
 
@@ -81,7 +81,7 @@ sg_change_edges_p <- function(proxy, data, value, attribute, rate = c("once", "i
 
 	val <- eval(substitute(value), data) 
 
-	message <- list(id = .build_id(proxy),
+	message <- list(id = proxy$id,
 	                message = list(rate = rate, value = val, attribute = attribute, refresh = refresh),
 	                delay = delay) # create message
 

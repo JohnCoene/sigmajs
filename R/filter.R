@@ -30,7 +30,7 @@ sg_filter_gt_p <- function(proxy, input, var, target = c("nodes", "edges", "both
   .test_proxy(proxy)
   
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id, 
     input = input, 
     var = var,
     target = match.arg(target),
@@ -52,7 +52,7 @@ sg_filter_lt_p <- function(proxy, input, var, target = c("nodes", "edges", "both
   .test_proxy(proxy)
   
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id, 
     input = input, 
     var = var,
     target = match.arg(target),
@@ -74,7 +74,7 @@ sg_filter_eq_p <- function(proxy, input, var, target = c("nodes", "edges", "both
   .test_proxy(proxy)
   
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id, 
     input = input, 
     var = var,
     target = match.arg(target),
@@ -96,7 +96,7 @@ sg_filter_not_eq_p <- function(proxy, input, var, target = c("nodes", "edges", "
   .test_proxy(proxy)
   
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id, 
     input = input, 
     var = var,
     target = match.arg(target),
@@ -118,7 +118,7 @@ sg_filter_undo_p <- function(proxy, name){
   .test_proxy(proxy)
   
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id,
     name = name
   ) 
   
@@ -136,7 +136,7 @@ sg_filter_neighbours_p <- function(proxy, node, name = NULL){
   .test_proxy(proxy)
 
   message <- list(
-    id = .build_id(proxy),
+    id = proxy$id,
     node = node,
 		name = name
   ) 

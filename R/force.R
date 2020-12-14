@@ -83,7 +83,7 @@ sg_force_restart_p <- function(proxy, ..., refresh = TRUE) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy), data = list(...), refresh = refresh)
+	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_force_restart_p", message)
 
@@ -124,7 +124,7 @@ sg_force_start_p <- function(proxy, ..., refresh = TRUE) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy), data = list(...), refresh = refresh)
+	message <- list(id = proxy$id, data = list(...), refresh = refresh)
 
 	proxy$session$sendCustomMessage("sg_force_start_p", message)
 
@@ -140,7 +140,7 @@ sg_force_stop_p <- function(proxy) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy))
+	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_force_stop_p", message)
 
@@ -156,7 +156,7 @@ sg_force_kill_p <- function(proxy) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy))
+	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_force_kill_p", message)
 
@@ -172,7 +172,7 @@ sg_force_config_p <- function(proxy, ...) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy), data = list(...))
+	message <- list(id = proxy$id, data = list(...))
 
 	proxy$session$sendCustomMessage("sg_force_config_p", message)
 

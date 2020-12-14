@@ -47,7 +47,7 @@ sg_get_nodes_p <- function(proxy) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy))
+	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_get_nodes_p", message)
   return(proxy)
@@ -62,7 +62,7 @@ sg_get_edges_p <- function(proxy) {
   
   .test_proxy(proxy)
 
-	message <- list(id = .build_id(proxy))
+	message <- list(id = proxy$id)
 
 	proxy$session$sendCustomMessage("sg_get_edges_p", message)
   return(proxy)
