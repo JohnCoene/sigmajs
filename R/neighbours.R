@@ -46,7 +46,7 @@ sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee"){
 	.test_proxy(proxy)
 	message <- list(id = proxy$id, nodes = nodes, edges = edges)
 
-	proxy$session$sendCustomMessage("sg_neighbours_p", proxy$message)
+	proxy$session$sendCustomMessage("sg_neighbours_p", message)
 	return(proxy)
 }
 
