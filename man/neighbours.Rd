@@ -7,18 +7,42 @@
 \alias{sg_neighbors_p}
 \title{Highlight neighbours}
 \usage{
-sg_neighbours(sg, nodes = "#eee", edges = "#eee")
+sg_neighbours(
+  sg,
+  nodes = "#eee",
+  edges = "#eee",
+  on = c("clickNode", "overNode")
+)
 
-sg_neighbors(sg, nodes = "#eee", edges = "#eee")
+sg_neighbors(
+  sg,
+  nodes = "#eee",
+  edges = "#eee",
+  on = c("clickNode", "overNode")
+)
 
-sg_neighbours_p(proxy, nodes = "#eee", edges = "#eee")
+sg_neighbours_p(
+  proxy,
+  nodes = "#eee",
+  edges = "#eee",
+  on = c("clickNode", "overNode")
+)
 
-sg_neighbors_p(proxy, nodes = "#eee", edges = "#eee")
+sg_neighbors_p(
+  proxy,
+  nodes = "#eee",
+  edges = "#eee",
+  on = c("clickNode", "overNode")
+)
 }
 \arguments{
 \item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
 
 \item{nodes, edges}{Color of nodes and edges}
+
+\item{on}{The sigmajs event on which to trigger the neighbours highlighting.
+'clickNode' (default) means when a node is clicked on. 'overNode' means
+when mouse is hovering on a node.}
 
 \item{proxy}{An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.}
 }
@@ -29,13 +53,13 @@ A modified version of the \code{sg} object.
 Highlight node neighbours on click.
 }
 \examples{
-nodes <- sg_make_nodes() 
+nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes, 20)
 
-sigmajs() \%>\% 
-  sg_nodes(nodes, id, size, color) \%>\% 
-  sg_edges(edges, id, source, target) \%>\% 
-  sg_layout() \%>\% 
+sigmajs() \%>\%
+  sg_nodes(nodes, id, size, color) \%>\%
+  sg_edges(edges, id, source, target) \%>\%
+  sg_layout() \%>\%
   sg_neighbours()
 
 }

@@ -78,6 +78,7 @@ HTMLWidgets.widget({
 				  x.neighbours = [];
 				  x.neighbours.edges = "#eee";
 				  x.neighbours.nodes = "#eee";
+				  x.neighbours.on = "clickNode";
 				}
 				
 				// highlight neighbours
@@ -90,7 +91,7 @@ HTMLWidgets.widget({
           s.graph.edges().forEach(function(e) {
             e.originalColor = e.color;
           });
-          s.bind("clickNode", function(e) {
+          s.bind(x.neighbours.on, function(e) {
             var nodeId = e.data.node.id,
                 toKeep = s.graph.neighbors(nodeId);
             toKeep[nodeId] = e.data.node;
@@ -109,7 +110,7 @@ HTMLWidgets.widget({
             });
             s.refresh();
           });
-          s.bind("clickStage", function(e) {
+          s.bind(x.neighbours.on == "overNode" ? "outNode" : "clickStage", function(e) {
             s.graph.nodes().forEach(function(n) {
               n.color = n.originalColor;
             });
@@ -1449,11 +1450,10 @@ if (HTMLWidgets.shinyMode) {
 				s.graph.edges().forEach(function(e) {
 					e.originalColor = e.color;
 				});
-				s.bind("clickNode", function(e) {
+				s.bind(message.on, function(e) {
 					var nodeId = e.data.node.id,
 							toKeep = s.graph.neighbors(nodeId);
 					toKeep[nodeId] = e.data.node;
-					sel_handle.set(nodeId);
 					s.graph.nodes().forEach(function(n) {
 						if (toKeep[n.id])
 							n.color = n.originalColor;
@@ -1468,7 +1468,7 @@ if (HTMLWidgets.shinyMode) {
 					});
 					s.refresh();
 				});
-				s.bind("clickStage", function(e) {
+				s.bind(message.on == "overNode" ? "outNode" : "clickStage", function(e) {
 					s.graph.nodes().forEach(function(n) {
 						n.color = n.originalColor;
 					});
@@ -1476,7 +1476,6 @@ if (HTMLWidgets.shinyMode) {
 						e.color = e.originalColor;
 					});
 					s.refresh();
-					sel_handle.clear();
 				});
 
 			}
