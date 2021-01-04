@@ -14,7 +14,7 @@ test_that("test init", {
     sg_relative_size()
   
   expect_length(sg$x$settings, 1)
-  expect_length(sg$x$neighbours, 2)
+  expect_length(sg$x$neighbours, 3)
   expect_length(sg$x$noverlap, 0)
   expect_equal(sg$x$relativeSize, 1)
   
