@@ -49,9 +49,9 @@ sg_neighbors <- sg_neighbours
 #' @export
 sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode")){
 
-	.test_proxy(proxy)
+  .test_proxy(proxy)
   on <- match.arg(on)
-	message <- list(id = proxy$id, nodes = nodes, edges = edges, on = on)
+  message <- list(id = proxy$id, nodes = nodes, edges = edges, on = on)
 
 	proxy$session$sendCustomMessage("sg_neighbours_p", message)
 	return(proxy)
