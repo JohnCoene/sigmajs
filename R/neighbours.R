@@ -53,8 +53,8 @@ sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee", on = c("click
   on <- match.arg(on)
   message <- list(id = proxy$id, nodes = nodes, edges = edges, on = on)
 
-	proxy$session$sendCustomMessage("sg_neighbours_p", message)
-	return(proxy)
+  proxy$session$sendCustomMessage("sg_neighbours_p", message)
+  return(proxy)
 }
 
 #' @rdname neighbours
