@@ -91,34 +91,57 @@ HTMLWidgets.widget({
           s.graph.edges().forEach(function(e) {
             e.originalColor = e.color;
           });
-          s.bind(x.neighbours.on, function(e) {
-            var nodeId = e.data.node.id,
-                toKeep = s.graph.neighbors(nodeId);
-            toKeep[nodeId] = e.data.node;
-            sel_handle.set(nodeId);
-            s.graph.nodes().forEach(function(n) {
-              if (toKeep[n.id])
-                n.color = n.originalColor;
-              else
-                n.color = x.neighbours.nodes;
+          var clickedNodeId = null;
+          // x.neighbours.on can be "clickNode", "overNode" or "clickNode|overNode",
+          // which means neighbour highlighting is triggered by both click and hover.
+          // Bind on all events provided, potentially separated by "|":
+          x.neighbours.on.split("|").forEach(function(on) {
+            s.bind(on, function(e) {
+              if (on == "overNode" && clickedNodeId !== null) {
+                // do not highlight another hovered node, we are locked at clickedNodeId by user clicking
+                return;
+              }
+              var nodeId = e.data.node.id;
+              if (on == "clickNode") {
+                clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
+              }
+              var toKeep = s.graph.neighbors(nodeId);
+              toKeep[nodeId] = e.data.node;
+              sel_handle.set(nodeId);
+              s.graph.nodes().forEach(function(n) {
+                if (toKeep[n.id])
+                  n.color = n.originalColor;
+                else
+                  n.color = x.neighbours.nodes;
+              });
+              s.graph.edges().forEach(function(e) {
+                if (toKeep[e.source] && toKeep[e.target])
+                  e.color = e.originalColor;
+                else
+                  e.color = x.neighbours.edges;
+              });
+              s.refresh();
             });
-            s.graph.edges().forEach(function(e) {
-              if (toKeep[e.source] && toKeep[e.target])
-                e.color = e.originalColor;
-              else
-                e.color = x.neighbours.edges;
-            });
-            s.refresh();
           });
-          s.bind(x.neighbours.on == "overNode" ? "outNode" : "clickStage", function(e) {
-            s.graph.nodes().forEach(function(n) {
-              n.color = n.originalColor;
+          x.neighbours.on.split("|").forEach(function(on) {
+            on = on == "overNode" ? "outNode" : "clickStage";
+            s.bind(on, function(e) {
+              if (on == "outNode" && clickedNodeId !== null) {
+                // do not stop highlighting on mouse out, we are locked into highlighting by user clicking
+                return;
+              }
+              if (on == "clickStage") {
+                clickedNodeId = null; // stop locking of highlighting
+              }
+              s.graph.nodes().forEach(function(n) {
+                n.color = n.originalColor;
+              });
+              s.graph.edges().forEach(function(e) {
+                e.color = e.originalColor;
+              });
+              s.refresh();
+              sel_handle.clear();
             });
-            s.graph.edges().forEach(function(e) {
-              e.color = e.originalColor;
-            });
-            s.refresh();
-            sel_handle.clear();
           });
 				}
 				
@@ -1450,32 +1473,55 @@ if (HTMLWidgets.shinyMode) {
 				s.graph.edges().forEach(function(e) {
 					e.originalColor = e.color;
 				});
-				s.bind(message.on, function(e) {
-					var nodeId = e.data.node.id,
-							toKeep = s.graph.neighbors(nodeId);
-					toKeep[nodeId] = e.data.node;
-					s.graph.nodes().forEach(function(n) {
-						if (toKeep[n.id])
-							n.color = n.originalColor;
-						else
-							n.color = message.nodes;
-					});
-					s.graph.edges().forEach(function(e) {
-						if (toKeep[e.source] && toKeep[e.target])
-							e.color = e.originalColor;
-						else
-							e.color = message.edges;
-					});
-					s.refresh();
+				var clickedNodeId = null;
+				// message.on can be "clickNode", "overNode" or "clickNode|overNode",
+				// which means neighbour highlighting is triggered by both click and hover.
+				// Bind on all events provided, potentially separated by "|":
+				message.on.split("|").forEach(function(on) {
+					s.bind(on, function(e) {
+						if (on == "overNode" && clickedNodeId !== null) {
+							// do not highlight another hovered node, we are locked at clickedNodeId by user clicking
+							return;
+						}
+						var nodeId = e.data.node.id;
+						if (on == "clickNode") {
+							clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
+						}
+						var toKeep = s.graph.neighbors(nodeId);
+				  	toKeep[nodeId] = e.data.node;
+				  	s.graph.nodes().forEach(function(n) {
+				  		if (toKeep[n.id])
+				  			n.color = n.originalColor;
+				  		else
+				  			n.color = message.nodes;
+				  	});
+				  	s.graph.edges().forEach(function(e) {
+				  		if (toKeep[e.source] && toKeep[e.target])
+				  			e.color = e.originalColor;
+				  		else
+				  			e.color = message.edges;
+				  	});
+				  	s.refresh();
+				  });
 				});
-				s.bind(message.on == "overNode" ? "outNode" : "clickStage", function(e) {
-					s.graph.nodes().forEach(function(n) {
-						n.color = n.originalColor;
-					});
-					s.graph.edges().forEach(function(e) {
-						e.color = e.originalColor;
-					});
-					s.refresh();
+				message.on.split("|").forEach(function(on) {
+				  on = on == "overNode" ? "outNode" : "clickStage";
+				  s.bind(on, function(e) {
+					  if (on == "outNode" && clickedNodeId !== null) {
+					    // do not stop highlighting on mouse out, we are locked into highlighting by user clicking
+					    return;
+					  }
+					  if (on == "clickStage") {
+					    clickedNodeId = null; // stop locking of highlighting
+					  }
+					  s.graph.nodes().forEach(function(n) {
+						  n.color = n.originalColor;
+					  });
+					  s.graph.edges().forEach(function(e) {
+						  e.color = e.originalColor;
+					  });
+					  s.refresh();
+          });
 				});
 
 			}
