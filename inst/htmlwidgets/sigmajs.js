@@ -133,15 +133,15 @@ HTMLWidgets.widget({
               if (on == "clickStage") {
                 clickedNodeId = null; // stop locking of highlighting
               }
-            s.graph.nodes().forEach(function(n) {
-              n.color = n.originalColor;
+              s.graph.nodes().forEach(function(n) {
+                n.color = n.originalColor;
+              });
+              s.graph.edges().forEach(function(e) {
+                e.color = e.originalColor;
+              });
+              s.refresh();
+              sel_handle.clear();
             });
-            s.graph.edges().forEach(function(e) {
-              e.color = e.originalColor;
-            });
-            s.refresh();
-            sel_handle.clear();
-          });
           });
 				}
 				
@@ -1478,16 +1478,16 @@ if (HTMLWidgets.shinyMode) {
 				// which means neighbour highlighting is triggered by both click and hover.
 				// Bind on all events provided, potentially separated by "|":
 				message.on.split("|").forEach(function(on) {
-          s.bind(on, function(e) {
-            if (on == "overNode" && clickedNodeId !== null) {
-              // do not highlight another hovered node, we are locked at clickedNodeId by user clicking
-              return;
-            }
-            var nodeId = e.data.node.id;
-            if (on == "clickNode") {
-				  	  clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
-            }
-            var toKeep = s.graph.neighbors(nodeId);
+					s.bind(on, function(e) {
+						if (on == "overNode" && clickedNodeId !== null) {
+							// do not highlight another hovered node, we are locked at clickedNodeId by user clicking
+							return;
+						}
+						var nodeId = e.data.node.id;
+						if (on == "clickNode") {
+							clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
+						}
+						var toKeep = s.graph.neighbors(nodeId);
 				  	toKeep[nodeId] = e.data.node;
 				  	s.graph.nodes().forEach(function(n) {
 				  		if (toKeep[n.id])
@@ -1504,7 +1504,7 @@ if (HTMLWidgets.shinyMode) {
 				  	s.refresh();
 				  });
 				});
-        message.on.split("|").forEach(function(on) {
+				message.on.split("|").forEach(function(on) {
 				  on = on == "overNode" ? "outNode" : "clickStage";
 				  s.bind(on, function(e) {
 					  if (on == "outNode" && clickedNodeId !== null) {
