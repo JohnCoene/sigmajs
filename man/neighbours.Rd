@@ -11,28 +11,28 @@ sg_neighbours(
   sg,
   nodes = "#eee",
   edges = "#eee",
-  on = c("clickNode", "overNode")
+  on = c("clickNode", "overNode", "clickNode|overNode")
 )
 
 sg_neighbors(
   sg,
   nodes = "#eee",
   edges = "#eee",
-  on = c("clickNode", "overNode")
+  on = c("clickNode", "overNode", "clickNode|overNode")
 )
 
 sg_neighbours_p(
   proxy,
   nodes = "#eee",
   edges = "#eee",
-  on = c("clickNode", "overNode")
+  on = c("clickNode", "overNode", "clickNode|overNode")
 )
 
 sg_neighbors_p(
   proxy,
   nodes = "#eee",
   edges = "#eee",
-  on = c("clickNode", "overNode")
+  on = c("clickNode", "overNode", "clickNode|overNode")
 )
 }
 \arguments{

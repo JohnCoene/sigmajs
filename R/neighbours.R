@@ -7,7 +7,8 @@
 #' @param nodes,edges Color of nodes and edges
 #' @param on The sigmajs event on which to trigger the neighbours highlighting.
 #'   'clickNode' (default) means when a node is clicked on. 'overNode' means
-#'   when mouse is hovering on a node.
+#'   when mouse is hovering on a node. 'clickNode|overNode' means a combination
+#'   of the two modes at the same time.
 #' 
 #' @examples 
 #' nodes <- sg_make_nodes() 
@@ -23,7 +24,7 @@
 #'
 #' @rdname neighbours
 #' @export
-sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode")){
+sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode", "clickNode|overNode")){
   
   if(missing(sg))
     stop("must pass sg", call. = FALSE)
@@ -47,7 +48,7 @@ sg_neighbors <- sg_neighbours
 
 #' @rdname neighbours
 #' @export
-sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode")){
+sg_neighbours_p <- function(proxy, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode", "clickNode|overNode")){
 
   .test_proxy(proxy)
   on <- match.arg(on)
