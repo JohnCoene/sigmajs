@@ -576,19 +576,19 @@ HTMLWidgets.widget({
 					// click stage
 					if(x.events.includes('clickStage'))
 						s.bind('clickStage', function (e) {
-							Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+							Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", 'clickStage', {priority: "event"});
 						});
 
 					// double click stage
 					if(x.events.includes('doubleClickStage'))
 						s.bind('doubleClickStage', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+							Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", 'doubleClickStage', {priority: "event"});
 						});
 
 					// right click stage
 					if(x.events.includes('rightClickStage'))
 						s.bind('rightClickStage', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", e.data, {priority: "event"});
+							Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", 'rightClickStage', {priority: "event"});
 						});
 
 					// double click node
