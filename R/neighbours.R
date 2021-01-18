@@ -1,7 +1,7 @@
 #' Highlight neighbours
-#' 
+#'
 #' Highlight node neighbours on click.
-#' 
+#'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #' @param nodes,edges Color of nodes and edges
@@ -9,29 +9,29 @@
 #'   'clickNode' (default) means when a node is clicked on. 'overNode' means
 #'   when mouse is hovering on a node. 'clickNode|overNode' means a combination
 #'   of the two modes at the same time.
-#' 
-#' @examples 
-#' nodes <- sg_make_nodes() 
+#'
+#' @examples
+#' nodes <- sg_make_nodes()
 #' edges <- sg_make_edges(nodes, 20)
-#' 
-#' sigmajs() %>% 
-#'   sg_nodes(nodes, id, size, color) %>% 
-#'   sg_edges(edges, id, source, target) %>% 
-#'   sg_layout() %>% 
+#'
+#' sigmajs() %>%
+#'   sg_nodes(nodes, id, size, color) %>%
+#'   sg_edges(edges, id, source, target) %>%
+#'   sg_layout() %>%
 #'   sg_neighbours()
-#' 
+#'
 #' @return A modified version of the \code{sg} object.
 #'
 #' @rdname neighbours
 #' @export
 sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode", "clickNode|overNode")){
-  
+
   if(missing(sg))
     stop("must pass sg", call. = FALSE)
-  
+
   if(!inherits(sg, "sigmajs"))
     stop("sg must be sigmajs object", call. = FALSE)
-  
+
   on <- match.arg(on)
 
   sg$x$neighbours <- list(

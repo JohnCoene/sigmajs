@@ -14,34 +14,34 @@
 #' sigmajs() %>%
 #'   sg_nodes(nodes, id, size, color) %>%
 #'   sg_edges(edges, id, source, target) %>%
-#'   sg_layout() %>% 
+#'   sg_layout() %>%
 #'   sg_noverlap()
-#' 
+#'
 #' @return The first argument either \code{sg} or \code{proxy}.
 #'
 #' @rdname noverlap
 #' @export
 sg_noverlap <- function(sg, ...) {
 
-	if (missing(sg))
-		stop("missing sg", call. = FALSE)
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
 
-	sg$x$noverlap <- list(...)
-	sg
+  sg$x$noverlap <- list(...)
+  sg
 }
 
 #' @rdname noverlap
 #' @export
 sg_noverlap_p <- function(proxy, nodeMargin = 5, ...) {
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (!"sigmajsProxy" %in% class(proxy))
+    stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id, config = list(nodeMargin = nodeMargin, ...)) # create message
+  message <- list(id = proxy$id, config = list(nodeMargin = nodeMargin, ...)) # create message
 
-	proxy$session$sendCustomMessage("sg_noverlap_p", message)
+  proxy$session$sendCustomMessage("sg_noverlap_p", message)
 
-	return(proxy)
+  return(proxy)
 }

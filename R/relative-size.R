@@ -11,20 +11,20 @@
 #'
 #' sigmajs() %>%
 #'   sg_nodes(nodes, id, label) %>% # no need to pass size
-#'   sg_edges(edges, id, source, target) %>% 
+#'   sg_edges(edges, id, source, target) %>%
 #'   sg_relative_size()
-#' 
+#'
 #' @return A modified version of the \code{sg} object.
 #'
 #' @export
 sg_relative_size <- function(sg, initial = 1) {
 
-	if (missing(sg))
-		stop("missing sg", call. = FALSE)
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
 
-	sg$x$relativeSize <- initial
-	sg
+  sg$x$relativeSize <- initial
+  sg
 }

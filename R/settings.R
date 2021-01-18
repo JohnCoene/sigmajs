@@ -1,33 +1,33 @@
 #' Settings
-#' 
+#'
 #' Graph settings.
-#' 
+#'
 #' @inheritParams sg_nodes
 #' @param proxy A proxy as returned by \code{\link{sigmajsProxy}}.
 #' @param ... Any parameter, see \href{https://github.com/jacomyal/sigma.js/wiki/Settings}{official documentation}.
-#' 
-#' @examples 
+#'
+#' @examples
 #' nodes <- sg_make_nodes()
 #'
 #' edges <- sg_make_edges(nodes, 50)
 #'
 #' sigmajs() %>%
 #'   sg_nodes(nodes, id, label, size) %>%
-#'   sg_edges(edges, id, source, target) %>% 
-#'   sg_force() %>% 
+#'   sg_edges(edges, id, source, target) %>%
+#'   sg_force() %>%
 #'   sg_settings(
 #'     defaultNodeColor = "#0011ff"
 #'   )
-#' 
+#'
 #' @rdname sg_settings
 #' @export
 sg_settings <- function(sg, ...) {
 
-	if (missing(sg))
-		stop("missing sg", call. = FALSE)
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
 
-	if (!inherits(sg, "sigmajs"))
-		stop("sg must be of class sigmajs", call. = FALSE)
+  if (!inherits(sg, "sigmajs"))
+    stop("sg must be of class sigmajs", call. = FALSE)
 
   sg$x$settings <- list(...)
   sg
@@ -36,14 +36,14 @@ sg_settings <- function(sg, ...) {
 #' @rdname sg_settings
 #' @export
 sg_settings_p <- function(proxy, ...){
-	message <- list(id = proxy$id, opts = list(...))
-	proxy$session$sendCustomMessage("sg_settings_p", message)
-	return(proxy)
+  message <- list(id = proxy$id, opts = list(...))
+  proxy$session$sendCustomMessage("sg_settings_p", message)
+  return(proxy)
 }
 #' Refresh instance
 #'
 #' Refresh your instance.
-#' 
+#'
 #' @param proxy An object of class \code{sigmajsProxy} as returned by \code{\link{sigmajsProxy}}.
 #'
 #' @details It is often required to refresh the instance when using proxies.
@@ -51,12 +51,12 @@ sg_settings_p <- function(proxy, ...){
 #' @export
 sg_refresh_p <- function(proxy) {
 
-	if (!"sigmajsProxy" %in% class(proxy))
-		stop("must pass sigmajsProxy object", call. = FALSE)
+  if (!"sigmajsProxy" %in% class(proxy))
+    stop("must pass sigmajsProxy object", call. = FALSE)
 
-	message <- list(id = proxy$id)
+  message <- list(id = proxy$id)
 
-	proxy$session$sendCustomMessage("sg_refresh_p", message)
+  proxy$session$sendCustomMessage("sg_refresh_p", message)
 
-	return(proxy)
+  return(proxy)
 }

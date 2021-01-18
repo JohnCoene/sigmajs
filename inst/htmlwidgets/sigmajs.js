@@ -19,14 +19,14 @@ HTMLWidgets.widget({
 
     var initialized = false;
 		var s, cam, renderer;
-		
+
     var sel_handle = new crosstalk.SelectionHandle();
-    
+
     return {
 
 			renderValue: function (x) {
-			  
-			  var btn; 
+
+			  var btn;
 			  for (var i = 0; i < x.button.length; i++){
 			    btn = document.getElementById(x.button[i].id);
 			    x.button[i].btn = btn;
@@ -54,13 +54,13 @@ HTMLWidgets.widget({
 					);
 				} else {
 
-					if (HTMLWidgets.shinyMode) { 
+					if (HTMLWidgets.shinyMode) {
 						sigInst = document.getElementById(el.id)
 						while (sigInst.firstChild) {
 							sigInst.removeChild(sigInst.firstChild);
 						}
 					}
-					
+
 					s = new sigma({
 						graph: x.data,
 						settings: x.settings
@@ -72,7 +72,7 @@ HTMLWidgets.widget({
 						type: sigma.renderers.canvas
 				  });
 				}
-				
+
 				// force neighbours true if crosstalk enabled
 				if(x.crosstalk.crosstalk_key !== null && !x.hasOwnProperty('neighbours')){
 				  x.neighbours = [];
@@ -80,7 +80,7 @@ HTMLWidgets.widget({
 				  x.neighbours.nodes = "#eee";
 				  x.neighbours.on = "clickNode";
 				}
-				
+
 				// highlight neighbours
 				if(x.hasOwnProperty('neighbours')){
 				  db = new sigma.plugins.neighborhoods();
@@ -144,10 +144,10 @@ HTMLWidgets.widget({
             });
           });
 				}
-				
+
 
       sel_handle.on("change", function(ev) {
-        
+
         if (ev.sender !== sel_handle) {
           s.graph.nodes().forEach(function(n) {
             n.color = n.originalColor;
@@ -157,9 +157,9 @@ HTMLWidgets.widget({
           });
           s.refresh();
         }
-        
+
         if (typeof ev.value[0] != 'undefined') {
-  
+
           var nodeId = ev.value[0];
               toKeep = s.graph.neighbors(nodeId);
           toKeep[nodeId] = s.graph.nodes(String(nodeId));
@@ -177,9 +177,9 @@ HTMLWidgets.widget({
               e.color = x.neighbours.edges;
           });
           s.refresh();
-  
+
         }
-  
+
       });
 
 				// start forceAtlas
@@ -190,20 +190,20 @@ HTMLWidgets.widget({
     				    x.button[a].btn.addEventListener("click", function(event) {
     				      s.startForceAtlas2(x.force);
     				    });
-    				  } 
+    				  }
   				  }
 				  } else {
 				    s.startForceAtlas2(x.force);
-				  } 
+				  }
 				}
-				
+
 				// progress
 				if(x.hasOwnProperty('progressBar')){
-				  
+
 				  var bar = document.getElementById(x.progressBar.id);
-				  
+
 				  if(x.buttonevent.indexOf('progress') > -1){
-				    
+
 				    for (var i = 0; i < x.button.length; i++){
 				      if(x.button[i].event.indexOf('progress') > -1){
       				  x.button[i].btn.addEventListener("click", function(event) {
@@ -212,10 +212,10 @@ HTMLWidgets.widget({
           						bar.innerHTML = element.text;
           					}, element.delay);
           				});
-      				  });   
+      				  });
 				      }
 				    }
-				  
+
 				  } else {
     				x.progressBar.data.forEach((element) => {
     					setTimeout(function () {
@@ -228,19 +228,19 @@ HTMLWidgets.widget({
 				// start noverlap
 				if (x.hasOwnProperty('noverlap')) {
 					var noverlap = s.configNoverlap(x.noverlap);
-					
+
 					if(x.buttonevent.indexOf('noverlap') > -1){
   					for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('noverlap') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      s.startNoverlap();
     				    });
-    				  } 	  
+    				  }
   					}
 					} else {
 				    s.startNoverlap();
 				  }
-				
+
 				}
 
 				// custom shapes
@@ -249,7 +249,7 @@ HTMLWidgets.widget({
 				}
 
 				if (x.animateLoop === false) {
-					
+
 					if(x.buttonevent.indexOf('animate') > -1){
   					for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('animate') > -1){
@@ -258,52 +258,52 @@ HTMLWidgets.widget({
         						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
         					}, x.animateDelay);
     				    });
-    				  }  
+    				  }
   					}
 					} else {
   					setTimeout(function () {
   						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
   					}, x.animateDelay);
 				  }
-					
+
 				}
 
 				if(x.hasOwnProperty('dragNodes')){
-				  
+
 				  if(x.buttonevent.indexOf('drag_nodes') > -1){
   				  for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('drag_nodes') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
     				    });
-    				  } 
+    				  }
   				  }
 				  } else {
 				    var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
-				  } 
-				  
+				  }
+
 				}
 
 				if (x.hasOwnProperty('relativeSize')) {
-				  
+
 				  if(x.buttonevent.indexOf('relative_size') > -1){
   				  for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('relative_size') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      sigma.plugins.relativeSize(s, x.relativeSize);
     				    });
-    				  } 
+    				  }
   				  }
 				  } else {
 				    sigma.plugins.relativeSize(s, x.relativeSize);
-				  } 
-				  
+				  }
+
 				}
-				
+
 				if(x.hasOwnProperty('addNodesDelay')){
-  				
+
   				if(x.buttonevent.indexOf('add_nodes') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
-  				  
+
     				for (var i = 0; i < x.button.length; i++){
       			  if(x.button[i].event.indexOf('add_nodes') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
       				    x.button[i].btn.addEventListener("click", function(event) {
@@ -314,9 +314,9 @@ HTMLWidgets.widget({
               					}, element.sigmajsdelay);
               			});
       				    });
-      				  } 
+      				  }
     				}
-  				  
+
   				} else {
     				x.addNodesDelay.forEach((element) => {
     					setTimeout(function () {
@@ -325,14 +325,14 @@ HTMLWidgets.widget({
     					}, element.sigmajsdelay);
     				});
 				  }
-  				
+
 				}
-				
+
 				if(x.hasOwnProperty('addEdgesDelay')){
 				  var running = s.isForceAtlas2Running();
-				  
+
 				  if(x.buttonevent.indexOf('add_edges') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
-				    
+
   				  for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('add_edges') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
@@ -353,7 +353,7 @@ HTMLWidgets.widget({
     				    });
     				  }
   				  }
-				    
+
 				  } else {
     				x.addEdgesDelay.data.forEach((element) => {
     					setTimeout(function () {
@@ -370,14 +370,14 @@ HTMLWidgets.widget({
     					}, element.sigmajsdelay);
     				});
 				  }
-  				
+
 				}
-				
+
 				if(x.hasOwnProperty("dropEdgesDelay")){
   				var is_running = s.isForceAtlas2Running();
-  				
+
   				if(x.buttonevent.indexOf('drop_edges') > -1){
-  				  
+
     				for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('drop_edges') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
@@ -396,9 +396,9 @@ HTMLWidgets.widget({
           					}, drop_edg.sigmajsdelay);
           				});
     				    });
-    				  }	  
+    				  }
     				}
-  				  
+
   				} else {
     				x.dropEdgesDelay.data.forEach((drop_edg, index) => {
     					setTimeout(function () {
@@ -415,11 +415,11 @@ HTMLWidgets.widget({
     					}, drop_edg.sigmajsdelay);
     				});
 				  }
-  			
+
 				}
-				
+
 				if(x.hasOwnProperty("dropNodesDelay")){
-				  
+
 				  if(x.buttonevent.indexOf('drop_nodes') > -1){
   				  for (var i = 0; i < x.button.length; i++){
     				  if(x.button[i].event.indexOf('drop_nodes') > -1){
@@ -431,7 +431,7 @@ HTMLWidgets.widget({
           					}, element.sigmajsdelay);
           				});
     				    });
-    				  }  
+    				  }
   				  }
 				  } else {
     				x.dropNodesDelay.forEach((element) => {
@@ -441,12 +441,12 @@ HTMLWidgets.widget({
     					}, element.sigmajsdelay);
     				});
 				  }
-  				
+
 				}
 
 			// stop force
 			if(x.hasOwnProperty('forceStopDelay')){
-			  
+
 			  if(x.buttonevent.indexOf('force_stop') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     			  if(x.button[i].event.indexOf('force_stop') > -1){
@@ -461,55 +461,55 @@ HTMLWidgets.widget({
     			setTimeout(function () {
     				s.stopForceAtlas2();
     			}, x.forceStopDelay);
-			  }  
-			  
+			  }
+
 			}
-		
+
 			if(x.hasOwnProperty('forceRestartDelay')){
-			  
+
 			  var is_it_running = s.isForceAtlas2Running();
-			  
+
 			  if(is_it_running === false){
 			    s.startForceAtlas2();
 			  }
-				
+
 				x.forceRestartDelay.forEach((force) => {
 					setTimeout(function () {
 						s.killForceAtlas2();
 						s.startForceAtlas2();
 					}, force.sigmajsdelay);
 				});
-  				
+
 			}
-			
+
 			if(x.hasOwnProperty('exportSVG')){
-			  
+
 			  if(x.buttonevent.indexOf('export_svg') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
       				var output = s.toSVG(x.exportSVG);
-    		    });   
+    		    });
   			  }
 			  }
-			 
+
 			}
-			
+
 			if(x.hasOwnProperty('exportIMG')){
-			  
+
 			  if(x.buttonevent.indexOf('export_img') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
       				var output = renderer.snapshot(x.exportIMG);
-    		    });  
+    		    });
   			  }
 			  }
-			  
+
 			}
 
 			if(x.hasOwnProperty('read')){
-			  
+
 				var is_it_running = s.isForceAtlas2Running();
-				
+
 			  if(x.buttonevent.indexOf('read_exec') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
@@ -517,38 +517,38 @@ HTMLWidgets.widget({
 								setTimeout(function(){
 									if(x.read.refresh == true && is_it_running == true)
 										s.killForceAtlas2();
-								
+
 									s.graph.read(data);
-		
+
 									if(x.read.refresh == true && is_it_running == true)
 										s.startForceAtlas2();
 								}, data.nodes[0].delay)
 							});
-    		    });  
+    		    });
   			  }
 			  } else {
 					x.read.data.forEach(function(data){
 						setTimeout(function(){
 							if(x.read.refresh == true && is_it_running == true)
 								s.killForceAtlas2();
-							
+
 							s.graph.read(data);
 
 							if(x.read.refresh == true && is_it_running == true)
 								s.startForceAtlas2();
-							
+
 						}, data.nodes[0].delay)
 					});
 				}
 			}
-			
+
       sel_handle.setGroup(x.crosstalk.crosstalk_group);
       //filter_handle.setGroup(x.crosstalk.crosstalk_group);
       s.refresh(); // refresh
-      
+
 				// events
 				if (HTMLWidgets.shinyMode) {
-				  
+
 					// click node
 					if(x.events.includes('clickNode'))
 						s.bind('clickNode', function (e) {
@@ -689,14 +689,14 @@ HTMLWidgets.widget({
 				}
 
 				var initialized = true;
-			
+
 		},
 
 		resize: function(width, height) {
 			for(var name in s.renderers)
 				s.renderers[name].resize(width, height);
 		},
-		
+
 		getCamera: function() {
 		  return cam;
 		},
@@ -708,7 +708,7 @@ HTMLWidgets.widget({
 		getChart: function () {
 			return s;
 		},
-		
+
 		getRenderer: function () {
 			return renderer;
 		}
@@ -997,7 +997,7 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
-	
+
 	Shiny.addCustomMessageHandler('sg_drop_nodes_delay_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
@@ -1049,7 +1049,7 @@ if (HTMLWidgets.shinyMode) {
 		}
 	}
 );
-	
+
 	// add edges delay
 	Shiny.addCustomMessageHandler('sg_drop_edges_delay_p',
 		function (message) {
@@ -1177,7 +1177,7 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
-	
+
 	// export
 	Shiny.addCustomMessageHandler('sg_export_svg_p',
 		function (message) {
@@ -1187,7 +1187,7 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
-	
+
 	Shiny.addCustomMessageHandler('sg_export_img_p',
 		function (message) {
 			var r = get_sigma_renderer(message.id);
@@ -1203,12 +1203,12 @@ if (HTMLWidgets.shinyMode) {
 			if (typeof s != 'undefined') {
 				let n = s.graph.nodes()[message.node];
 				sigma.misc.animation.camera(
-					s.camera, 
+					s.camera,
 					{
-						x: n[s.camera.readPrefix + 'x'], 
+						x: n[s.camera.readPrefix + 'x'],
 						y: n[s.camera.readPrefix + 'y'],
 						ratio: message.ratio
-					}, 
+					},
 					{duration: message.duration}
 				);
 			}
@@ -1279,16 +1279,16 @@ if (HTMLWidgets.shinyMode) {
 			}
 		}
 	);
-	
+
 	// filter greater than
 	Shiny.addCustomMessageHandler('sg_filter_gt_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 			  if(message.target === "both"){
           filter
             .nodesBy(function(n) {
@@ -1311,20 +1311,20 @@ if (HTMLWidgets.shinyMode) {
             }, message.name)
             .apply();
 			  }
-				
+
 			}
 		}
 	);
-	
+
 	// filter less than
 	Shiny.addCustomMessageHandler('sg_filter_lt_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 			  if(message.target === "both"){
           filter
             .nodesBy(function(n) {
@@ -1347,7 +1347,7 @@ if (HTMLWidgets.shinyMode) {
             }, message.name)
             .apply();
 			  }
-				
+
 			}
 		}
 	);
@@ -1356,11 +1356,11 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_filter_eq_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 			  if(message.target === "both"){
           filter
             .nodesBy(function(n) {
@@ -1383,7 +1383,7 @@ if (HTMLWidgets.shinyMode) {
             }, message.name)
             .apply();
 			  }
-				
+
 			}
 		}
 	);
@@ -1392,11 +1392,11 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_filter_not_eq_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 			  if(message.target === "both"){
           filter
             .nodesBy(function(n) {
@@ -1419,7 +1419,7 @@ if (HTMLWidgets.shinyMode) {
             }, message.name)
             .apply();
 			  }
-				
+
 			}
 		}
 	);
@@ -1428,15 +1428,15 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_filter_undo_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 				filter
 					.undo(message.name)
 					.apply()
-				
+
 			}
 		}
 	);
@@ -1445,15 +1445,15 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_filter_neighbours_p',
 		function (message) {
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 			  var filter = new sigma.plugins.filter(s);
-			  
+
 				filter
 					.neighborsOf(message.node, message.name)
 					.apply()
-				
+
 			}
 		}
 	);
@@ -1462,9 +1462,9 @@ if (HTMLWidgets.shinyMode) {
 	Shiny.addCustomMessageHandler('sg_neighbours_p',
 		function(message){
 			var s = get_sigma_graph(message.id);
-			
+
 			if (typeof s != 'undefined') {
-			  
+
 				db = new sigma.plugins.neighborhoods();
 
 				s.graph.nodes().forEach(function(n) {

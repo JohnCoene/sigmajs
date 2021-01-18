@@ -1,5 +1,5 @@
 #' Drag nodes
-#' 
+#'
 #' Allow user to drag and drop nodes.
 #'
 #' @param sg An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.
@@ -19,7 +19,7 @@
 #' # proxies
 #' demo("drag-nodes", package = "sigmajs")
 #' }
-#' 
+#'
 #' @return \code{sg_drag_nodes} An object of class \code{htmlwidget} which renders the visualisation on print.
 #' While \code{sg_drag_nodes_start_p} and \code{sg_drag_nodes_kill_p}
 #'
@@ -27,8 +27,8 @@
 #' @export
 sg_drag_nodes <- function(sg) {
 
-	if (missing(sg))
-		stop("missing sg", call. = FALSE)
+  if (missing(sg))
+    stop("missing sg", call. = FALSE)
 
   .test_sg(sg)
 
@@ -40,15 +40,15 @@ sg_drag_nodes <- function(sg) {
 #' @export
 sg_drag_nodes_start_p <- function(proxy) {
 
-	if (missing(proxy))
-		stop("missing proxy", call. = FALSE)
+  if (missing(proxy))
+    stop("missing proxy", call. = FALSE)
 
   .test_proxy(proxy)
 
-	message <- list(id = proxy$id) # create message
+  message <- list(id = proxy$id) # create message
 
-	proxy$session$sendCustomMessage("sg_drag_nodes_start_p", message)
-  
+  proxy$session$sendCustomMessage("sg_drag_nodes_start_p", message)
+
   proxy
 }
 
@@ -56,13 +56,13 @@ sg_drag_nodes_start_p <- function(proxy) {
 #' @export
 sg_drag_nodes_kill_p <- function(proxy) {
 
-	if (missing(proxy))
-		stop("missing proxy", call. = FALSE)
+  if (missing(proxy))
+    stop("missing proxy", call. = FALSE)
 
   .test_proxy(proxy)
 
-	message <- list(id = proxy$id) # create message
+  message <- list(id = proxy$id) # create message
 
-	proxy$session$sendCustomMessage("sg_drag_nodes_kill_p", message)
+  proxy$session$sendCustomMessage("sg_drag_nodes_kill_p", message)
   proxy
 }

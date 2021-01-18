@@ -6,34 +6,34 @@ sigmajs_render <- function(sg){
 #' Initialise
 #'
 #' Initialise a graph.
-#' 
+#'
 #' @param width,height Dimensions of graph.
 #' @param elementId Id of elment.
-#' @param kill Whether to kill the graph, set to \code{FALSE} 
+#' @param kill Whether to kill the graph, set to \code{FALSE}
 #' if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shiny.
 #' @param type Renderer type, one of \code{canvas}, \code{webgl} or \code{svg}.
-#' 
-#' @examples 
+#'
+#' @examples
 #' nodes <- sg_make_nodes()
 #' edges <- sg_make_edges(nodes)
 #'
 #' sigmajs("svg") %>%
 #'   sg_nodes(nodes, id, label, size, color) %>%
-#'   sg_edges(edges, id, source, target) 
+#'   sg_edges(edges, id, source, target)
 #'
 #' @import htmlwidgets
 #' @importFrom stats runif
 #' @importFrom htmltools tags
-#' 
+#'
 #' @note Keep \code{width} at \code{100\%} for a responsive visualisation.
-#' 
+#'
 #' @seealso \code{\link{sg_kill}}.
-#' 
+#'
 #' @return An object of class \code{htmlwidget} which renders the visualisation on print.
-#' 
+#'
 #' @export
 sigmajs <- function(type = NULL, width = "100%", kill = FALSE, height = NULL, elementId = NULL) {
-  
+
   assign("igraph", NULL, envir = storage_env)
 
   if(!is.null(type))
@@ -44,13 +44,13 @@ sigmajs <- function(type = NULL, width = "100%", kill = FALSE, height = NULL, el
     events = list(),
     kill = kill,
     data = list(),
-		type = type,
-		button = list(),
-		buttonevent = list(),
-		crosstalk = list(
-		  crosstalk_key = NULL,
-		  crosstalk_group = NULL
-		)
+    type = type,
+    button = list(),
+    buttonevent = list(),
+    crosstalk = list(
+      crosstalk_key = NULL,
+      crosstalk_group = NULL
+    )
   )
 
   # create widget
@@ -104,8 +104,8 @@ renderSigmajs <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @export
 sigmajsProxy <- function(id, session = shiny::getDefaultReactiveDomain()) {
 
-	proxy <- list(id = id, session = session)
-	class(proxy) <- "sigmajsProxy"
+  proxy <- list(id = id, session = session)
+  class(proxy) <- "sigmajsProxy"
 
-	return(proxy)
+  return(proxy)
 }
