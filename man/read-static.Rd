@@ -14,7 +14,7 @@ sg_read_edges(sg, data, ..., delay)
 sg_read_exec(sg, refresh = TRUE)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{data}{Data.frame (or list) of nodes or edges.}
 

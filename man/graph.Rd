@@ -16,7 +16,7 @@ sg_edges2(sg, data)
 sg_nodes2(sg, data)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{data}{Data.frame (or list) of nodes or edges.}
 
@@ -30,8 +30,8 @@ Add nodes and edges to a \code{sigmajs} graph.
 }
 \details{
 \strong{nodes}:
-Must pass \code{id} (\emph{unique}), \code{size} and \code{color}. If \code{color} is omitted than specify
-\code{defaultNodeColor} in \code{\link{sg_settings}} otherwise nodes will be transparent. Ideally nodes
+Must pass \code{id} (\emph{unique}), \code{size} and \code{color}. If \code{color} is omitted, then specify
+\code{defaultNodeColor} in \code{\link{sg_settings}}, otherwise nodes will be transparent. Ideally nodes
 also include \code{x} and \code{y},
 if they are not passed then they are randomly generated, you can either get these coordinates with \code{\link{sg_get_layout}}
 or \code{\link{sg_layout}}.

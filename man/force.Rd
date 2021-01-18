@@ -32,7 +32,7 @@ sg_force_kill_p(proxy)
 sg_force_config_p(proxy, ...)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{...}{Any parameter, see \href{https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2}{official documentation}.}
 

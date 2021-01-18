@@ -23,7 +23,7 @@ sg_get_layout(
 )
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{directed}{Whether or not to create a directed graph, passed to \code{\link[igraph]{graph_from_data_frame}}.}
 

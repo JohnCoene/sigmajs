@@ -20,7 +20,7 @@ sg_clear(sg)
 
 \item{refresh}{Whether to refresh the graph after node is dropped, required to take effect, if you are running force the algorithm is killed and restarted.}
 
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 }
 \value{
 The \code{proxy} object.

@@ -8,7 +8,7 @@
 sg_scale_color(sg, pal)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{pal}{Vector of color.}
 }

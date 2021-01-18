@@ -48,7 +48,7 @@ sg_export_svg_p(
 )
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{download}{set to \code{TRUE} to download.}
 

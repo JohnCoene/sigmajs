@@ -7,7 +7,7 @@
 sg_relative_size(sg, initial = 1)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{initial}{Initial node size.}
 }

@@ -10,7 +10,7 @@ sg_settings(sg, ...)
 sg_settings_p(proxy, ...)
 }
 \arguments{
-\item{sg}{An object of class \code{sigmajs}as intatiated by \code{\link{sigmajs}}.}
+\item{sg}{An object of class \code{sigmajs} as instantiated by \code{\link{sigmajs}}.}
 
 \item{...}{Any parameter, see \href{https://github.com/jacomyal/sigma.js/wiki/Settings}{official documentation}.}
 
