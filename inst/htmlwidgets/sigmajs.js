@@ -548,145 +548,100 @@ HTMLWidgets.widget({
 
 				// events
 				if (HTMLWidgets.shinyMode) {
+          let events = [];
+          let object_notation = false;
+          if (x.events.length > 0) {
+            if (typeof x.events[0] === "string") {
+              // it is format 'c("eventA", "eventB")' in R with default priority everywhere
+              events = x.events;
+            } else if (typeof x.events[0] === "object") {
+              // it is format 'list(list(event = "eventA"), list(event = "eventB", priority = "event"))'
+              //   in R where different priority may be set
+              object_notation = true;
+              events = x.events.map(function (x) {
+                return x.event;
+              });
+            }
+          }
 
-					// click node
-					if (x.events.includes('clickNode'))
-						s.bind('clickNode', function (e) {
-							Shiny.setInputValue(el.id + '_click_node' + ":sigmajsParseJS", e.data.node);
-						});
+          function bindEvent(
+            evt_name_js,
+            evt_name_shiny,
+            what_to_return,
+            default_priority
+          ) {
+            if (events.includes(evt_name_js)) {
+              s.bind(evt_name_js, function (e) {
+                let return_value = null;
+                switch (what_to_return) {
+                  case "node":
+                    return_value = e.data.node;
+                    break;
+                  case "nodes":
+                    return_value = e.data.nodes;
+                    break;
+                  case "edge":
+                    return_value = e.data.edge;
+                    break;
+                  case "edges":
+                    return_value = e.data.edges;
+                    break;
+                  default:
+                    return_value = what_to_return;
+                }
+                let inputvalue_set = false;
+                if (object_notation) {
+                  let idx = events.indexOf(evt_name_js);
+                  if (typeof x.events[idx].priority !== "undefined") {
+                    Shiny.setInputValue(
+                      el.id + evt_name_shiny + ":sigmajsParseJS",
+                      return_value,
+                      { priority: x.events[idx].priority }
+                    );
+                    inputvalue_set = true;
+                  }
+                }
+                if (!inputvalue_set)
+                  if (typeof default_priority === "undefined") {
+                    Shiny.setInputValue(
+                      el.id + evt_name_shiny + ":sigmajsParseJS",
+                      return_value
+                    );
+                  } else {
+                    Shiny.setInputValue(
+                      el.id + evt_name_shiny + ":sigmajsParseJS",
+                      return_value,
+                      { priority: default_priority }
+                    );
+                  }
+              });
+            }
+          }
 
-					// click nodes
-					if (x.events.includes('clickNodes'))
-						s.bind('clickNodes', function (e) {
-							Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// click edge
-					if (x.events.includes('clickEdge'))
-						s.bind('clickEdge', function (e) {
-							Shiny.setInputValue(el.id + '_click_edge' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// click edges
-					if (x.events.includes('clickEdges'))
-						s.bind('clickEdges', function (e) {
-							Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// click stage
-					if (x.events.includes('clickStage'))
-						s.bind('clickStage', function (e) {
-							Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", 'clickStage', {priority: "event"});
-						});
-
-					// double click stage
-					if (x.events.includes('doubleClickStage'))
-						s.bind('doubleClickStage', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", 'doubleClickStage', {priority: "event"});
-						});
-
-					// right click stage
-					if (x.events.includes('rightClickStage'))
-						s.bind('rightClickStage', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", 'rightClickStage', {priority: "event"});
-						});
-
-					// double click node
-					if (x.events.includes('doubleClickNode'))
-						s.bind('doubleClickNode', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_node' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// double click nodes
-					if (x.events.includes('doubleClickNodes'))
-						s.bind('doubleClickNodes', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// double click edge
-					if (x.events.includes('doubleClickEdge'))
-						s.bind('doubleClickEdge', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_edge' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// double click edges
-					if (x.events.includes('doubleClickEdges'))
-						s.bind('doubleClickEdges', function (e) {
-							Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// right click node
-					if (x.events.includes('rightClickNode'))
-						s.bind('rightClickNode', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_node' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// right click nodes
-					if (x.events.includes('rightClickNodes'))
-						s.bind('rightClickNodes', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_nodes' + ":sigmajsParseJS", e.data.nodes);
-						});
-
-					// right click edge
-					if (x.events.includes('rightClickEdge'))
-						s.bind('rightClickEdge', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_edge' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// right click edges
-					if (x.events.includes('rightClickEdges'))
-						s.bind('rightClickEdges', function (e) {
-							Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// over node
-					if (x.events.includes('overNode'))
-						s.bind('overNode', function (e) {
-							Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// over nodes
-					if (x.events.includes('overNodes'))
-						s.bind('overNodes', function (e) {
-							Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// over edge
-					if (x.events.includes('overEdge'))
-						s.bind('overEdge', function (e) {
-							Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// over edges
-					if (x.events.includes('overEdges'))
-						s.bind('overEdges', function (e) {
-							Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// out node
-					if (x.events.includes('outNode'))
-						s.bind('outNode', function (e) {
-							Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// out nodes
-					if (x.events.includes('overNodes'))
-						s.bind('outNodes', function (e) {
-							Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.node);
-						});
-
-					// out edge
-					if (x.events.includes('outEdge'))
-						s.bind('outEdge', function (e) {
-							Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
-						});
-
-					// out edges
-					if (x.events.includes('outEdges'))
-						s.bind('outEdges', function (e) {
-							Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
-						});
-				}
+          bindEvent("clickNode", "_click_node", "node");
+          bindEvent("clickNodes", "_click_nodes", "nodes");
+          bindEvent("clickEdge", "_click_edge", "edge");
+          bindEvent("clickEdges", "_click_edges", "edges");
+          bindEvent("clickStage", "_click_stage", "clickStage", "event");
+          bindEvent("doubleClickNode", "_double_click_node", "node");
+          bindEvent("doubleClickNodes", "_double_click_nodes", "nodes");
+          bindEvent("doubleClickEdge", "_double_click_edge", "edge");
+          bindEvent("doubleClickEdges", "_double_click_edges", "edges");
+          bindEvent("doubleClickStage", "_double_click_stage", "doubleClickStage", "event");
+          bindEvent("rightClickNode", "_right_click_node", "node");
+          bindEvent("rightClickNodes", "_right_click_nodes", "nodes");
+          bindEvent("rightClickEdge", "_right_click_edge", "edge");
+          bindEvent("rightClickEdges", "_right_click_edges", "edges");
+          bindEvent("rightClickStage", "_right_click_stage", "rightClickStage", "event");
+          bindEvent("overNode", "_over_node", "node");
+          bindEvent("overNodes", "_over_nodes", "nodes");
+          bindEvent("overEdge", "_over_edge", "edge");
+          bindEvent("overEdges", "_over_edges", "edges");
+          bindEvent("outNode", "_out_node", "node");
+          bindEvent("outNodes", "_out_nodes", "nodes");
+          bindEvent("outEdge", "_out_edge", "edge");
+          bindEvent("outEdges", "_out_edges", "edges");
+        }
 
 				var initialized = true;
 
