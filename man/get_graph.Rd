@@ -28,7 +28,7 @@ ui <- fluidPage(
   actionButton("start", "Trigger layout"), # add the button
   sigmajsOutput("sg"),
   verbatimTextOutput("txt")
-) 
+)
 
 server <- function(input, output){
 
@@ -48,6 +48,6 @@ server <- function(input, output){
   })
 
 }
-if(interactive()) shinyApp(ui, server) # run
+if (interactive()) shinyApp(ui, server) # run
 
 }

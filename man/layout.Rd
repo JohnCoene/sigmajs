@@ -42,7 +42,7 @@ sg_get_layout(
 Layout your graph.
 }
 \details{
-The package uses \code{igraph} internally for a lot of computations the \code{save_igraph} 
+The package uses \code{igraph} internally for a lot of computations the \code{save_igraph}
 allows saving the object to speed up subsequent computations.
 }
 \section{Functions}{
@@ -57,9 +57,9 @@ allows saving the object to speed up subsequent computations.
 nodes <- sg_make_nodes(250) # 250 nodes
 edges <- sg_make_edges(nodes, n = 500)
 
-sigmajs() \%>\% 
-  sg_nodes(nodes, id, size, color) \%>\% 
-  sg_edges(edges, id, source, target) \%>\% 
+sigmajs() \%>\%
+  sg_nodes(nodes, id, size, color) \%>\%
+  sg_edges(edges, id, source, target) \%>\%
   sg_layout()
 
 nodes_coords <- sg_get_layout(nodes, edges)

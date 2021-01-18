@@ -17,7 +17,7 @@ sigmajs(
 
 \item{width, height}{Dimensions of graph.}
 
-\item{kill}{Whether to kill the graph, set to \code{FALSE} 
+\item{kill}{Whether to kill the graph, set to \code{FALSE}
 if using \code{\link{sigmajsProxy}}, else set to \code{TRUE}. Only useful in Shiny.}
 
 \item{elementId}{Id of elment.}
@@ -37,7 +37,7 @@ edges <- sg_make_edges(nodes)
 
 sigmajs("svg") \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
-  sg_edges(edges, id, source, target) 
+  sg_edges(edges, id, source, target)
 
 }
 \seealso{

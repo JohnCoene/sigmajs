@@ -29,7 +29,7 @@ Valid events to pass to \code{events}.
   \item{\code{doubleClickStage}}
   \item{\code{rightClickStage}}
   \item{\code{doubleClickNode}}
-  \item{\code{doubleClickNodes}}  
+  \item{\code{doubleClickNodes}}
   \item{\code{doubleClickEdge}}
   \item{\code{doubleClickEdges}}
   \item{\code{rightClickNode}}
@@ -56,13 +56,13 @@ ui <- fluidPage(
   sigmajsOutput("sg"),
   p("Click on a node"),
   verbatimTextOutput("clicked")
-) 
+)
 
 server <- function(input, output){
   output$sg <- renderSigmajs({
     sigmajs() \%>\%
       sg_nodes(nodes, id, size, color) \%>\%
-      sg_edges(edges, id, source, target) \%>\% 
+      sg_edges(edges, id, source, target) \%>\%
       sg_events("clickNode")
   })
 

@@ -37,7 +37,7 @@ nodes$to_size <- runif(n, 5, 10)
 
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size, color, to_x, to_y, to_size) \%>\%
-  sg_edges(edges, id, source, target) \%>\% 
+  sg_edges(edges, id, source, target) \%>\%
   sg_animate(mapping = list(x = "to_x", y = "to_y", size = "to_size"))
 
 }

@@ -24,7 +24,7 @@ sg_read_exec_p(proxy)
 The \code{proxy} object.
 }
 \description{
-Read nodes and edges to add to the graph. Other proxy methods to add data to a graph have to add nodes and edges one by one, 
+Read nodes and edges to add to the graph. Other proxy methods to add data to a graph have to add nodes and edges one by one,
 thereby draining the browser, this method will add multiple nodes and edges more efficiently.
 }
 \section{Functions}{
@@ -50,9 +50,9 @@ server <- function(input, output, session){
 	edges <- sg_make_edges(nodes)
 
 	output$sg <- renderSigmajs({
-		sigmajs() \%>\% 
-			sg_nodes(nodes, id, label, color, size) \%>\% 
-			sg_edges(edges, id, source, target) \%>\% 
+		sigmajs() \%>\%
+			sg_nodes(nodes, id, label, color, size) \%>\%
+			sg_edges(edges, id, source, target) \%>\%
 			sg_layout()
 	})
 
@@ -68,18 +68,18 @@ server <- function(input, output, session){
 			source = as.character(sample(ids, 15)),
 			target = as.character(sample(ids, 15))
 		)
-		
-		sigmajsProxy("sg") \%>\% 
-			sg_force_kill_p() \%>\% 
-			sg_read_nodes_p(new_nodes, id, label, color, size) \%>\% 
-			sg_read_edges_p(new_edges, id, source, target) \%>\% 
-			sg_read_exec_p() \%>\% 
-			sg_force_start_p() \%>\% 
+
+		sigmajsProxy("sg") \%>\%
+			sg_force_kill_p() \%>\%
+			sg_read_nodes_p(new_nodes, id, label, color, size) \%>\%
+			sg_read_edges_p(new_edges, id, source, target) \%>\%
+			sg_read_exec_p() \%>\%
+			sg_force_start_p() \%>\%
 			sg_refresh_p()
 	})
 
 }
 
-if(interactive()) shinyApp(ui, server)
+if (interactive()) shinyApp(ui, server)
 
 }

@@ -44,15 +44,15 @@ sg_get_cluster(
 \item{nodes, edges}{Nodes and edges as prepared for sigmajs.}
 }
 \value{
-\code{sg_get_cluster} returns nodes with \code{color} variable while 
-\code{sg_cluster} returns an object of class \code{htmlwidget} which renders 
+\code{sg_get_cluster} returns nodes with \code{color} variable while
+\code{sg_cluster} returns an object of class \code{htmlwidget} which renders
 the visualisation on print.
 }
 \description{
 Color nodes by cluster.
 }
 \details{
-The package uses \code{igraph} internally for a lot of computations the \code{save_igraph} 
+The package uses \code{igraph} internally for a lot of computations the \code{save_igraph}
 allows saving the object to speed up subsequent computations.
 }
 \section{Functions}{
@@ -64,15 +64,15 @@ allows saving the object to speed up subsequent computations.
 }
 
 \examples{
-nodes <- sg_make_nodes() 
+nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes, 15)
 
-sigmajs() \%>\% 
-  sg_nodes(nodes, id, size) \%>\% 
-  sg_edges(edges, id, source, target) \%>\% 
-  sg_layout() \%>\% 
-  sg_cluster() 
-  
+sigmajs() \%>\%
+  sg_nodes(nodes, id, size) \%>\%
+  sg_edges(edges, id, source, target) \%>\%
+  sg_layout() \%>\%
+  sg_cluster()
+
 clustered <- sg_get_cluster(nodes, edges)
 
 }

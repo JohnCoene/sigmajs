@@ -19,7 +19,7 @@ An igraph object with 181 nodes and 1589 edges
 lesmis_igraph
 }
 \description{
-A graph where the nodes are characters in "Les Miserables" updated from its first encoding 
+A graph where the nodes are characters in "Les Miserables" updated from its first encoding
 by Professor Donald Knuth, as part of the Stanford Graph Base (SGB)
 }
 \keyword{datasets}

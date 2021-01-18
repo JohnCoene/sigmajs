@@ -10,7 +10,7 @@ Description: Interface to 'sigma.js' graph visualization library including anima
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0.9000
+RoxygenNote: 7.1.1
 Depends: R (>= 2.10)
 URL: http://sigmajs.john-coene.com/ http://sigmajs.org/
 BugReports: https://github.com/JohnCoene/sigmajs/issues

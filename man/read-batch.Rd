@@ -69,19 +69,19 @@ server <- function(input, output, session){
 				rep(1000, 40),
 				rep(3000, 40)
 			)
-		) \%>\% 
+		) \%>\%
 		dplyr::mutate_all(as.character)
 
-		sigmajsProxy("sg") \%>\% 
-     sg_force_start_p() \%>\% 
-			sg_read_delay_nodes_p(nodes, id, color, label, size, delay = batch) \%>\% 
-			sg_read_delay_edges_p(edges, id, source, target, delay = batch) \%>\% 
-			sg_read_delay_exec_p()  \%>\% 
+		sigmajsProxy("sg") \%>\%
+     sg_force_start_p() \%>\%
+			sg_read_delay_nodes_p(nodes, id, color, label, size, delay = batch) \%>\%
+			sg_read_delay_edges_p(edges, id, source, target, delay = batch) \%>\%
+			sg_read_delay_exec_p()  \%>\%
 			sg_force_stop_p()
 	})
 
 }
 
-if(interactive()) shinyApp(ui, server)
+if (interactive()) shinyApp(ui, server)
 
 }

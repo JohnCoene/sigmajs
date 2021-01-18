@@ -31,7 +31,7 @@ edges <- sg_make_edges(nodes)
 sigmajs() \%>\%
   sg_nodes(nodes, id, size, color) \%>\%
   sg_edges(edges, id, source, target) \%>\%
-  sg_layout() \%>\% 
+  sg_layout() \%>\%
   sg_noverlap()
 
 }

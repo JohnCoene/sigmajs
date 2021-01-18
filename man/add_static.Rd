@@ -49,13 +49,13 @@ nodes2$delay <- runif(nrow(nodes2), 500, 1000)
 sigmajs() \%>\%
   sg_nodes(nodes, id, label, size, color) \%>\%
   sg_add_nodes(nodes2, delay, id, label, size, color)
-  
+
 edges <- sg_make_edges(nodes, 25)
 edges$delay <- runif(nrow(edges), 100, 2000)
 
 sigmajs() \%>\%
   sg_force_start() \%>\%
-  sg_nodes(nodes, id, label, size, color) \%>\% 
+  sg_nodes(nodes, id, label, size, color) \%>\%
   sg_add_edges(edges, delay, id, source, target, cumsum = FALSE) \%>\%
   sg_force_stop(2300) # stop after all edges added
 

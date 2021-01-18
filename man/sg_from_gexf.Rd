@@ -23,8 +23,8 @@ Create a sigmajs graph from a GEXF file.
 \dontrun{
 gexf <- "https://gephi.org/gexf/data/yeast.gexf"
 
-sigmajs() \%>\% 
-  sg_from_gexf(gexf) 
+sigmajs() \%>\%
+  sg_from_gexf(gexf)
 }
 
 }

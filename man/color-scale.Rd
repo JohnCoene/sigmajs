@@ -19,11 +19,11 @@ A modified version of the \code{sg} object.
 Scale color by node size.
 }
 \examples{
-nodes <- sg_make_nodes() 
+nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes, 20)
 
-sigmajs() \%>\% 
-  sg_nodes(nodes, id, size) \%>\% 
+sigmajs() \%>\%
+  sg_nodes(nodes, id, size) \%>\%
   sg_scale_color(pal = c("red", "blue"))
 
 }

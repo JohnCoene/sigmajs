@@ -76,13 +76,13 @@ Functions ending in \code{_p} return the \code{proxy}.
 Export graph to SVG.
 }
 \examples{
-nodes <- sg_make_nodes() 
+nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes, 17)
 
-sigmajs() \%>\% 
-  sg_nodes(nodes, id, size) \%>\% 
-  sg_edges(edges, id, source, target) \%>\% 
-  sg_export_svg() \%>\% 
+sigmajs() \%>\%
+  sg_nodes(nodes, id, size) \%>\%
+  sg_edges(edges, id, source, target) \%>\%
+  sg_export_svg() \%>\%
   sg_button("export_svg", "download")
 
 }

@@ -30,6 +30,6 @@ A modified version of the \code{sg} object.
 \description{
 Clear all nodes and edges from the graph or kills the graph.
 
-Kill the graph to ensure new data is redrawn, useful in Shiny 
+Kill the graph to ensure new data is redrawn, useful in Shiny
 when graph is not updated by \code{\link{sigmajsProxy}}.
 }

@@ -34,7 +34,7 @@ sg_change_edges_p(
 
 \item{attribute}{Name of attribute to change.}
 
-\item{rate}{Rate at chich to refresh takes \code{once} refreshes once after all \code{values} have been changed, 
+\item{rate}{Rate at chich to refresh takes \code{once} refreshes once after all \code{values} have been changed,
 and \code{iteration} which refreshes at every iteration.}
 
 \item{refresh}{Whether to refresh the graph after the change is made.}
@@ -53,9 +53,9 @@ nodes$new_color <- "red"
 edges <- sg_make_edges(nodes)
 
 ui <- fluidPage(
-  actionButton("start", "Change color"), 
+  actionButton("start", "Change color"),
   sigmajsOutput("sg")
-) 
+)
 
 server <- function(input, output){
 
@@ -72,6 +72,6 @@ server <- function(input, output){
 
 }
 
- if(interactive()) shinyApp(ui, server) # run
+ if (interactive()) shinyApp(ui, server) # run
 
 }
