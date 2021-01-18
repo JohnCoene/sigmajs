@@ -530,7 +530,7 @@ sg_drop_edges_delay_p <- function(proxy, data, ids, delay, refresh = TRUE, cumsu
 #'
 #' }
 #'
-#' if(interactive()) shinyApp(ui, server)
+#' if (interactive()) shinyApp(ui, server)
 #'
 #' @return The \code{proxy} object.
 #'
@@ -576,10 +576,10 @@ sg_read_exec_p <- function(proxy){
 
   proxy$message$id <- proxy$id
 
-  if(is.null(proxy$message$data$edges))
+  if (is.null(proxy$message$data$edges))
     proxy$message$data$edges <- list()
 
-  if(is.null(proxy$message$data$nodes))
+  if (is.null(proxy$message$data$nodes))
     proxy$message$data$nodes <- list()
 
   proxy$session$sendCustomMessage("sg_read_exec_p", proxy$message)
@@ -647,7 +647,7 @@ sg_read_exec_p <- function(proxy){
 #'
 #' }
 #'
-#' if(interactive()) shinyApp(ui, server)
+#' if (interactive()) shinyApp(ui, server)
 #'
 #' @return The \code{proxy} object.
 #'
@@ -657,7 +657,7 @@ sg_read_delay_nodes_p <- function(proxy, data, ..., delay){
 
   .test_proxy(proxy)
 
-  if(missing(delay) || missing(data))
+  if (missing(delay) || missing(data))
     stop("missing data or delay", call. = FALSE)
 
   delay <- deparse(substitute(delay))
@@ -680,7 +680,7 @@ sg_read_delay_nodes_p <- function(proxy, data, ..., delay){
 sg_read_delay_edges_p <- function(proxy, data, ..., delay){
   .test_proxy(proxy)
 
-  if(missing(delay) || missing(data))
+  if (missing(delay) || missing(data))
     stop("missing data or delay", call. = FALSE)
 
   delay <- deparse(substitute(delay))
@@ -705,10 +705,10 @@ sg_read_delay_exec_p <- function(proxy, refresh = TRUE){
 
   proxy$message$id <- proxy$id
 
-  if(is.null(proxy$message$data$edges))
+  if (is.null(proxy$message$data$edges))
     proxy$message$data$edges <- list()
 
-  if(is.null(proxy$message$data$nodes))
+  if (is.null(proxy$message$data$nodes))
     proxy$message$data$nodes <- list()
 
   proxy$message$data <- purrr::map2(proxy$message$data$nodes, proxy$message$data$edges, .grp) %>%

@@ -34,7 +34,7 @@
 #'   })
 #'
 #' }
-#' if(interactive()) shinyApp(ui, server) # run
+#' if (interactive()) shinyApp(ui, server) # run
 #'
 #' @return The \code{proxy} object.
 #'

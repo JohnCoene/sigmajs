@@ -79,7 +79,7 @@ sg_get_cluster <- function(nodes, edges, colors = c("#B1E2A3", "#98D3A5", "#3289
   grps <- unique(membership$membership)
   n_grps <- length(grps)
 
-  if(!isTRUE(quiet))
+  if (!isTRUE(quiet))
     cat("Found #", n_grps, "clusters\n")
 
   colors <- colorRampPalette(colors)(n_grps)

@@ -38,7 +38,7 @@ HTMLWidgets.widget({
 					// create
 					s = new sigma(el.id);
 
-					if(x.hasOwnProperty("settings")){
+					if (x.hasOwnProperty("settings")){
 						for (var name in x.settings)
 							s.settings(name, x.settings[name]);
 					}
@@ -55,7 +55,7 @@ HTMLWidgets.widget({
 				} else {
 
 					if (HTMLWidgets.shinyMode) {
-						sigInst = document.getElementById(el.id)
+						sigInst = document.getElementById(el.id);
 						while (sigInst.firstChild) {
 							sigInst.removeChild(sigInst.firstChild);
 						}
@@ -74,7 +74,7 @@ HTMLWidgets.widget({
 				}
 
 				// force neighbours true if crosstalk enabled
-				if(x.crosstalk.crosstalk_key !== null && !x.hasOwnProperty('neighbours')){
+				if (x.crosstalk.crosstalk_key !== null && !x.hasOwnProperty('neighbours')){
 				  x.neighbours = [];
 				  x.neighbours.edges = "#eee";
 				  x.neighbours.nodes = "#eee";
@@ -82,7 +82,7 @@ HTMLWidgets.widget({
 				}
 
 				// highlight neighbours
-				if(x.hasOwnProperty('neighbours')){
+				if (x.hasOwnProperty('neighbours')){
 				  db = new sigma.plugins.neighborhoods();
 
           s.graph.nodes().forEach(function(n) {
@@ -184,9 +184,9 @@ HTMLWidgets.widget({
 
 				// start forceAtlas
 				if (x.hasOwnProperty('force')) {
-				  if(x.buttonevent.indexOf('force') > -1 || x.buttonevent.indexOf('force_start') > -1){
+				  if (x.buttonevent.indexOf('force') > -1 || x.buttonevent.indexOf('force_start') > -1){
   				  for (var a = 0; a < x.button.length; a++){
-    				  if(x.button[a].event.indexOf('force') > -1 || x.button[a].event.indexOf('force_start') > -1){
+    				  if (x.button[a].event.indexOf('force') > -1 || x.button[a].event.indexOf('force_start') > -1){
     				    x.button[a].btn.addEventListener("click", function(event) {
     				      s.startForceAtlas2(x.force);
     				    });
@@ -198,14 +198,14 @@ HTMLWidgets.widget({
 				}
 
 				// progress
-				if(x.hasOwnProperty('progressBar')){
+				if (x.hasOwnProperty('progressBar')){
 
 				  var bar = document.getElementById(x.progressBar.id);
 
-				  if(x.buttonevent.indexOf('progress') > -1){
+				  if (x.buttonevent.indexOf('progress') > -1){
 
 				    for (var i = 0; i < x.button.length; i++){
-				      if(x.button[i].event.indexOf('progress') > -1){
+				      if (x.button[i].event.indexOf('progress') > -1){
       				  x.button[i].btn.addEventListener("click", function(event) {
           				x.progressBar.data.forEach((element) => {
           					setTimeout(function () {
@@ -229,9 +229,9 @@ HTMLWidgets.widget({
 				if (x.hasOwnProperty('noverlap')) {
 					var noverlap = s.configNoverlap(x.noverlap);
 
-					if(x.buttonevent.indexOf('noverlap') > -1){
+					if (x.buttonevent.indexOf('noverlap') > -1){
   					for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('noverlap') > -1){
+    				  if (x.button[i].event.indexOf('noverlap') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      s.startNoverlap();
     				    });
@@ -250,9 +250,9 @@ HTMLWidgets.widget({
 
 				if (x.animateLoop === false) {
 
-					if(x.buttonevent.indexOf('animate') > -1){
+					if (x.buttonevent.indexOf('animate') > -1){
   					for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('animate') > -1){
+    				  if (x.button[i].event.indexOf('animate') > -1){
     				    x.button[i],btn.addEventListener("click", function(event) {
         					setTimeout(function () {
         						sigma.plugins.animate(s, x.animateMapping, x.animateOptions);
@@ -268,11 +268,11 @@ HTMLWidgets.widget({
 
 				}
 
-				if(x.hasOwnProperty('dragNodes')){
+				if (x.hasOwnProperty('dragNodes')){
 
-				  if(x.buttonevent.indexOf('drag_nodes') > -1){
+				  if (x.buttonevent.indexOf('drag_nodes') > -1){
   				  for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('drag_nodes') > -1){
+    				  if (x.button[i].event.indexOf('drag_nodes') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
     				    });
@@ -286,9 +286,9 @@ HTMLWidgets.widget({
 
 				if (x.hasOwnProperty('relativeSize')) {
 
-				  if(x.buttonevent.indexOf('relative_size') > -1){
+				  if (x.buttonevent.indexOf('relative_size') > -1){
   				  for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('relative_size') > -1){
+    				  if (x.button[i].event.indexOf('relative_size') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
     				      sigma.plugins.relativeSize(s, x.relativeSize);
     				    });
@@ -300,12 +300,12 @@ HTMLWidgets.widget({
 
 				}
 
-				if(x.hasOwnProperty('addNodesDelay')){
+				if (x.hasOwnProperty('addNodesDelay')){
 
-  				if(x.buttonevent.indexOf('add_nodes') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
+  				if (x.buttonevent.indexOf('add_nodes') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
 
     				for (var i = 0; i < x.button.length; i++){
-      			  if(x.button[i].event.indexOf('add_nodes') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
+      			  if (x.button[i].event.indexOf('add_nodes') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
       				    x.button[i].btn.addEventListener("click", function(event) {
             				x.addNodesDelay.forEach((element) => {
               					setTimeout(function () {
@@ -328,13 +328,13 @@ HTMLWidgets.widget({
 
 				}
 
-				if(x.hasOwnProperty('addEdgesDelay')){
+				if (x.hasOwnProperty('addEdgesDelay')){
 				  var running = s.isForceAtlas2Running();
 
-				  if(x.buttonevent.indexOf('add_edges') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
+				  if (x.buttonevent.indexOf('add_edges') > -1 || x.buttonevent.indexOf('add_nodes_edges') > -1){
 
   				  for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('add_edges') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
+    				  if (x.button[i].event.indexOf('add_edges') > -1 || x.button[i].event.indexOf('add_nodes_edges') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
             			x.addEdgesDelay.data.forEach((element) => {
           					setTimeout(function () {
@@ -373,13 +373,13 @@ HTMLWidgets.widget({
 
 				}
 
-				if(x.hasOwnProperty("dropEdgesDelay")){
+				if (x.hasOwnProperty("dropEdgesDelay")){
   				var is_running = s.isForceAtlas2Running();
 
-  				if(x.buttonevent.indexOf('drop_edges') > -1){
+  				if (x.buttonevent.indexOf('drop_edges') > -1){
 
     				for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('drop_edges') > -1){
+    				  if (x.button[i].event.indexOf('drop_edges') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
           				x.dropEdgesDelay.data.forEach((drop_edg, index) => {
           					setTimeout(function () {
@@ -418,11 +418,11 @@ HTMLWidgets.widget({
 
 				}
 
-				if(x.hasOwnProperty("dropNodesDelay")){
+				if (x.hasOwnProperty("dropNodesDelay")){
 
-				  if(x.buttonevent.indexOf('drop_nodes') > -1){
+				  if (x.buttonevent.indexOf('drop_nodes') > -1){
   				  for (var i = 0; i < x.button.length; i++){
-    				  if(x.button[i].event.indexOf('drop_nodes') > -1){
+    				  if (x.button[i].event.indexOf('drop_nodes') > -1){
     				    x.button[i].btn.addEventListener("click", function(event) {
           				x.dropNodesDelay.forEach((element) => {
           					setTimeout(function () {
@@ -445,11 +445,11 @@ HTMLWidgets.widget({
 				}
 
 			// stop force
-			if(x.hasOwnProperty('forceStopDelay')){
+			if (x.hasOwnProperty('forceStopDelay')){
 
-			  if(x.buttonevent.indexOf('force_stop') > -1){
+			  if (x.buttonevent.indexOf('force_stop') > -1){
   			  for (var i = 0; i < x.button.length; i++){
-    			  if(x.button[i].event.indexOf('force_stop') > -1){
+    			  if (x.button[i].event.indexOf('force_stop') > -1){
     			    x.button[i].btn.addEventListener("click", function(event) {
         				setTimeout(function () {
         					s.stopForceAtlas2();
@@ -465,11 +465,11 @@ HTMLWidgets.widget({
 
 			}
 
-			if(x.hasOwnProperty('forceRestartDelay')){
+			if (x.hasOwnProperty('forceRestartDelay')){
 
 			  var is_it_running = s.isForceAtlas2Running();
 
-			  if(is_it_running === false){
+			  if (is_it_running === false){
 			    s.startForceAtlas2();
 			  }
 
@@ -482,9 +482,9 @@ HTMLWidgets.widget({
 
 			}
 
-			if(x.hasOwnProperty('exportSVG')){
+			if (x.hasOwnProperty('exportSVG')){
 
-			  if(x.buttonevent.indexOf('export_svg') > -1){
+			  if (x.buttonevent.indexOf('export_svg') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
       				var output = s.toSVG(x.exportSVG);
@@ -494,9 +494,9 @@ HTMLWidgets.widget({
 
 			}
 
-			if(x.hasOwnProperty('exportIMG')){
+			if (x.hasOwnProperty('exportIMG')){
 
-			  if(x.buttonevent.indexOf('export_img') > -1){
+			  if (x.buttonevent.indexOf('export_img') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
       				var output = renderer.snapshot(x.exportIMG);
@@ -506,21 +506,21 @@ HTMLWidgets.widget({
 
 			}
 
-			if(x.hasOwnProperty('read')){
+			if (x.hasOwnProperty('read')){
 
 				var is_it_running = s.isForceAtlas2Running();
 
-			  if(x.buttonevent.indexOf('read_exec') > -1){
+			  if (x.buttonevent.indexOf('read_exec') > -1){
   			  for (var i = 0; i < x.button.length; i++){
     		    x.button[i].btn.addEventListener("click", function(event) {
       				x.read.data.forEach(function(data){
 								setTimeout(function(){
-									if(x.read.refresh == true && is_it_running == true)
+									if (x.read.refresh == true && is_it_running == true)
 										s.killForceAtlas2();
 
 									s.graph.read(data);
 
-									if(x.read.refresh == true && is_it_running == true)
+									if (x.read.refresh == true && is_it_running == true)
 										s.startForceAtlas2();
 								}, data.nodes[0].delay)
 							});
@@ -529,12 +529,12 @@ HTMLWidgets.widget({
 			  } else {
 					x.read.data.forEach(function(data){
 						setTimeout(function(){
-							if(x.read.refresh == true && is_it_running == true)
+							if (x.read.refresh == true && is_it_running == true)
 								s.killForceAtlas2();
 
 							s.graph.read(data);
 
-							if(x.read.refresh == true && is_it_running == true)
+							if (x.read.refresh == true && is_it_running == true)
 								s.startForceAtlas2();
 
 						}, data.nodes[0].delay)
@@ -550,139 +550,139 @@ HTMLWidgets.widget({
 				if (HTMLWidgets.shinyMode) {
 
 					// click node
-					if(x.events.includes('clickNode'))
+					if (x.events.includes('clickNode'))
 						s.bind('clickNode', function (e) {
 							Shiny.setInputValue(el.id + '_click_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// click nodes
-					if(x.events.includes('clickNodes'))
+					if (x.events.includes('clickNodes'))
 						s.bind('clickNodes', function (e) {
 							Shiny.setInputValue(el.id + '_click_nodes' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// click edge
-					if(x.events.includes('clickEdge'))
+					if (x.events.includes('clickEdge'))
 						s.bind('clickEdge', function (e) {
 							Shiny.setInputValue(el.id + '_click_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// click edges
-					if(x.events.includes('clickEdges'))
+					if (x.events.includes('clickEdges'))
 						s.bind('clickEdges', function (e) {
 							Shiny.setInputValue(el.id + '_click_edges' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// click stage
-					if(x.events.includes('clickStage'))
+					if (x.events.includes('clickStage'))
 						s.bind('clickStage', function (e) {
 							Shiny.setInputValue(el.id + '_click_stage' + ":sigmajsParseJS", 'clickStage', {priority: "event"});
 						});
 
 					// double click stage
-					if(x.events.includes('doubleClickStage'))
+					if (x.events.includes('doubleClickStage'))
 						s.bind('doubleClickStage', function (e) {
 							Shiny.setInputValue(el.id + '_double_click_stage' + ":sigmajsParseJS", 'doubleClickStage', {priority: "event"});
 						});
 
 					// right click stage
-					if(x.events.includes('rightClickStage'))
+					if (x.events.includes('rightClickStage'))
 						s.bind('rightClickStage', function (e) {
 							Shiny.setInputValue(el.id + '_right_click_stage' + ":sigmajsParseJS", 'rightClickStage', {priority: "event"});
 						});
 
 					// double click node
-					if(x.events.includes('doubleClickNode'))
+					if (x.events.includes('doubleClickNode'))
 						s.bind('doubleClickNode', function (e) {
 							Shiny.setInputValue(el.id + '_double_click_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// double click nodes
-					if(x.events.includes('doubleClickNodes'))
+					if (x.events.includes('doubleClickNodes'))
 						s.bind('doubleClickNodes', function (e) {
 							Shiny.setInputValue(el.id + '_double_click_nodes' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// double click edge
-					if(x.events.includes('doubleClickEdge'))
+					if (x.events.includes('doubleClickEdge'))
 						s.bind('doubleClickEdge', function (e) {
 							Shiny.setInputValue(el.id + '_double_click_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// double click edges
-					if(x.events.includes('doubleClickEdges'))
+					if (x.events.includes('doubleClickEdges'))
 						s.bind('doubleClickEdges', function (e) {
 							Shiny.setInputValue(el.id + '_double_click_edges' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// right click node
-					if(x.events.includes('rightClickNode'))
+					if (x.events.includes('rightClickNode'))
 						s.bind('rightClickNode', function (e) {
 							Shiny.setInputValue(el.id + '_right_click_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// right click nodes
-					if(x.events.includes('rightClickNodes'))
+					if (x.events.includes('rightClickNodes'))
 						s.bind('rightClickNodes', function (e) {
 							Shiny.setInputValue(el.id + '_right_click_nodes' + ":sigmajsParseJS", e.data.nodes);
 						});
 
 					// right click edge
-					if(x.events.includes('rightClickEdge'))
+					if (x.events.includes('rightClickEdge'))
 						s.bind('rightClickEdge', function (e) {
 							Shiny.setInputValue(el.id + '_right_click_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// right click edges
-					if(x.events.includes('rightClickEdges'))
+					if (x.events.includes('rightClickEdges'))
 						s.bind('rightClickEdges', function (e) {
 							Shiny.setInputValue(el.id + '_right_click_edges' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// over node
-					if(x.events.includes('hoverNode'))
+					if (x.events.includes('hoverNode'))
 						s.bind('overNode', function (e) {
 							Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// over nodes
-					if(x.events.includes('hoverNodes'))
+					if (x.events.includes('hoverNodes'))
 						s.bind('overNodes', function (e) {
 							Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// over edge
-					if(x.events.includes('hoverEdge'))
+					if (x.events.includes('hoverEdge'))
 						s.bind('overEdge', function (e) {
 							Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// over edges
-					if(x.events.includes('hoverEdges'))
+					if (x.events.includes('hoverEdges'))
 						s.bind('overEdges', function (e) {
 							Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// out node
-					if(x.events.includes('outNode'))
+					if (x.events.includes('outNode'))
 						s.bind('outNode', function (e) {
 							Shiny.setInputValue(el.id + '_out_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// out nodes
-					if(x.events.includes('overNodes'))
+					if (x.events.includes('overNodes'))
 						s.bind('outNodes', function (e) {
 							Shiny.setInputValue(el.id + '_out_nodes' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// out edge
-					if(x.events.includes('outEdge'))
+					if (x.events.includes('outEdge'))
 						s.bind('outEdge', function (e) {
 							Shiny.setInputValue(el.id + '_out_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// out edges
-					if(x.events.includes('outEdges'))
+					if (x.events.includes('outEdges'))
 						s.bind('outEdges', function (e) {
 							Shiny.setInputValue(el.id + '_out_edges' + ":sigmajsParseJS", e.data.edge);
 						});
@@ -693,7 +693,7 @@ HTMLWidgets.widget({
 		},
 
 		resize: function(width, height) {
-			for(var name in s.renderers)
+			for (var name in s.renderers)
 				s.renderers[name].resize(width, height);
 		},
 
@@ -1144,7 +1144,7 @@ if (HTMLWidgets.shinyMode) {
 							s.killForceAtlas2();
 						}
 						s.graph.read(data);
-						if(message.refresh === true)
+						if (message.refresh === true)
 							s.refresh();
 						if (message.refresh === true && running === true) {
 							s.startForceAtlas2();
@@ -1289,7 +1289,7 @@ if (HTMLWidgets.shinyMode) {
 
 			  var filter = new sigma.plugins.filter(s);
 
-			  if(message.target === "both"){
+			  if (message.target === "both"){
           filter
             .nodesBy(function(n) {
               return n[message.var] > message.input;
@@ -1298,7 +1298,7 @@ if (HTMLWidgets.shinyMode) {
               return e[message.var] > message.input;
             }, message.name[1])
             .apply();
-			  } else if(message.target === "nodes"){
+			  } else if (message.target === "nodes"){
           filter
             .nodesBy(function(n) {
               return n[message.var] > message.input;
@@ -1325,7 +1325,7 @@ if (HTMLWidgets.shinyMode) {
 
 			  var filter = new sigma.plugins.filter(s);
 
-			  if(message.target === "both"){
+			  if (message.target === "both"){
           filter
             .nodesBy(function(n) {
               return n[message.var] < message.input;
@@ -1334,7 +1334,7 @@ if (HTMLWidgets.shinyMode) {
               return e[message.var] < message.input;
             }, message.name[1])
             .apply();
-			  } else if(message.target === "nodes"){
+			  } else if (message.target === "nodes"){
           filter
             .nodesBy(function(n) {
               return n[message.var] < message.input;
@@ -1361,7 +1361,7 @@ if (HTMLWidgets.shinyMode) {
 
 			  var filter = new sigma.plugins.filter(s);
 
-			  if(message.target === "both"){
+			  if (message.target === "both"){
           filter
             .nodesBy(function(n) {
               return n[message.var] == message.input;
@@ -1370,7 +1370,7 @@ if (HTMLWidgets.shinyMode) {
               return e[message.var] == message.input;
             }, message.name[1])
             .apply();
-			  } else if(message.target === "nodes"){
+			  } else if (message.target === "nodes"){
           filter
             .nodesBy(function(n) {
               return n[message.var] == message.input;
@@ -1397,7 +1397,7 @@ if (HTMLWidgets.shinyMode) {
 
 			  var filter = new sigma.plugins.filter(s);
 
-			  if(message.target === "both"){
+			  if (message.target === "both"){
           filter
             .nodesBy(function(n) {
               return n[message.var] != message.input;
@@ -1406,7 +1406,7 @@ if (HTMLWidgets.shinyMode) {
               return e[message.var] != message.input;
             }, message.name[1])
             .apply();
-			  } else if(message.target === "nodes"){
+			  } else if (message.target === "nodes"){
           filter
             .nodesBy(function(n) {
               return n[message.var] != message.input;

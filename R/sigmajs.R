@@ -36,7 +36,7 @@ sigmajs <- function(type = NULL, width = "100%", kill = FALSE, height = NULL, el
 
   assign("igraph", NULL, envir = storage_env)
 
-  if(!is.null(type))
+  if (!is.null(type))
     cat("Argument `type` is no longer in use.\n")
 
   # forward options using x

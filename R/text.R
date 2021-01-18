@@ -39,7 +39,7 @@
 sg_progress <- function(sg, data, delay, text, ..., position = "top", id = NULL,
                         tag = htmltools::span, cumsum = TRUE){
 
-  if(missing(data) || missing(delay) || missing(text))
+  if (missing(data) || missing(delay) || missing(text))
     stop("missing data, delay or text")
 
   delay_col <- eval(substitute(delay), data) # subset delay
@@ -49,7 +49,7 @@ sg_progress <- function(sg, data, delay, text, ..., position = "top", id = NULL,
   text <- eval(substitute(text), data) # subset ids
   data <- data.frame(delay = delay_col, text = text)
 
-  if(is.null(id))
+  if (is.null(id))
     id <- .make_rand_id()
 
   sg$x$progressBar <- list(
@@ -58,7 +58,7 @@ sg_progress <- function(sg, data, delay, text, ..., position = "top", id = NULL,
     data = apply(data, 1, as.list)
   )
 
-  if(position == "top")
+  if (position == "top")
     htmlwidgets::prependContent(sg, tag(id = id, ...))
   else
     htmlwidgets::appendContent(sg, tag(id = id, ...))

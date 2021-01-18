@@ -64,21 +64,21 @@
 #' @export
 sg_button <- function(sg, event, ..., position = "top", class = "btn btn-default", tag = htmltools::tags$button, id = NULL){
 
-  if(missing(sg) ||  missing(event))
+  if (missing(sg) ||  missing(event))
     stop("missing sg or event")
 
   .test_sg(sg)
 
-  for(ev in event)
-    if(!ev %in% .valid_events()) stop(paste(ev, "is not a known event"), call. = FALSE)
+  for (ev in event)
+    if (!ev %in% .valid_events()) stop(paste(ev, "is not a known event"), call. = FALSE)
 
-  if("add_nodes_edges" %in% event)
+  if ("add_nodes_edges" %in% event)
     warning("add_nodes_edges is deprecated, in favour of c('add_nodes', 'add_edges')", call. = FALSE)
 
-  if(is.null(class))
+  if (is.null(class))
     class <- ""
 
-  if(is.null(id))
+  if (is.null(id))
     id <- .make_rand_id()
 
   btn <- list(
@@ -89,7 +89,7 @@ sg_button <- function(sg, event, ..., position = "top", class = "btn btn-default
   sg$x$button <- append(sg$x$button, list(btn))
   sg$x$buttonevent <- append(sg$x$buttonevent, event)
 
-  if(position == "top"){
+  if (position == "top") {
     sg %>%
       htmlwidgets::prependContent(tag(id = id, class = paste("sigmajsbtn", class), ...))
   } else {

@@ -417,10 +417,10 @@ sg_read_edges <- function(sg, data, ..., delay){
 sg_read_exec <- function(sg, refresh = TRUE){
   .test_sg(sg)
 
-  if(is.null(sg$x$read$data$edges))
+  if (is.null(sg$x$read$data$edges))
     sg$x$read$data$edges <- list()
 
-  if(is.null(sg$x$read$data$nodes))
+  if (is.null(sg$x$read$data$nodes))
     sg$x$read$data$nodes <- list()
 
   sg$x$read$data <- sg$x$read$data$nodes %>%

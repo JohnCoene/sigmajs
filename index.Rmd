@@ -90,7 +90,7 @@ div(
         class = "github-button",
         href = "https://github.com/JohnCoene/sigmajs",
         `data-show-count` = "true",
-        `aria-label`="Star JohnCoene/sigmajs on GitHub",
+        `aria-label` = "Star JohnCoene/sigmajs on GitHub",
         "Star"
       )
     ),

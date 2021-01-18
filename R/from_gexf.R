@@ -24,10 +24,10 @@ sg_from_gexf <- function(sg, file, sd = NULL) {
 
   .test_sg(sg)
 
-  if(missing(file))
+  if (missing(file))
     stop("missing file", call. = FALSE)
 
-  if(!is.null(sd)){
+  if (!is.null(sd)) {
     if (crosstalk::is.SharedData(sd)) {
       # crosstalk settings
       sg$x$crosstalk$crosstalk_key <- sd$key()

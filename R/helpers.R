@@ -43,10 +43,10 @@ sg_make_nodes <- function(n = 10, colors = c("#B1E2A3", "#98D3A5", "#328983", "#
 #' @export
 sg_make_edges <- function(nodes, n = NULL) {
 
-  if(missing(nodes))
+  if (missing(nodes))
     stop("mising nodes", call. = FALSE)
 
-  if(!is.null(n))
+  if (!is.null(n))
     warning("Argument `n` is deprecated")
 
   ids <- as.character(nodes$id)
@@ -150,7 +150,7 @@ sg_scale_color <- function(sg, pal){
     unlist() %>%
     as.numeric()
 
-  if(!length(size))
+  if (!length(size))
     stop("no node size passed", call. = FALSE)
 
   color <- scales::col_numeric(pal, domain = range(size))(size)

@@ -39,7 +39,7 @@
 #'
 #' }
 #'
-#'  if(interactive()) shinyApp(ui, server) # run
+#'  if (interactive()) shinyApp(ui, server) # run
 #'
 #' @rdname change
 #' @export
@@ -49,7 +49,7 @@ sg_change_nodes_p <- function(proxy, data, value, attribute, rate = c("once", "i
   if (!"sigmajsProxy" %in% class(proxy))
     stop("must pass sigmajsProxy object", call. = FALSE)
 
-  if(missing(data) || missing(value) || missing(attribute))
+  if (missing(data) || missing(value) || missing(attribute))
     stop("missing data, value, or attribute", call. = FALSE)
 
   rate <- match.arg(rate)
@@ -74,7 +74,7 @@ sg_change_edges_p <- function(proxy, data, value, attribute, rate = c("once", "i
   if (!"sigmajsProxy" %in% class(proxy))
     stop("must pass sigmajsProxy object", call. = FALSE)
 
-  if(missing(data) || missing(value) || missing(attribute))
+  if (missing(data) || missing(value) || missing(attribute))
     stop("missing data, value, or attribute", call. = FALSE)
 
   rate <- match.arg(rate)

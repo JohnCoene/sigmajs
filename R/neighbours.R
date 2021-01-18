@@ -26,10 +26,10 @@
 #' @export
 sg_neighbours <- function(sg, nodes = "#eee", edges = "#eee", on = c("clickNode", "overNode", "clickNode|overNode")){
 
-  if(missing(sg))
+  if (missing(sg))
     stop("must pass sg", call. = FALSE)
 
-  if(!inherits(sg, "sigmajs"))
+  if (!inherits(sg, "sigmajs"))
     stop("sg must be sigmajs object", call. = FALSE)
 
   on <- match.arg(on)

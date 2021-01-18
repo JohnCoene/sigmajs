@@ -73,12 +73,12 @@ sg_from_igraph <- function(sg, igraph, layout = NULL, sd = NULL) {
 
   nodes <- dplyr::bind_cols(nodes, layout)
 
-  if(!"size" %in% names(nodes))
+  if (!"size" %in% names(nodes))
     nodes$size <- 1
 
   sg$x$data <- append(sg$x$data, list(nodes = .as_list(nodes), edges = .as_list(edges)))
 
-  if(!is.null(sd)){
+  if (!is.null(sd)) {
     if (crosstalk::is.SharedData(sd)) {
       sg$x$crosstalk$crosstalk_key <- sd$key()
       sg$x$crosstalk$crosstalk_group <- sd$groupName()

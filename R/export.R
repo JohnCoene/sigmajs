@@ -31,7 +31,7 @@
 sg_export_svg <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
                           width = 1000, height = 1000, labels = FALSE, data = FALSE){
 
-  if(missing(sg))
+  if (missing(sg))
     stop("must pass sg", call. = FALSE)
 
   .test_sg(sg)
@@ -54,7 +54,7 @@ sg_export_svg <- function(sg, download = TRUE, file = "graph.svg", size = 1000,
 sg_export_img <- function(sg, download = TRUE, file = "graph.png", background = "white",
                           format = "png", labels = FALSE){
 
-  if(missing(sg))
+  if (missing(sg))
     stop("must pass sg", call. = FALSE)
 
   .test_sg(sg)

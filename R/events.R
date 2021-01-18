@@ -67,7 +67,7 @@
 #'
 #' @export
 sg_events <- function(sg, events){
-  if(missing(events))
+  if (missing(events))
     stop("Must specify events, see events section in man page.")
 
   sg$x$events <- append(sg$x$events, as.list(events))

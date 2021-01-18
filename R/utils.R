@@ -11,7 +11,7 @@ globalVariables(c("from", "to", "."))
 }
 
 .check_ids <- function(data){
-  if(!"id" %in% names(data))
+  if (!"id" %in% names(data))
     stop("missing ids", call. = FALSE)
   else
     data$id <- as.character(data$id)
@@ -19,10 +19,10 @@ globalVariables(c("from", "to", "."))
 }
 
 .check_x_y <- function(data){
-  if(!"x" %in% names(data))
+  if (!"x" %in% names(data))
     data$x <- runif(nrow(data), 1, 20)
 
-  if(!"y" %in% names(data))
+  if (!"y" %in% names(data))
     data$y <- runif(nrow(data), 1, 20)
   return(data)
 }
@@ -48,7 +48,7 @@ globalVariables(c("from", "to", "."))
 }
 
 .data_2_df <- function(x){
-  if(is.null(x))
+  if (is.null(x))
     stop("must have both edges and nodes to compute layout")
 
   do.call("rbind.data.frame", lapply(x, as.data.frame, stringsAsFactors = FALSE))
@@ -92,7 +92,7 @@ globalVariables(c("from", "to", "."))
 
 
 .test_sg <- function(sg){
-  if(!inherits(sg, "sigmajs"))
+  if (!inherits(sg, "sigmajs"))
     stop("sg must be of class sigmajs", call. = FALSE)
 }
 
@@ -112,10 +112,10 @@ globalVariables(c("from", "to", "."))
 
   g <- .get_graph()
 
-  if(is.null(g)){
+  if (is.null(g)) {
     g <- igraph::graph_from_data_frame(edges, directed, nodes)
 
-    if(isTRUE(save))
+    if (isTRUE(save))
       assign("igraph", g, envir = storage_env)
   }
 
