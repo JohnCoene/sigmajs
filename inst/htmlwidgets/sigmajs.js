@@ -640,25 +640,25 @@ HTMLWidgets.widget({
 						});
 
 					// over node
-					if (x.events.includes('hoverNode'))
+					if (x.events.includes('overNode'))
 						s.bind('overNode', function (e) {
 							Shiny.setInputValue(el.id + '_over_node' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// over nodes
-					if (x.events.includes('hoverNodes'))
+					if (x.events.includes('overNodes'))
 						s.bind('overNodes', function (e) {
 							Shiny.setInputValue(el.id + '_over_nodes' + ":sigmajsParseJS", e.data.node);
 						});
 
 					// over edge
-					if (x.events.includes('hoverEdge'))
+					if (x.events.includes('overEdge'))
 						s.bind('overEdge', function (e) {
 							Shiny.setInputValue(el.id + '_over_edge' + ":sigmajsParseJS", e.data.edge);
 						});
 
 					// over edges
-					if (x.events.includes('hoverEdges'))
+					if (x.events.includes('overEdges'))
 						s.bind('overEdges', function (e) {
 							Shiny.setInputValue(el.id + '_over_edges' + ":sigmajsParseJS", e.data.edge);
 						});

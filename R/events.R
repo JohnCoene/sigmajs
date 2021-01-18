@@ -23,10 +23,10 @@
 #'   \item{\code{rightClickNodes}}
 #'   \item{\code{rightClickEdge}}
 #'   \item{\code{rightClickEdges}}
-#'   \item{\code{hoverNode}}
-#'   \item{\code{hoverNodes}}
-#'   \item{\code{hoverEdge}}
-#'   \item{\code{hoverEdges}}
+#'   \item{\code{overNode}}
+#'   \item{\code{overNodes}}
+#'   \item{\code{overEdge}}
+#'   \item{\code{overEdges}}
 #'   \item{\code{outNode}}
 #'   \item{\code{outNodes}}
 #'   \item{\code{outEdge}}
