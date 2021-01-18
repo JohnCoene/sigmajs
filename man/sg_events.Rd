@@ -36,10 +36,10 @@ Valid events to pass to \code{events}.
   \item{\code{rightClickNodes}}
   \item{\code{rightClickEdge}}
   \item{\code{rightClickEdges}}
-  \item{\code{hoverNode}}
-  \item{\code{hoverNodes}}
-  \item{\code{hoverEdge}}
-  \item{\code{hoverEdges}}
+  \item{\code{overNode}}
+  \item{\code{overNodes}}
+  \item{\code{overEdge}}
+  \item{\code{overEdges}}
   \item{\code{outNode}}
   \item{\code{outNodes}}
   \item{\code{outEdge}}
@@ -53,13 +53,13 @@ nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes)
 
 ui <- fluidPage(
-  sigmajsOutput("sg"),
+  sigmajsOutput("graph"),
   p("Click on a node"),
   verbatimTextOutput("clicked")
 )
 
 server <- function(input, output){
-  output$sg <- renderSigmajs({
+  output$graph <- renderSigmajs({
     sigmajs() \%>\%
       sg_nodes(nodes, id, size, color) \%>\%
       sg_edges(edges, id, source, target) \%>\%
@@ -68,7 +68,7 @@ server <- function(input, output){
 
 # capture node clicked
 output$clicked <- renderPrint({
-    input$sg_click_node
+    input$graph_click_node
   })
 }
 

@@ -40,13 +40,13 @@
 #' edges <- sg_make_edges(nodes)
 #'
 #' ui <- fluidPage(
-#'   sigmajsOutput("sg"),
+#'   sigmajsOutput("graph"),
 #'   p("Click on a node"),
 #'   verbatimTextOutput("clicked")
 #' )
 #'
 #' server <- function(input, output){
-#'   output$sg <- renderSigmajs({
+#'   output$graph <- renderSigmajs({
 #'     sigmajs() %>%
 #'       sg_nodes(nodes, id, size, color) %>%
 #'       sg_edges(edges, id, source, target) %>%
@@ -55,7 +55,7 @@
 #'
 #' # capture node clicked
 #' output$clicked <- renderPrint({
-#'     input$sg_click_node
+#'     input$graph_click_node
 #'   })
 #' }
 #'
