@@ -125,7 +125,13 @@ HTMLWidgets.widget({
                 else n.color = x.neighbours.nodes;
               });
               s.graph.edges().forEach(function (e) {
-                if (toKeep[e.source] && toKeep[e.target])
+                // highlight all edges of connected nodes:
+                // if (toKeep[e.source] && toKeep[e.target])
+                // only highlight edges connected to the selected node:
+                if (
+                  (toKeep[e.source] && e.target == nodeId) ||
+                  (e.source == nodeId && toKeep[e.target])
+                )
                   e.color = e.originalColor;
                 else e.color = x.neighbours.edges;
               });
@@ -175,7 +181,13 @@ HTMLWidgets.widget({
               else n.color = x.neighbours.nodes;
             });
             s.graph.edges().forEach(function (e) {
-              if (toKeep[e.source] && toKeep[e.target])
+              // highlight all edges of connected nodes:
+              // if (toKeep[e.source] && toKeep[e.target])
+              // only highlight edges connected to the selected node:
+              if (
+                (toKeep[e.source] && e.target == nodeId) ||
+                (e.source == nodeId && toKeep[e.target])
+              )
                 e.color = e.originalColor;
               else e.color = x.neighbours.edges;
             });
@@ -1378,7 +1390,14 @@ if (HTMLWidgets.shinyMode) {
             else n.color = message.nodes;
           });
           s.graph.edges().forEach(function (e) {
-            if (toKeep[e.source] && toKeep[e.target]) e.color = e.originalColor;
+            // highlight all edges of connected nodes:
+            // if (toKeep[e.source] && toKeep[e.target])
+            // only highlight edges connected to the selected node:
+            if (
+              (toKeep[e.source] && e.target == nodeId) ||
+              (e.source == nodeId && toKeep[e.target])
+            )
+              e.color = e.originalColor;
             else e.color = message.edges;
           });
           s.refresh();
