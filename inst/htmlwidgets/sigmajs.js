@@ -85,19 +85,19 @@ HTMLWidgets.widget({
           s.graph.edges().forEach(function (e) {
             e.originalColor = e.color;
           });
-          var clickedNodeId = null;
+          var nodeHasBeenClicked = false;
           // x.neighbours.on can be "clickNode", "overNode" or "clickNode|overNode",
           // which means neighbour highlighting is triggered by both click and hover.
           // Bind on all events provided, potentially separated by "|":
           x.neighbours.on.split("|").forEach(function (on) {
             s.bind(on, function (e) {
-              if (on == "overNode" && clickedNodeId !== null) {
-                // do not highlight another hovered node, we are locked at clickedNodeId by user clicking
+              if (on == "overNode" && nodeHasBeenClicked) {
+                // do not highlight another hovered node, we are locked by user clicking on a node
                 return;
               }
               var nodeId = e.data.node.id;
               if (on == "clickNode") {
-                clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
+                nodeHasBeenClicked = true; // lock highlighting at this node
               }
               var toKeep = s.graph.neighbors(nodeId);
               toKeep[nodeId] = e.data.node;
@@ -117,12 +117,12 @@ HTMLWidgets.widget({
           x.neighbours.on.split("|").forEach(function (on) {
             on = on == "overNode" ? "outNode" : "clickStage";
             s.bind(on, function (e) {
-              if (on == "outNode" && clickedNodeId !== null) {
+              if (on == "outNode" && nodeHasBeenClicked) {
                 // do not stop highlighting on mouse out, we are locked into highlighting by user clicking
                 return;
               }
               if (on == "clickStage") {
-                clickedNodeId = null; // stop locking of highlighting
+                nodeHasBeenClicked = false; // stop locking of highlighting
               }
               s.graph.nodes().forEach(function (n) {
                 n.color = n.originalColor;
@@ -1321,19 +1321,19 @@ if (HTMLWidgets.shinyMode) {
       s.graph.edges().forEach(function (e) {
         e.originalColor = e.color;
       });
-      var clickedNodeId = null;
+      var nodeHasBeenClicked = false;
       // message.on can be "clickNode", "overNode" or "clickNode|overNode",
       // which means neighbour highlighting is triggered by both click and hover.
       // Bind on all events provided, potentially separated by "|":
       message.on.split("|").forEach(function (on) {
         s.bind(on, function (e) {
-          if (on == "overNode" && clickedNodeId !== null) {
-            // do not highlight another hovered node, we are locked at clickedNodeId by user clicking
+          if (on == "overNode" && nodeHasBeenClicked) {
+            // do not highlight another hovered node, we are locked by user clicking on a node
             return;
           }
           var nodeId = e.data.node.id;
           if (on == "clickNode") {
-            clickedNodeId = nodeId; // lock highlighting at this node by setting clickedNodeId
+            nodeHasBeenClicked = true; // lock highlighting at this node
           }
           var toKeep = s.graph.neighbors(nodeId);
           toKeep[nodeId] = e.data.node;
@@ -1351,12 +1351,12 @@ if (HTMLWidgets.shinyMode) {
       message.on.split("|").forEach(function (on) {
         on = on == "overNode" ? "outNode" : "clickStage";
         s.bind(on, function (e) {
-          if (on == "outNode" && clickedNodeId !== null) {
+          if (on == "outNode" && nodeHasBeenClicked) {
             // do not stop highlighting on mouse out, we are locked into highlighting by user clicking
             return;
           }
           if (on == "clickStage") {
-            clickedNodeId = null; // stop locking of highlighting
+            nodeHasBeenClicked = false; // stop locking of highlighting
           }
           s.graph.nodes().forEach(function (n) {
             n.color = n.originalColor;
