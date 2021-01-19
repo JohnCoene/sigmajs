@@ -99,8 +99,26 @@ HTMLWidgets.widget({
               if (on == "clickNode") {
                 nodeHasBeenClicked = true; // lock highlighting at this node
               }
-              var toKeep = s.graph.neighbors(nodeId);
-              toKeep[nodeId] = e.data.node;
+              // -- Finding connected nodes --
+              // start by selecting all edges between nodeId and other nodes:
+              var neighborEdges = s.graph.adjacentEdges(nodeId); // .toString()
+              // keep only *visible* (not 'hidden') edges:
+              neighborEdges = neighborEdges.filter(function (x) {
+                return !x.hidden;
+              });
+              // extract the IDs of the connected nodes:
+              var allIDs = neighborEdges
+                .map(function (x) {
+                  return [x.source, x.target];
+                })
+                .flat();
+              // deduplicate using an object:
+              var toKeep = {};
+              for (let id of allIDs) {
+                toKeep[id] = true;
+              }
+              // done.
+              // --
               sel_handle.set(nodeId);
               s.graph.nodes().forEach(function (n) {
                 if (toKeep[n.id]) n.color = n.originalColor;
@@ -1335,8 +1353,26 @@ if (HTMLWidgets.shinyMode) {
           if (on == "clickNode") {
             nodeHasBeenClicked = true; // lock highlighting at this node
           }
-          var toKeep = s.graph.neighbors(nodeId);
-          toKeep[nodeId] = e.data.node;
+          // -- Finding connected nodes --
+          // start by selecting all edges between nodeId and other nodes:
+          var neighborEdges = s.graph.adjacentEdges(nodeId); // .toString()
+          // keep only *visible* (not 'hidden') edges:
+          neighborEdges = neighborEdges.filter(function (x) {
+            return !x.hidden;
+          });
+          // extract the IDs of the connected nodes:
+          var allIDs = neighborEdges
+            .map(function (x) {
+              return [x.source, x.target];
+            })
+            .flat();
+          // deduplicate using an object:
+          var toKeep = {};
+          for (let id of allIDs) {
+            toKeep[id] = true;
+          }
+          // done.
+          // --
           s.graph.nodes().forEach(function (n) {
             if (toKeep[n.id]) n.color = n.originalColor;
             else n.color = message.nodes;
