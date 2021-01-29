@@ -146,6 +146,9 @@ HTMLWidgets.widget({
                 return;
               }
               if (on == "clickStage") {
+                if (e.data.captor.isDragging) {
+                  return; // ignore clicks while dragging
+                }
                 nodeHasBeenClicked = false; // stop locking of highlighting
               }
               s.graph.nodes().forEach(function (n) {
@@ -602,6 +605,9 @@ HTMLWidgets.widget({
                   case "edges":
                     return_value = e.data.edges;
                     break;
+                  case "captor":
+                    return_value = e.data.captor;
+                    break;
                   default:
                     return_value = what_to_return;
                 }
@@ -638,7 +644,7 @@ HTMLWidgets.widget({
           bindEvent("clickNodes", "_click_nodes", "nodes");
           bindEvent("clickEdge", "_click_edge", "edge");
           bindEvent("clickEdges", "_click_edges", "edges");
-          bindEvent("clickStage", "_click_stage", "clickStage", "event");
+          bindEvent("clickStage", "_click_stage", "captor", "event");
           bindEvent("doubleClickNode", "_double_click_node", "node");
           bindEvent("doubleClickNodes", "_double_click_nodes", "nodes");
           bindEvent("doubleClickEdge", "_double_click_edge", "edge");
@@ -1411,6 +1417,9 @@ if (HTMLWidgets.shinyMode) {
             return;
           }
           if (on == "clickStage") {
+            if (e.data.captor.isDragging) {
+              return; // ignore clicks while dragging
+            }
             nodeHasBeenClicked = false; // stop locking of highlighting
           }
           s.graph.nodes().forEach(function (n) {
